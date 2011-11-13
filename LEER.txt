@@ -1,0 +1,7 @@
+de fede:
+	por si no saben para dónde disparar, con eclipse vayan al navegador (navigator, si no lo encuentran actívenlo haciendo click derecho en el panel de la izquierda) y hagan click derecho -> import y busquen existing projects into workspace; y después seleccionen esta carpeta. Creo que es mejor no comprimirla así todo se hace más rápido.
+	Cualquier cosa si me mandé una cagada avisen.
+
+de fede (13/11/11 @ 13:05):
+	si puse un archivo LEER es para que lo lean... no para que lo muevan...
+	vi que en la C para crear una nueva clase aparece un ítem que es "create junit test case", tiene pinta de ser cómo el método de smalltalk "go to tests". Digo esto pq parece que tomás hizo sus pruebas a mano, por ahí se les hace más cómo así :)
