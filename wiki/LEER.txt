@@ -1,3 +1,0 @@
-de fede:
-	por si no saben para dónde disparar, con eclipse vayan al navegador (navigator, si no lo encuentran actívenlo haciendo click derecho en el panel de la izquierda) y hagan click derecho -> import y busquen existing projects into workspace; y después seleccionen esta carpeta. Creo que es mejor no comprimirla así todo se hace más rápido.
-	Cualquier cosa si me mandé una cagada avisen.
