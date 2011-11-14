@@ -1,6 +1,5 @@
 
 package modelo;
-
 /**
  * @author jc
  *
@@ -13,6 +12,7 @@ public abstract class ObjetoMovible extends ObjetoJuego {
 	
 	public ObjetoMovible (int velocidadRecibida,Posicion posicionRecibida){
 		/*por defecto se orienta en i */
+		super();
 		this.orientacion = Orientacion.i;
 		this.velocidad = velocidadRecibida;
 		this.posicion = posicionRecibida;
@@ -20,11 +20,11 @@ public abstract class ObjetoMovible extends ObjetoJuego {
 	}
 	
 	public Orientacion devolverOrientacion(){
-		return this.orientacion;
+		return this.orientacion; 
 	}
 	
 	public void moverEnI(){
-		this.orientacion.orientarEni();
+		this.orientacion.orientarEnI();
 		for(int i=0; i<this.velocidad ; i++){
 			this.posicion.moverEnI();
 		}

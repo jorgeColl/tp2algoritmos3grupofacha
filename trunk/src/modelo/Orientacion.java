@@ -17,7 +17,7 @@ public class Orientacion extends Vector {
 		super(x, y);
 	}
 	
-	public void orientarEni(){
+	public void orientarEnI(){
 		this.x=1;
 		this.y=0;
 	}
