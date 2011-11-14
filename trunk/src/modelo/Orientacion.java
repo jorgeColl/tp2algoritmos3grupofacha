@@ -1,9 +1,9 @@
 package modelo;
 
 /**
- * Modela a un vector que otorga una orientación en un plano.
- * Dado que las orientaciones posibles son sólo cuatro y que estas interesan sólo desde su estado y no desde su comportamiento, mediante atributos de clase proveemos acceso global a estas.
- * @author Tomás
+ * Modela a un vector que otorga una orientaciï¿½n en un plano.
+ * Dado que las orientaciones posibles son sï¿½lo cuatro y que estas interesan sï¿½lo desde su estado y no desde su comportamiento, mediante atributos de clase proveemos acceso global a estas.
+ * @author Tomï¿½s
  *
  */
 public class Orientacion extends Vector {
@@ -15,6 +15,26 @@ public class Orientacion extends Vector {
 	
 	private Orientacion(int x, int y) {
 		super(x, y);
+	}
+	
+	public void orientarEni(){
+		this.x=1;
+		this.y=0;
+	}
+	
+	public void orientarEnINegativo(){
+		this.x=-1;
+		this.y=0;
+	}
+	
+	public void orientarEnJ(){
+		this.x=0;
+		this.y=1;
+	}
+	
+	public void orientarEnJNegativo(){
+		this.x=0;
+		this.y=-1;
 	}
 
 }
