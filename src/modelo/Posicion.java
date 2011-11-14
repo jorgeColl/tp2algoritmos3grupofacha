@@ -21,7 +21,7 @@ public class Posicion extends Vector {
 		return posicionAuxiliar;
 	}
 	
-	public void moverEnI(){
+	public void moverEnI() {
 		this.x++;
 	}
 	public void moverEnINegativo(){
@@ -33,6 +33,8 @@ public class Posicion extends Vector {
 	public void moverEnJNegativo(){
 		this.y--;
 	}
+
+	
 	
 
 }
