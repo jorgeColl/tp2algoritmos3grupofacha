@@ -1,8 +1,8 @@
 package modelo;
 
 /**
- * Modela a un vector que representa una posición en un plano.
- * @author Tomás
+ * Modela a un vector que representa una posiciï¿½n en un plano.
+ * @author Tomï¿½s
  *
  */
 public class Posicion extends Vector {
@@ -12,13 +12,27 @@ public class Posicion extends Vector {
 	}
 	
 	/**
-	 * Realiza la resta coordenada a coordenada entre el vector representado por este objeto y el representado por el parámetro.
+	 * Realiza la resta coordenada a coordenada entre el vector representado por este objeto y el representado por el parï¿½metro.
 	 * @param posicion instancia de la clase Posicion que restaremos a esta 
-	 * @return instancia de la clase Posicion que representa la resta de esta instancia y la del parámetro
+	 * @return instancia de la clase Posicion que representa la resta de esta instancia y la del parï¿½metro
 	 */
 	public Posicion restar(Posicion posicion) {
 		Posicion posicionAuxiliar = new Posicion(x - posicion.getX(),y - posicion.getY());
 		return posicionAuxiliar;
 	}
+	
+	public void moverEnI(){
+		this.x++;
+	}
+	public void moverEnINegativo(){
+		this.x--;
+	}
+	public void moverEnJ(){
+		this.y++;
+	}
+	public void moverEnJNegativo(){
+		this.y--;
+	}
+	
 
 }
