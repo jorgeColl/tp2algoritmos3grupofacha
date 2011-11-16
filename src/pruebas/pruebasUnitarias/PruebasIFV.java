@@ -28,7 +28,7 @@ public class PruebasIFV extends TestCase {
 	public void testIFVCreacionValida() {
 		OcupacionCuadrada ocupacionAuxiliar = (OcupacionCuadrada)tanqueTest.getOcupacion();
 		assertEquals(tanqueTest.getOrientacion(),Orientacion.jNegativo);
-		assertEquals(tanqueTest.getVelocidad(),2);
+		assertEquals(tanqueTest.getVelocidad(),3);
 		assertEquals(ocupacionAuxiliar.getPuntoMenorModulo().getX(),5);
 		assertEquals(ocupacionAuxiliar.getPuntoMenorModulo().getY(),5);
 		assertEquals(ocupacionAuxiliar.getLado(),5);
@@ -43,7 +43,7 @@ public class PruebasIFV extends TestCase {
 		Espacio.getInstancia().reiniciar();
 		tanqueTest = new IFV(new Posicion(250,250));
 		tanqueTest.moverDerecha();
-		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),252);
+		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),253);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),250);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado(),((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado());
 		assertEquals(tanqueTest.getOrientacion(),Orientacion.i);
@@ -57,7 +57,7 @@ public class PruebasIFV extends TestCase {
 		tanqueTest = new IFV(new Posicion(250,250));
 		tanqueTest.moverArriba();
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),250);
-		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),248);
+		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),247);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado(),((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado());
 		assertEquals(tanqueTest.getOrientacion(),Orientacion.j);
 	}
@@ -69,7 +69,7 @@ public class PruebasIFV extends TestCase {
 		Espacio.getInstancia().reiniciar();
 		tanqueTest = new IFV(new Posicion(250,250));
 		tanqueTest.moverIzquierda();
-		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),248);
+		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),247);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),250);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado(),((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado());
 		assertEquals(tanqueTest.getOrientacion(),Orientacion.iNegativo);
@@ -83,7 +83,7 @@ public class PruebasIFV extends TestCase {
 		tanqueTest = new IFV(new Posicion(250,250));
 		tanqueTest.moverAbajo();
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),250);
-		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),252);
+		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),253);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado(),((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado());
 		assertEquals(tanqueTest.getOrientacion(),Orientacion.jNegativo);
 	}
