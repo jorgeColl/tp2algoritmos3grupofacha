@@ -9,7 +9,7 @@ public class IFV extends TanqueEnemigo {
 		super(puntoMenorModulo);
 		arma = new LanzaCohetes(this,25);
 		puntosPorDestruccion = 30;
-		velocidad = 2;
+		velocidad = 3;
 	}
 	
 }
