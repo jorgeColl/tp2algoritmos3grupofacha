@@ -22,7 +22,7 @@ public class BonusVida extends Bonus {
 	@Override 
 	public  void chocarConTanque(Tanque tanque){
 		int resistencia = tanque.getResistencia();
-		resistencia += resistencia*porcentaje;
+		resistencia = (int) (resistencia*porcentaje);
 		tanque.sumarResistencia(resistencia);
 		
 	}
