@@ -32,6 +32,6 @@ public class PruebaBonusVida extends TestCase {
 		this.bonusVida.chocarConTanque(this.tanque);
 		int resistenciaDespues = this.tanque.getResistencia();
 		
-		assert( (resistenciaAntes += resistenciaAntes*porcentajeQueAumentaBonus) == resistenciaDespues);
+		assertTrue( (resistenciaAntes += resistenciaAntes*porcentajeQueAumentaBonus) == resistenciaDespues);
 	}
 }
