@@ -119,5 +119,15 @@ public abstract class Tanque extends ObjetoMovil implements ObjetoVivo {
 		this.resistencia += resistencia;
 		
 	}
+
+	public void sumarVelocidad(double velocidad) {
+		this.velocidad += velocidad;
+		
+	}
+
+	public void sumarVelocidadDisparo(double velocidadDeDisparo) {
+		this.velocidadDisparo += velocidadDeDisparo;
+		
+	}
 	
 }
