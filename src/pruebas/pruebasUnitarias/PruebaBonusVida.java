@@ -3,7 +3,7 @@
  */
 package pruebas.pruebasUnitarias;
 
-import modelo.bonuses.BonusVida;
+import modelo.objetosInanimados.BonusVida;
 import modelo.manejoEspacial.Posicion;
 import modelo.tanques.AlgoTank;
 import modelo.tanques.Tanque;
