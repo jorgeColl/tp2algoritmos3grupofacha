@@ -4,6 +4,7 @@ import modelo.armamentista.disparo.Disparo;
 import modelo.clasesGeneralizadoras.ObjetoJuego;
 import modelo.manejoEspacial.OcupacionCuadrada;
 import modelo.manejoEspacial.Posicion;
+import modelo.tanques.Tanque;
 
 
 public abstract class Bonus extends ObjetoJuego {
@@ -12,8 +13,9 @@ public abstract class Bonus extends ObjetoJuego {
 		int lado = 2; 
 		ocupacion = new OcupacionCuadrada(posicion,lado);
 	}
-	
-	//no hace nada si choca con un disparo
+	/**
+	 * no hace nada si choca con un disparo
+	 */
 	@Override 
 	public void chocarConDisparo(Disparo disparo){}
 	
@@ -22,6 +24,16 @@ public abstract class Bonus extends ObjetoJuego {
 		return (objeto.getOcupacion().coincidenciaOcupacionalCon(ocupacion));
 	}
 	
+	public void chocarConTanque(Tanque tanque) {
+		this.efectuarCambiosDeBonus(tanque);
+		this.desaparecer();
+	}
+	/**
+	 * funcion que sera redefinida por las subclases
+	 * @param tanque
+	 */
+	protected void efectuarCambiosDeBonus(Tanque tanque) {
+	}
 	
 	
 }
