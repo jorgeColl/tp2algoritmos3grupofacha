@@ -3,12 +3,11 @@
  */
 package pruebas.pruebasUnitarias;
 
+import junit.framework.TestCase;
 import modelo.manejoEspacial.Posicion;
 import modelo.objetosInanimados.BonusVelocidad;
-import modelo.objetosInanimados.BonusVida;
 import modelo.tanques.AlgoTank;
 import modelo.tanques.Tanque;
-import junit.framework.TestCase;
 
 /**
  * @author jc
@@ -33,7 +32,7 @@ public class PruebasBonusVelocidad extends TestCase{
 		int velocidadTanqueAntes = this.tanque.getVelocidad();
 		int velocidadDisparoTanqueAntes = this.tanque.getVelocidadDisparo();
 		
-		this.bonusVelocidad.chocarConTanque(this.tanque);
+		this.bonusVelocidad.chocarConTanque(this.tanque); 
 		
 		int velocidadTanqueDespues = this.tanque.getVelocidad();
 		int velocidadDisparoTanqueDespues = this.tanque.getVelocidadDisparo();
