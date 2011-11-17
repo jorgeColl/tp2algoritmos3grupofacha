@@ -39,7 +39,9 @@ public abstract class ObjetoJuego {
 	 * @param objeto instancia de la clase ObjetoJuego cuya ocupación compararemos con la de esta
 	 * @return true si los objetos comparados coinciden ocupacionalmente y false en el caso contrario
 	 */
-	public abstract boolean estaEnContactoCon(ObjetoJuego objeto);
+	public boolean estaEnContactoCon(ObjetoJuego objeto) {
+		return (objeto.getOcupacion().coincidenciaOcupacionalCon(ocupacion));
+	}
 	
 	/**
 	 * 

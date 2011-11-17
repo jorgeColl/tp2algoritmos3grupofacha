@@ -2,6 +2,7 @@ package modelo.manejoEspacial;
 
 import modelo.armamentista.disparo.Disparo;
 import modelo.clasesGeneralizadoras.ObjetoJuego;
+import modelo.objetosInanimados.CuartelArgentino;
 import modelo.tanques.AlgoTank;
 import modelo.tanques.TanqueEnemigo;
 import java.util.Vector;
@@ -18,7 +19,8 @@ public class Espacio {
 	
 	private int limiteDerecho;
 	private int limiteInferior;
-	
+
+	private CuartelArgentino cuartel;
 	private Vector<Disparo> disparos;
 	private Vector<ObjetoJuego> objetosInanimados;
 	private Vector<TanqueEnemigo> tanquesEnemigos;
@@ -28,12 +30,26 @@ public class Espacio {
 	 * Constructor privado.
 	 */
 	private Espacio() {
+		cuartel = null;
 		disparos = new Vector<Disparo>();
 		objetosInanimados = new Vector<ObjetoJuego>();
 		tanqueJugador = null;
 		tanquesEnemigos = new Vector<TanqueEnemigo>();
 		limiteDerecho = 601;
 		limiteInferior = 601;
+	}
+	
+	/**
+	 * 
+	 * @param cuartel objeto que asignaremos al atributo cuartel
+	 */
+	public void agregarCuartelArgentino(CuartelArgentino cuartel) throws Exception {
+		if (!(cuartel.getOcupacion().espacialmenteValida()))
+			throw new Exception("Se trató de agregar un cuartel en una posición inválida.");
+		if ((getObjetosJuegoEnContactoCon(cuartel)).size() == 0)
+			this.cuartel = cuartel;
+		else
+			throw new Exception("Se trató de agregar un cuartel en una posición ocupada por otro objeto del juego.");
 	}
 
 	/**
@@ -104,6 +120,8 @@ public class Espacio {
 	 * @param objeto instancia de la clase ObjetoJuego cuya referencia, en caso de haberla, quitaremos del escenario
 	 */
 	public void desaparecerA(ObjetoJuego objeto) {
+		if (objeto == cuartel)
+			cuartel = null;
 		if (objeto == tanqueJugador)
 			tanqueJugador = null;
 		int contador = 0;
@@ -132,6 +150,8 @@ public class Espacio {
 	 * @return true si el objeto está incluído en el espacio y false en el caso contrario
 	 */
 	public boolean incluyeA(ObjetoJuego objeto) {
+		if (objeto == cuartel)
+			return true;
 		if (objeto == tanqueJugador)
 			return true;
 		int contador = 0;
@@ -188,6 +208,10 @@ public class Espacio {
 	 */
 	public Vector<ObjetoJuego> getObjetosJuegoEnContactoCon(ObjetoJuego objeto) {
 		Vector<ObjetoJuego> vectorAuxiliar = new Vector<ObjetoJuego>();
+		if (!(cuartel == null)) {
+			if (objeto.estaEnContactoCon(cuartel))
+				vectorAuxiliar.add(cuartel);
+		}
 		if (!(tanqueJugador == null)) {
 			if (objeto.estaEnContactoCon(tanqueJugador))
 				vectorAuxiliar.add(tanqueJugador);
@@ -217,10 +241,26 @@ public class Espacio {
 	
 	/**
 	 * 
+	 * @return cuartel perteneciente al jugador
+	 */
+	public CuartelArgentino getCuartelArgentino() {
+		return cuartel;
+	}
+	
+	/**
+	 * 
 	 * @return tanque del jugador
 	 */
 	public AlgoTank getTanqueJugador() {
 		return tanqueJugador;
+	}
+	
+	/**
+	 * Cuando el cuartel argentino es destruído, entonces se perdió el juego.
+	 * @return true si se perdió el juego y false en el caso contrario
+	 */
+	public boolean juegoPerdido() {
+		return (cuartel == null);
 	}
 	
 	/**

@@ -27,6 +27,7 @@ public class AlgoTank extends Tanque {
 		lanzaCohetes = new LanzaCohetes(this,0);
 		orientacion = Orientacion.j;
 		velocidad = 2;
+		velocidadDisparo = 8;
 		try {
 			Espacio.getInstancia().agregarTanqueJugador(this);
 		} catch (Exception e) {
@@ -35,10 +36,10 @@ public class AlgoTank extends Tanque {
 	}
 	
 	/**
-	 * Le pide a su estrategia de disparo que resuelva al disparo.
+	 * Le pide a su estrategia de disparo que resuelva el qué arma disparar, siempre y cuando esto pueda hacerse.
 	 */
 	public void disparar() {
-		
+		estrategiaDisparo.decidirDisparo();
 	}
 	
 	/**
@@ -100,6 +101,11 @@ public class AlgoTank extends Tanque {
 	 */
 	public void incrementarMunicionLanzaCohetes(int municion) {
 		lanzaCohetes.incrementarMunicion(municion);
+	}
+
+	
+	public void vivir() {
+		estrategiaDisparo.informarTranscursoTiempo();
 	}
 	
 }

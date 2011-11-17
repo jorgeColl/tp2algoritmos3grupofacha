@@ -15,24 +15,64 @@ public interface Ocupacion {
 	public abstract boolean coincidenciaOcupacionalCon(Ocupacion ocupacion); 
 
 	/**
+	 * 
+	 * @param ocupacion objeto de la clase Ocupacion con respecto a la cual compararemos a esta instancia
+	 * @return true si los objetos tiene coincidencia ocupacional en sus respectivas proyecciones en el eje x
+	 */
+	public abstract boolean coincidenciaProyeccionHorizontalCon(Ocupacion ocupacion);
+	
+	/**
+	 * 
+	 * @param ocupacion objeto de la clase Ocupacion con respecto a la cual compararemos a esta instancia
+	 * @return true si los objetos tiene coincidencia ocupacional en sus respectivas proyecciones en el eje y
+	 */
+	public abstract boolean coincidenciaProyeccionVerticalCon(Ocupacion ocupacion);
+	
+	/**
 	 * Nos dice si la ocupación esta mapeada dentro de los límites espaciales del espacio.
 	 * @return true si la ocupacion es válida y false en el caso contrario
 	 */
 	public abstract boolean espacialmenteValida();
-	
+
 	/**
-	 * Método usado para dar una ocupación correcta a los disparos de los tanques.
-	 * @param orientacion posición relativa a esta ocupación en la que queremos que esté el punto devuelto
-	 * @return instancia de la clase posición que esté centrada con respecto a esta ocupación, 
-	 * espacialmente pegada al perímetro de esta en la posición relativa dada por el parámetro
+	 * 
+	 * @return true si la ocupación está en alguno de los bordes de la pantalla y false en el caso contrario
 	 */
-	public abstract Posicion getPosicionPerimetralCentradaEnOrientacion(Orientacion orientacion);
+	public abstract boolean estaEnBorde();
+
+	/**
+	 * 
+	 * @return true si alguna de las posiciones de la ocupación coincide con alguna de las posiciones de la recta imaginaria que atraviesa el espacio verticalmente por su mitad, y false en el caso contrario
+	 */
+	public abstract boolean estaEnCentroHorizontal();
 	
 	/**
-	 * PARA RESPETAR EL POLIMORFISMO Y EL ENCAPSULAMIENTO, ES NECESARIO QUE LAS OCUPACIONES SEPAN 
-	 * COMPARARSE ENTRE ELLAS Y QUE DE AFUERA SE INVOQUE SENCILLAMENTE A coincidenciaOcupacionalCon(Ocupacion ocupacion).
-	 * PARA ESTO ES NECESARIO QUE CADA OCUPACIÓN DEFINA UN MÉTODO QUE LA COMPARE CON ELLA MISMA Y CON CADA UNA 
-	 * DE LAS OTRAS, QUE SERÁ INVOCADO INTERNAMENTE.
+	 * 
+	 * @return posicion de la ocupación de mayor coordenada horizontal
+	 */
+	public abstract int getLimiteDerecho();
+	
+	/**
+	 * 
+	 * @return posicion de la ocupación de mayor coordenada vertical
+	 */
+	public abstract int getLimiteInferior();
+	
+	/**
+	 * 
+	 * @return posicion de la ocupación de menor coordenada horizontal
+	 */
+	public abstract int getLimiteIzquierdo();
+	
+	/**
+	 * 
+	 * @return posicion de la ocupación de menor coordenada vertical
+	 */
+	public abstract int getLimiteSuperior();
+	
+	/**
+	 * PARA RESPETAR EL POLIMORFISMO Y EL ENCAPSULAMIENTO, ES NECESARIO QUE LAS OCUPACIONES SEPAN COMPARARSE ENTRE ELLAS Y QUE DE AFUERA SE INVOQUE SENCILLAMENTE A coincidenciaOcupacionalCon(Ocupacion ocupacion).
+	 * PARA ESTO ES NECESARIO QUE CADA OCUPACIÓN DEFINA UN MÉTODO QUE LA COMPARE CON ELLA MISMA Y CON CADA UNA DE LAS OTRAS, QUE SERÁ INVOCADO INTERNAMENTE.
 	 * EN PRINCIPIO TENEMOS SÓLO UNA OCUPACIÓN CUADRADA, POR LO TANTO SÓLO ES NECESARIO UN MÉTODO   
 	 */
 	
@@ -60,4 +100,12 @@ public interface Ocupacion {
 	 * Devuelve la posición equivalente a esta movida unitariamente hacia la izquierda.
 	 */
 	public abstract Ocupacion getOcupacionMovidaIzquierda();
+	
+	/**
+	 * Método usado para dar una ocupación correcta a los disparos de los tanques.
+	 * @param orientacion posición relativa a esta ocupación en la que queremos que esté el punto devuelto
+	 * @return instancia de la clase posición que esté centrada con respecto a esta ocupación, espacialmente pegada al perímetro de esta en la posición relativa dada por el parámetro
+	 */
+	public abstract Posicion getPosicionPerimetralCentradaEnOrientacion(Orientacion orientacion);
+	
 }
