@@ -1,7 +1,7 @@
 /**
  * 
  */
-package modelo.bonuses;
+package modelo.objetosInanimados;
 
 import modelo.manejoEspacial.Posicion;
 import modelo.tanques.Tanque;

@@ -1,4 +1,4 @@
-package modelo.bonuses;
+package modelo.objetosInanimados;
 
 import modelo.armamentista.disparo.Disparo;
 import modelo.clasesGeneralizadoras.ObjetoJuego;
