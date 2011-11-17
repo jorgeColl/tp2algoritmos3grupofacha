@@ -15,7 +15,7 @@ import junit.framework.TestCase;
  * @author jc
  *
  */
-public class PruebaBonusVida extends TestCase {
+public class PruebasBonusVida extends TestCase {
 	BonusVida bonusVida;
 	Tanque tanque;
 	double porcentajeQueAumentaBonus;
