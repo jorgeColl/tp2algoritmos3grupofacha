@@ -18,7 +18,7 @@ public class BonusVelocidad extends Bonus {
 	public BonusVelocidad(Posicion posicion){
 		super(posicion);
 		this.porcentajeVelDisparo = 0.3;
-		this.porcentajeVelocidad =0.2 ;
+		this.porcentajeVelocidadTanque = 0.2 ;
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class BonusVelocidad extends Bonus {
 		int velocidadTanque = tanque.getVelocidad();
 		int velocidadDisparo = tanque.getVelocidadDisparo();
 		 
-		tanque.sumarVelocidad(velocidadTanque*porcentajeVelocidadTanque);
+		tanque.sumarVelocidad(velocidadTanque*this.porcentajeVelocidadTanque);
 		tanque.sumarVelocidadDisparo(velocidadDisparo*porcentajeVelocidadDisparo);
 		  
 		 /**
