@@ -18,10 +18,10 @@ public class BonusVelocidad extends Bonus {
 	public BonusVelocidad(Posicion posicion){
 		super(posicion);
 		this.porcentajeVelocidadDisparo = 0.3;
-		this.porcentajeVelocidadTanque = 0.2 ;
+		this.porcentajeVelocidadTanque = 0.2 ; 
 	}
 
-	@Override
+	
 	public void efectuarCambiosDeBonus(Tanque tanque) {
 		
 		

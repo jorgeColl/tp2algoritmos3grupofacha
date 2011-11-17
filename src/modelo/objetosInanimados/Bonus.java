@@ -32,8 +32,8 @@ public abstract class Bonus extends ObjetoJuego {
 	 * funcion que sera redefinida por las subclases
 	 * @param tanque
 	 */
-	protected void efectuarCambiosDeBonus(Tanque tanque) {
-	}
+	protected abstract void efectuarCambiosDeBonus(Tanque tanque);
+	
 	
 	
 }
