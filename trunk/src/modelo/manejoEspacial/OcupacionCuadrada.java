@@ -14,7 +14,8 @@ public class OcupacionCuadrada implements Ocupacion {
 		
 	/**
 	 * Constructor.
-	 * @param puntoMenorModulo objeto con el que se inicializará el atributo centro puntoMenorModulo
+	 * @param puntoMenorModulo objeto con el que se inicializará el atributo
+	 * 	 centro puntoMenorModulo
 	 * @param lado entero con el que se inicializará el atributo lado
 	 */
 	public OcupacionCuadrada(Posicion puntoMenorModulo, int lado) {
