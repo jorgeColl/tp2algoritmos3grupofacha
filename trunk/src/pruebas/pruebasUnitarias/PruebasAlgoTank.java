@@ -140,35 +140,35 @@ public class PruebasAlgoTank extends TestCase {
 	}
 	
 	/**
-	 * Hacemos que el tanque realice un movimiento, luego que se mueva en la dirección contraria, y chequeamos que su ocupación sea la inicial.
+	 * Testeamos que el método moverEnDireccionContraria() mueva al tanque como se espera y que su orientacion no cambie. 
 	 */
 	public void testAlgoTankMoverEnDireccionContrariaIzquierda() {
 		Espacio.getInstancia().reiniciar();
 		tanqueTest = new AlgoTank(new Posicion(250,250));
 		tanqueTest.moverIzquierda();
 		tanqueTest.moverEnDireccionContraria();
-		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),250);
-		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),250);
-		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado(),((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado());
-		assertEquals(tanqueTest.getOrientacion(),Orientacion.i);
-	}
-	
-	/**
-	 * Hacemos que el tanque realice un movimiento, luego que se mueva en la dirección contraria, y chequeamos que su ocupación sea la inicial.
-	 */
-	public void testAlgoTankMoverEnDireccionContrariaDerecha() {
-		Espacio.getInstancia().reiniciar();
-		tanqueTest = new AlgoTank(new Posicion(250,250));
-		tanqueTest.moverDerecha();
-		tanqueTest.moverEnDireccionContraria();
-		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),250);
+		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),249);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),250);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado(),((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado());
 		assertEquals(tanqueTest.getOrientacion(),Orientacion.iNegativo);
 	}
 	
 	/**
-	 * Hacemos que el tanque realice un movimiento, luego que se mueva en la dirección contraria, y chequeamos que su ocupación sea la inicial.
+	 * Testeamos que el método moverEnDireccionContraria() mueva al tanque como se espera y que su orientacion no cambie. 
+	 */
+	public void testAlgoTankMoverEnDireccionContrariaDerecha() {
+		Espacio.getInstancia().reiniciar();
+		tanqueTest = new AlgoTank(new Posicion(250,250));
+		tanqueTest.moverDerecha();
+		tanqueTest.moverEnDireccionContraria();
+		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),251);
+		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),250);
+		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado(),((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado());
+		assertEquals(tanqueTest.getOrientacion(),Orientacion.i);
+	}
+	
+	/**
+	 * Testeamos que el método moverEnDireccionContraria() mueva al tanque como se espera y que su orientacion no cambie. 
 	 */
 	public void testAlgoTankMoverEnDireccionContrariaArriba() {
 		Espacio.getInstancia().reiniciar();
@@ -176,13 +176,13 @@ public class PruebasAlgoTank extends TestCase {
 		tanqueTest.moverArriba();
 		tanqueTest.moverEnDireccionContraria();
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),250);
-		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),250);
+		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),249);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado(),((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado());
-		assertEquals(tanqueTest.getOrientacion(),Orientacion.jNegativo);
+		assertEquals(tanqueTest.getOrientacion(),Orientacion.j);
 	}
 	
 	/**
-	 * Hacemos que el tanque realice un movimiento, luego que se mueva en la dirección contraria, y chequeamos que su ocupación sea la inicial.
+	 * Testeamos que el método moverEnDireccionContraria() mueva al tanque como se espera y que su orientacion no cambie. 
 	 */
 	public void testAlgoTankMoverEnDireccionContrariaAbajo() {
 		Espacio.getInstancia().reiniciar();
@@ -190,9 +190,9 @@ public class PruebasAlgoTank extends TestCase {
 		tanqueTest.moverAbajo();
 		tanqueTest.moverEnDireccionContraria();
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),250);
-		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),250);
+		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),251);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado(),((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado());
-		assertEquals(tanqueTest.getOrientacion(),Orientacion.j);
+		assertEquals(tanqueTest.getOrientacion(),Orientacion.jNegativo);
 	}
 	
 	/**
@@ -273,6 +273,101 @@ public class PruebasAlgoTank extends TestCase {
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
 		assertEquals(((OcupacionCuadrada)(tanqueDos.getOcupacion())).getPuntoMenorModulo().getX(),250);
 		assertEquals(((OcupacionCuadrada)(tanqueDos.getOcupacion())).getPuntoMenorModulo().getY(),255);
-	}	
+	}
+	
+	/**
+	 * Situo al tanque más cerca del borde izquierdo que del derecho y testeo que el método acercarseAlBordeLateralMasCercano() lo acerque a allí, y que una vez que haya llegado no se continúe moviendo al invocárselo. 
+	 */
+	public void testAlgoTankAcercarseAlBordeLateralMasCercanoIzquierdo() {
+		Espacio.getInstancia().reiniciar();
+		tanqueTest = new AlgoTank(new Posicion(10,250));
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),8);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),6);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),4);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),2);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),0);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),0);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+	}
+	
+	/**
+	 * Situo al tanque más cerca del borde derecho que del izquierdo y testeo que el método acercarseAlBordeLateralMasCercano() lo acerque a allí, y que una vez que haya llegado no se continúe moviendo al invocárselo.
+	 */
+	public void testAlgoTankAcercarseAlBordeLateralMasCercanoDerecho() {
+		Espacio.getInstancia().reiniciar();
+		tanqueTest = new AlgoTank(new Posicion(590,250));
+		tanqueTest.acercarseAlBordeLateralMasCercano();		
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),592);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),594);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),596);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),597);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),597);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+	}
+	
+	/**
+	 * Sitúo al tanque a la izquierda del centro del espacio y testeo si a medida que lo hago moverse con el método acercarseAlCentroDelEspacio() se acerca a este, hasta que allí se encuentre y entonces el método no cause ningún efecto.
+	 */
+	public void testAlgoTankAcercarseAlCentroDelEspacioDesdeIzquierda() {
+		Espacio.getInstancia().reiniciar();
+		tanqueTest = new AlgoTank(new Posicion(289,250));
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),291);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),293);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),295);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),297);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),297);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+	}
+	
+	/**
+	 * Sitúo al tanque a la derecha del centro del espacio y testeo si a medida que lo hago moverse con el método acercarseAlCentroDelEspacio() se acerca a este, hasta que allí se encuentre y entonces el método no cause ningún efecto.
+	 */
+	public void testAlgoTankAcercarseAlCentroDelEspacioDesdeDerecha() {
+		Espacio.getInstancia().reiniciar();
+		tanqueTest = new AlgoTank(new Posicion(311,250));
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),309);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),307);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),305);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),303);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),301);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+	}
 	
 }

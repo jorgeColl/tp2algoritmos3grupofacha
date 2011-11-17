@@ -1,6 +1,8 @@
 package modelo.tanques;
 
 import modelo.armamentista.arma.Arma;
+import modelo.estrategias.estrategiasDisparo.EstrategiaDisparoVelocidadDependiente;
+import modelo.estrategias.estrategiasMovimiento.EstrategiaMovimiento;
 import modelo.manejoEspacial.Espacio;
 import modelo.manejoEspacial.Orientacion;
 import modelo.manejoEspacial.Posicion;
@@ -13,10 +15,12 @@ import modelo.manejoEspacial.Posicion;
 public abstract class TanqueEnemigo extends Tanque {
 	
 	protected Arma arma;
+	protected EstrategiaMovimiento estrategiaMovimiento;
 	protected int puntosPorDestruccion;
 	
 	public TanqueEnemigo(Posicion puntoMenorModulo) {
 		super(puntoMenorModulo);
+		estrategiaDisparo = new EstrategiaDisparoVelocidadDependiente(this);
 		orientacion = Orientacion.jNegativo;
 		try {
 			Espacio.getInstancia().agregarTanqueEnemigo(this);
@@ -31,6 +35,14 @@ public abstract class TanqueEnemigo extends Tanque {
 	public void disparar() {
 		arma.disparar();
 	}
+	
+	/**
+	 * 
+	 * @return arma del tanque
+	 */
+	public Arma getArma() {
+		return arma;
+	}
 
 	/**
 	 * 
@@ -38,6 +50,15 @@ public abstract class TanqueEnemigo extends Tanque {
 	 */
 	public int getPuntosPorDestruccion() {
 		return puntosPorDestruccion;
+	}
+	
+	/**
+	 * Le indica al tanque que se mueva y dispare si es necesario, delegando en las estrategias correspondientes.
+	 */
+	public void vivir() {
+		estrategiaMovimiento.dedicirMovimiento();
+		estrategiaDisparo.decidirDisparo();
+		estrategiaDisparo.informarTranscursoTiempo();
 	}
 	
 }

@@ -141,7 +141,7 @@ public class PruebasGrizzlyBattleTank extends TestCase {
 	}
 	
 	/**
-	 * Hacemos que el tanque realice un movimiento, luego que se mueva en la dirección contraria, y chequeamos que su ocupación sea la inicial.
+	 * Testeamos que el método moverEnDireccionContraria() mueva al tanque como se espera y que su orientacion no cambie. 
 	 */
 	public void testGrizzlyBattleTankMoverEnDireccionContrariaIzquierda() {
 		Espacio.getInstancia().reiniciar();
@@ -151,11 +151,11 @@ public class PruebasGrizzlyBattleTank extends TestCase {
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),250);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),250);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado(),((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado());
-		assertEquals(tanqueTest.getOrientacion(),Orientacion.i);
+		assertEquals(tanqueTest.getOrientacion(),Orientacion.iNegativo);
 	}
 	
 	/**
-	 * Hacemos que el tanque realice un movimiento, luego que se mueva en la dirección contraria, y chequeamos que su ocupación sea la inicial.
+	 * Testeamos que el método moverEnDireccionContraria() mueva al tanque como se espera y que su orientacion no cambie. 
 	 */
 	public void testGrizzlyBattleTankMoverEnDireccionContrariaDerecha() {
 		Espacio.getInstancia().reiniciar();
@@ -165,11 +165,11 @@ public class PruebasGrizzlyBattleTank extends TestCase {
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),250);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),250);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado(),((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado());
-		assertEquals(tanqueTest.getOrientacion(),Orientacion.iNegativo);
+		assertEquals(tanqueTest.getOrientacion(),Orientacion.i);
 	}
 	
 	/**
-	 * Hacemos que el tanque realice un movimiento, luego que se mueva en la dirección contraria, y chequeamos que su ocupación sea la inicial.
+	 * Testeamos que el método moverEnDireccionContraria() mueva al tanque como se espera y que su orientacion no cambie. 
 	 */
 	public void testGrizzlyBattleTankMoverEnDireccionContrariaArriba() {
 		Espacio.getInstancia().reiniciar();
@@ -179,11 +179,11 @@ public class PruebasGrizzlyBattleTank extends TestCase {
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),250);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),250);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado(),((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado());
-		assertEquals(tanqueTest.getOrientacion(),Orientacion.jNegativo);
+		assertEquals(tanqueTest.getOrientacion(),Orientacion.j);
 	}
 	
 	/**
-	 * Hacemos que el tanque realice un movimiento, luego que se mueva en la dirección contraria, y chequeamos que su ocupación sea la inicial.
+	 * Testeamos que el método moverEnDireccionContraria() mueva al tanque como se espera y que su orientacion no cambie. 
 	 */
 	public void testGrizzlyBattleTankMoverEnDireccionContrariaAbajo() {
 		Espacio.getInstancia().reiniciar();
@@ -193,7 +193,7 @@ public class PruebasGrizzlyBattleTank extends TestCase {
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getX(),250);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getPuntoMenorModulo().getY(),250);
 		assertEquals(((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado(),((OcupacionCuadrada)tanqueTest.getOcupacion()).getLado());
-		assertEquals(tanqueTest.getOrientacion(),Orientacion.j);
+		assertEquals(tanqueTest.getOrientacion(),Orientacion.jNegativo);
 	}
 
 	/**
@@ -250,6 +250,110 @@ public class PruebasGrizzlyBattleTank extends TestCase {
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
 		assertEquals(((OcupacionCuadrada)(tanqueDos.getOcupacion())).getPuntoMenorModulo().getX(),250);
 		assertEquals(((OcupacionCuadrada)(tanqueDos.getOcupacion())).getPuntoMenorModulo().getY(),255);
+	}
+	
+	/**
+	 * Situo al tanque más cerca del borde izquierdo que del derecho y testeo que el método acercarseAlBordeLateralMasCercano() lo acerque a allí, y que una vez que haya llegado no se continúe moviendo al invocárselo. 
+	 */
+	public void testGrizzlyBattleTankAcercarseAlBordeLateralMasCercanoIzquierdo() {
+		Espacio.getInstancia().reiniciar();
+		tanqueTest = new GrizzlyBattleTank(new Posicion(5,250));
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),4);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),3);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),2);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),1);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),0);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),0);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+	}
+	
+	/**
+	 * Situo al tanque más cerca del borde derecho que del izquierdo y testeo que el método acercarseAlBordeLateralMasCercano() lo acerque a allí, y que una vez que haya llegado no se continúe moviendo al invocárselo.
+	 */
+	public void testGrizzlyBattleTankAcercarseAlBordeLateralMasCercanoDerecho() {
+		Espacio.getInstancia().reiniciar();
+		tanqueTest = new GrizzlyBattleTank(new Posicion(591,250));
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),592);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),593);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),594);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),595);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),596);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),597);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlBordeLateralMasCercano();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),597);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+	}
+	
+	/**
+	 * Sitúo al tanque a la izquierda del centro del espacio y testeo si a medida que lo hago moverse con el método acercarseAlCentroDelEspacio() se acerca a este, hasta que allí se encuentre y entonces el método no cause ningún efecto.
+	 */
+	public void testGrizzlyBattleTankAcercarseAlCentroDelEspacioDesdeIzquierda() {
+		Espacio.getInstancia().reiniciar();
+		tanqueTest = new GrizzlyBattleTank(new Posicion(293,250));
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),294);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),295);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),296);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),296);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+	}
+	
+	/**
+	 * Sitúo al tanque a la derecha del centro del espacio y testeo si a medida que lo hago moverse con el método acercarseAlCentroDelEspacio() se acerca a este, hasta que allí se encuentre y entonces el método no cause ningún efecto.
+	 */
+	public void testGrizzlyBattleTankAcercarseAlCentroDelEspacioDesdeDerecha() {
+		Espacio.getInstancia().reiniciar();
+		tanqueTest = new GrizzlyBattleTank(new Posicion(306,250));
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),305);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),304);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),303);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),302);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),301);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),300);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+		tanqueTest.acercarseAlCentroDelEspacio();
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),300);
+		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
 	}
 	
 }

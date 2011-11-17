@@ -24,29 +24,85 @@ public class PruebasEstrategiaDisparoAlgoTank extends TestCase {
 	}
 	
 	/**
-	 * Otorgo al dueño del a estrategia municiones y chequeo que a medida que esta realice disparos, las municiones vayan disminuyendo en el valor esperado, lo que significa que el dueño ha disparado el arma correcta.
+	 * Otorgo al duenio municiones de LanzaCohetes y chequeo que dispare prioritariamente a esta arma, cuando su velocidad de disparo se lo permita.
 	 */
-	public void testEstrategiaDisparoAlgoTankDecicionesCorrectas() {
-		duenio.incrementarMunicionLanzaCohetes(4);
-		duenio.incrementarMunicionCanion(3);
-		
-		assertEquals(duenio.getLanzaCohetes().getMunicion(),4);
-		estrategia.decidirDisparo();
-		assertEquals(duenio.getLanzaCohetes().getMunicion(),3);
+	public void testDisparoLanzaCohetes() {
+		duenio.incrementarMunicionLanzaCohetes(2);
 		estrategia.decidirDisparo();
 		assertEquals(duenio.getLanzaCohetes().getMunicion(),2);
+		estrategia.informarTranscursoTiempo();
+		estrategia.decidirDisparo();
+		assertEquals(duenio.getLanzaCohetes().getMunicion(),2);
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		//A PARTIR DE AQUÍ YA PODRÍA DISPARAR.
 		estrategia.decidirDisparo();
 		assertEquals(duenio.getLanzaCohetes().getMunicion(),1);
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		//A PARTIR DE AQUÍ YA PODRÍA DISPARAR.
 		estrategia.decidirDisparo();
 		assertEquals(duenio.getLanzaCohetes().getMunicion(),0);
-		assertEquals(duenio.getCanion().getMunicion(),3);
+	}
+	
+	/**
+	 * Otorgo al duenio municiones de Canion y chequeo que dispare prioritariamente a esta arma, cuando su velocidad de disparo se lo permita.
+	 */
+	public void testDisparoLanzaCanion() {
+		duenio.incrementarMunicionCanion(2);
 		estrategia.decidirDisparo();
 		assertEquals(duenio.getCanion().getMunicion(),2);
+		estrategia.informarTranscursoTiempo();
+		estrategia.decidirDisparo();
+		assertEquals(duenio.getCanion().getMunicion(),2);
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		//A PARTIR DE AQUÍ YA PODRÍA DISPARAR.
 		estrategia.decidirDisparo();
 		assertEquals(duenio.getCanion().getMunicion(),1);
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		estrategia.informarTranscursoTiempo();
+		//A PARTIR DE AQUÍ YA PODRÍA DISPARAR.
 		estrategia.decidirDisparo();
 		assertEquals(duenio.getCanion().getMunicion(),0);
-		estrategia.decidirDisparo();
 	}
-
+	
 }

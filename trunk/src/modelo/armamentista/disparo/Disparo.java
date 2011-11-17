@@ -86,9 +86,7 @@ public abstract class Disparo extends ObjetoMovil implements ObjetoVivo {
 	}
 	
 	/**
-	 * Método usado internamente para calcular la posición con la que se crea la
-	 *  ocupación del disparo, dado que la misma tiene que estar centrada con respecto
-	 *   al tanque que la dispara, y para esto tiene que tener en cuenta el radio del disparo.
+	 * Método usado internamente para calcular la posición con la que se crea la ocupación del disparo, dado que la misma tiene que estar centrada con respecto al tanque que la dispara, y para esto tiene que tener en cuenta el radio del disparo.
 	 * @return posicion con la que se crea la ocupación del objeto
 	 */
 	protected Posicion obtenerPuntoMenorModuloDisparo(Orientacion orientacion, Posicion puntoReferencia, int lado) {
@@ -109,7 +107,6 @@ public abstract class Disparo extends ObjetoMovil implements ObjetoVivo {
 	}
 	
 	public void vivir() {
-		int contador = 0;
 		if (orientacion == Orientacion.i)
 			moverDerecha();
 		else {

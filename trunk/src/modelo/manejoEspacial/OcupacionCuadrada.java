@@ -14,8 +14,7 @@ public class OcupacionCuadrada implements Ocupacion {
 		
 	/**
 	 * Constructor.
-	 * @param puntoMenorModulo objeto con el que se inicializará el atributo
-	 * 	 centro puntoMenorModulo
+	 * @param puntoMenorModulo objeto con el que se inicializará el atributo centro puntoMenorModulo
 	 * @param lado entero con el que se inicializará el atributo lado
 	 */
 	public OcupacionCuadrada(Posicion puntoMenorModulo, int lado) {
@@ -23,22 +22,30 @@ public class OcupacionCuadrada implements Ocupacion {
 		this.lado = lado;
 	}
 	
-	/**
-	 * Utiliza dos métodos privados para simplificar tests booleanos.
-	 */
-
-	@Override
 	public boolean coincidenciaOcupacionalCon(Ocupacion ocupacion) {
 		return (ocupacion.compararConOcupacionCuadrada(this));
 	}
+	
+	public boolean coincidenciaProyeccionHorizontalCon(Ocupacion ocupacion) {
+		if ((getLimiteDerecho() >= ocupacion.getLimiteIzquierdo())&&(getLimiteIzquierdo() <= ocupacion.getLimiteDerecho()))
+			return true;
+		return false;
+	}
+	
+	public boolean coincidenciaProyeccionVerticalCon(Ocupacion ocupacion) {
+		if ((getLimiteInferior() >= ocupacion.getLimiteSuperior())&&(getLimiteSuperior() <= ocupacion.getLimiteInferior()))
+			return true;
+		return false;
+	}
 
 	/**
-	 * Utiliza dos métodos privados para simplificar tests booleanos.
+	 * Delegamos en dos métodos que simplifican test booleanos.
 	 */
-	@Override
 	public boolean compararConOcupacionCuadrada(OcupacionCuadrada ocupacion) {
-		if ((this.coincidenciaOcupacionalHorizotal(ocupacion))&&(this.coincidenciaOcupacionalVertical(ocupacion)))
-			return true;
+		if (coincidenciaProyeccionHorizontalCon(ocupacion)) {
+			if (coincidenciaProyeccionVerticalCon(ocupacion))
+				return true;
+		}
 		return false;
 	}	
 	
@@ -47,26 +54,7 @@ public class OcupacionCuadrada implements Ocupacion {
 	 * @param ocupacion instancia de la clase OcupacionCuadrada con respecto a la cual compararemos a esta
 	 * @return true si las proyecciones ortogonales en el eje x de esta ocupacion y de la del parametro tienen puntos en comun 
 	 */
-	private boolean coincidenciaOcupacionalHorizotal(OcupacionCuadrada ocupacion) {
-		if ((puntoMenorModulo.getX()+(lado-1)) >= (ocupacion.getPuntoMenorModulo().getX())) {
-			if ((puntoMenorModulo.getX()) <= (ocupacion.getPuntoMenorModulo().getX()+(ocupacion.getLado()-1)))
-				return true;
-		}
-		return false;		
-	}
 	
-	/**
-	 * @see comentario del metodo coincidenciaOcupacionalHorizotal(OcupacionCuadrada ocupacion)
-	 */
-	private boolean coincidenciaOcupacionalVertical(OcupacionCuadrada ocupacion) {
-		if ((puntoMenorModulo.getY()+(lado-1)) >= (ocupacion.getPuntoMenorModulo().getY())) {
-			if ((puntoMenorModulo.getY()) <= (ocupacion.getPuntoMenorModulo().getY()+(ocupacion.getLado()-1)))
-				return true;
-		}
-		return false;		
-	}
-	
-	@Override
 	public boolean espacialmenteValida() {
 		if (puntoMenorModulo.getX() < 0)
 			return false;
@@ -77,7 +65,27 @@ public class OcupacionCuadrada implements Ocupacion {
 		if ((puntoMenorModulo.getY()+(lado-1)) > Espacio.getInstancia().getLimiteInferior())
 			return false;
 		return true;
-	}	
+	}
+	
+	public boolean estaEnBorde() {
+		if (getLimiteDerecho() == Espacio.getInstancia().getLimiteDerecho())
+			return true;
+		if (getLimiteInferior() == Espacio.getInstancia().getLimiteInferior())
+			return true;
+		if (getLimiteIzquierdo() == 0)
+			return true;
+		if (getLimiteSuperior() == 0)
+			return true;
+		return false;		
+	}
+
+	public boolean estaEnCentroHorizontal() {
+		if (getLimiteIzquierdo() <= (Espacio.getInstancia().getLimiteDerecho()/2)) {
+			if (getLimiteDerecho() >= (Espacio.getInstancia().getLimiteDerecho()/2))
+				return true;
+		}
+		return false;
+	}
 	
 	/**
 	 * 
@@ -91,15 +99,15 @@ public class OcupacionCuadrada implements Ocupacion {
 	public Posicion getPosicionPerimetralCentradaEnOrientacion(Orientacion orientacion) {
 		//INICIALIZACION CORRESPONDIENTE A SI EL PARÁMETRO ES Orientacion.i, SI ES OTRA SE LA CAMBIARÁ LUEGO.
 		//RAZÓN DE COMPILACIÓN
-		Posicion posicionAuxiliar = new Posicion(puntoMenorModulo.getX()+lado,puntoMenorModulo.getY()+Math.round(lado/2));
+		Posicion posicionAuxiliar = new Posicion(puntoMenorModulo.getX()+lado,puntoMenorModulo.getY()+(lado/2));
 		if (orientacion == Orientacion.iNegativo)
-			posicionAuxiliar = new Posicion(puntoMenorModulo.getX()-1,puntoMenorModulo.getY()+Math.round(lado/2));
+			posicionAuxiliar = new Posicion(puntoMenorModulo.getX()-1,puntoMenorModulo.getY()+(lado/2));
 		else {
 			if (orientacion == Orientacion.j)
-				posicionAuxiliar = new Posicion(puntoMenorModulo.getX()+Math.round(lado/2),puntoMenorModulo.getY()-1);
+				posicionAuxiliar = new Posicion(puntoMenorModulo.getX()+(lado/2),puntoMenorModulo.getY()-1);
 			else {
 				if (orientacion == Orientacion.jNegativo)
-					posicionAuxiliar = new Posicion(puntoMenorModulo.getX()+Math.round(lado/2),puntoMenorModulo.getY()+lado);	
+					posicionAuxiliar = new Posicion(puntoMenorModulo.getX()+(lado/2),puntoMenorModulo.getY()+lado);	
 			}
 		}
 		return posicionAuxiliar;
@@ -132,5 +140,21 @@ public class OcupacionCuadrada implements Ocupacion {
 		Posicion puntoAuxiliar = new Posicion(puntoMenorModulo.getX()-1,puntoMenorModulo.getY());
 		return (new OcupacionCuadrada(puntoAuxiliar,lado));
 	}
-	
+
+	public int getLimiteDerecho() {
+		return (puntoMenorModulo.getX() + lado - 1);
+	}
+
+	public int getLimiteInferior() {
+		return (puntoMenorModulo.getY() + lado - 1);
+	}
+
+	public int getLimiteIzquierdo() {
+		return (puntoMenorModulo.getX());
+	}
+
+	public int getLimiteSuperior() {
+		return (puntoMenorModulo.getY());
+	}
+
 }

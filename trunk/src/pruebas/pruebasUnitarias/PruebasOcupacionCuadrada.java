@@ -1,5 +1,6 @@
 package pruebas.pruebasUnitarias;
 
+import modelo.manejoEspacial.Espacio;
 import modelo.manejoEspacial.OcupacionCuadrada;
 import modelo.manejoEspacial.Orientacion;
 import modelo.manejoEspacial.Posicion;
@@ -292,5 +293,159 @@ public class PruebasOcupacionCuadrada extends TestCase {
 		assertEquals(ocupacionAuxiliar.getPuntoMenorModulo().getX(),2);
 		assertEquals(ocupacionAuxiliar.getPuntoMenorModulo().getY(),5);
 	}
-
+	
+	/**
+	 * Testeo si el método en cuestión devuelve el valor esperado. 3.5.4
+	 */
+	public void testGetLimiteDerecho() {
+		assertEquals(ocupacion.getLimiteDerecho(),6);
+	}
+	
+	/**
+	 * @see testGetLimiteDerecho()
+	 */
+	public void testGetLimiteInferior() {
+		assertEquals(ocupacion.getLimiteInferior(),8);
+	}
+	
+	/**
+	 * @see testGetLimiteDerecho()
+	 */
+	public void testGetLimiteIzquierdo() {
+		assertEquals(ocupacion.getLimiteIzquierdo(),3);
+	}
+	
+	/**
+	 * @see testGetLimiteDerecho()
+	 */
+	public void testGetLimiteSuperior() {
+		assertEquals(ocupacion.getLimiteSuperior(),5);
+	}
+	
+	/**
+	 * Testeo si el método estaEnBorde() devuelve true con una ocupación situada en el borde derecho del espacio
+	 */
+	public void testEstaEnBordeDerecho() {
+		ocupacion = new OcupacionCuadrada(new Posicion(Espacio.getInstancia().getLimiteDerecho(),250),1);
+		assertTrue(ocupacion.estaEnBorde());
+	}
+	
+	/**
+	 * @see testEstaEnBordeDerecho()
+	 */
+	public void testEstaEnBordeInferior() {
+		ocupacion = new OcupacionCuadrada(new Posicion(250,Espacio.getInstancia().getLimiteInferior()),1);
+		assertTrue(ocupacion.estaEnBorde());
+	}
+	
+	/**
+	 * @see testEstaEnBordeDerecho()
+	 */
+	public void testEstaEnBordeIzquierdo() {
+		ocupacion = new OcupacionCuadrada(new Posicion(0,250),4);
+		assertTrue(ocupacion.estaEnBorde());
+	}
+	
+	/**
+	 * @see testEstaEnBordeDerecho()
+	 */
+	public void testEstaEnBordeSuperior() {
+		ocupacion = new OcupacionCuadrada(new Posicion(250,0),4);
+		assertTrue(ocupacion.estaEnBorde());
+	}
+	
+	/**
+	 * Testeamos si el método estaEnBorde() devuelve false cuando la posición no se encuentra en ningún borde.
+	 */
+	public void testEstaEnBordeNegado() {
+		ocupacion = new OcupacionCuadrada(new Posicion(250,250),4);
+		assertFalse(ocupacion.estaEnBorde());
+	}
+	
+	/**
+	 * Instancio dos ocupaciones que coincidan espacialmente de manera horizontal, donde la que recibe el mensaje se encuentre más a la izquierda de la otra, y chequeo que el método devuelva correspondiente true.
+	 */
+	public void testCoincidenciaProyeccionHorizontalAIzquierda() {
+		ocupacion = new OcupacionCuadrada(new Posicion(250,250),5);
+		OcupacionCuadrada ocupacionAuxiliar = new OcupacionCuadrada(new Posicion(246,10),5);
+		assertTrue(ocupacionAuxiliar.coincidenciaProyeccionHorizontalCon(ocupacion));
+	}
+	
+	/**
+	 * Instancio dos ocupaciones que coincidan espacialmente de manera horizontal, donde la que recibe el mensaje se encuentre más a la derecha de la otra, y chequeo que el método devuelva correspondiente true.
+	 */
+	public void testCoincidenciaProyeccionHorizontalADerecha() {
+		ocupacion = new OcupacionCuadrada(new Posicion(246,250),5);
+		OcupacionCuadrada ocupacionAuxiliar = new OcupacionCuadrada(new Posicion(250,10),5);
+		assertTrue(ocupacionAuxiliar.coincidenciaProyeccionHorizontalCon(ocupacion));
+	}
+	
+	/**
+	 * Instancio dos ocupaciones que no coincidan espacialmente de manera horizontal, y chequeo que el método devuelva correspondiente false.
+	 */
+	public void testCoincidenciaProyeccionHorizontalNegada() {
+		ocupacion = new OcupacionCuadrada(new Posicion(10,250),5);
+		OcupacionCuadrada ocupacionAuxiliar = new OcupacionCuadrada(new Posicion(250,250),5);
+		assertFalse(ocupacionAuxiliar.coincidenciaProyeccionHorizontalCon(ocupacion));
+	}
+	
+	/**
+	 * Instancio dos ocupaciones que coincidan espacialmente de manera vertical, donde la que recibe el mensaje se encuentre más al norte de la otra, y chequeo que el método devuelva correspondiente true.
+	 */
+	public void testCoincidenciaProyeccionVerticalANorte() {
+		ocupacion = new OcupacionCuadrada(new Posicion(250,250),5);
+		OcupacionCuadrada ocupacionAuxiliar = new OcupacionCuadrada(new Posicion(10,246),5);
+		assertTrue(ocupacionAuxiliar.coincidenciaProyeccionVerticalCon(ocupacion));
+	}
+	
+	/**
+	 * Instancio dos ocupaciones que coincidan espacialmente de manera vertical, donde la que recibe el mensaje se encuentre más al sur de la otra, y chequeo que el método devuelva correspondiente true.
+	 */
+	public void testCoincidenciaProyeccionVerticalASur() {
+		ocupacion = new OcupacionCuadrada(new Posicion(250,246),5);
+		OcupacionCuadrada ocupacionAuxiliar = new OcupacionCuadrada(new Posicion(10,250),5);
+		assertTrue(ocupacionAuxiliar.coincidenciaProyeccionVerticalCon(ocupacion));
+	}
+	
+	/**
+	 * Instancio dos ocupaciones que no coincidan espacialmente de manera vertical, y chequeo que el método devuelva correspondiente false.
+	 */
+	public void testCoincidenciaProyeccionVerticalNegada() {
+		ocupacion = new OcupacionCuadrada(new Posicion(10,250),5);
+		OcupacionCuadrada ocupacionAuxiliar = new OcupacionCuadrada(new Posicion(10,10),5);
+		assertFalse(ocupacionAuxiliar.coincidenciaProyeccionVerticalCon(ocupacion));
+	}
+	
+	/**
+	 * Instancio una ocupación que tenga parte de sus posiciones sobre la recta central vertical del espacio y chequeamos que el método estaEnCentroHorizontal() devuelva true.
+	 */
+	public void testEstaEnCentroHorizontalAIzquierda() {
+		ocupacion = new OcupacionCuadrada(new Posicion(296,250),5);
+		assertTrue(ocupacion.estaEnCentroHorizontal());
+	}
+	
+	/**
+	 * Instancio una ocupación que tenga parte de sus posiciones sobre la recta central vertical del espacio y chequeamos que el método estaEnCentroHorizontal() devuelva true.
+	 */
+	public void testEstaEnCentroHorizontalADerecha() {
+		ocupacion = new OcupacionCuadrada(new Posicion(300,250),5);
+		assertTrue(ocupacion.estaEnCentroHorizontal());
+	}
+	
+	/**
+	 * Instancio una ocupación que no tenga parte de sus posiciones sobre la recta central vertical del espacio sino que se encuentre totalmente a su izquierda, y chequeamos que el método estaEnCentroHorizontal() devuelva false.
+	 */
+	public void testEstaEnCentroHorizontalNegadaAIzquierda() {
+		ocupacion = new OcupacionCuadrada(new Posicion(0,250),5);
+		assertFalse(ocupacion.estaEnCentroHorizontal());
+	}
+	
+	/**
+	 * Instancio una ocupación que no tenga parte de sus posiciones sobre la recta central vertical del espacio sino que se encuentre totalmente a su derecha, y chequeamos que el método estaEnCentroHorizontal() devuelva false.
+	 */
+	public void testEstaEnCentroHorizontalNegadaADerecha() {
+		ocupacion = new OcupacionCuadrada(new Posicion(350,250),5);
+		assertFalse(ocupacion.estaEnCentroHorizontal());
+	}
+	
 }

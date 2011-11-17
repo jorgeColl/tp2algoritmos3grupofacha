@@ -1,6 +1,5 @@
 package pruebas.pruebasUnitarias;
 
-import modelo.armamentista.disparo.DisparoCanion;
 import modelo.armamentista.disparo.DisparoLanzaCohetes;
 import modelo.manejoEspacial.Espacio;
 import modelo.manejoEspacial.OcupacionCuadrada;

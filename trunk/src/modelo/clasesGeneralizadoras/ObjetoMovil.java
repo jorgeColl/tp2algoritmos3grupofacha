@@ -1,5 +1,6 @@
 package modelo.clasesGeneralizadoras;
 
+import modelo.manejoEspacial.Espacio;
 import modelo.manejoEspacial.Ocupacion;
 import modelo.manejoEspacial.Orientacion;
 
@@ -13,6 +14,32 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 	protected Orientacion orientacion;
 	protected int velocidad;
 	
+	/**
+	 * Analiza cuál de los bordes laterales está más cercano al objeto y lo mueve en dicha dirección.
+	 */
+	public void acercarseAlBordeLateralMasCercano() {
+		if (ocupacion.getLimiteIzquierdo() < (Espacio.getInstancia().getLimiteDerecho()-ocupacion.getLimiteDerecho()))
+			moverIzquierda();
+		else
+			moverDerecha();
+	}
+	
+	/**
+	 * Dirige al objeto al centro del espacio hasta que algún punto de su ocupación coincida con la recta que determina a este.
+	 */
+	public void acercarseAlCentroDelEspacio() {
+		if (ocupacion.getLimiteIzquierdo() > (Espacio.getInstancia().getLimiteDerecho()/2))
+			moverIzquierda();
+		if (ocupacion.getLimiteDerecho() < (Espacio.getInstancia().getLimiteDerecho()/2))
+			moverDerecha();
+	}
+	
+	/**
+	 * Método que utilizarán las subclases instanciables de esta internamente para chequear si su nueva ocupación es válida (tomando una desición si no lo es) y si han colisionado con otro.
+	 * @param ocupacionProvisoria subinstancia de la clase Ocupacion que tiene provisoriamente el tanque
+	 */
+	protected abstract void chequearOcupacionValidaYColisiones(Ocupacion ocupacionProvisoria);
+
 	/**
 	 * 
 	 * @return orientacion del objeto móvil
@@ -28,13 +55,6 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 	public int getVelocidad() {
 		return velocidad;
 	}
-
-	/**
-	 * Método que utilizarán las subclases instanciables de esta internamente para chequear si 
-	 * su nueva ocupación es válida (tomando una desición si no lo es) y si han colisionado con otro.
-	 * @param ocupacionProvisoria subinstancia de la clase Ocupacion que tiene provisoriamente el tanque
-	 */
-	protected abstract void chequearOcupacionValidaYColisiones(Ocupacion ocupacionProvisoria);
 	
 	/**
 	 * Realizamos el movimiento y cambiamos la orientación del objeto.
@@ -86,6 +106,14 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 			chequearOcupacionValidaYColisiones(ocupacionProvisoria);
 			++contador;
 		}
+	}
+	
+	/**
+	 * 
+	 * @param orientacion objeto que asignaremos al atributo orientacion
+	 */
+	public void setOrientacion(Orientacion orientacion) {
+		this.orientacion = orientacion;
 	}
 		
 }
