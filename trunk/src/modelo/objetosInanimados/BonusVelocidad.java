@@ -12,12 +12,12 @@ import modelo.tanques.Tanque;
  */
 public class BonusVelocidad extends Bonus {
 	
-	protected double porcentajeVelDisparo;
-	protected double porcentajeVelocidad;
+	protected double porcentajeVelocidadDisparo;
+	protected double porcentajeVelocidadTanque;
 
 	public BonusVelocidad(Posicion posicion){
 		super(posicion);
-		this.porcentajeVelDisparo = 0.3;
+		this.porcentajeVelocidadDisparo = 0.3;
 		this.porcentajeVelocidadTanque = 0.2 ;
 	}
 
@@ -28,15 +28,9 @@ public class BonusVelocidad extends Bonus {
 		int velocidadTanque = tanque.getVelocidad();
 		int velocidadDisparo = tanque.getVelocidadDisparo();
 		 
-		tanque.sumarVelocidad(velocidadTanque*this.porcentajeVelocidadTanque);
-		tanque.sumarVelocidadDisparo(velocidadDisparo*porcentajeVelocidadDisparo);
+		tanque.sumarVelocidad((int)velocidadTanque*this.porcentajeVelocidadTanque);
+		tanque.sumarVelocidadDisparo((int)velocidadDisparo*this.porcentajeVelocidadDisparo);
 		  
-		 /**
-		 * op2
-		 * que tanque implemente funcion chocarConBonus
-		 * y q bonus sea un formato estandar a llenar
-		 * limita mucho a futuras acciones de bonus
-		 */
 		
 	}
 
