@@ -23,13 +23,16 @@ public interface Ocupacion {
 	/**
 	 * Método usado para dar una ocupación correcta a los disparos de los tanques.
 	 * @param orientacion posición relativa a esta ocupación en la que queremos que esté el punto devuelto
-	 * @return instancia de la clase posición que esté centrada con respecto a esta ocupación, espacialmente pegada al perímetro de esta en la posición relativa dada por el parámetro
+	 * @return instancia de la clase posición que esté centrada con respecto a esta ocupación, 
+	 * espacialmente pegada al perímetro de esta en la posición relativa dada por el parámetro
 	 */
 	public abstract Posicion getPosicionPerimetralCentradaEnOrientacion(Orientacion orientacion);
 	
 	/**
-	 * PARA RESPETAR EL POLIMORFISMO Y EL ENCAPSULAMIENTO, ES NECESARIO QUE LAS OCUPACIONES SEPAN COMPARARSE ENTRE ELLAS Y QUE DE AFUERA SE INVOQUE SENCILLAMENTE A coincidenciaOcupacionalCon(Ocupacion ocupacion).
-	 * PARA ESTO ES NECESARIO QUE CADA OCUPACIÓN DEFINA UN MÉTODO QUE LA COMPARE CON ELLA MISMA Y CON CADA UNA DE LAS OTRAS, QUE SERÁ INVOCADO INTERNAMENTE.
+	 * PARA RESPETAR EL POLIMORFISMO Y EL ENCAPSULAMIENTO, ES NECESARIO QUE LAS OCUPACIONES SEPAN 
+	 * COMPARARSE ENTRE ELLAS Y QUE DE AFUERA SE INVOQUE SENCILLAMENTE A coincidenciaOcupacionalCon(Ocupacion ocupacion).
+	 * PARA ESTO ES NECESARIO QUE CADA OCUPACIÓN DEFINA UN MÉTODO QUE LA COMPARE CON ELLA MISMA Y CON CADA UNA 
+	 * DE LAS OTRAS, QUE SERÁ INVOCADO INTERNAMENTE.
 	 * EN PRINCIPIO TENEMOS SÓLO UNA OCUPACIÓN CUADRADA, POR LO TANTO SÓLO ES NECESARIO UN MÉTODO   
 	 */
 	

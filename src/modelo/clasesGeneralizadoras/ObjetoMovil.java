@@ -30,7 +30,8 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 	}
 
 	/**
-	 * Método que utilizarán las subclases instanciables de esta internamente para chequear si su nueva ocupación es válida (tomando una desición si no lo es) y si han colisionado con otro.
+	 * Método que utilizarán las subclases instanciables de esta internamente para chequear si 
+	 * su nueva ocupación es válida (tomando una desición si no lo es) y si han colisionado con otro.
 	 * @param ocupacionProvisoria subinstancia de la clase Ocupacion que tiene provisoriamente el tanque
 	 */
 	protected abstract void chequearOcupacionValidaYColisiones(Ocupacion ocupacionProvisoria);
