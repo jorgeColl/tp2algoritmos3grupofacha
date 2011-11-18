@@ -16,6 +16,7 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 	
 	/**
 	 * Analiza cuál de los bordes laterales está más cercano al objeto y lo mueve en dicha dirección.
+	 * Por defecto elije el derecho.
 	 */
 	public void acercarseAlBordeLateralMasCercano() {
 		if (ocupacion.getLimiteIzquierdo() < (Espacio.getInstancia().getLimiteDerecho()-ocupacion.getLimiteDerecho()))
@@ -27,7 +28,7 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 	/**
 	 * Dirige al objeto al centro del espacio hasta que algún punto de su ocupación coincida con la recta que determina a este.
 	 */
-	public void acercarseAlCentroDelEspacio() {
+	public void acercarseAlCentroHorizontalDelEspacio() {
 		if (ocupacion.getLimiteIzquierdo() > (Espacio.getInstancia().getLimiteDerecho()/2))
 			moverIzquierda();
 		if (ocupacion.getLimiteDerecho() < (Espacio.getInstancia().getLimiteDerecho()/2))
@@ -35,8 +36,8 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 	}
 	
 	/**
-	 * Método que utilizarán las subclases instanciables de esta internamente para chequear si su nueva ocupación es válida (tomando una desición si no lo es) y si han colisionado con otro.
-	 * @param ocupacionProvisoria subinstancia de la clase Ocupacion que tiene provisoriamente el tanque
+	 * Método que utilizarán las subclases instanciables de esta internamente para chequear si su nueva ocupación es válida (tomando una desición si no lo es dependiente de la subclase) y si han colisionado con otro.
+	 * @param ocupacionProvisoria instancia de una subclase de Ocupacion que tiene provisoriamente el tanque
 	 */
 	protected abstract void chequearOcupacionValidaYColisiones(Ocupacion ocupacionProvisoria);
 
