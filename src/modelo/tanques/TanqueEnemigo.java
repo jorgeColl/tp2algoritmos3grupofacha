@@ -18,8 +18,8 @@ public abstract class TanqueEnemigo extends Tanque {
 	protected EstrategiaMovimiento estrategiaMovimiento;
 	protected int puntosPorDestruccion;
 	
-	public TanqueEnemigo(Posicion puntoMenorModulo) {
-		super(puntoMenorModulo);
+	public TanqueEnemigo(Posicion punto) {
+		super(punto);
 		estrategiaDisparo = new EstrategiaDisparoVelocidadDependiente(this);
 		orientacion = Orientacion.jNegativo;
 		try {

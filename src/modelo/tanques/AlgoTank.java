@@ -19,8 +19,8 @@ public class AlgoTank extends Tanque {
 	private Canion canion;
 	private LanzaCohetes lanzaCohetes;
 	
-	public AlgoTank(Posicion puntoMenorModulo) {
-		super(puntoMenorModulo);
+	public AlgoTank(Posicion punto) {
+		super(punto);
 		ametralladora = new Ametralladora(this);
 		canion = new Canion(this,0);
 		estrategiaDisparo = new EstrategiaDisparoAlgoTank(this);
