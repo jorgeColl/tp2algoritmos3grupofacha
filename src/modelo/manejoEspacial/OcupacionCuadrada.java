@@ -14,7 +14,7 @@ public class OcupacionCuadrada implements Ocupacion {
 		
 	/**
 	 * Constructor.
-	 * @param puntoMenorModulo objeto con el que se inicializará el atributo centro puntoMenorModulo
+	 * @param puntoMenorModulo objeto con el que se inicializará el atributo puntoMenorModulo
 	 * @param lado entero con el que se inicializará el atributo lado
 	 */
 	public OcupacionCuadrada(Posicion puntoMenorModulo, int lado) {
@@ -22,19 +22,26 @@ public class OcupacionCuadrada implements Ocupacion {
 		this.lado = lado;
 	}
 	
+	/**
+	 * Le indicamos al parámetro que se compare con una ocupación cuadrada, y le pasamos esta instancia como parámetro.
+	 */
 	public boolean coincidenciaOcupacionalCon(Ocupacion ocupacion) {
 		return (ocupacion.compararConOcupacionCuadrada(this));
 	}
 	
 	public boolean coincidenciaProyeccionHorizontalCon(Ocupacion ocupacion) {
-		if ((getLimiteDerecho() >= ocupacion.getLimiteIzquierdo())&&(getLimiteIzquierdo() <= ocupacion.getLimiteDerecho()))
-			return true;
+		if (getLimiteDerecho() >= ocupacion.getLimiteIzquierdo()) {
+			if (getLimiteIzquierdo() <= ocupacion.getLimiteDerecho())
+				return true;
+		}
 		return false;
 	}
 	
 	public boolean coincidenciaProyeccionVerticalCon(Ocupacion ocupacion) {
-		if ((getLimiteInferior() >= ocupacion.getLimiteSuperior())&&(getLimiteSuperior() <= ocupacion.getLimiteInferior()))
-			return true;
+		if (getLimiteInferior() >= ocupacion.getLimiteSuperior()) {
+			if (getLimiteSuperior() <= ocupacion.getLimiteInferior())
+				return true;
+		}
 		return false;
 	}
 
@@ -47,13 +54,7 @@ public class OcupacionCuadrada implements Ocupacion {
 				return true;
 		}
 		return false;
-	}	
-	
-	/**
-	 * 
-	 * @param ocupacion instancia de la clase OcupacionCuadrada con respecto a la cual compararemos a esta
-	 * @return true si las proyecciones ortogonales en el eje x de esta ocupacion y de la del parametro tienen puntos en comun 
-	 */
+	}
 	
 	public boolean espacialmenteValida() {
 		if (puntoMenorModulo.getX() < 0)
@@ -95,7 +96,32 @@ public class OcupacionCuadrada implements Ocupacion {
 		return lado;
 	}
 	
-	@Override
+	/* Utilizamos este método (en principio) para crear instancias de disparos cuadrados centrados con respecto a su tanque, dado que esto depende del lado de los disparos y este no es accesible por el constructor tradicional.*/
+	/**
+	 * Devuelve una intancia de OcupacionCuadrada que fue construída a partir de una posicion perimetral centrada en la orientación de un objeto con respecto al cual queremos que esta ocupación esté continua y centrada.
+	 * @param posicion instancia de la clase posicion que representa la posición perimetral centrada en la orientación del disparo
+	 * @param lado entero representante de lado que se quiere que tenga el disparo
+	 * @param orientacion instancia de la clase Orientacion que representa la orientacion con la que viajará el disparo
+	 * @return instancia de la clase OcupacionCuadrada con las características analizadas
+	 */
+	public static OcupacionCuadrada crearAPartirDePosicionPerimetralCentradaEnOrientacion(Posicion posicion, int lado, Orientacion orientacion) {
+		Posicion puntoMenorModulo;
+		if (orientacion == Orientacion.i)
+			puntoMenorModulo = new Posicion(posicion.getX(),posicion.getY()-(lado/2));
+		else {
+			if (orientacion == Orientacion.iNegativo)
+				puntoMenorModulo = new Posicion(posicion.getX()-(lado/2),posicion.getY()-(lado/2));
+			else {
+				if (orientacion == Orientacion.j)
+					puntoMenorModulo = new Posicion(posicion.getX()-(lado/2),posicion.getY()-lado+1);
+				else {
+					puntoMenorModulo = new Posicion(posicion.getX()-(lado/2),posicion.getY());
+				}
+			}
+		}
+		return new OcupacionCuadrada(puntoMenorModulo,lado);
+	}
+	
 	public Posicion getPosicionPerimetralCentradaEnOrientacion(Orientacion orientacion) {
 		//INICIALIZACION CORRESPONDIENTE A SI EL PARÁMETRO ES Orientacion.i, SI ES OTRA SE LA CAMBIARÁ LUEGO.
 		//RAZÓN DE COMPILACIÓN

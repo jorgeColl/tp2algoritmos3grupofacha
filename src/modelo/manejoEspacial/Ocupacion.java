@@ -102,9 +102,9 @@ public interface Ocupacion {
 	public abstract Ocupacion getOcupacionMovidaIzquierda();
 	
 	/**
-	 * Método usado para dar una ocupación correcta a los disparos de los tanques.
+	 * Devuelve una instancia de la clase posición que esté centrada con respecto a esta ocupación, espacialmente pegada a su perímetro, en la posición relativa dada por el parámetro
 	 * @param orientacion posición relativa a esta ocupación en la que queremos que esté el punto devuelto
-	 * @return instancia de la clase posición que esté centrada con respecto a esta ocupación, espacialmente pegada al perímetro de esta en la posición relativa dada por el parámetro
+	 * @return instancia de la clase posición que esté centrada con respecto a esta ocupación, espacialmente pegada a su perímetro, en la posición relativa dada por el parámetro
 	 */
 	public abstract Posicion getPosicionPerimetralCentradaEnOrientacion(Orientacion orientacion);
 	

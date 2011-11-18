@@ -2,6 +2,7 @@ package modelo.manejoEspacial;
 
 import modelo.armamentista.disparo.Disparo;
 import modelo.clasesGeneralizadoras.ObjetoJuego;
+import modelo.excepciones.OcupacionInvalidaAlAgregarObjeto;
 import modelo.objetosInanimados.CuartelArgentino;
 import modelo.tanques.AlgoTank;
 import modelo.tanques.TanqueEnemigo;
@@ -41,15 +42,17 @@ public class Espacio {
 	
 	/**
 	 * 
-	 * @param cuartel objeto que asignaremos al atributo cuartel
+	 * @param cuartel instancia de la clase CuartelArgentino que queremos agregar al espacio
+	 * @throws OcupacionInvalidaAlAgregarObjeto cuando la ocupación en la que se quiere agregar al objeto no es válida o cuando esta coincide con la de otro anteriormente agregado
+	 * NOTA IMPORTANTE: El cuartel argentino debe agregarse antes que los tanques enemigos dado que cuando estos se inicializan necesitan a esta para indicarle a su estrategia que es un objetivo.
 	 */
-	public void agregarCuartelArgentino(CuartelArgentino cuartel) throws Exception {
+	public void agregarCuartelArgentino(CuartelArgentino cuartel) throws OcupacionInvalidaAlAgregarObjeto {
 		if (!(cuartel.getOcupacion().espacialmenteValida()))
-			throw new Exception("Se trató de agregar un cuartel en una posición inválida.");
+			throw new OcupacionInvalidaAlAgregarObjeto("Se trató de agregar un cuartel argentino en una posición inválida.");
 		if ((getObjetosJuegoEnContactoCon(cuartel)).size() == 0)
 			this.cuartel = cuartel;
 		else
-			throw new Exception("Se trató de agregar un cuartel en una posición ocupada por otro objeto del juego.");
+			throw new OcupacionInvalidaAlAgregarObjeto("Se trató de agregar un cuartel argentino en una posición ocupada por otro objeto del juego.");
 	}
 
 	/**
@@ -57,10 +60,11 @@ public class Espacio {
 	 * @param disparo instancia de la clase Disparo que queremos agregar a las del escenario
 	 */
 	public void agregarDisparo(Disparo disparo) {
-		if (getObjetosJuegoEnContactoCon(disparo).size() > 0) {
+		Vector<ObjetoJuego> vectorAuxiliar = getObjetosJuegoEnContactoCon(disparo);
+		if (vectorAuxiliar.size() > 0) {
 			int contador = 0;
-			while (contador < disparos.size()) {
-				disparos.get(contador).chocarConDisparo(disparo);
+			while (contador < vectorAuxiliar.size()) {
+				vectorAuxiliar.get(contador).chocarCon(disparo);
 				++contador;
 			}
 		}
@@ -71,7 +75,7 @@ public class Espacio {
 	/**
 	 * Agregamos al escenario un objeto de los que no realizan un comportamiento específico más allá del de estar situados en él e interactuar con otros cuando estos segundos entran en contacto con ellos.
 	 * @param objeto instancia de la clase ObjetoJuego que queremos agregar al escenario
-	 * @throws Exception cuando la ocupación en la que se quiere agregar al objeto no es válida o cuando esta coincide con la de otro anteriormente agregado
+	 * @throws OcupacionInvalidaAlAgregarObjeto cuando la ocupación en la que se quiere agregar al objeto no es válida o cuando esta coincide con la de otro anteriormente agregado
 	 */
 	public void agregarObjetoInanimado(ObjetoJuego objeto) throws Exception {
 		if (!(objeto.getOcupacion().espacialmenteValida()))
@@ -85,34 +89,48 @@ public class Espacio {
 	/**
 	 * Agrega un tanque enemigo al escenario.
 	 * @param tanque instancia de una subclase de TanqueEnemigo que queremos agregar al escenario
-	 * @throws Exception cuando la ocupación en la que se quiere agregar al objeto no es válida o cuando esta coincide con la de otro anteriormente agregado 
+	 * @throws OcupacionInvalidaAlAgregarObjeto cuando la ocupación en la que se quiere agregar al objeto no es válida o cuando esta coincide con la de otro anteriormente agregado 
 	 */
-	public void agregarTanqueEnemigo(TanqueEnemigo tanque) throws Exception {
+	public void agregarTanqueEnemigo(TanqueEnemigo tanque) throws OcupacionInvalidaAlAgregarObjeto {
 		if (!(tanque.getOcupacion().espacialmenteValida()))
-			throw new Exception("Se trató de agregar un tanque enemigo en una posición inválida.");
+			throw new OcupacionInvalidaAlAgregarObjeto("Se trató de agregar un tanque enemigo en una posición inválida.");
 		if ((getObjetosJuegoEnContactoCon(tanque)).size() == 0)
 			tanquesEnemigos.add(tanque);
 		else
-			throw new Exception("Un tanque enemigo que se trató de agregar al escenario tiene una ocupación que coincide espacialmente con la de otro objeto ya agregado.");
+			throw new OcupacionInvalidaAlAgregarObjeto("Un tanque enemigo que se trató de agregar al escenario tiene una ocupación que coincide espacialmente con la de otro objeto ya agregado.");
 	}
 		
 	/**
 	 * Agregamos el tanque del jugador al escenario.
 	 * @param tanque instancia de la clase AlgoTank que queremos que corresponda al tanque del jugador
-	 * @throws Exception cuando la ocupación en la que se quiere agregar al objeto no es válida o cuando esta coincide con la de otro anteriormente agregado 
+	 * @throws OcupacionInvalidaAlAgregarObjeto cuando la ocupación en la que se quiere agregar al objeto no es válida o cuando esta coincide con la de otro anteriormente agregado
+	 * NOTA IMPORTANTE: El tanque del jugador debe agregarse antes que los tanques enemigos dado que cuando estos se inicializan necesitan a esta para indicarle a su estrategia que es un objetivo. 
 	 */
-	public void agregarTanqueJugador(AlgoTank tanque) throws Exception {
+	public void agregarTanqueJugador(AlgoTank tanque) throws OcupacionInvalidaAlAgregarObjeto {
 		if (!(tanque.getOcupacion().espacialmenteValida()))
-			throw new Exception("El tanque del jugador que se trató de agregar al escenario tiene una ocupación inválida.");
+			throw new OcupacionInvalidaAlAgregarObjeto("El tanque del jugador que se trató de agregar al escenario tiene una ocupación inválida.");
 		if ((getObjetosJuegoEnContactoCon(tanque)).size() == 0)
 			tanqueJugador = tanque;
 		else
-			throw new Exception("El tanque del jugador que se trató de agregar al escenario tiene una ocupación que coincide espacialmente con la de otro.");
+			throw new OcupacionInvalidaAlAgregarObjeto("El tanque del jugador que se trató de agregar al escenario tiene una ocupación que coincide espacialmente con la de otro.");
 	}
 
-	
+	/**
+	 * Le indicamos a todos los objetos vivos que ha transcurrido una unidad temporal y que por lo tanto vivan.
+	 * NOTA IMPORTANTE: Se hace que los disparos se muevan antes que los tanques para que no exista la chance de que un tanque choque con un disparo que el mismo ha disparado.
+	 */
 	public void correrLogica() {
-		
+		int contador = 0;
+		while (contador < disparos.size()) {
+			disparos.get(contador).vivir();
+			++contador;
+		}
+		contador = 0;
+		tanqueJugador.vivir();
+		while (contador < tanquesEnemigos.size()) {
+			tanquesEnemigos.get(contador).vivir();
+			++contador;
+		}
 	}
 	
 	/**
