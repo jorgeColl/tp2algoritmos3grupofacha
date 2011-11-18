@@ -9,8 +9,8 @@ import modelo.manejoEspacial.Posicion;
  */
 public class ParedConcreto extends Pared {
 
-	public ParedConcreto(Posicion puntoMenorModulo) {
-		super(puntoMenorModulo);
+	public ParedConcreto(Posicion punto) {
+		super(punto);
 		impactosTolerados = 0;
 	}
 	

@@ -3,30 +3,33 @@
  */
 package modelo.objetosInanimados;
 
+import modelo.manejoEspacial.Espacio;
 import modelo.manejoEspacial.Posicion;
 import modelo.tanques.Tanque;
 
 /**
- * clase que hace que aumente la vida del tanque
- * @author jc
+ * Al entrar en contacto con un tanque, mejora su resistencia.
+ * @author Jorge
  *
  */
 public class BonusVida extends Bonus {
-	double porcentaje;
+	
+	int porcentaje;
 	
 	public BonusVida(Posicion posicion){
 		super(posicion);
-		this.porcentaje = 0.4;
+		porcentaje = 40;
+		try {
+			Espacio.getInstancia().agregarObjetoInanimado(this);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
-	@Override 
 	public  void efectuarCambiosDeBonus (Tanque tanque){
 		int resistencia = tanque.getResistencia();
-		resistencia = (int) (resistencia*porcentaje);
+		resistencia = (int)((resistencia*porcentaje)/100);
 		tanque.sumarResistencia(resistencia);
-		
 	}
-
 	
-
 }

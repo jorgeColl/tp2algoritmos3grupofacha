@@ -2,38 +2,44 @@ package modelo.objetosInanimados;
 
 import modelo.armamentista.disparo.Disparo;
 import modelo.clasesGeneralizadoras.ObjetoJuego;
+import modelo.manejoEspacial.Espacio;
 import modelo.manejoEspacial.OcupacionCuadrada;
 import modelo.manejoEspacial.Posicion;
 import modelo.tanques.Tanque;
 
-
+/**
+ * Clase que otorga el comportamiento común a los bonus que mejoran las habilidades del tanque cuando entra en contacto con ellos.
+ * @author Jorge
+ *
+ */
 public abstract class Bonus extends ObjetoJuego {
 	
-	Bonus(Posicion posicion){
-		int lado = 2; 
-		ocupacion = new OcupacionCuadrada(posicion,lado);
-	}
 	/**
-	 * no hace nada si choca con un disparo
+	 * Constructor.
+	 * @param posicion instancia de la clase Posicion que servirá como referencia para inicializar la ocupación del bonus
 	 */
-	@Override 
-	public void chocarConDisparo(Disparo disparo){}
-	
-	@Override
-	public boolean estaEnContactoCon(ObjetoJuego objeto) {
-		return (objeto.getOcupacion().coincidenciaOcupacionalCon(ocupacion));
+	public Bonus(Posicion posicion){
+		ocupacion = new OcupacionCuadrada(posicion,5);
 	}
 	
-	public void chocarConTanque(Tanque tanque) {
+	/**
+	 * No hace nada si choca con un disparo.
+	 */
+	public void chocarCon(Disparo disparo){
+		
+	}
+	
+	/**
+	 * Le efectúa los cambios correspondientes al tanque.
+	 */
+	public void chocarCon(Tanque tanque) {
 		this.efectuarCambiosDeBonus(tanque);
 		this.desaparecer();
 	}
 	/**
-	 * funcion que sera redefinida por las subclases
-	 * @param tanque
+	 * Método que será redefinido por las subclases.
+	 * @param tanque instancia de una subclase de Tanque que será mejorada
 	 */
 	protected abstract void efectuarCambiosDeBonus(Tanque tanque);
-	
-	
 	
 }
