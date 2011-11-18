@@ -3,7 +3,7 @@ package modelo.estrategias.estrategiasDisparo;
 import modelo.tanques.Tanque;
 
 /**
- * Clase abstracta en la que los tanques enemigos delegan la desición de si disparar o no, y dependiendo del caso qué arma disparar.
+ * Clase abstracta en la que los tanques enemigos delegan la desición de si disparar o no, y dependiendo del caso el qué arma disparar.
  * Para esto tienen un contador de unidades temporales el cual se incrementa cada vez que al tanque dueño de las estrategias se le invoca el método vivir.
  * Cuando se le pide a la estrategia que decida un disparo, si la cantidad de unidades temporales transcurridas es mayor que un atributo estático entero (REFERENCIA_DISPAROS) menos la velocidad de disparo del tanque dueño, entonces se efectiviza el disparo.
  * De esta manera, a mayor velocidad de disparo de un tanque, mayor es la frecuencia de disparos posibles.
