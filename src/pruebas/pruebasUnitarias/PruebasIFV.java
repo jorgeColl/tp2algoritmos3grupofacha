@@ -310,19 +310,19 @@ public class PruebasIFV extends TestCase {
 	public void testIFVTankAcercarseAlCentroDelEspacioDesdeIzquierda() {
 		Espacio.getInstancia().reiniciar();
 		tanqueTest = new IFV(new Posicion(284,250));
-		tanqueTest.acercarseAlCentroDelEspacio();
+		tanqueTest.acercarseAlCentroHorizontalDelEspacio();
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),287);
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
-		tanqueTest.acercarseAlCentroDelEspacio();
+		tanqueTest.acercarseAlCentroHorizontalDelEspacio();
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),290);
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
-		tanqueTest.acercarseAlCentroDelEspacio();
+		tanqueTest.acercarseAlCentroHorizontalDelEspacio();
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),293);
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
-		tanqueTest.acercarseAlCentroDelEspacio();
+		tanqueTest.acercarseAlCentroHorizontalDelEspacio();
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),296);
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
-		tanqueTest.acercarseAlCentroDelEspacio();
+		tanqueTest.acercarseAlCentroHorizontalDelEspacio();
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),296);
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
 	}
@@ -333,25 +333,25 @@ public class PruebasIFV extends TestCase {
 	public void testIFVAcercarseAlCentroDelEspacioDesdeDerecha() {
 		Espacio.getInstancia().reiniciar();
 		tanqueTest = new IFV(new Posicion(318,250));
-		tanqueTest.acercarseAlCentroDelEspacio();
+		tanqueTest.acercarseAlCentroHorizontalDelEspacio();
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),315);
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
-		tanqueTest.acercarseAlCentroDelEspacio();
+		tanqueTest.acercarseAlCentroHorizontalDelEspacio();
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),312);
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
-		tanqueTest.acercarseAlCentroDelEspacio();
+		tanqueTest.acercarseAlCentroHorizontalDelEspacio();
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),309);
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
-		tanqueTest.acercarseAlCentroDelEspacio();
+		tanqueTest.acercarseAlCentroHorizontalDelEspacio();
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),306);
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
-		tanqueTest.acercarseAlCentroDelEspacio();
+		tanqueTest.acercarseAlCentroHorizontalDelEspacio();
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),303);
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
-		tanqueTest.acercarseAlCentroDelEspacio();
+		tanqueTest.acercarseAlCentroHorizontalDelEspacio();
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),300);
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
-		tanqueTest.acercarseAlCentroDelEspacio();
+		tanqueTest.acercarseAlCentroHorizontalDelEspacio();
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),300);
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
 	}
