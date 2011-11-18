@@ -7,6 +7,12 @@ import modelo.manejoEspacial.OcupacionCuadrada;
 import modelo.manejoEspacial.Posicion;
 import modelo.tanques.Tanque;
 
+/**
+ * Clase abstracta que modela a las paredes del escenario.
+ * Llevan una cuenta de los impactos que reciben, dado que resisten una cantidad limitada de los mismos antes de desaparecer.
+ * @author Tomás
+ *
+ */
 public abstract class Pared extends ObjetoJuego {
 
 	protected int impactosRecibidos;
@@ -15,11 +21,11 @@ public abstract class Pared extends ObjetoJuego {
 	/**
 	 * Constructor.
 	 * @param impactosTolerados cantidad máxima de disparos que puede recibir la pared antes de desaparecer
-	 * @param puntoMenorModulo instancia de la clase Posicion con la que se inicializará la ocupación de la pared
+	 * @param punto instancia de la clase Posicion con la que se inicializará la ocupación de la pared
 	 */
-	public Pared(Posicion puntoMenorModulo) {
+	public Pared(Posicion punto) {
 		impactosRecibidos = 0;
-		ocupacion = new OcupacionCuadrada(puntoMenorModulo,5);
+		ocupacion = new OcupacionCuadrada(punto,5);
 		try {
 			Espacio.getInstancia().agregarObjetoInanimado(this);
 		} catch (Exception e) {
@@ -30,16 +36,16 @@ public abstract class Pared extends ObjetoJuego {
 	/**
 	 * Se incrementa la cantidad de disparos recibidas. Si esta pasa a ser mayor que la tolerada, la pared desaparece.
 	 */
-	public void chocarConDisparo(Disparo disparo) {
+	public void chocarCon(Disparo disparo) {
 		++impactosRecibidos;
 		if (impactosRecibidos > impactosTolerados)
 			desaparecer();
 	}
 
 	/**
-	 * Cuando un tanque choca a la pared, se le indica a esta que se mueva unitariamente en la dirección contraria dado que el tanque lo obstaculiza.
+	 * Cuando un tanque choca a la pared, se le indica a esta que se mueva unitariamente en la dirección contraria dado que lo obstaculiza.
 	 */
-	public void chocarConTanque(Tanque tanque) {
+	public void chocarCon(Tanque tanque) {
 		tanque.moverEnDireccionContraria();
 	}
 	
