@@ -13,7 +13,7 @@ public abstract class Arma {
 	
 	/**
 	 * Constructor.
-	 * @param duenio instancia de una sublcase no abstracta de Tanque con la cual inicializaremos al atributo duenio
+	 * @param duenio instancia de una sublcase de Tanque con la cual inicializaremos al atributo duenio
 	 */
 	public Arma(Tanque duenio) {
 		this.duenio = duenio;
@@ -21,7 +21,7 @@ public abstract class Arma {
 	
 	/**
 	 * 
-	 * @return subclase de la clase Tanque que representa al duenio del arma
+	 * @return instancia de una subclase de la clase Tanque que representa al duenio del arma
 	 */
 	public Tanque getDuenio() {
 		return duenio;
@@ -29,7 +29,8 @@ public abstract class Arma {
 	
 	/**
 	 * Instancia un disparo propio del arma.
-	 * La ocupación que tendrá este es la inmediatamente posterior al dueño, en su orientación, centrado con respecto a este.
+	 * La ocupación que tendrá este es la inmediatamente posterior al dueño en su orientación, centrado con respecto a este.
+	 * Para obtener esa ocupación, delega en la clase Ocupacion.
 	 */
 	public abstract void disparar();
 	

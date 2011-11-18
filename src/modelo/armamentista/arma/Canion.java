@@ -25,19 +25,18 @@ public class Canion extends Arma {
 	/**
 	 * Si la munición es 0 no hacemos nada, si es mayor disparamos y la disminuímos.
 	 */
-	@Override
 	public void disparar() {
 		if (municion > 0) {
 			Posicion posicionAuxiliar;
 			posicionAuxiliar = duenio.getOcupacion().getPosicionPerimetralCentradaEnOrientacion(duenio.getOrientacion());
 			new DisparoCanion(duenio.getOrientacion(),posicionAuxiliar);
-			municion = municion -1;;
+			--municion;
 		}
 	}
 	
 	/**
 	 * 
-	 * @return munición del arma
+	 * @return entero correspondiente a la munición del arma
 	 */
 	public int getMunicion() {
 		return municion;
