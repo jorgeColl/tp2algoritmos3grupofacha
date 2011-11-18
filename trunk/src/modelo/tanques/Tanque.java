@@ -14,8 +14,8 @@ import modelo.manejoEspacial.Orientacion;
 import modelo.manejoEspacial.Posicion;
 
 /**
- * Provee el estado y el comportamiento comï¿½n a todos los tanques del juego.
- * @author Tomï¿½s
+ * Provee el estado y el comportamiento común a todos los tanques del juego.
+ * @author Tomás
  *
  */
 public abstract class Tanque extends ObjetoMovil implements ObjetoVivo {
@@ -26,32 +26,32 @@ public abstract class Tanque extends ObjetoMovil implements ObjetoVivo {
 	
 	/**
 	 * Constructor.
-	 * @param puntoMenorModulo punto de menor mï¿½dulo de la ocupaciï¿½n del tanque
+	 * @param punto instancia de Posicion que servirá de referencia para la inicialización de la ocupación del tanque
 	 */
-	public Tanque(Posicion puntoMenorModulo) {
-		ocupacion = new OcupacionCuadrada(puntoMenorModulo,5);
+	public Tanque(Posicion punto) {
+		ocupacion = new OcupacionCuadrada(punto,5);
 		resistencia = 100;
 	}
 	
 	/**
-	 * Cuando un tanque choca con un disparo es daï¿½ado por este. Si su resistencia es menor o igual que 0 entonces desaparece.
+	 * Cuando un tanque choca con un disparo es dañado por este. Si su resistencia es menor o igual que 0 entonces desaparece.
 	 */
-	public void chocarConDisparo(Disparo disparo) {
+	public void chocarCon(Disparo disparo) {
 		resistencia = resistencia - disparo.getDanioNeto();
-		resistencia = (resistencia - (resistencia*(disparo.getDanioPorcentual())/100) - 1);
+		resistencia = (resistencia - (resistencia*(disparo.getDanioPorcentual())/100));
 		if (resistencia <= 0)
 			desaparecer();
 	}
 	
 	/**
-	 * Cuando un tanque choca a este, como este obstaculiza su camino, le indicamos al otro que haga un movimiento unitario en la orientaciï¿½n contraria a la que tiene.
+	 * Cuando un tanque choca a este, como este obstaculiza su camino, le indicamos al otro que haga un movimiento unitario en la orientación contraria a la que tiene.
 	 */
-	public void chocarConTanque(Tanque tanque) {
+	public void chocarCon(Tanque tanque) {
 		tanque.moverEnDireccionContraria();
 	}
 	
 	/**
-	 * Delega en la clase Arma.
+	 * Método polimórfico que le indica a los tanque que disparen, independientemente de qué tanque sean.
 	 */
 	public abstract void disparar();
 	
@@ -64,7 +64,7 @@ public abstract class Tanque extends ObjetoMovil implements ObjetoVivo {
 	}
 	
 	/**
-	 * En este caso, si la ocupaciï¿½n no es vï¿½lida, significa que un tanque ha tratado de moverse hacia fuera de un lï¿½mite de la pantalla, y por lo tanto no se le setea su nueva ocupaciï¿½n para no permitï¿½rselo.
+	 * En este caso, si la ocupación no es válida, significa que un tanque ha tratado de moverse hacia fuera de un límite de la pantalla, y por lo tanto no se le setea su nueva ocupación para no permitírselo.
 	 */
 	protected void chequearOcupacionValidaYColisiones(Ocupacion ocupacionProvisoria) {
 		if ((ocupacionProvisoria.espacialmenteValida())) {
@@ -72,7 +72,7 @@ public abstract class Tanque extends ObjetoMovil implements ObjetoVivo {
 			Vector<ObjetoJuego> objetos = Espacio.getInstancia().getObjetosJuegoEnContactoCon(this);
 			int contador = 0;
 			while (contador < objetos.size()) {
-				objetos.get(contador).chocarConTanque(this);
+				objetos.get(contador).chocarCon(this);
 				++contador;
 			}
 		}
@@ -87,8 +87,8 @@ public abstract class Tanque extends ObjetoMovil implements ObjetoVivo {
 	}
 	
 	/**
-	 * Indica al objeto que haga un movimiento unitario en una direcciï¿½n contraria a la que trae.
-	 * A pesar de este movimiento la orientaciï¿½n del tanque sigue siendo la que tenï¿½a anteriormente, dado que este mï¿½todo se utiliza como un medio para que los tanques no se superpongan a otros objetos.
+	 * Indica al objeto que haga un movimiento unitario en una dirección contraria a la que trae.
+	 * A pesar de este movimiento la orientación del tanque sigue siendo la que tenía anteriormente, dado que este método se utiliza como un medio para que los tanques no se superpongan a otros objetos.
 	 */
 	public void moverEnDireccionContraria() {
 		if (orientacion == Orientacion.i) {
@@ -115,19 +115,28 @@ public abstract class Tanque extends ObjetoMovil implements ObjetoVivo {
 		}		
 	}
 
-	public void sumarResistencia(int resistencia) {
-		this.resistencia += resistencia;
-		
+	/**
+	 * 
+	 * @param incremento entero que sumaremos a la resistencia del tanque
+	 */
+	public void sumarResistencia(int incremento) {
+		resistencia = resistencia + incremento;
 	}
-
-	public void sumarVelocidad(double velocidad) {
-		this.velocidad += velocidad;
-		
+	
+	/**
+	 * 
+	 * @param incremento entero que sumaremos a la velocidad del tanque
+	 */
+	public void sumarVelocidad(int incremento) {
+		velocidad = velocidad + incremento;
 	}
-
-	public void sumarVelocidadDisparo(double velocidadDeDisparo) {
-		this.velocidadDisparo += velocidadDeDisparo;
-		
+	
+	/**
+	 * 
+	 * @param incremento entero que sumaremos a la velocidad disparo del tanque
+	 */
+	public void sumarVelocidadDisparo(int incremento) {
+		velocidadDisparo = velocidadDisparo + incremento;
 	}
 	
 }
