@@ -16,8 +16,7 @@ public class DisparoLanzaCohetes extends Disparo {
 		super(orientacion,punto);
 		danioNeto = 0;
 		danioPorcentual = 50;
-		Posicion posicionAuxiliar = obtenerPuntoMenorModuloDisparo(orientacion, punto, 1);
-		ocupacion = new OcupacionCuadrada(posicionAuxiliar,1);
+		ocupacion = OcupacionCuadrada.crearAPartirDePosicionPerimetralCentradaEnOrientacion(punto, 1, orientacion);
 		velocidad = 4;
 		Espacio.getInstancia().agregarDisparo(this);
 	}
