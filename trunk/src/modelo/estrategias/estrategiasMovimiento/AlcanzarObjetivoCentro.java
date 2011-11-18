@@ -19,7 +19,7 @@ public class AlcanzarObjetivoCentro extends EstrategiaMovimiento {
 
 	public void dedicirMovimiento() {
 		if (!(duenio.getOcupacion().estaEnCentroHorizontal()))
-			duenio.acercarseAlCentroDelEspacio();
+			duenio.acercarseAlCentroHorizontalDelEspacio();
 		else {
 			indicarDuenioAcercarseVerticalmenteAObjetivo();
 			if (duenio.getOcupacion().coincidenciaProyeccionVerticalCon(objetivo.getOcupacion()))
