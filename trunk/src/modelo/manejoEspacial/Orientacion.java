@@ -2,7 +2,7 @@ package modelo.manejoEspacial;
 
 /**
  * Modela a un vector que otorga una orientación en un plano.
- * Dado que las orientaciones posibles son sólo cuatro y que estas interesan sólo desde su estado y no desde su comportamiento, mediante atributos de clase proveemos acceso global a estas.
+ * Dado que las orientaciones posibles son sólo cuatro y que estas interesan sólo desde su estado y no desde su comportamiento, para ahorrar recursos del sistema garantizamos la existencia de sólo cuatro instancias mediante atributos de clase proveemos acceso global a estas.
  * @author Tomás
  *
  */
