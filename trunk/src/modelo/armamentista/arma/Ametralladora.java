@@ -15,7 +15,6 @@ public class Ametralladora extends Arma {
 		super(duenio);
 	}
 
-	@Override
 	public void disparar() {
 		Posicion posicionAuxiliar;
 		posicionAuxiliar = duenio.getOcupacion().getPosicionPerimetralCentradaEnOrientacion(duenio.getOrientacion());
