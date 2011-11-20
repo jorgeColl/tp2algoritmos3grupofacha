@@ -1,4 +1,4 @@
-package modelo.clasesGeneralizadoras;
+package modelo.clasesGeneralizadoras; 
 
 import modelo.armamentista.disparo.Disparo;
 import modelo.manejoEspacial.Espacio;
