@@ -1,4 +1,4 @@
-package modelo.armamentista.disparo;
+package modelo.armamentista.disparo; 
 
 import java.util.Vector;
 
