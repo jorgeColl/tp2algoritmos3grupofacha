@@ -1,8 +1,8 @@
-package modelo.estrategias.estrategiasMovimiento;
+package ar.uba.fi.algo3.modelo.estrategias.estrategiasMovimiento;
 
-import modelo.clasesGeneralizadoras.ObjetoJuego;
-import modelo.clasesGeneralizadoras.ObjetoMovil;
-import modelo.manejoEspacial.Orientacion;
+import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
+import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoMovil;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 
 /**
  * Los objetos que tienen la capacidad de moverse delegan en las instancias de las subclases de esta clase el que les diga hacia dónde dirigirse en función de la estrategia que quiera adoptar.

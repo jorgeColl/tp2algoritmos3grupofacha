@@ -1,9 +1,9 @@
-package modelo.tanques;
+package ar.uba.fi.algo3.modelo.tanques;
 
-import modelo.armamentista.arma.Canion;
-import modelo.estrategias.estrategiasMovimiento.AlcanzarObjetivoBordes;
-import modelo.manejoEspacial.Espacio;
-import modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.armamentista.arma.Canion;
+import ar.uba.fi.algo3.modelo.estrategias.estrategiasMovimiento.AlcanzarObjetivoBordes;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 
 public class IFV extends TanqueEnemigo {
 

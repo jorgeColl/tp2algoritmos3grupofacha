@@ -1,17 +1,17 @@
-package modelo.tanques;
+package ar.uba.fi.algo3.modelo.tanques;
 
 import java.util.Vector;
 
-import modelo.armamentista.disparo.Disparo;
-import modelo.clasesGeneralizadoras.ObjetoJuego;
-import modelo.clasesGeneralizadoras.ObjetoMovil;
-import modelo.clasesGeneralizadoras.ObjetoVivo;
-import modelo.estrategias.estrategiasDisparo.EstrategiaDisparo;
-import modelo.manejoEspacial.Espacio;
-import modelo.manejoEspacial.Ocupacion;
-import modelo.manejoEspacial.OcupacionCuadrada;
-import modelo.manejoEspacial.Orientacion;
-import modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.armamentista.disparo.Disparo;
+import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
+import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoMovil;
+import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoVivo;
+import ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo.EstrategiaDisparo;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Ocupacion;
+import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 
 /**
  * Provee el estado y el comportamiento común a todos los tanques del juego.

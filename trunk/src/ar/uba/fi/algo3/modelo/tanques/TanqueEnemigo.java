@@ -1,11 +1,11 @@
-package modelo.tanques;
+package ar.uba.fi.algo3.modelo.tanques;
 
-import modelo.armamentista.arma.Arma;
-import modelo.estrategias.estrategiasDisparo.EstrategiaDisparoVelocidadDependiente;
-import modelo.estrategias.estrategiasMovimiento.EstrategiaMovimiento;
-import modelo.manejoEspacial.Espacio;
-import modelo.manejoEspacial.Orientacion;
-import modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.armamentista.arma.Arma;
+import ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo.EstrategiaDisparoVelocidadDependiente;
+import ar.uba.fi.algo3.modelo.estrategias.estrategiasMovimiento.EstrategiaMovimiento;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 
 /**
  * Proveé el estado y el comportamiento común de los tanques enemigos.

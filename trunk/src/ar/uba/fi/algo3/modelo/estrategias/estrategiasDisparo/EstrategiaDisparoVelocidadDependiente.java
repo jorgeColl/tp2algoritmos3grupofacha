@@ -1,6 +1,6 @@
-package modelo.estrategias.estrategiasDisparo;
+package ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo;
 
-import modelo.tanques.Tanque;
+import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Modela una estrategia de disparo que hace que el tanque dispare ni bien su velocidad de disparo se lo permite.
