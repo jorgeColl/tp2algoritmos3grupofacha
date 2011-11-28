@@ -1,9 +1,9 @@
-package pruebas.pruebasUnitarias;
+package ar.uba.fi.algo3.modelo.pruebasUnitarias;
 
-import modelo.objetosInanimados.BonusVida;
-import modelo.manejoEspacial.Posicion;
-import modelo.tanques.AlgoTank;
-import modelo.tanques.Tanque;
+import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVida;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
+import ar.uba.fi.algo3.modelo.tanques.Tanque;
 import junit.framework.TestCase;
 
 /**

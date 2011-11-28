@@ -1,6 +1,6 @@
-package modelo.estrategias.estrategiasDisparo;
+package ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo;
 
-import modelo.tanques.Tanque;
+import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Clase abstracta en la que los tanques enemigos delegan la desición de si disparar o no, y dependiendo del caso el qué arma disparar.

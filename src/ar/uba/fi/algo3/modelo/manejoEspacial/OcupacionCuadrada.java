@@ -1,4 +1,4 @@
-package modelo.manejoEspacial;
+package ar.uba.fi.algo3.modelo.manejoEspacial;
 
 /**
  * Implementa la inferfaz Ocupacion, modelando concretamente a una ocupación bidimensional cuadrada.

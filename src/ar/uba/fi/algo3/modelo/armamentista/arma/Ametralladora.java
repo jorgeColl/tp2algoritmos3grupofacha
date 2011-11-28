@@ -1,8 +1,8 @@
-package modelo.armamentista.arma;
+package ar.uba.fi.algo3.modelo.armamentista.arma;
 
-import modelo.armamentista.disparo.DisparoAmetralladora;
-import modelo.manejoEspacial.Posicion;
-import modelo.tanques.Tanque;
+import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Modela una ametralladora, la cual es un arma que tiene munición ilimitada.

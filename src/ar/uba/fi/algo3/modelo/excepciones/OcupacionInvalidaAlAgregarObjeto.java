@@ -1,4 +1,4 @@
-package modelo.excepciones; 
+package ar.uba.fi.algo3.modelo.excepciones; 
 
 /**
  * La lanzan las instancias de subclases de ObjetoJuego cuando se las trata de agregar al espacio sobre otra instancia, o cuando la ocupación no es válida dentro del mapeo del espacio.

@@ -1,4 +1,4 @@
-package modelo.manejoEspacial;
+package ar.uba.fi.algo3.modelo.manejoEspacial;
 
 /**
  * Modela a un vector que otorga una orientación en un plano.

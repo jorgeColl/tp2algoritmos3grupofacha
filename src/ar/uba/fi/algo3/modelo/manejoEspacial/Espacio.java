@@ -1,11 +1,11 @@
-package modelo.manejoEspacial;
+package ar.uba.fi.algo3.modelo.manejoEspacial;
 
-import modelo.armamentista.disparo.Disparo;
-import modelo.clasesGeneralizadoras.ObjetoJuego;
-import modelo.excepciones.OcupacionInvalidaAlAgregarObjeto;
-import modelo.objetosInanimados.CuartelArgentino;
-import modelo.tanques.AlgoTank;
-import modelo.tanques.TanqueEnemigo;
+import ar.uba.fi.algo3.modelo.armamentista.disparo.Disparo;
+import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
+import ar.uba.fi.algo3.modelo.excepciones.OcupacionInvalidaAlAgregarObjeto;
+import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
+import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
+import ar.uba.fi.algo3.modelo.tanques.TanqueEnemigo;
 import java.util.Vector;
 
 /**

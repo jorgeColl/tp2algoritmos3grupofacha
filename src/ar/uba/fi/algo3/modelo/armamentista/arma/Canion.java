@@ -1,8 +1,8 @@
-package modelo.armamentista.arma;
+package ar.uba.fi.algo3.modelo.armamentista.arma;
 
-import modelo.armamentista.disparo.DisparoCanion;
-import modelo.manejoEspacial.Posicion;
-import modelo.tanques.Tanque;
+import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoCanion;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Modela un cañón, el cual es un arma que tiene una munición limitada.

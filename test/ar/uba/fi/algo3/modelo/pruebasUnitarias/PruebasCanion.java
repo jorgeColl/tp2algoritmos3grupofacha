@@ -1,9 +1,9 @@
-package pruebas.pruebasUnitarias;
+package ar.uba.fi.algo3.modelo.pruebasUnitarias;
 
-import modelo.armamentista.arma.Canion;
-import modelo.manejoEspacial.Espacio;
-import modelo.manejoEspacial.Posicion;
-import modelo.tanques.AlgoTank;
+import ar.uba.fi.algo3.modelo.armamentista.arma.Canion;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
 import junit.framework.TestCase;
 
 /**
