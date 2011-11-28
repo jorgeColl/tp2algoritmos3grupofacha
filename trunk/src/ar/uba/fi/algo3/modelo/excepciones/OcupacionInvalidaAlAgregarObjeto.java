@@ -7,7 +7,7 @@ package ar.uba.fi.algo3.modelo.excepciones;
  *
  */
 public class OcupacionInvalidaAlAgregarObjeto extends Exception {
-	
+		
 	/**
 	 * Constructor.
 	 * @param mensaje describe al error
@@ -15,5 +15,11 @@ public class OcupacionInvalidaAlAgregarObjeto extends Exception {
 	public OcupacionInvalidaAlAgregarObjeto(String mensaje) {
 		super(mensaje);
 	}
+	
+	/**
+	 * @see OcupacionCoincidenteconOtroObjetoJuego
+	 */
+	private static final long serialVersionUID = 1;
+	
 
 }
