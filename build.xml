@@ -1,0 +1,40 @@
+<project name="titiritero" basedir="." default="ejecutar.tests">
+	<property name="build" location="build" />
+	<property name="lib" location="lib" />
+	
+	<path id="classpath">
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+		 <pathelement location="${build}\app" />
+		 <pathelement location="${build}\tests" />
+	</path>
+	
+	<target name="setup">
+		<delete dir="${build}" />
+		<mkdir dir="${build}"/>
+		<mkdir dir="${build}\app"/>
+		<mkdir dir="${build}\tests"/>
+	</target>
+		
+	<target name="compilar.aplicacion" depends="setup">
+		<javac srcdir="src" destdir="${build}\app"></javac>
+	</target>
+ 
+	<target name="compilar.tests" depends="compilar.aplicacion">
+		<javac srcdir="test" destdir="${build}\tests">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="ejecutar.tests" depends="compilar.tests">
+		<junit failureProperty="test.failure" >
+			<classpath refid="classpath" />
+			<formatter type="brief" usefile="false" />
+			<batchtest>
+				<fileset dir="${build}\tests" includes="**/*Test.class" />
+			</batchtest>
+		</junit>
+		<fail message="Pruebas fallidas" if="test.failure" />
+  </target>	
+</project>
