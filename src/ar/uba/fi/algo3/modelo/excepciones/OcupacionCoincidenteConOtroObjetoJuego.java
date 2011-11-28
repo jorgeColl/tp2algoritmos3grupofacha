@@ -12,6 +12,12 @@ public class OcupacionCoincidenteConOtroObjetoJuego extends Exception {
 	 * Constructor.
 	 * @param mensaje describe al error
 	 */
+	
+	/* agrego esto para que Java deje de tirar warnings.
+	 * ver: http://c2.com/ppr/wiki/JavaIdioms/AlwaysDeclareSerialVersionUid.html
+	 */
+	private static final long serialVersionUID = 1;
+	
 	public OcupacionCoincidenteConOtroObjetoJuego(String mensaje) {
 		super(mensaje);
 	}

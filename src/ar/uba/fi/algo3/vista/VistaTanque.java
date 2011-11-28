@@ -22,19 +22,19 @@ public class VistaTanque extends Cuadrado {
 	
 	public void keyPressed(KeyEvent keyEvent){
 		int c = keyEvent.getKeyCode();
-		Tanque posicionable = (Tanque) this.getPosicionable();
+		Tanque tanque = (Tanque) this.getPosicionable();
 		switch (c){
 			case KeyEvent.VK_RIGHT:
-				posicionable.moverDerecha();
+				tanque.moverDerecha();
 				break;
 			case KeyEvent.VK_LEFT:
-				posicionable.moverIzquierda();
+				tanque.moverIzquierda();
 				break;
 			case KeyEvent.VK_UP:
-				posicionable.moverArriba();
+				tanque.moverArriba();
 				break;
 			case KeyEvent.VK_DOWN:
-				posicionable.moverAbajo();
+				tanque.moverAbajo();
 				break;
 		}
 		

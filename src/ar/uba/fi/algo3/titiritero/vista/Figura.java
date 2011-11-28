@@ -38,7 +38,7 @@ public abstract class Figura implements Dibujable, MouseClickObservador, KeyPres
 	
 	public void keyPressed(KeyEvent keyEvent){
 		char c = keyEvent.getKeyChar();
-		if(c != keyEvent.CHAR_UNDEFINED){
+		if(c != KeyEvent.CHAR_UNDEFINED){
 			System.out.println("tecla apretada:" + c);
 		}
 	}
