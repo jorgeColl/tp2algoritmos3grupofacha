@@ -7,6 +7,7 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.vista.Ventana;
+import ar.uba.fi.algo3.vista.VistaTanque;
 
 /**
  * @author Fede
@@ -33,11 +34,15 @@ public class CorrerJuego {
 		ventana.setVisible(true);		
 		
 		AlgoTank algoTank = new AlgoTank(new Posicion(400,300));
-		controlador.agregarDibujable(algoTank);
+		VistaTanque vistaTanque = new VistaTanque();
 		
+		vistaTanque.setPosicionable(algoTank);
 		
+		controlador.agregarObjetoVivo(algoTank);
+		controlador.agregarDibujable(vistaTanque);
 		
-		
+		controlador.setIntervaloSimulacion(50);
+		controlador.comenzarJuego();
 
 	}
 
