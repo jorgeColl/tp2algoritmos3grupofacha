@@ -4,7 +4,7 @@ import java.util.Vector;
 
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoMovil;
-import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoVivo;
+import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Ocupacion;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
