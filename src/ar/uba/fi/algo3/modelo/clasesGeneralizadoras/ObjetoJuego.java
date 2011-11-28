@@ -4,6 +4,7 @@ import ar.uba.fi.algo3.modelo.armamentista.disparo.Disparo;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Ocupacion;
 import ar.uba.fi.algo3.modelo.tanques.Tanque;
+import ar.uba.fi.algo3.titiritero.Posicionable;
 
 /**
  * Provee el comportamiento y el estado común a todas las entidades del juego que pueden posicionarse en el espacio. 
@@ -11,7 +12,7 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
  * @author Jorge
  *
  */
-public abstract class ObjetoJuego {
+public abstract class ObjetoJuego implements Posicionable {
 	
 	protected Ocupacion ocupacion;
 	
@@ -49,6 +50,14 @@ public abstract class ObjetoJuego {
 	 */
 	public Ocupacion getOcupacion() {
 		return ocupacion;
+	}
+	
+	public int getX(){
+		return ocupacion.getLimiteDerecho();		
+	}
+	
+	public int getY(){
+		return ocupacion.getLimiteInferior();
 	}
 
 }
