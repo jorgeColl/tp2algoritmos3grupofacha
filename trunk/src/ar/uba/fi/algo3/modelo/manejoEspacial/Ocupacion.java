@@ -1,4 +1,4 @@
-package modelo.manejoEspacial;
+package ar.uba.fi.algo3.modelo.manejoEspacial;
 
 /**
  * Modela al espacio que esta ocupando un objeto.

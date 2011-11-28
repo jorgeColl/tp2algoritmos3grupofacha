@@ -1,7 +1,7 @@
-package modelo.estrategias.estrategiasMovimiento;
+package ar.uba.fi.algo3.modelo.estrategias.estrategiasMovimiento;
 
-import modelo.clasesGeneralizadoras.ObjetoJuego;
-import modelo.clasesGeneralizadoras.ObjetoMovil;
+import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
+import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoMovil;
 
 /**
  * Le indica al objeto móvil que se acerque a su objetivo por el centro.

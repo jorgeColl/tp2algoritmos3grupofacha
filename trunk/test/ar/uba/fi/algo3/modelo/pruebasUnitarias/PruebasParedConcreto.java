@@ -1,10 +1,10 @@
-package pruebas.pruebasUnitarias;
+package ar.uba.fi.algo3.modelo.pruebasUnitarias;
 
-import modelo.armamentista.disparo.DisparoAmetralladora;
-import modelo.manejoEspacial.Espacio;
-import modelo.manejoEspacial.Orientacion;
-import modelo.manejoEspacial.Posicion;
-import modelo.objetosInanimados.ParedConcreto;
+import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.objetosInanimados.ParedConcreto;
 import junit.framework.TestCase;
 
 /**

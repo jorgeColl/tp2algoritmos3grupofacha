@@ -1,6 +1,6 @@
-package pruebas.pruebasUnitarias;
+package ar.uba.fi.algo3.modelo.pruebasUnitarias;
 
-import modelo.manejoEspacial.Orientacion;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 import junit.framework.TestCase;
 
 /**

@@ -1,13 +1,13 @@
-package modelo.tanques;
+package ar.uba.fi.algo3.modelo.tanques;
 
 import java.util.Stack;
 
-import modelo.armamentista.arma.Ametralladora;
-import modelo.armamentista.arma.ArmaMunicionLimitada;
-import modelo.estrategias.estrategiasDisparo.EstrategiaDisparoAlgoTank;
-import modelo.manejoEspacial.Espacio;
-import modelo.manejoEspacial.Orientacion;
-import modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.armamentista.arma.Ametralladora;
+import ar.uba.fi.algo3.modelo.armamentista.arma.ArmaMunicionLimitada;
+import ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo.EstrategiaDisparoAlgoTank;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 
 /**
  * Modela al tanque manejado por el jugador.

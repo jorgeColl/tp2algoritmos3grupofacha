@@ -1,18 +1,18 @@
-package pruebas.pruebasIntegracion;
+package ar.uba.fi.algo3.modelo.pruebasIntegracion;
 
-import modelo.armamentista.arma.Canion;
-import modelo.manejoEspacial.Espacio;
-import modelo.manejoEspacial.OcupacionCuadrada;
-import modelo.manejoEspacial.Posicion;
-import modelo.objetosInanimados.BonusVelocidad;
-import modelo.objetosInanimados.BonusVida;
-import modelo.objetosInanimados.CuartelArgentino;
-import modelo.objetosInanimados.ParedConcreto;
-import modelo.objetosInanimados.ParedMetal;
-import modelo.tanques.AlgoTank;
-import modelo.tanques.GrizzlyBattleTank;
-import modelo.tanques.IFV;
-import modelo.tanques.MirageTank;
+import ar.uba.fi.algo3.modelo.armamentista.arma.Canion;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
+import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
+import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVida;
+import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
+import ar.uba.fi.algo3.modelo.objetosInanimados.ParedConcreto;
+import ar.uba.fi.algo3.modelo.objetosInanimados.ParedMetal;
+import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
+import ar.uba.fi.algo3.modelo.tanques.GrizzlyBattleTank;
+import ar.uba.fi.algo3.modelo.tanques.IFV;
+import ar.uba.fi.algo3.modelo.tanques.MirageTank;
 import junit.framework.TestCase;
 
 /**

@@ -1,15 +1,15 @@
-package modelo.armamentista.disparo;
+package ar.uba.fi.algo3.modelo.armamentista.disparo;
 
 import java.util.Vector;
 
-import modelo.clasesGeneralizadoras.ObjetoJuego;
-import modelo.clasesGeneralizadoras.ObjetoMovil;
-import modelo.clasesGeneralizadoras.ObjetoVivo;
-import modelo.manejoEspacial.Espacio;
-import modelo.manejoEspacial.Ocupacion;
-import modelo.manejoEspacial.Orientacion;
-import modelo.manejoEspacial.Posicion;
-import modelo.tanques.Tanque;
+import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
+import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoMovil;
+import ar.uba.fi.algo3.titiritero.ObjetoVivo;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Ocupacion;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Modela un disparo que se mueve por el escenario hasta salir de este o impactar con una instancia de ObjetoJuego, causándole un daño. 

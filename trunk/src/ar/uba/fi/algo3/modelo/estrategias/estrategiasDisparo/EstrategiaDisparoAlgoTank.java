@@ -1,7 +1,7 @@
-package modelo.estrategias.estrategiasDisparo;
+package ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo;
 
-import modelo.armamentista.arma.ArmaMunicionLimitada;
-import modelo.tanques.AlgoTank;
+import ar.uba.fi.algo3.modelo.armamentista.arma.ArmaMunicionLimitada;
+import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
 
 /**
  * Representa a la estrategia de disparo de AlgoTank.

@@ -1,11 +1,11 @@
-package modelo.tanques;
+package ar.uba.fi.algo3.modelo.tanques;
 
-import modelo.armamentista.arma.ArmaMunicionLimitada;
-import modelo.armamentista.arma.LanzaCohetes;
-import modelo.clasesGeneralizadoras.ObjetoJuego;
-import modelo.estrategias.estrategiasMovimiento.AlcanzarObjetivoCentro;
-import modelo.manejoEspacial.Espacio;
-import modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.armamentista.arma.ArmaMunicionLimitada;
+import ar.uba.fi.algo3.modelo.armamentista.arma.LanzaCohetes;
+import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
+import ar.uba.fi.algo3.modelo.estrategias.estrategiasMovimiento.AlcanzarObjetivoCentro;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 
 public class MirageTank extends TanqueEnemigo {
 

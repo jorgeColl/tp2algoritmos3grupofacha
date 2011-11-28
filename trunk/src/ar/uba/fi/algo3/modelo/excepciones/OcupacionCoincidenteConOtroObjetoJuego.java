@@ -1,4 +1,4 @@
-package modelo.excepciones;
+package ar.uba.fi.algo3.modelo.excepciones;
 
 /**
  * La lanzan las instancias de subclases de ObjetoJuego cuando trata de agregárselos al espacio con una ocupación que coincide parcial o totalmente con la de otro objeto ya agregado allí.
