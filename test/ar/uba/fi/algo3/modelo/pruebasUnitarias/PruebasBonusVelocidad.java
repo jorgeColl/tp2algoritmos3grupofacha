@@ -1,10 +1,11 @@
-package ar.uba.fi.algo3.modelo.pruebasUnitarias;
+package pruebas.pruebasUnitarias;
 
 import junit.framework.TestCase;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
-import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
-import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
-import ar.uba.fi.algo3.modelo.tanques.Tanque;
+import modelo.manejoEspacial.Posicion;
+import modelo.objetosInanimados.BonusVelocidad;
+import modelo.manejoEspacial.OcupacionCuadrada;
+import modelo.tanques.AlgoTank;
+import modelo.tanques.Tanque;
 
 /**
  * Llevo a cabo las pruebas unitarias de la clase BonusVelocidad.
@@ -18,9 +19,8 @@ public class PruebasBonusVelocidad extends TestCase{
 	double porcentajeVelocidadDeDisparoQueAumentaBonus;
 	
 	public void setUp (){
-		Posicion puntoCualquiera = new Posicion(0,0);
-		this.tanque = new AlgoTank(puntoCualquiera);
-		this.bonusVelocidad = new BonusVelocidad (puntoCualquiera);
+		this.tanque = new AlgoTank(new Posicion(0,0));
+		this.bonusVelocidad = new BonusVelocidad(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		this.porcentajeVelocidadQueAumentaBonus = 0.2;
 		this.porcentajeVelocidadDeDisparoQueAumentaBonus = 0.3;
 	}
@@ -31,13 +31,10 @@ public class PruebasBonusVelocidad extends TestCase{
 	public void testBonusVida(){
 		int velocidadTanqueAntes = this.tanque.getVelocidad();
 		int velocidadDisparoTanqueAntes = this.tanque.getVelocidadDisparo();
-		
 		this.bonusVelocidad.chocarCon(this.tanque); 
-		
 		int velocidadTanqueDespues = this.tanque.getVelocidad();
 		int velocidadDisparoTanqueDespues = this.tanque.getVelocidadDisparo();
-		
-		assertTrue( (velocidadTanqueAntes += velocidadTanqueAntes*porcentajeVelocidadQueAumentaBonus) == velocidadTanqueDespues);
-		assertTrue( (velocidadDisparoTanqueAntes += velocidadDisparoTanqueAntes*porcentajeVelocidadDeDisparoQueAumentaBonus) == velocidadDisparoTanqueDespues);
+		assertTrue((velocidadTanqueAntes += velocidadTanqueAntes*porcentajeVelocidadQueAumentaBonus) == velocidadTanqueDespues);
+		assertTrue((velocidadDisparoTanqueAntes += velocidadDisparoTanqueAntes*porcentajeVelocidadDeDisparoQueAumentaBonus) == velocidadDisparoTanqueDespues);
 	}
 }

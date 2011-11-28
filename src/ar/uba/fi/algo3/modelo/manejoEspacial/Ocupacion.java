@@ -1,8 +1,8 @@
-package ar.uba.fi.algo3.modelo.manejoEspacial;
+package modelo.manejoEspacial;
 
 /**
  * Modela al espacio que esta ocupando un objeto.
- * @author Tomás
+ * @author Samanta
  *
  */
 public interface Ocupacion {
@@ -36,9 +36,21 @@ public interface Ocupacion {
 
 	/**
 	 * 
-	 * @return true si la ocupación está en alguno de los bordes de la pantalla y false en el caso contrario
+	 * @return true si la ocupación está en alguno de los bordes del espacio y false en el caso contrario
 	 */
 	public abstract boolean estaEnBorde();
+	
+	/**
+	 * 
+	 * @return true si la ocupación está en alguno de los bordes horizontales del espacio y false en el caso contrario
+	 */
+	public abstract boolean estaEnBordeHorizontal();
+	
+	/**
+	 * 
+	 * @return true si la ocupación está en alguno de los bordes del espacio y false en el caso contrario
+	 */
+	public abstract boolean estaEnBordeVertical();
 
 	/**
 	 * 

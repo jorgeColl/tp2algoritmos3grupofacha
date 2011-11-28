@@ -6,20 +6,17 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Modela un cañón, el cual es un arma que tiene una munición limitada.
- * @author Tomás
+ * @author Federico
  *
  */
-public class Canion extends Arma {
+public class Canion extends ArmaMunicionLimitada {
 
-	private int municion;
-	
 	/**
 	 * 
 	 * @param municion entero correspondiente a la munición inicial del arma
 	 */
 	public Canion(Tanque duenio, int municion) {
-		super(duenio);
-		this.municion = municion;
+		super(duenio,municion);
 	}
 
 	/**
@@ -32,22 +29,6 @@ public class Canion extends Arma {
 			new DisparoCanion(duenio.getOrientacion(),posicionAuxiliar);
 			--municion;
 		}
-	}
-	
-	/**
-	 * 
-	 * @return entero correspondiente a la munición del arma
-	 */
-	public int getMunicion() {
-		return municion;
-	}
-	
-	/**
-	 * 
-	 * @param incremento entero que sumaremos a la munición del arma
-	 */
-	public void incrementarMunicion(int incremento) {
-		municion = municion + incremento;
 	}
 
 }

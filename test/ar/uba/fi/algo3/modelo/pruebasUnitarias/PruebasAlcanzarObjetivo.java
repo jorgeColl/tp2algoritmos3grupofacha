@@ -1,11 +1,11 @@
-package ar.uba.fi.algo3.modelo.pruebasUnitarias;
+package pruebas.pruebasUnitarias;
 
-import ar.uba.fi.algo3.modelo.estrategias.estrategiasMovimiento.AlcanzarObjetivo;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
-import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
-import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
-import ar.uba.fi.algo3.modelo.tanques.IFV;
+import modelo.estrategias.estrategiasMovimiento.AlcanzarObjetivo;
+import modelo.manejoEspacial.Espacio;
+import modelo.manejoEspacial.OcupacionCuadrada;
+import modelo.manejoEspacial.Posicion;
+import modelo.tanques.AlgoTank;
+import modelo.tanques.IFV;
 import junit.framework.TestCase;
 
 /**

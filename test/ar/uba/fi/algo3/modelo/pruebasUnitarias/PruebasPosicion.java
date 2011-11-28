@@ -1,11 +1,11 @@
-package ar.uba.fi.algo3.modelo.pruebasUnitarias;
+package pruebas.pruebasUnitarias;
 
-import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import modelo.manejoEspacial.Posicion;
 import junit.framework.TestCase;
 
 /**
  * Llevo a cabo las pruebas unitarias de la clase Posicion.
- * @author Tomás
+ * @author Samanta
  *
  */
 public class PruebasPosicion extends TestCase {

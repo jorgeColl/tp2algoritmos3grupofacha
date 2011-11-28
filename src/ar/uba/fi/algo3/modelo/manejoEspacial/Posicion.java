@@ -1,8 +1,8 @@
-package ar.uba.fi.algo3.modelo.manejoEspacial;
+package modelo.manejoEspacial;
 
 /**
  * Modela a un vector que representa una posición en un plano.
- * @author Tomás
+ * @author Samanta
  *
  */
 public class Posicion extends Vector {

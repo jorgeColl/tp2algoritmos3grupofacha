@@ -1,22 +1,23 @@
-package ar.uba.fi.algo3.modelo.pruebasIntegracion;
+package pruebas.pruebasIntegracion;
 
-import ar.uba.fi.algo3.modelo.armamentista.arma.Canion;
-import ar.uba.fi.algo3.modelo.armamentista.arma.LanzaCohetes;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
-import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
-import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
-import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVida;
-import ar.uba.fi.algo3.modelo.objetosInanimados.ParedConcreto;
-import ar.uba.fi.algo3.modelo.objetosInanimados.ParedMetal;
-import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
-import ar.uba.fi.algo3.modelo.tanques.GrizzlyBattleTank;
-import ar.uba.fi.algo3.modelo.tanques.IFV;
-import ar.uba.fi.algo3.modelo.tanques.MirageTank;
+import modelo.armamentista.arma.Canion;
+import modelo.armamentista.arma.LanzaCohetes;
+import modelo.manejoEspacial.Espacio;
+import modelo.manejoEspacial.OcupacionCuadrada;
+import modelo.manejoEspacial.Posicion;
+import modelo.objetosInanimados.BonusVelocidad;
+import modelo.objetosInanimados.BonusVida;
+import modelo.objetosInanimados.CuartelArgentino;
+import modelo.objetosInanimados.ParedConcreto;
+import modelo.objetosInanimados.ParedMetal;
+import modelo.tanques.AlgoTank;
+import modelo.tanques.GrizzlyBattleTank;
+import modelo.tanques.IFV;
+import modelo.tanques.MirageTank;
 import junit.framework.TestCase;
 
 /**
- * Llevo a cabo las pruebas de integración de AlgoTank.
+ * Llevo a cabo las pruebas de integración de AlgoTank con los demás objetos del juego.
  * @author Tomás
  *
  */
@@ -61,9 +62,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	 * PARA HACERLO MÁS GENERAL HAGO QUE LOS CHOQUE DESDE DISTINTAS POSICIONES RELATIVAS ASÍ DE PASO SE PRUEBAN TODAS.
 	 */
 	
-	/*
-	 * ALGO TANK NO PUEDE CHOCAR CON SÍ MISMO DADO QUE EL ESPACIO SÓLO TOLERA UNA INSTANCIA DE SU CLASE.
-	 */
+	/* ALGO TANK NO PUEDE CHOCAR CON SÍ MISMO DADO QUE EL ESPACIO SÓLO TOLERA UNA INSTANCIA DE SU CLASE. */
 	
 	/**
 	 * Hago chocar al tanque con una instancia de GrizzlyBattleTank y testeo que su ocupación no cambie porque este se interpuso en su camino.
@@ -122,29 +121,325 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
 	}
 	
-	/* TESTEO SI AL SER DESTRUÍDOS LOS TANQUES ENEMIGOS QUE ENTREGAN MUNICIONES A ALGO TANK ESTO SE HACE CORRECTAMENTE */
+	/* HAGO QUE EL TANQUE CHOQUE CON UNA INSTANCIA DE CUARTEL ARGENTINO Y TESTEO QUE ESTA SE INTERPONGA EN SU CAMINO */
 	
 	/**
-	 * Chequeo que la munición inicial del cañón de una instancia de AlgoTank sea nula, y que luego de que desaparezca una instancia de IFV esta aumente.
+	 * Sitúo a una instancia del tanque contiguamente a una del cuartel, a su izquierda. Lo hago mover a la derecha. Testeo que su posición siga siendo la inicial porque el cuartel se interpuso en su camino.
+	 */
+	public void testAlgoTankChocarConCuartelArgentinoDesdeIzquierda() {
+		tanque = new AlgoTank(new Posicion(0,0));
+		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));		
+		tanque.moverDerecha();
+		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
+		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
+	}
+	
+	/* TESTEO SI AL SER DESTRUIDOS LOS TANQUES ENEMIGOS QUE ENTREGAN ARMAS A ALGO TANK ESTO SE HACE CORRECTAMENTE */
+	
+	/**
+	 * Chequeo que la munición inicial del cañón de una instancia de AlgoTank sea nula (no tiene armas prioritarias), y que luego de que desaparezca una instancia de IFV esta aumente.
 	 */
 	public void testAlgoTankAumentarMunicionCanionConDestruccionDeIFV() {
 		tanque = new AlgoTank(new Posicion(0,0));
 		IFV otroTanque = new IFV(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		int municionEsperada = ((Canion)otroTanque.getArma()).getMunicion();
-		assertEquals(tanque.getCanion().getMunicion(),0);
+		assertTrue(tanque.getArmasPrioritarias().isEmpty());
 		otroTanque.desaparecer();
-		assertEquals(tanque.getCanion().getMunicion(),municionEsperada);
+		assertEquals(tanque.getArmasPrioritarias().peek().getMunicion(),municionEsperada);
 	}
 
 	/**
-	 * Chequeo que la munición inicial del lanza cohetes de una instancia de AlgoTank sea nula, y que luego de que desaparezca una instancia de MirageTank esta aumente.
+	 * Chequeo que la munición inicial del lanza cohetes de una instancia de AlgoTank sea nula (no tiene armas prioritarias), y que luego de que desaparezca una instancia de MirageTank esta aumente.
 	 */
 	public void testAlgoTankAumentarMunicionLanzaCohetesConDestruccionDeMirageTank() {
 		tanque = new AlgoTank(new Posicion(0,0));
 		MirageTank otroTanque = new MirageTank(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		int municionEsperada = ((LanzaCohetes)otroTanque.getArma()).getMunicion();
-		assertEquals(tanque.getLanzaCohetes().getMunicion(),0);
+		assertTrue(tanque.getArmasPrioritarias().isEmpty());
 		otroTanque.desaparecer();
-		assertEquals(tanque.getLanzaCohetes().getMunicion(),municionEsperada);
+		assertEquals(tanque.getArmasPrioritarias().peek().getMunicion(),municionEsperada);
 	}
+	
+	/* A CONTINUACION HAGO QUE UNA INSTANCIA DE ALGO TANK DESTRUYA O DAÑE A CADA UNO DE LOS OTROS TANQUES CON CADA UNA DE LAS ARMAS QUE PUEDE TENER Y EN DISTINTAS POSICIONES RELATIVAS */
+	
+	/**
+	 * Sitúo un tanque continuamente a AlgoTank y hago que el dispare su ametralladora hasta que lo destrulla.
+	 * Testeo que el tanque enemigo haya desaparecido del escenario.
+	 * NOTA: Pongo un contador para evitar que si el test falla se inicie un ciclo infinito, y si la salida del ciclo no es la esperada repruebo el test.
+	 */
+	public void testAlgoTankDestruirGrizzlyBattleTankConAmetralladoraDesdeIzquierda() {
+		tanque = new AlgoTank(new Posicion(0,0));
+		GrizzlyBattleTank otroTanque = new GrizzlyBattleTank(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
+		tanque.moverDerecha();
+		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
+		int contador = 0;
+		while ((otroTanque.getResistencia() > 0)&&(contador < 100)) {
+			tanque.vivir();
+			tanque.disparar();
+			++contador;
+		}
+		if (otroTanque.getResistencia() > 0)
+			fail();
+		assertFalse(Espacio.getInstancia().incluyeA(otroTanque));
+	}
+	
+	/**
+	 * @see testAlgoTankDestruirGrizzlyBattleTankConAmetralladoraDesdeIzquierda()
+	 * Testeo además que la municion del cañón disminuya como se espera.
+	 */
+	public void testAlgoTankDestruirGrizzlyBattleTankConCanionDesdeDerecha() {
+		GrizzlyBattleTank otroTanque = new GrizzlyBattleTank(new Posicion(0,0));
+		tanque = new AlgoTank(new Posicion(((OcupacionCuadrada)otroTanque.getOcupacion()).getLado(),0));
+		tanque.entregarArma(new Canion(tanque,25));
+		tanque.moverIzquierda();
+		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
+		int contador = 0;
+		while ((otroTanque.getResistencia() > 0)&&(contador < 100)) {
+			tanque.vivir();
+			tanque.disparar();
+			++contador;
+		}
+		if (otroTanque.getResistencia() > 0)
+			fail();
+		assertEquals(tanque.getArmasPrioritarias().peek().getMunicion(),21);
+		assertFalse(Espacio.getInstancia().incluyeA(otroTanque));
+	}
+	
+	/**
+	 * @see testAlgoTankDestruirGrizzlyBattleTankConAmetralladoraDesdeIzquierda()
+	 * En este caso lo dañamos dado que el lanza cohetes no puede destruir un tanque porque siempre le quita la mitad de su resistencia actual.
+	 * Testeo además que la municion del lanza cohetes disminuya como se espera.
+	 */
+	public void testAlgoTankDaniarGrizzlyBattleTankConLanzaCohetesDesdeAbajo() {
+		GrizzlyBattleTank otroTanque = new GrizzlyBattleTank(new Posicion(0,0));
+		tanque = new AlgoTank(new Posicion(0,((OcupacionCuadrada)otroTanque.getOcupacion()).getLado()));
+		tanque.entregarArma(new LanzaCohetes(tanque,25));
+		tanque.moverArriba();
+		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
+		int contador = 0;
+		while ((otroTanque.getResistencia() > 1)&&(contador < 100)) {
+			tanque.vivir();
+			tanque.disparar();
+			++contador;
+		}
+		if (otroTanque.getResistencia() > 1)
+			fail();
+		assertEquals(tanque.getArmasPrioritarias().peek().getMunicion(),18);
+		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
+	}
+
+	/**
+	 * testAlgoTankDestruirGrizzlyBattleTankConAmetralladoraDesdeIzquierda()
+	 */
+	public void testAlgoTankDestruirIFVConAmetralladoraDesdeIzquierda() {
+		tanque = new AlgoTank(new Posicion(0,0));
+		IFV otroTanque = new IFV(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
+		tanque.moverDerecha();
+		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
+		int contador = 0;
+		while ((otroTanque.getResistencia() > 0)&&(contador < 100)) {
+			tanque.vivir();
+			tanque.disparar();
+			++contador;
+		}
+		if (otroTanque.getResistencia() > 0)
+			fail();
+		assertFalse(Espacio.getInstancia().incluyeA(otroTanque));
+	}
+	
+	/**
+	 * @see testAlgoTankDestruirGrizzlyBattleTankConCanionDesdeIzquierda()
+	 * Testeo además que la municion del cañón AUMENTE como se espera.
+	 */
+	public void testAlgoTankDestruirIFVConCanionDesdeDerecha() {
+		IFV otroTanque = new IFV(new Posicion(0,0));
+		tanque = new AlgoTank(new Posicion(((OcupacionCuadrada)otroTanque.getOcupacion()).getLado(),0));
+		tanque.entregarArma(new Canion(tanque,10));
+		tanque.moverIzquierda();
+		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
+		int contador = 0;
+		while ((otroTanque.getResistencia() > 0)&&(contador < 100)) {
+			tanque.vivir();
+			tanque.disparar();
+			++contador;
+		}
+		if (otroTanque.getResistencia() > 0)
+			fail();
+		//TENER EN CUENTA QUE CUANDO ALGO TANK DESTRUYE A UNA INSTANCIA DE IFV SE APODERA DE SU ARMA Y POR ESO LA MUNICIÓN QUE TESTEAMOS AHORA ES 25
+		assertEquals(tanque.getArmasPrioritarias().peek().getMunicion(),25);
+		assertFalse(Espacio.getInstancia().incluyeA(otroTanque));
+	}
+	
+	/**
+	 * @see testAlgoTankDestruirGrizzlyBattleTankConLanzaCohetesDesdeIzquierda()
+	 */
+	public void testAlgoTankDaniarIFVConLanzaCohetesDesdeAbajo() {
+		IFV otroTanque = new IFV(new Posicion(0,0));
+		tanque = new AlgoTank(new Posicion(0,((OcupacionCuadrada)otroTanque.getOcupacion()).getLado()));
+		tanque.entregarArma(new LanzaCohetes(tanque,25));
+		tanque.moverArriba();
+		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
+		int contador = 0;
+		while ((otroTanque.getResistencia() > 1)&&(contador < 100)) {
+			tanque.vivir();
+			tanque.disparar();
+			++contador;
+		}
+		if (otroTanque.getResistencia() > 1)
+			fail();
+		assertEquals(tanque.getArmasPrioritarias().peek().getMunicion(),18);
+		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
+	}
+	
+	/**
+	 * testAlgoTankDestruirGrizzlyBattleTankConAmetralladoraDesdeIzquierda()
+	 */
+	public void testAlgoTankDestruirMirageTankConAmetralladoraDesdeIzquierda() {
+		tanque = new AlgoTank(new Posicion(0,0));
+		MirageTank otroTanque = new MirageTank(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
+		tanque.moverDerecha();
+		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
+		int contador = 0;
+		while ((otroTanque.getResistencia() > 0)&&(contador < 100)) {
+			tanque.vivir();
+			tanque.disparar();
+			++contador;
+		}
+		if (otroTanque.getResistencia() > 0)
+			fail();
+		assertFalse(Espacio.getInstancia().incluyeA(otroTanque));
+	}
+	
+	/**
+	 * @see testAlgoTankDestruirGrizzlyBattleTankConCanionDesdeIzquierda()
+	 */
+	public void testAlgoTankDestruirMirageTankConCanionDesdeDerecha() {
+		MirageTank otroTanque = new MirageTank(new Posicion(0,0));
+		tanque = new AlgoTank(new Posicion(((OcupacionCuadrada)otroTanque.getOcupacion()).getLado(),0));
+		tanque.entregarArma(new Canion(tanque,10));
+		tanque.moverIzquierda();
+		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
+		int contador = 0;
+		while ((otroTanque.getResistencia() > 0)&&(contador < 100)) {
+			tanque.vivir();
+			tanque.disparar();
+			++contador;
+		}
+		if (otroTanque.getResistencia() > 0)
+			fail();
+		assertEquals(tanque.getArmasPrioritarias().peek().getMunicion(),25);
+		assertFalse(Espacio.getInstancia().incluyeA(otroTanque));
+	}
+	
+	/**
+	 * @see testAlgoTankDestruirGrizzlyBattleTankConLanzaCohetesDesdeIzquierda()
+	 */
+	public void testAlgoTankDaniarMirageTankConLanzaCohetesDesdeAbajo() {
+		MirageTank otroTanque = new MirageTank(new Posicion(0,0));
+		tanque = new AlgoTank(new Posicion(0,((OcupacionCuadrada)otroTanque.getOcupacion()).getLado()));
+		tanque.entregarArma(new LanzaCohetes(tanque,25));
+		tanque.moverArriba();
+		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
+		int contador = 0;
+		while ((otroTanque.getResistencia() > 1)&&(contador < 100)) {
+			tanque.vivir();
+			tanque.disparar();
+			++contador;
+		}
+		if (otroTanque.getResistencia() > 1)
+			fail();
+		assertEquals(tanque.getArmasPrioritarias().peek().getMunicion(),18);
+		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
+	}
+	
+	/* A CONTINUACIÓN TESTEO QUE ALGO TANK PUEDA DESTRUIR CORRECTAMENTE A LOS DISTINTOS TIPOS DE PARED Y AL CUARTEL ARGENTINO, EN DISTINTAS POSICIONES RELATIVAS */
+	
+	/**
+	 * Agrego una instancia de la pared y del tanque en posiciones tales que los disparos del segundo vayan a impactar con la primera, y testeamos que al primer disparo desaparezca.
+	 */
+	public void testAlgoTankDestruirParedConcretoConAmetralladoraDesdeAbajo() {
+		ParedConcreto pared = new ParedConcreto(new Posicion(0,0));
+		tanque = new AlgoTank(new Posicion(0,((OcupacionCuadrada)pared.getOcupacion()).getLado()));
+		tanque.moverArriba();
+		assertTrue(Espacio.getInstancia().incluyeA(pared));
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.disparar();
+		assertFalse(Espacio.getInstancia().incluyeA(pared));
+	}
+	
+	/**
+	 * Agrego una instancia de la pared y del tanque en posiciones tales que los disparos del segundo vayan a impactar con la primera, y testeamos que al primer disparo no desaparezca pero al segundo sí.
+	 */
+	public void testAlgoTankDestruirParedMetalConAmetralladoraDesdeDerecha() {
+		ParedMetal pared = new ParedMetal(new Posicion(0,0));
+		tanque = new AlgoTank(new Posicion(((OcupacionCuadrada)pared.getOcupacion()).getLado(),0));
+		tanque.moverIzquierda();
+		assertTrue(Espacio.getInstancia().incluyeA(pared));
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.disparar();
+		assertTrue(Espacio.getInstancia().incluyeA(pared));
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.disparar();
+		assertFalse(Espacio.getInstancia().incluyeA(pared));
+	}
+	
+	/**
+	 * Agrego un cuartel argentino en una posición continua a una instancia de AlgoTank tal que los disparos lo impacten, y testeamos que antes del primer disparo el cuartel no haya desaparecido y que el juego no esté perdido, y que al primer disparo el cuartel haya desaparecido y que el juego resulte perdido.
+	 */
+	public void testAlgoTankDestruirCuartelArgentinoDesdeIzquierdaYJuegoPerdido() {
+		tanque = new AlgoTank(new Posicion(0,0));
+		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
+		tanque.moverDerecha();
+		assertTrue(Espacio.getInstancia().incluyeA(cuartel));
+		assertFalse(Espacio.getInstancia().juegoPerdido());
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.vivir();
+		tanque.disparar();
+		assertFalse(Espacio.getInstancia().incluyeA(cuartel));
+		assertTrue(Espacio.getInstancia().juegoPerdido());
+	}
+	
 }

@@ -6,20 +6,17 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Modela un lanza cohetes, el cual es un arma que tiene una minución limitada.
- * @author Tomás
+ * @author Federico
  *
  */
-public class LanzaCohetes extends Arma {
+public class LanzaCohetes extends ArmaMunicionLimitada {
 
-	int municion;
-	
 	/**
 	 * 
 	 * @param municion entero correspondiente a la munición inicial del arma
 	 */
 	public LanzaCohetes(Tanque duenio, int municion) {
-		super(duenio);
-		this.municion = municion;
+		super(duenio,municion);
 	}
 
 	/**
@@ -32,22 +29,6 @@ public class LanzaCohetes extends Arma {
 			new DisparoLanzaCohetes(duenio.getOrientacion(),posicionAuxiliar);
 			--municion;
 		}
-	}
-	
-	/**
-	 * 
-	 * @return entero correspondiente a la munición del arma
-	 */
-	public int getMunicion() {
-		return municion;
-	}
-	
-	/**
-	 * 
-	 * @param incremento entero que sumaremos a la munición del arma
-	 */
-	public void incrementarMunicion(int incremento) {
-		municion = municion + incremento;
 	}
 
 }

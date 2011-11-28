@@ -1,15 +1,15 @@
-package ar.uba.fi.algo3.modelo.pruebasUnitarias;
+package pruebas.pruebasUnitarias;
 
-import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoCanion;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
-import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import modelo.armamentista.disparo.DisparoCanion;
+import modelo.manejoEspacial.Espacio;
+import modelo.manejoEspacial.OcupacionCuadrada;
+import modelo.manejoEspacial.Orientacion;
+import modelo.manejoEspacial.Posicion;
 import junit.framework.TestCase;
 
 /**
  * Llevo a cabo las pruebas unitarias de la clase DisparoCanion.
- * @author Tomás
+ * @author Federico
  *
  */
 public class PruebasDisparoCanion extends TestCase {

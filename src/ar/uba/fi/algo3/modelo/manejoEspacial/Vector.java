@@ -1,8 +1,8 @@
-package ar.uba.fi.algo3.modelo.manejoEspacial;
+package modelo.manejoEspacial;
 
 /**
  * Modela un vector bidimensional con coordenadas cartesianas.
- * @author Tomás
+ * @author Samanta
  *
  */
 public abstract class Vector {

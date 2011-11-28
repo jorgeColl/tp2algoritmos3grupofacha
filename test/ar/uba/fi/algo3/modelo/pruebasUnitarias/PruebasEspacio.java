@@ -1,16 +1,16 @@
-package ar.uba.fi.algo3.modelo.pruebasUnitarias;
+package pruebas.pruebasUnitarias;
 
-import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
-import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
-import ar.uba.fi.algo3.modelo.tanques.GrizzlyBattleTank;
+import modelo.armamentista.disparo.DisparoAmetralladora;
+import modelo.manejoEspacial.Espacio;
+import modelo.manejoEspacial.Orientacion;
+import modelo.manejoEspacial.Posicion;
+import modelo.tanques.AlgoTank;
+import modelo.tanques.GrizzlyBattleTank;
 import junit.framework.TestCase;
 
 /**
  * Llevo a cabo las pruebas unitarias de la clase Espacio.
- * @author Tomás
+ * @author Samanta
  *
  */
 public class PruebasEspacio extends TestCase {

@@ -1,10 +1,10 @@
-package ar.uba.fi.algo3.modelo.manejoEspacial;
+package modelo.manejoEspacial;
 
 /**
  * Implementa la inferfaz Ocupacion, modelando concretamente a una ocupación bidimensional cuadrada.
  * El atributo puntoMenorModulo representa al punto del cuadrado más cercano al origen.
  * El atributo lado representa a la longitud del lado del cuadrado.
- * @author Tomás
+ * @author Samanta
  *
  */
 public class OcupacionCuadrada implements Ocupacion {
@@ -68,16 +68,28 @@ public class OcupacionCuadrada implements Ocupacion {
 		return true;
 	}
 	
+	/**
+	 * Delego en dos métodos propios.
+	 */
 	public boolean estaEnBorde() {
+		return ((estaEnBordeHorizontal())||(estaEnBordeVertical()));
+	}
+	
+	
+	public boolean estaEnBordeHorizontal() {
 		if (getLimiteDerecho() == Espacio.getInstancia().getLimiteDerecho())
-			return true;
-		if (getLimiteInferior() == Espacio.getInstancia().getLimiteInferior())
 			return true;
 		if (getLimiteIzquierdo() == 0)
 			return true;
+		return false;
+	}
+	
+	public boolean estaEnBordeVertical() {
+		if (getLimiteInferior() == Espacio.getInstancia().getLimiteInferior())
+			return true;
 		if (getLimiteSuperior() == 0)
 			return true;
-		return false;		
+		return false;
 	}
 
 	public boolean estaEnCentroHorizontal() {

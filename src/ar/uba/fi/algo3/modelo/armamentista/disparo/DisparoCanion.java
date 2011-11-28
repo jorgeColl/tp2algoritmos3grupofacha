@@ -1,13 +1,13 @@
-package ar.uba.fi.algo3.modelo.armamentista.disparo;
+package modelo.armamentista.disparo;
 
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
-import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import modelo.manejoEspacial.Espacio;
+import modelo.manejoEspacial.OcupacionCuadrada;
+import modelo.manejoEspacial.Orientacion;
+import modelo.manejoEspacial.Posicion;
 
 /**
  * Modela al disparo efectuado por los cañones.
- * @author Tomás
+ * @author Federico
  *
  */
 public class DisparoCanion extends Disparo {

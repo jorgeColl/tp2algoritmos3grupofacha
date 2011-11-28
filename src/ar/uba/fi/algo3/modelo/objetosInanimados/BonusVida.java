@@ -1,11 +1,11 @@
 /**
  * 
  */
-package ar.uba.fi.algo3.modelo.objetosInanimados;
+package modelo.objetosInanimados;
 
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
-import ar.uba.fi.algo3.modelo.tanques.Tanque;
+import modelo.manejoEspacial.Espacio;
+import modelo.manejoEspacial.Posicion;
+import modelo.tanques.Tanque;
 
 /**
  * Al entrar en contacto con un tanque, mejora su resistencia.

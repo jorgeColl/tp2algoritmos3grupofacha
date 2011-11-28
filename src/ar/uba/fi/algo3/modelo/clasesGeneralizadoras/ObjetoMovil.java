@@ -1,12 +1,12 @@
-package ar.uba.fi.algo3.modelo.clasesGeneralizadoras;
+package modelo.clasesGeneralizadoras;
 
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Ocupacion;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
+import modelo.manejoEspacial.Espacio;
+import modelo.manejoEspacial.Ocupacion;
+import modelo.manejoEspacial.Orientacion;
 
 /**
  * Provee de estado y comportamiento común a los objetos que pueden moverse por el espacio.
- * @author Tomás
+ * @author Jorge
  *
  */
 public abstract class ObjetoMovil extends ObjetoJuego {
