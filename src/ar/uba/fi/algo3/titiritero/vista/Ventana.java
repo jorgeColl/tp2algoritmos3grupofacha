@@ -22,7 +22,6 @@ public class Ventana extends Frame implements SuperficieDeDibujo{
 	 * Esta yerba es generada automática y aún no se su utilidad
 	 */
 	private static final long serialVersionUID = 1L;
-
 	
 	private ControladorJuego controlador;
 	
@@ -63,6 +62,7 @@ public class Ventana extends Frame implements SuperficieDeDibujo{
 	
 	public Ventana(int ancho,int alto, ControladorJuego unControlador){
 		this.addMouseListener(new MouseClickController(unControlador));
+		this.addKeyListener(new KeyPressedController(unControlador));
 		setSize(ancho, alto);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Dimension frameSize = getSize();
