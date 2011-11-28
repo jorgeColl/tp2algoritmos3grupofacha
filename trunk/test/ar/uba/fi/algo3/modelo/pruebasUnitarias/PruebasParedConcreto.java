@@ -1,15 +1,15 @@
-package ar.uba.fi.algo3.modelo.pruebasUnitarias;
+package pruebas.pruebasUnitarias;
 
-import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
-import ar.uba.fi.algo3.modelo.objetosInanimados.ParedConcreto;
+import modelo.armamentista.disparo.DisparoAmetralladora;
+import modelo.manejoEspacial.Espacio;
+import modelo.manejoEspacial.Orientacion;
+import modelo.manejoEspacial.Posicion;
+import modelo.objetosInanimados.ParedConcreto;
 import junit.framework.TestCase;
 
 /**
  * Llevo a cabo las pruebas unitarias de la clase ParedConcreto.
- * @author Tomás
+ * @author Jorge
  *
  */
 public class PruebasParedConcreto extends TestCase {

@@ -1,10 +1,12 @@
-package ar.uba.fi.algo3.modelo.pruebasUnitarias;
+package pruebas.pruebasUnitarias;
 
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
-import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
-import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
+import modelo.armamentista.arma.Canion;
+import modelo.armamentista.arma.LanzaCohetes;
+import modelo.manejoEspacial.Espacio;
+import modelo.manejoEspacial.OcupacionCuadrada;
+import modelo.manejoEspacial.Orientacion;
+import modelo.manejoEspacial.Posicion;
+import modelo.tanques.AlgoTank;
 import junit.framework.TestCase;
 
 /**
@@ -199,24 +201,22 @@ public class PruebasAlgoTank extends TestCase {
 	 * Otorgo municiones a una instancia de AlgoTank y chequeo que a medida que este dispare, las municiones disminuyan según se espera.
 	 */
 	public void testAlgoTankDisminucionMunicionDisparo() {
-		tanqueTest.incrementarMunicionCanion(3);
-		tanqueTest.incrementarMunicionLanzaCohetes(4);
-		assertEquals(tanqueTest.getLanzaCohetes().getMunicion(),4);
-		tanqueTest.dispararLanzaCohetes();
-		assertEquals(tanqueTest.getLanzaCohetes().getMunicion(),3);
-		tanqueTest.dispararLanzaCohetes();
-		assertEquals(tanqueTest.getLanzaCohetes().getMunicion(),2);
-		tanqueTest.dispararLanzaCohetes();
-		assertEquals(tanqueTest.getLanzaCohetes().getMunicion(),1);
-		tanqueTest.dispararLanzaCohetes();
-		assertEquals(tanqueTest.getLanzaCohetes().getMunicion(),0);
-		assertEquals(tanqueTest.getCanion().getMunicion(),3);
-		tanqueTest.dispararCanion();
-		assertEquals(tanqueTest.getCanion().getMunicion(),2);
-		tanqueTest.dispararCanion();
-		assertEquals(tanqueTest.getCanion().getMunicion(),1);
-		tanqueTest.dispararCanion();
-		assertEquals(tanqueTest.getCanion().getMunicion(),0);
+		tanqueTest.entregarArma(new LanzaCohetes(tanqueTest,4));
+		assertEquals(tanqueTest.getArmasPrioritarias().peek().getMunicion(),4);
+		tanqueTest.vivir();
+		tanqueTest.vivir();
+		tanqueTest.vivir();
+		tanqueTest.vivir();
+		tanqueTest.vivir();
+		tanqueTest.vivir();
+		tanqueTest.vivir();
+		tanqueTest.vivir();
+		tanqueTest.vivir();
+		tanqueTest.vivir();
+		tanqueTest.vivir();
+		tanqueTest.vivir();
+		tanqueTest.disparar();
+		assertEquals(tanqueTest.getArmasPrioritarias().peek().getMunicion(),3);
 	}
 	
 	/**
@@ -368,6 +368,44 @@ public class PruebasAlgoTank extends TestCase {
 		tanqueTest.acercarseAlCentroHorizontalDelEspacio();
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getX(),301);
 		assertEquals(((OcupacionCuadrada)(tanqueTest.getOcupacion())).getPuntoMenorModulo().getY(),250);
+	}
+	
+	/**
+	 * Otorgo al tanque un cañón y un lanza cohetes, y testeo que a medida que dispara dispare las armas esperadas y sus municiones vayan decreciendo de la manera correcta.
+	 */
+	public void testAlgoTankOtorgarArmasYDisparos() {
+		tanqueTest.entregarArma(new Canion(tanqueTest,3));
+		tanqueTest.entregarArma(new LanzaCohetes(tanqueTest,2));
+		assertEquals(tanqueTest.getArmasPrioritarias().peek().getMunicion(),2);
+		int contador = 0;
+		while (contador < 12) {
+			tanqueTest.vivir();
+			++contador;
+		}
+		tanqueTest.disparar();
+		assertEquals(tanqueTest.getArmasPrioritarias().peek().getMunicion(),1);
+		contador = 0;
+		while (contador < 12) {
+			tanqueTest.vivir();
+			++contador;
+		}
+		tanqueTest.disparar();
+		//AQUÍ DESECHA EL LANZA COHETES PORQUE SE QUEDÓ SIN MUNICIÓN ENTONCES PASA A PRIORIZAR EL CAÑÓN.
+		assertEquals(tanqueTest.getArmasPrioritarias().peek().getMunicion(),3);
+		contador = 0;
+		while (contador < 12) {
+			tanqueTest.vivir();
+			++contador;
+		}
+		tanqueTest.disparar();
+		assertEquals(tanqueTest.getArmasPrioritarias().peek().getMunicion(),2);
+		contador = 0;
+		while (contador < 12) {
+			tanqueTest.vivir();
+			++contador;
+		}
+		tanqueTest.disparar();
+		assertEquals(tanqueTest.getArmasPrioritarias().peek().getMunicion(),1);
 	}
 	
 }

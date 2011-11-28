@@ -6,7 +6,7 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Modela una ametralladora, la cual es un arma que tiene munición ilimitada.
- * @author Tomás
+ * @author Federico
  *
  */
 public class Ametralladora extends Arma {

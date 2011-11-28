@@ -1,15 +1,15 @@
-package ar.uba.fi.algo3.modelo.objetosInanimados;
+package modelo.objetosInanimados;
 
-import ar.uba.fi.algo3.modelo.armamentista.disparo.Disparo;
-import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
-import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
-import ar.uba.fi.algo3.modelo.tanques.Tanque;
+import modelo.armamentista.disparo.Disparo;
+import modelo.clasesGeneralizadoras.ObjetoJuego;
+import modelo.manejoEspacial.Espacio;
+import modelo.manejoEspacial.OcupacionCuadrada;
+import modelo.manejoEspacial.Posicion;
+import modelo.tanques.Tanque;
 
 /**
- * Modela al cuartel del jugador, el cual al ser destruído hace que este pierda.
- * @author Tomás
+ * Modela al cuartel del jugador, el cual al ser destruido hace que este pierda.
+ * @author Jorge
  *
  */
 public class CuartelArgentino extends ObjetoJuego {

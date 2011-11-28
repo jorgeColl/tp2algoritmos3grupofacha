@@ -4,7 +4,7 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Modela un arma, la cual tiene un tanque que es su dueño y es capaz de disparar una munición cuando se lo solicita.
- * @author Tomás
+ * @author Federico
  *
  */
 public abstract class Arma {
@@ -33,5 +33,13 @@ public abstract class Arma {
 	 * Para obtener esa ocupación, delega en la clase Ocupacion.
 	 */
 	public abstract void disparar();
+	
+	/**
+	 * 
+	 * @param duenio nueva instancia de la clase Tanque que representa al dueño del arma
+	 */
+	public void setDuenio(Tanque duenio) {
+		this.duenio = duenio;
+	}
 	
 }

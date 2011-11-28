@@ -1,18 +1,17 @@
-package ar.uba.fi.algo3.modelo.clasesGeneralizadoras; 
+package modelo.clasesGeneralizadoras;
 
-import ar.uba.fi.algo3.modelo.armamentista.disparo.Disparo;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Ocupacion;
-import ar.uba.fi.algo3.modelo.tanques.Tanque;
-import ar.uba.fi.algo3.titiritero.Posicionable;
+import modelo.armamentista.disparo.Disparo;
+import modelo.manejoEspacial.Espacio;
+import modelo.manejoEspacial.Ocupacion;
+import modelo.tanques.Tanque;
 
 /**
  * Provee el comportamiento y el estado común a todas las entidades del juego que pueden posicionarse en el espacio. 
  * El atributo ocupacion representa a la ocupación que tiene el objeto en el lugar en el que se desarrolla la acción del juego.
- * @author Tomás
+ * @author Jorge
  *
  */
-public abstract class ObjetoJuego implements Posicionable {
+public abstract class ObjetoJuego {
 	
 	protected Ocupacion ocupacion;
 	

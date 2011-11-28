@@ -1,11 +1,12 @@
-package ar.uba.fi.algo3.modelo.tanques;
+package modelo.tanques;
 
-import ar.uba.fi.algo3.modelo.armamentista.arma.Arma;
-import ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo.EstrategiaDisparoVelocidadDependiente;
-import ar.uba.fi.algo3.modelo.estrategias.estrategiasMovimiento.EstrategiaMovimiento;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import modelo.armamentista.arma.Arma;
+import modelo.clasesGeneralizadoras.ObjetoJuego;
+import modelo.estrategias.estrategiasDisparo.EstrategiaDisparoVelocidadDependiente;
+import modelo.estrategias.estrategiasMovimiento.EstrategiaMovimiento;
+import modelo.manejoEspacial.Espacio;
+import modelo.manejoEspacial.Orientacion;
+import modelo.manejoEspacial.Posicion;
 
 /**
  * Proveé el estado y el comportamiento común de los tanques enemigos.
@@ -51,6 +52,12 @@ public abstract class TanqueEnemigo extends Tanque {
 	public int getPuntosPorDestruccion() {
 		return puntosPorDestruccion;
 	}
+	
+	/**
+	 * Le indicamos al tanque quién es su objetivo para alcanzar y destruir.
+	 * @param objeto instancia de la clase ObjetoJuego a la cual el tanque tratará de alcanzar y destruir
+	 */
+	public abstract void indicarObjetivo(ObjetoJuego objeto);
 	
 	/**
 	 * Le indica al tanque que se mueva y dispare si es necesario, delegando en las estrategias correspondientes.

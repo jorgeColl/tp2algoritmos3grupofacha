@@ -1,12 +1,13 @@
-package ar.uba.fi.algo3.modelo.tanques;
+package modelo.tanques;
 
-import ar.uba.fi.algo3.modelo.armamentista.arma.Ametralladora;
-import ar.uba.fi.algo3.modelo.armamentista.arma.Canion;
-import ar.uba.fi.algo3.modelo.armamentista.arma.LanzaCohetes;
-import ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo.EstrategiaDisparoAlgoTank;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import java.util.Stack;
+
+import modelo.armamentista.arma.Ametralladora;
+import modelo.armamentista.arma.ArmaMunicionLimitada;
+import modelo.estrategias.estrategiasDisparo.EstrategiaDisparoAlgoTank;
+import modelo.manejoEspacial.Espacio;
+import modelo.manejoEspacial.Orientacion;
+import modelo.manejoEspacial.Posicion;
 
 /**
  * Modela al tanque manejado por el jugador.
@@ -16,15 +17,13 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 public class AlgoTank extends Tanque {
 
 	private Ametralladora ametralladora;
-	private Canion canion;
-	private LanzaCohetes lanzaCohetes;
+	private Stack<ArmaMunicionLimitada> armasPrioritarias;
 	
 	public AlgoTank(Posicion punto) {
 		super(punto);
 		ametralladora = new Ametralladora(this);
-		canion = new Canion(this,0);
+		armasPrioritarias = new Stack<ArmaMunicionLimitada>();
 		estrategiaDisparo = new EstrategiaDisparoAlgoTank(this);
-		lanzaCohetes = new LanzaCohetes(this,0);
 		orientacion = Orientacion.j;
 		velocidad = 2;
 		velocidadDisparo = 8;
@@ -36,31 +35,20 @@ public class AlgoTank extends Tanque {
 	}
 	
 	/**
-	 * Le pide a su estrategia de disparo que resuelva el qué arma disparar, siempre y cuando esto pueda hacerse.
+	 * Le pide a su estrategia de disparo que resuelva el qué arma disparar, siempre y cuando esto sea temporalmente posible.
 	 */
 	public void disparar() {
 		estrategiaDisparo.decidirDisparo();
 	}
 	
 	/**
-	 * Delega en la clase Ametralladora.
+	 * Cambiamos el dueño del arma y la agregamos a las del tanque, siempre y cuando no tengan munición nula.
+	 * @param arma instancia de una subclase de ArmaMunicionLimitada que se sumará a las del tanque
 	 */
-	public void dispararAmetralladora() {
-		ametralladora.disparar();
-	}
-	
-	/**
-	 * Delega en la clase Canion.
-	 */
-	public void dispararCanion() {
-		canion.disparar();
-	}
-	
-	/**
-	 * Delega en la clase LanzaCohetes.
-	 */
-	public void dispararLanzaCohetes() {
-		lanzaCohetes.disparar();
+	public void entregarArma(ArmaMunicionLimitada arma) {
+		arma.setDuenio(this);
+		if (arma.getMunicion() > 0)
+			armasPrioritarias.push(arma);
 	}
 
 	/**
@@ -70,39 +58,14 @@ public class AlgoTank extends Tanque {
 	public Ametralladora getAmetralladora() {
 		return ametralladora;
 	}
-
-	/**
-	 * 
-	 * @return instancia de la clase Canion perteneciente al tanque
-	 */
-	public Canion getCanion() {
-		return canion;
-	}
-
-	/**
-	 * 
-	 * @return instancia de la clase LanzaCohetes perteneciente al tanque
-	 */
-	public LanzaCohetes getLanzaCohetes() {
-		return lanzaCohetes;
-	}
 	
 	/**
 	 * 
-	 * @param municion entero que sumaremos a la munición del cañón
+	 * @return pila de las armas robadas por el tanque, en órden de prioridad
 	 */
-	public void incrementarMunicionCanion(int municion) {
-		canion.incrementarMunicion(municion);
+	public Stack<ArmaMunicionLimitada> getArmasPrioritarias() {
+		return armasPrioritarias;
 	}
-
-	/**
-	 * 
-	 * @param municion entero que sumaremos a la munición del lanza cohetes
-	 */
-	public void incrementarMunicionLanzaCohetes(int municion) {
-		lanzaCohetes.incrementarMunicion(municion);
-	}
-
 	
 	public void vivir() {
 		estrategiaDisparo.informarTranscursoTiempo();

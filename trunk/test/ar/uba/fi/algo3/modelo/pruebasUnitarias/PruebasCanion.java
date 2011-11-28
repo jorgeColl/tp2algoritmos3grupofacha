@@ -1,14 +1,14 @@
-package ar.uba.fi.algo3.modelo.pruebasUnitarias;
+package pruebas.pruebasUnitarias;
 
-import ar.uba.fi.algo3.modelo.armamentista.arma.Canion;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
-import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
+import modelo.armamentista.arma.Canion;
+import modelo.manejoEspacial.Espacio;
+import modelo.manejoEspacial.Posicion;
+import modelo.tanques.AlgoTank;
 import junit.framework.TestCase;
 
 /**
  * Llevo a cabo las pruebas unitarias de la clase Canion.
- * @author Tomás
+ * @author Federico
  *
  */
 public class PruebasCanion extends TestCase {

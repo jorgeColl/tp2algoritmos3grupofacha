@@ -1,5 +1,6 @@
 package pruebas.pruebasIntegracion;
 
+import modelo.armamentista.arma.Canion;
 import modelo.manejoEspacial.Espacio;
 import modelo.manejoEspacial.OcupacionCuadrada;
 import modelo.manejoEspacial.Posicion;
@@ -15,13 +16,13 @@ import modelo.tanques.MirageTank;
 import junit.framework.TestCase;
 
 /**
- * Llevo a cabo las pruebas de integración de GrizzlyBattleTank con los demás objetos del juego.
+ * Llevo a cabo las pruebas de integración de IFV con los demás objetos del juego.
  * @author Tomás
  *
  */
-public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
+public class PruebasIntegracionIFV extends TestCase {
 
-	private GrizzlyBattleTank tanque;
+	private IFV tanque;
 	
 	protected void setUp() throws Exception {
 		super.setUp();
@@ -31,8 +32,8 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	/**
 	 * Hago mover al tanque hasta que impacte con un BonusVelocidad y testeo que sus velocidades mejoren en el valor esperado.
 	 */
-	public void testGrizzlyBattleTankMejorarVelocidades() {
-		tanque = new GrizzlyBattleTank(new Posicion(0,0));
+	public void testIFVMejorarVelocidades() {
+		tanque = new IFV(new Posicion(0,0));
 		BonusVelocidad bonus = new BonusVelocidad(new Posicion(250,0));
 		int velocidad = tanque.getVelocidad();
 		int velocidadDisparo = tanque.getVelocidadDisparo();
@@ -46,8 +47,8 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	/**
 	 * Hago mover al tanque hasta que impacte con un BonusVida y testeo que su resistencia mejore en el valor esperado.
 	 */
-	public void testGrizzlyBattleTankMejorarResistencia() {
-		tanque = new GrizzlyBattleTank(new Posicion(0,0));
+	public void testIFVMejorarResistencia() {
+		tanque = new IFV(new Posicion(0,0));
 		BonusVida bonus = new BonusVida(new Posicion(250,0));
 		int resistencia = tanque.getResistencia();
 		while (tanque.getOcupacion().getLimiteDerecho() < bonus.getOcupacion().getLimiteIzquierdo()) {
@@ -63,9 +64,9 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	/**
 	 * Hago chocar al tanque con una instancia de AlgoTank y testeo que su ocupación no cambie porque este se interpuso en su camino.
 	 */
-	public void testGrizzlyBattleTankChocarConAlgoTankDesdeArriba() {
+	public void testIFVChocarConAlgoTankDesdeArriba() {
 		AlgoTank otroTanque = new AlgoTank(new Posicion(0,0));
-		tanque = new GrizzlyBattleTank(new Posicion(0,((OcupacionCuadrada)otroTanque.getOcupacion()).getLado()));
+		tanque = new IFV(new Posicion(0,((OcupacionCuadrada)otroTanque.getOcupacion()).getLado()));
 		tanque.moverArriba();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),((OcupacionCuadrada)tanque.getOcupacion()).getLado());
@@ -75,8 +76,8 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	/**
 	 * Hago chocar al tanque con una instancia de GrizzlyBattleTank y testeo que su ocupación no cambie porque este se interpuso en su camino.
 	 */
-	public void testGrizzlyBattleTankChocarConGrizzlyBattleTankDesdeArriba() {
-		tanque = new GrizzlyBattleTank(new Posicion(0,0));
+	public void testIFVChocarConGrizzlyBattleTankDesdeArriba() {
+		tanque = new IFV(new Posicion(0,0));
 		GrizzlyBattleTank otroTanque = new GrizzlyBattleTank(new Posicion(0,((OcupacionCuadrada)tanque.getOcupacion()).getLado()));
 		tanque.moverAbajo();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
@@ -86,8 +87,8 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	/**
 	 * Hago chocar al tanque con una instancia de IFV y testeo que su ocupación no cambie porque este se interpuso en su camino.
 	 */
-	public void testGrizzlyBattleTankChocarConIFVDesdeIzquierda() {
-		tanque = new GrizzlyBattleTank(new Posicion(0,0));
+	public void testIFVChocarConIFVDesdeIzquierda() {
+		tanque = new IFV(new Posicion(0,0));
 		IFV otroTanque = new IFV(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		tanque.moverDerecha();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
@@ -97,9 +98,9 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	/**
 	 * Hago chocar al tanque con una instancia de MirageTank y testeo que su ocupación no cambie porque este se interpuso en su camino.
 	 */
-	public void testGrizzlyBattleTankChocarConMirageTankDesdeDerecha() {
+	public void testIFVChocarConMirageTankDesdeDerecha() {
 		MirageTank otroTanque = new MirageTank(new Posicion(0,0));
-		tanque = new GrizzlyBattleTank(new Posicion(((OcupacionCuadrada)otroTanque.getOcupacion()).getLado(),0));
+		tanque = new IFV(new Posicion(((OcupacionCuadrada)otroTanque.getOcupacion()).getLado(),0));
 		tanque.moverIzquierda();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),((OcupacionCuadrada)otroTanque.getOcupacion()).getLado());
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
@@ -110,8 +111,8 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	/**
 	 * Hago chocar al tanque con una instancia de ParedConcreto y testeo que su ocupación no cambie porque este se interpuso en su camino.
 	 */
-	public void testGrizzlyBattleTankChocarConParedConcretoDesdeIzquierda() {
-		tanque = new GrizzlyBattleTank(new Posicion(0,0));
+	public void testIFVChocarConParedConcretoDesdeIzquierda() {
+		tanque = new IFV(new Posicion(0,0));
 		ParedConcreto pared = new ParedConcreto(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		tanque.moverDerecha();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
@@ -121,9 +122,9 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	/**
 	 * Hago chocar al tanque con una instancia de ParedMetal y testeo que su ocupación no cambie porque este se interpuso en su camino.
 	 */
-	public void testGrizzlyBattleTankChocarConParedMetalDesdeDerecha() {
+	public void testIFVChocarConParedMetalDesdeDerecha() {
 		ParedMetal pared = new ParedMetal(new Posicion(0,0));
-		tanque = new GrizzlyBattleTank(new Posicion(((OcupacionCuadrada)pared.getOcupacion()).getLado(),0));
+		tanque = new IFV(new Posicion(((OcupacionCuadrada)pared.getOcupacion()).getLado(),0));
 		tanque.moverIzquierda();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),((OcupacionCuadrada)pared.getOcupacion()).getLado());
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
@@ -132,8 +133,8 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	/**
 	 * Sitúo a una instancia del tanque contiguamente a una del cuartel, a su izquierda. Lo hago mover a la derecha. Testeo que su posición siga siendo la inicial porque el cuartel se interpuso en su camino.
 	 */
-	public void testGrizzlyBattleTankChocarConCuartelArgentinoDesdeIzquierda() {
-		tanque = new GrizzlyBattleTank(new Posicion(0,0));
+	public void testIFVChocarConCuartelArgentinoDesdeIzquierda() {
+		tanque = new IFV(new Posicion(0,0));
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));		
 		tanque.moverDerecha();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
@@ -143,22 +144,26 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	/* TESTEO QUE ESTE TANQUE DESTRUYA A TODOS LOS DEMAS A DISPAROS, EN DISTINTAS POSICIONES RELATIVAS */
 	
 	/**
-	 * Ubico a ambos tanques en el escenario y hago correr la lógica del juego hasta que la instancia de AlgoTank sea destruida.
-	 * Cuando esto ya haya sucedido testeo que el tanque se haya movido hacia la instancia de AlgoTank, y la prueba más importante es que la resistencia de la instancia de AlgoTank se anule.
+	 * Ubico a la instancia de IFV cerca del borde izquierdo de la pantalla, al cuartel sobre el borde superior y al tanque del jugador entre medio de los dos.
+	 * Hago correr la lógica del juego hasta que el tanque del jugador sea destruido.
+	 * Cuando esto ya haya ocurrido, la instancia de IFV tuvo que haberse acercado a su borde más cercano dado que eso le ordena su estrategia de movimiento.
+	 * Su munición tuvo que haber disminuído.
 	 * NOTA: Pongo un contador para que si la lógica falla no se entre en un ciclo infinito, y si la resistencia de la instancia AlgoTank no es menor o igual que cero luego de la finalización del ciclo (salida esperada) fallo el test.
 	 */
-	public void testGrizzlyBattleTankDestruirAlgoTankDisparosDesdeIzquierda() {
+	public void testIFVDestruirAlgoTankDisparosDesdeIzquierda() {
 		AlgoTank otroTanque = new AlgoTank(new Posicion(400,0));
-		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(250,250));
-		tanque = new GrizzlyBattleTank(new Posicion(0,0));
+		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(500,0));
+		tanque = new IFV(new Posicion(10,0));
+		int municionInicial = ((Canion)tanque.getArma()).getMunicion();
 		int contador = 0;
 		while ((otroTanque.getResistencia() > 0)&&(contador < 200)) {
 			Espacio.getInstancia().correrLogica();
 			++contador;
 		}
 		if (otroTanque.getResistencia() > 0)
-			fail();
-		assertTrue(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX() > 0);
+			fail();   
+		assertTrue(((Canion)tanque.getArma()).getMunicion() < municionInicial);
+		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
 	}
 	
@@ -168,66 +173,60 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	 * Lo hago disparar y testeo que con cada disparo la resistencia del otro vaya disminuyendo adecuadamente, hasta que sea destruido.
 	 * Testeo que antes de desaparecer el tanque esté incluido en el espacio, y que luego no.
 	 */
-	public void testGrizzlyBattleTankDestruirGrizzlyBattleTankDisparosDesdeArriba() {
-		tanque = new GrizzlyBattleTank(new Posicion(0,0));
+	public void testIFVDestruirGrizzlyBattleTankDisparosDesdeArriba() {
+		tanque = new IFV(new Posicion(0,0));
 		GrizzlyBattleTank tanqueDos = new GrizzlyBattleTank(new Posicion(0,((OcupacionCuadrada)tanque.getOcupacion()).getLado()));
 		tanque.moverAbajo();
 		assertEquals(tanqueDos.getResistencia(),100);
 		tanque.disparar();
-		assertEquals(tanqueDos.getResistencia(),80);
-		tanque.disparar();
-		assertEquals(tanqueDos.getResistencia(),60);
+		assertEquals(tanqueDos.getResistencia(),70);
 		tanque.disparar();
 		assertEquals(tanqueDos.getResistencia(),40);
 		tanque.disparar();
-		assertEquals(tanqueDos.getResistencia(),20);
+		assertEquals(tanqueDos.getResistencia(),10);
 		assertTrue(Espacio.getInstancia().incluyeA(tanqueDos));
 		tanque.disparar();
-		assertEquals(tanqueDos.getResistencia(),0);
+		assertEquals(tanqueDos.getResistencia(),-20);
 		assertFalse(Espacio.getInstancia().incluyeA(tanqueDos));
 	}
 
 	/**
-	 * @see testGrizzlyBattleTankDestruirGrizzlyBattleTankDisparosDesdeArriba()
+	 * @see testIFVDestruirGrizzlyBattleTankDisparosDesdeArriba()
 	 */
-	public void testGrizzlyBattleTankDestruirIFVDisparosDesdeDerecha() {
+	public void testIFVDestruirIFVDisparosDesdeDerecha() {
 		IFV tanqueDos = new IFV(new Posicion(0,0));
-		tanque = new GrizzlyBattleTank(new Posicion(((OcupacionCuadrada)tanqueDos.getOcupacion()).getLado(),0));
+		tanque = new IFV(new Posicion(((OcupacionCuadrada)tanqueDos.getOcupacion()).getLado(),0));
 		tanque.moverIzquierda();
 		assertEquals(tanqueDos.getResistencia(),100);
 		tanque.disparar();
-		assertEquals(tanqueDos.getResistencia(),80);
-		tanque.disparar();
-		assertEquals(tanqueDos.getResistencia(),60);
+		assertEquals(tanqueDos.getResistencia(),70);
 		tanque.disparar();
 		assertEquals(tanqueDos.getResistencia(),40);
 		tanque.disparar();
-		assertEquals(tanqueDos.getResistencia(),20);
+		assertEquals(tanqueDos.getResistencia(),10);
 		assertTrue(Espacio.getInstancia().incluyeA(tanqueDos));
 		tanque.disparar();
-		assertEquals(tanqueDos.getResistencia(),0);
+		assertEquals(tanqueDos.getResistencia(),-20);
 		assertFalse(Espacio.getInstancia().incluyeA(tanqueDos));
 	}
 
 	/**
-	 * @see testGrizzlyBattleTankDestruirGrizzlyBattleTankDisparosDesdeArriba()
+	 * @see testIFVDestruirGrizzlyBattleTankDisparosDesdeArriba()
 	 */
-	public void testGrizzlyBattleTankDestruirMirageTankDisparosDesdeAbajo() {
+	public void testIFVDestruirMirageTankDisparosDesdeAbajo() {
 		MirageTank tanqueDos = new MirageTank(new Posicion(0,0));
-		tanque = new GrizzlyBattleTank(new Posicion(0,((OcupacionCuadrada)tanqueDos.getOcupacion()).getLado()));
+		tanque = new IFV(new Posicion(0,((OcupacionCuadrada)tanqueDos.getOcupacion()).getLado()));
 		tanque.moverArriba();
 		assertEquals(tanqueDos.getResistencia(),100);
 		tanque.disparar();
-		assertEquals(tanqueDos.getResistencia(),80);
-		tanque.disparar();
-		assertEquals(tanqueDos.getResistencia(),60);
+		assertEquals(tanqueDos.getResistencia(),70);
 		tanque.disparar();
 		assertEquals(tanqueDos.getResistencia(),40);
 		tanque.disparar();
-		assertEquals(tanqueDos.getResistencia(),20);
+		assertEquals(tanqueDos.getResistencia(),10);
 		assertTrue(Espacio.getInstancia().incluyeA(tanqueDos));
 		tanque.disparar();
-		assertEquals(tanqueDos.getResistencia(),0);
+		assertEquals(tanqueDos.getResistencia(),-20);
 		assertFalse(Espacio.getInstancia().incluyeA(tanqueDos));
 	}
 	
@@ -239,8 +238,8 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	 * Oriento a este hacia ella y lo hago disparar.
 	 * Testeo que la pared no esté incluída en el espacio.
 	 */
-	public void testGrizzlyBattleTankDestruirParedConcretoDisparosDesdeIzquierda() {
-		tanque = new GrizzlyBattleTank(new Posicion(0,0));
+	public void testIFVDestruirParedConcretoDisparosDesdeIzquierda() {
+		tanque = new IFV(new Posicion(0,0));
 		ParedConcreto pared = new ParedConcreto(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		tanque.moverDerecha();
 		assertTrue(Espacio.getInstancia().incluyeA(pared));
@@ -256,9 +255,9 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	 * Hago disparar al tanque nuevamente.
 	 * Testeo que la pared no esté incluída en el espacio.
 	 */
-	public void testGrizzlyBattleTankDestruirParedMetalDisparosDesdeDerecha() {
+	public void testIFVDestruirParedMetalDisparosDesdeDerecha() {
 		ParedMetal pared = new ParedMetal(new Posicion(0,0));
-		tanque = new GrizzlyBattleTank(new Posicion(((OcupacionCuadrada)pared.getOcupacion()).getLado(),0));
+		tanque = new IFV(new Posicion(((OcupacionCuadrada)pared.getOcupacion()).getLado(),0));
 		tanque.moverIzquierda();
 		assertTrue(Espacio.getInstancia().incluyeA(pared));
 		tanque.disparar();
@@ -275,8 +274,8 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	 * Oriento el tanque hacia él y lo hago disparar.
 	 * Testeo que el bonus esté incluído en el espacio.
 	 */
-	public void testGrizzlyBattleTankNoAfectarBonusVidaDesdeIzquierda() {
-		tanque = new GrizzlyBattleTank(new Posicion(0,0));
+	public void testIFVNoAfectarBonusVidaDesdeIzquierda() {
+		tanque = new IFV(new Posicion(0,0));
 		BonusVida bonus = new BonusVida(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado()+tanque.getVelocidad(),0));
 		tanque.moverDerecha();
 		assertTrue(Espacio.getInstancia().incluyeA(bonus));
@@ -285,10 +284,10 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	}
 	
 	/**
-	 * @see testGrizzlyBattleTankNoAfectarBonusVidaDesdeIzquierda()
+	 * @see testIFVNoAfectarBonusVidaDesdeIzquierda()
 	 */
-	public void testGrizzlyBattleTankNoAfectarBonusVelocidadDesdeIzquierda() {
-		tanque = new GrizzlyBattleTank(new Posicion(0,0));
+	public void testIFVNoAfectarBonusVelocidadDesdeIzquierda() {
+		tanque = new IFV(new Posicion(0,0));
 		BonusVelocidad bonus = new BonusVelocidad(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado()+tanque.getVelocidad(),0));
 		tanque.moverDerecha();
 		assertTrue(Espacio.getInstancia().incluyeA(bonus));
@@ -307,8 +306,8 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	 * Testeo que el cuartel no esté incluído en el espacio.
 	 * Testeo que el juego esté perdido.
 	 */
-	public void testGrizzlyBattleTankDestruirCuartelArgentinoYJuegoPerdidoDesdeIzquierda() {
-		tanque = new GrizzlyBattleTank(new Posicion(0,0));
+	public void testIFVDestruirCuartelArgentinoYJuegoPerdidoDesdeIzquierda() {
+		tanque = new IFV(new Posicion(0,0));
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado()+tanque.getVelocidad(),0));
 		tanque.moverDerecha();
 		assertTrue(Espacio.getInstancia().incluyeA(cuartel));

@@ -1,6 +1,7 @@
-package ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo;
+package modelo.estrategias.estrategiasDisparo;
 
-import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
+import modelo.armamentista.arma.ArmaMunicionLimitada;
+import modelo.tanques.AlgoTank;
 
 /**
  * Representa a la estrategia de disparo de AlgoTank.
@@ -21,23 +22,22 @@ public class EstrategiaDisparoAlgoTank extends EstrategiaDisparo {
 	}
 	
 	/**
-	 * Dado que el constructor sólo permite que se le pase como parámetro una instancia de AlgoTank para inicializar al dueño de la estrategia, realizar un casteo es type-safe.
-	 * Si transcurrió el tiempo necesario para realizar un disparo desde el último, se lo realiza y se anula el atributo unidadesTemporalesTranscurridas.
+	 * Dado que el constructor sólo permite que se le pase como parámetro una instancia de AlgoTank para inicializar al dueño de la estrategia, realizar un casteo de dicho atributo a AlgoTank es type-safe.
+	 * Si transcurrió el tiempo necesario para realizar un nuevo disparo desde el último, se lo realiza y se anula el atributo unidadesTemporalesTranscurridas.
 	 */
 	public void decidirDisparo() {
 		AlgoTank duenioAuxiliar = (AlgoTank)duenio;
-		if (tiempoEntreDisparosTranscurrido()) {
-			if (duenioAuxiliar.getLanzaCohetes().getMunicion() > 0)
-				duenioAuxiliar.dispararLanzaCohetes();
-			else {
-				if (duenioAuxiliar.getCanion().getMunicion() > 0)
-					duenioAuxiliar.dispararCanion();
-				else {
-					duenioAuxiliar.dispararAmetralladora();
-				}	
+		if (tiempoEntreDisparosTranscurrido()) { 
+			if (!(duenioAuxiliar.getArmasPrioritarias().isEmpty())) {
+				ArmaMunicionLimitada armaAuxiliar = duenioAuxiliar.getArmasPrioritarias().peek();
+				armaAuxiliar.disparar();
+				if (armaAuxiliar.getMunicion() == 0)
+					duenioAuxiliar.getArmasPrioritarias().pop();
 			}
+			else
+				duenioAuxiliar.getAmetralladora().disparar();
 			unidadesTemporalesTranscurridas = 0;
-		}
+		}	
 	}
 
 }
