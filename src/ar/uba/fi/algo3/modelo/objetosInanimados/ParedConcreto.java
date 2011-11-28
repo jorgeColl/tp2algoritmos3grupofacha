@@ -1,6 +1,6 @@
-package modelo.objetosInanimados;
+package ar.uba.fi.algo3.modelo.objetosInanimados;
 
-import modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 
 /**
  * Modela una pared de concreto. La misma, al ser alcanzada por un disparo, ya desaparece.

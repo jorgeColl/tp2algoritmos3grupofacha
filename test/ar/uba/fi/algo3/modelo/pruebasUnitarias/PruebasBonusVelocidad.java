@@ -1,11 +1,11 @@
-package pruebas.pruebasUnitarias;
+package ar.uba.fi.algo3.modelo.pruebasUnitarias;
 
 import junit.framework.TestCase;
-import modelo.manejoEspacial.Posicion;
-import modelo.objetosInanimados.BonusVelocidad;
-import modelo.manejoEspacial.OcupacionCuadrada;
-import modelo.tanques.AlgoTank;
-import modelo.tanques.Tanque;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
+import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
+import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
+import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Llevo a cabo las pruebas unitarias de la clase BonusVelocidad.

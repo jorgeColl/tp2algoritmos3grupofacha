@@ -1,9 +1,9 @@
-package pruebas.pruebasUnitarias;
+package ar.uba.fi.algo3.modelo.pruebasUnitarias;
 
-import modelo.manejoEspacial.Espacio;
-import modelo.manejoEspacial.OcupacionCuadrada;
-import modelo.manejoEspacial.Posicion;
-import modelo.objetosInanimados.CuartelArgentino;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
+import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
 import junit.framework.TestCase;
 
 /**
