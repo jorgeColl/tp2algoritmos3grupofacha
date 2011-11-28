@@ -1,6 +1,3 @@
-/**
- * 
- */
 package ar.uba.fi.algo3.vista;
 
 import java.awt.Color;
