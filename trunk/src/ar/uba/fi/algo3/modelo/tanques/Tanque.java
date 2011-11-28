@@ -139,4 +139,8 @@ public abstract class Tanque extends ObjetoMovil implements ObjetoVivo {
 		velocidadDisparo = velocidadDisparo + incremento;
 	}
 	
+	public void vivir(){
+				
+	}
+	
 }

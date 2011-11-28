@@ -41,6 +41,8 @@ public class CorrerJuego {
 		controlador.agregarObjetoVivo(algoTank);
 		controlador.agregarDibujable(vistaTanque);
 		
+		controlador.agregarKeyPressObservador(vistaTanque);
+		
 		controlador.setIntervaloSimulacion(50);
 		controlador.comenzarJuego();
 

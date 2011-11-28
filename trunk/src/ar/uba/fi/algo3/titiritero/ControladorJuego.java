@@ -165,12 +165,12 @@ public class ControladorJuego implements Runnable {
 		}
 	}
 	
-	public void agregarKeyPressObservador(KeyPressedObservador unMouseClickObservador){
-		this.keyPressedObservadores.add(unMouseClickObservador);
+	public void agregarKeyPressObservador(KeyPressedObservador unKeyPressedObservador){
+		this.keyPressedObservadores.add(unKeyPressedObservador);
 	}
 	
-	public void removerKeyPressObservador(KeyPressedObservador unMouseClickObservador){
-		this.keyPressedObservadores.remove(unMouseClickObservador);
+	public void removerKeyPressObservador(KeyPressedObservador unKeyPressedObservador){
+		this.keyPressedObservadores.remove(unKeyPressedObservador);
 	}
 	
 	private long intervaloSimulacion;
