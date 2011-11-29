@@ -1,7 +1,5 @@
 package ar.uba.fi.algo3.vista;
 
-import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
-import ar.uba.fi.algo3.titiritero.vista.Cuadrado;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 /**
@@ -14,8 +12,7 @@ public class VistaCuartelArgentino extends Imagen {
 	
 	public VistaCuartelArgentino(){
 		super();
-		this.setNombreArchivoImagen("cover.JPG");
-
+		this.setNombreArchivoImagen("img/cuartelArgentino.jpg");
 	}
 
 }

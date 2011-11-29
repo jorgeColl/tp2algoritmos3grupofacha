@@ -41,16 +41,16 @@ public class CorrerJuego {
 		
 		/* inicializamos objetos del juego */
 		
-		AlgoTank algoTank = new AlgoTank(new Posicion(400,300));
+		AlgoTank algoTank = new AlgoTank(new Posicion(400, 300));
 		VistaTanque vistaTanque = new VistaTanque();
 		
-		ParedConcreto paredC = new ParedConcreto(new Posicion(200,100));
+		ParedConcreto paredC = new ParedConcreto(new Posicion(200, 100));
 		VistaPared vistaPared = new VistaPared();
 		
-		BonusVelocidad bonusVel = new BonusVelocidad(new Posicion(30,30));
+		BonusVelocidad bonusVel = new BonusVelocidad(new Posicion(30, 30));
 		VistaBonus vistaBonusVel = new VistaBonus();
 		
-		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(100,400));
+		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(100, 400));
 		VistaCuartelArgentino vistaCuartel = new VistaCuartelArgentino();
 		
 		vistaPared.setPosicionable(paredC);
