@@ -2,7 +2,8 @@ package ar.uba.fi.algo3.titiritero.vista;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.net.URL;
+import java.io.File;
+//import java.net.URL;
 
 import javax.imageio.ImageIO;
 
@@ -36,10 +37,12 @@ public class Imagen implements Dibujable{
 	public void setNombreArchivoImagen(String nombreArchivoImagen) {
 		this.nombreArchivoImagen = nombreArchivoImagen;
 		try{
-			URL u = this.getClass().getResource(this.nombreArchivoImagen);
+			//URL u = this.getClass().getResource(this.nombreArchivoImagen);
+			File u = new File(this.nombreArchivoImagen);
 			this.imagen = ImageIO.read(u);
 		} catch(Exception ex) {}
-		if (this.imagen == null) System.out.println("Guarda: imagen es null.");
+	
+		if (this.imagen == null) System.out.println("ERROR: imagen es null.");
 	}
 	
 	public Posicionable getPosicionable() {
@@ -48,6 +51,7 @@ public class Imagen implements Dibujable{
 
 	public void setPosicionable(Posicionable posicionable) {
 		this.posicionable = posicionable;
+		
 	}
 	
 	private String nombreArchivoImagen;
