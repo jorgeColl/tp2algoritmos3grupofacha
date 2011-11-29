@@ -38,9 +38,8 @@ public class Imagen implements Dibujable{
 		try{
 			URL u = this.getClass().getResource(this.nombreArchivoImagen);
 			this.imagen = ImageIO.read(u);
-		} catch(Exception ex) {
-
-		}			
+		} catch(Exception ex) {}
+		if (this.imagen == null) System.out.println("Guarda: imagen es null.");
 	}
 	
 	public Posicionable getPosicionable() {

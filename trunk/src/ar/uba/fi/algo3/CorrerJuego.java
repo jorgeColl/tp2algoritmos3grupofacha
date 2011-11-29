@@ -50,7 +50,7 @@ public class CorrerJuego {
 		BonusVelocidad bonusVel = new BonusVelocidad(new Posicion(30,30));
 		VistaBonus vistaBonusVel = new VistaBonus();
 		
-		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(300,200));
+		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(100,400));
 		VistaCuartelArgentino vistaCuartel = new VistaCuartelArgentino();
 		
 		vistaPared.setPosicionable(paredC);
