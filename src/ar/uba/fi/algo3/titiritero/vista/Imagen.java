@@ -38,7 +38,7 @@ public class Imagen implements Dibujable{
 		try{
 			URL u = this.getClass().getResource(this.nombreArchivoImagen);
 			this.imagen = ImageIO.read(u);
-		}catch(Exception ex){
+		} catch(Exception ex) {
 
 		}			
 	}
