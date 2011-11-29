@@ -6,9 +6,9 @@ public class VistaDisparo extends Imagen{
 	
 	public VistaDisparo(){
 		super();
-		this.setNombreArchivoImagen("img/Disparo.jpg");
-		
+		this.setNombreArchivoImagen("img/Disparo_jNegativo.jpg");
 		
 	}
+	
 
 }
