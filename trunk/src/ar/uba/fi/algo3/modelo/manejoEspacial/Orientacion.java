@@ -13,7 +13,7 @@ public class Orientacion extends Vector {
 	public static Orientacion j = new Orientacion(0,1);
 	public static Orientacion jNegativo = new Orientacion(0,-1);
 	
-	public Orientacion(int x, int y) {
+	private Orientacion(int x, int y) {
 		super(x, y);
 	}
 

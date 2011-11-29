@@ -58,10 +58,10 @@ public class CorrerJuego {
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(200, 300));
 		VistaCuartelArgentino vistaCuartel = new VistaCuartelArgentino();
 		
-		DisparoAmetralladora disparo = new DisparoAmetralladora(new Orientacion(1,0),new Posicion(350,150));
+		DisparoAmetralladora disparo = new DisparoAmetralladora(Orientacion.jNegativo,new Posicion(200,100));
 		VistaDisparo vistaDisparo = new VistaDisparo();
 		
-		
+	
 		vistaPared.setPosicionable(paredC);
 		vistaTanque.setPosicionable(algoTank);
 		vistaBonusVel.setPosicionable(bonusVel);
