@@ -10,23 +10,12 @@ import ar.uba.fi.algo3.titiritero.vista.Imagen;
  *
  */
 
-public class VistaCuartelArgentino extends Cuadrado {
-	
-	private Imagen imagen;
+public class VistaCuartelArgentino extends Imagen {
 	
 	public VistaCuartelArgentino(){
-		super(50,50);
-		//setColor(Color.ORANGE);
-		imagen = new Imagen();
-		imagen.setNombreArchivoImagen("C:\\cuartelArgentino.JPG");
-		
-		//Este metodo a partir del nombre genera la imagen 
-		//y la guarda en un atributo de imagen	
-	}
-	
-	public void dibujar(SuperficieDeDibujo superfice) {
-		imagen.setPosicionable(this.getPosicionable());
-		imagen.dibujar(superfice);
+		super();
+		this.setNombreArchivoImagen("cover.JPG");
+
 	}
 
 }
