@@ -40,5 +40,5 @@ public class CuartelArgentino extends ObjetoJuego {
 	public void chocarCon(Tanque tanque) {
 		tanque.moverEnDireccionContraria();		
 	}
-
+	
 }
