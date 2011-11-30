@@ -17,7 +17,8 @@ public class Ametralladora extends Arma {
 
 	public void disparar() {
 		Posicion posicionAuxiliar;
-		posicionAuxiliar = duenio.getOcupacion().getPosicionPerimetralCentradaEnOrientacion(duenio.getOrientacion());
+		posicionAuxiliar = duenio.getOcupacion().
+				getPosicionPerimetralCentradaEnOrientacion(duenio.getOrientacion());
 		new DisparoAmetralladora(duenio.getOrientacion(),posicionAuxiliar);
 	}
 

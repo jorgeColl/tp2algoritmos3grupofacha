@@ -34,9 +34,7 @@ public class CorrerJuego {
 		/* esto no sé que es, pero me lo pide el contructor del 
 		ControladorJuego, así que para no harcodearlo lo inicializo
 		acá: */
-		boolean activarReproductor = true;
-		
-		ControladorJuego controlador = new ControladorJuego(activarReproductor);
+		ControladorJuego controlador = ControladorJuego.getInstancia();
 		Ventana ventana = new Ventana(800, 600, controlador);
 		ventana.setTitle("AlgoTank");
 		
@@ -47,7 +45,6 @@ public class CorrerJuego {
 		/* inicializamos objetos del juego */
 		
 		AlgoTank algoTank = new AlgoTank(new Posicion(400, 300));
-		VistaAlgoTank vistaAlgoTank = new VistaAlgoTank();
 		
 		ParedConcreto paredC = new ParedConcreto(new Posicion(200, 100));
 		VistaPared vistaPared = new VistaPared();
@@ -56,27 +53,12 @@ public class CorrerJuego {
 		VistaBonus vistaBonusVel = new VistaBonus();
 		
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(200, 300));
-		VistaCuartelArgentino vistaCuartel = new VistaCuartelArgentino();
 		
-		DisparoAmetralladora disparo = new DisparoAmetralladora(Orientacion.jNegativo,new Posicion(200,100));
-		VistaDisparo vistaDisparo = new VistaDisparo();
-		
-	
 		vistaPared.setPosicionable(paredC);
-		vistaAlgoTank.setPosicionable(algoTank);
 		vistaBonusVel.setPosicionable(bonusVel);
-		vistaCuartel.setPosicionable(cuartel);
-		vistaDisparo.setPosicionable(disparo);
 		
-		controlador.agregarObjetoVivo(algoTank);
-		controlador.agregarObjetoVivo(disparo);
-		controlador.agregarDibujable(vistaAlgoTank);		
 		controlador.agregarDibujable(vistaPared);
 		controlador.agregarDibujable(vistaBonusVel);
-		controlador.agregarDibujable(vistaCuartel);
-		controlador.agregarDibujable(vistaDisparo);
-		
-		controlador.agregarKeyPressObservador(vistaAlgoTank);
 		
 		controlador.setIntervaloSimulacion(50);
 		controlador.comenzarJuego();

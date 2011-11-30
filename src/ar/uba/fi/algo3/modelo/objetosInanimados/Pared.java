@@ -26,6 +26,8 @@ public abstract class Pared extends ObjetoJuego {
 	public Pared(Posicion punto) {
 		impactosRecibidos = 0;
 		ocupacion = new OcupacionCuadrada(punto,5);
+		
+		/* agrego la instancia en el Espacio */
 		try {
 			Espacio.getInstancia().agregarObjetoInanimado(this);
 		} catch (Exception e) {

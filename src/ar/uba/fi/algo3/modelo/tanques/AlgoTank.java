@@ -8,6 +8,8 @@ import ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo.EstrategiaDisparoAl
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.titiritero.ControladorJuego;
+import ar.uba.fi.algo3.vista.VistaAlgoTank;
 
 /**
  * Modela al tanque manejado por el jugador.
@@ -27,11 +29,19 @@ public class AlgoTank extends Tanque {
 		orientacion = Orientacion.j;
 		velocidad = 2;
 		velocidadDisparo = 8;
+		
+		/* agrego la instancia en el Espacio */
 		try {
 			Espacio.getInstancia().agregarTanqueJugador(this);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		/* creo y agrego la vista al ControladorJuego */
+		VistaAlgoTank vista = new VistaAlgoTank();
+		vista.setPosicionable(this);
+		ControladorJuego.getInstancia().agregarDibujable(vista);	
+		ControladorJuego.getInstancia().agregarKeyPressObservador(vista);
 	}
 	
 	/**

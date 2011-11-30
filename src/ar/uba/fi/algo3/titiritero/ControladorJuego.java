@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.titiritero.audio.Reproductor;
 
 /**
@@ -14,15 +15,31 @@ import ar.uba.fi.algo3.titiritero.audio.Reproductor;
  */
 public class ControladorJuego implements Runnable {
 	
-	public ControladorJuego(boolean activarReproductor){
-		this.objetosVivos = new ArrayList<ObjetoVivo>();
+	private static ControladorJuego instancia;
+	private long intervaloSimulacion;
+	private boolean estaEnEjecucion;
+	private List<Dibujable> dibujables;
+	private List<MouseClickObservador> mouseClickObservadores;
+	private List<KeyPressedObservador> keyPressedObservadores;
+	private SuperficieDeDibujo superficieDeDibujo;
+	private Reproductor reproductor;
+	private Thread hiloAudio;
+	private boolean estaReproductorActivo;	
+	
+	private ControladorJuego(){
 		this.dibujables = new ArrayList<Dibujable>();
 		this.mouseClickObservadores = new ArrayList<MouseClickObservador>();
 		this.keyPressedObservadores = new ArrayList<KeyPressedObservador>();
-		this.estaReproductorActivo = activarReproductor;
+//		this.estaReproductorActivo = activarReproductor;
 		if(this.estaReproductorActivo)
 			this.reproductor = new Reproductor();		
 	}
+	
+	public static ControladorJuego getInstancia() {
+		if (instancia == null)
+			instancia = new ControladorJuego();
+		return instancia;
+	} 
 	
 	public boolean estaEnEjecucion(){
 		return this.estaEnEjecucion;
@@ -32,7 +49,7 @@ public class ControladorJuego implements Runnable {
 		estaEnEjecucion = true;
 		try{
 			while(estaEnEjecucion){
-				simular();
+				Espacio.getInstancia().correrLogica();
 				dibujar();
 				Thread.sleep(intervaloSimulacion);
 			}
@@ -61,7 +78,7 @@ public class ControladorJuego implements Runnable {
 		estaEnEjecucion = true;
 		try{
 			while(contador < cantidadDeCiclos && estaEnEjecucion){
-				simular();
+				Espacio.getInstancia().correrLogica();
 				dibujar();
 				Thread.sleep(intervaloSimulacion);
 				contador++;
@@ -81,13 +98,15 @@ public class ControladorJuego implements Runnable {
 			this.reproductor.apagar();
 	}
 	
+	
+/*
 	public void agregarObjetoVivo(ObjetoVivo objetoVivo){
 		objetosVivos.add(objetoVivo);
 	}
-	
 	public void removerObjetoVivo(ObjetoVivo objetoVivo){
 		objetosVivos.remove(objetoVivo);
 	}
+*/
 
 	public void agregarDibujable(Dibujable unDibujable){
 		dibujables.add(unDibujable);
@@ -106,6 +125,7 @@ public class ControladorJuego implements Runnable {
 	}
  
 	private void dibujar() {
+		this.superficieDeDibujo.limpiar();
 		Iterator<Dibujable> iterador = dibujables.iterator();
 		while(iterador.hasNext()){
 			Dibujable dibujable = iterador.next();
@@ -114,16 +134,15 @@ public class ControladorJuego implements Runnable {
 		this.superficieDeDibujo.actualizar();
 	}
 	
-	/**
+/*
 	 * Ejecuta la simulacion recorriendo la coleccion de objetivos vivos.
-	 */
 	private void simular() {
-		this.superficieDeDibujo.limpiar();
 		Iterator<ObjetoVivo> iterador = objetosVivos.iterator();
 		while(iterador.hasNext()){
 			iterador.next().vivir();
 		}
 	}
+*/
 
 	public SuperficieDeDibujo getSuperficieDeDibujo() {
 		return superficieDeDibujo;
@@ -172,17 +191,6 @@ public class ControladorJuego implements Runnable {
 	public void removerKeyPressObservador(KeyPressedObservador unKeyPressedObservador){
 		this.keyPressedObservadores.remove(unKeyPressedObservador);
 	}
-	
-	private long intervaloSimulacion;
-	private boolean estaEnEjecucion;
-	private List<ObjetoVivo> objetosVivos;
-	private List<Dibujable> dibujables;
-	private List<MouseClickObservador> mouseClickObservadores;
-	private List<KeyPressedObservador> keyPressedObservadores;
-	private SuperficieDeDibujo superficieDeDibujo;
-	private Reproductor reproductor;
-	private Thread hiloAudio;
-	private boolean estaReproductorActivo;
 	
 	public void run() {
 		this.comenzarJuego();

@@ -37,7 +37,7 @@ public class EstrategiaDisparoAlgoTank extends EstrategiaDisparo {
 			else
 				duenioAuxiliar.getAmetralladora().disparar();
 			unidadesTemporalesTranscurridas = 0;
-		}	
+		}
 	}
 
 }

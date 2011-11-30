@@ -6,9 +6,7 @@ public class VistaDisparo extends ImagenEstatica{
 	
 	public VistaDisparo(){
 		super();
-		this.setNombreArchivoImagen("img/Disparo_jNegativo.jpg");
-		
+		this.setNombreArchivoImagen("img/disparo.jpg");
 	}
-	
 
 }
