@@ -13,8 +13,8 @@ import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
 import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.vista.Ventana;
+import ar.uba.fi.algo3.vista.VistaAlgoTank;
 import ar.uba.fi.algo3.vista.VistaDisparo;
-import ar.uba.fi.algo3.vista.VistaTanque;
 import ar.uba.fi.algo3.vista.VistaPared;
 import ar.uba.fi.algo3.vista.VistaBonus;
 import ar.uba.fi.algo3.vista.VistaCuartelArgentino;
@@ -47,7 +47,7 @@ public class CorrerJuego {
 		/* inicializamos objetos del juego */
 		
 		AlgoTank algoTank = new AlgoTank(new Posicion(400, 300));
-		VistaTanque vistaTanque = new VistaTanque();
+		VistaAlgoTank vistaAlgoTank = new VistaAlgoTank();
 		
 		ParedConcreto paredC = new ParedConcreto(new Posicion(200, 100));
 		VistaPared vistaPared = new VistaPared();
@@ -63,20 +63,20 @@ public class CorrerJuego {
 		
 	
 		vistaPared.setPosicionable(paredC);
-		vistaTanque.setPosicionable(algoTank);
+		vistaAlgoTank.setPosicionable(algoTank);
 		vistaBonusVel.setPosicionable(bonusVel);
 		vistaCuartel.setPosicionable(cuartel);
 		vistaDisparo.setPosicionable(disparo);
 		
 		controlador.agregarObjetoVivo(algoTank);
 		controlador.agregarObjetoVivo(disparo);
-		controlador.agregarDibujable(vistaTanque);		
+		controlador.agregarDibujable(vistaAlgoTank);		
 		controlador.agregarDibujable(vistaPared);
 		controlador.agregarDibujable(vistaBonusVel);
 		controlador.agregarDibujable(vistaCuartel);
 		controlador.agregarDibujable(vistaDisparo);
 		
-		controlador.agregarKeyPressObservador(vistaTanque);
+		controlador.agregarKeyPressObservador(vistaAlgoTank);
 		
 		controlador.setIntervaloSimulacion(50);
 		controlador.comenzarJuego();

@@ -1,7 +1,7 @@
 package ar.uba.fi.algo3.vista;
 
 
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
+import ar.uba.fi.algo3.titiritero.vista.ImagenEstatica;
 
 /**
  * Clase que genera la vista de CuartelArgentino.
@@ -9,7 +9,7 @@ import ar.uba.fi.algo3.titiritero.vista.Imagen;
  *
  */
 
-public class VistaCuartelArgentino extends Imagen {
+public class VistaCuartelArgentino extends ImagenEstatica {
 	
 	public VistaCuartelArgentino(){
 		super();
