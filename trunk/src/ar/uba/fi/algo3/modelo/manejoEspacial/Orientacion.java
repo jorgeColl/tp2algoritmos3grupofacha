@@ -16,5 +16,4 @@ public class Orientacion extends Vector {
 	private Orientacion(int x, int y) {
 		super(x, y);
 	}
-
 }

@@ -5,7 +5,6 @@ import java.util.Vector;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.Disparo;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoMovil;
-import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo.EstrategiaDisparo;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Ocupacion;
@@ -18,7 +17,7 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
  * @author Tomás
  *
  */
-public abstract class Tanque extends ObjetoMovil implements ObjetoVivo {
+public abstract class Tanque extends ObjetoMovil {
 
 	protected EstrategiaDisparo estrategiaDisparo;
 	protected int resistencia;

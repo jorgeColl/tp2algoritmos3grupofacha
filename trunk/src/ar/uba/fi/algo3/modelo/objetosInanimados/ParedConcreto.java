@@ -13,5 +13,4 @@ public class ParedConcreto extends Pared {
 		super(punto);
 		impactosTolerados = 0;
 	}
-	
 }

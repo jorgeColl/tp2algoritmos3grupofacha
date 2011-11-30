@@ -6,7 +6,7 @@ import org.jmock.Mockery;
 
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.Dibujable;
-import ar.uba.fi.algo3.titiritero.ObjetoVivo;
+//import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
 
 public class ControladorJuegoTest extends TestCase {
@@ -16,18 +16,18 @@ public class ControladorJuegoTest extends TestCase {
 	public void testComenzar() {
 		
 		final Dibujable unDibujable = mockery.mock(Dibujable.class); 
-		final ObjetoVivo unObjetoVivo = mockery.mock(ObjetoVivo.class);
+//		final ObjetoVivo unObjetoVivo = mockery.mock(ObjetoVivo.class);
 		final SuperficieDeDibujo superficieDeDibujo = mockery.mock(SuperficieDeDibujo.class);
 		
-		ControladorJuego controladorJuego = new ControladorJuego(false);
+		ControladorJuego controladorJuego = ControladorJuego.getInstancia();
 		controladorJuego.setSuperficieDeDibujo(superficieDeDibujo);
 		controladorJuego.agregarDibujable(unDibujable);
-		controladorJuego.agregarObjetoVivo(unObjetoVivo);
+//		controladorJuego.agregarObjetoVivo(unObjetoVivo);
 		controladorJuego.setIntervaloSimulacion(50);
 		
 		mockery.checking(new Expectations(){{
 			oneOf (unDibujable).dibujar(superficieDeDibujo); 
-			oneOf (unObjetoVivo).vivir();
+//			oneOf (unObjetoVivo).vivir();
 			oneOf(superficieDeDibujo).limpiar(); 
 			oneOf(superficieDeDibujo).actualizar();
 			}});

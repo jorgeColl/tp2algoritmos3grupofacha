@@ -4,7 +4,6 @@ import java.util.Vector;
 
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoMovil;
-import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Ocupacion;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
@@ -16,7 +15,7 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
  * @author Federico
  *
  */
-public abstract class Disparo extends ObjetoMovil implements ObjetoVivo {
+public abstract class Disparo extends ObjetoMovil {
 	
 	protected int danioNeto;
 	protected int danioPorcentual;

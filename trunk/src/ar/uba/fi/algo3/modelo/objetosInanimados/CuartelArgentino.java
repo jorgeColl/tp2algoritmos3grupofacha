@@ -6,6 +6,8 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.tanques.Tanque;
+import ar.uba.fi.algo3.titiritero.ControladorJuego;
+import ar.uba.fi.algo3.vista.VistaCuartelArgentino;
 
 /**
  * Modela al cuartel del jugador, el cual al ser destruido hace que este pierda.
@@ -20,11 +22,18 @@ public class CuartelArgentino extends ObjetoJuego {
 	 */
 	public CuartelArgentino(Posicion punto) {
 		ocupacion = new OcupacionCuadrada(punto,5);
+		
+		/* agrego la instancia en el Espacio */
 		try {
 			Espacio.getInstancia().agregarCuartelArgentino(this);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		/* creo y agrego la vista al ControladorJuego */
+		VistaCuartelArgentino vista = new VistaCuartelArgentino();
+		vista.setPosicionable(this);
+		ControladorJuego.getInstancia().agregarDibujable(vista);	
 	}
 	
 	/**
