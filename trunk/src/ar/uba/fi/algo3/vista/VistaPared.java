@@ -1,18 +1,17 @@
 package ar.uba.fi.algo3.vista;
 
-import java.awt.Color;
-import ar.uba.fi.algo3.titiritero.vista.Cuadrado;
+import ar.uba.fi.algo3.titiritero.vista.ImagenEstatica;
 
 /**
  * Clase que genera la vista de Pared
  * @author Samanta
  *
  */
-public class VistaPared extends Cuadrado {
+public class VistaPared extends ImagenEstatica {
 	
 	public VistaPared() {
-		super(50,50);
-		setColor(Color.orange);
+		super();
+		this.setNombreArchivoImagen("img/ParedConcreto.jpg");
 	}
 
 }
