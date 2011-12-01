@@ -37,7 +37,7 @@ public class CorrerJuego {
 		ControladorJuego, as� que para no harcodearlo lo inicializo
 		ac�: */
 		ControladorJuego controlador = ControladorJuego.getInstancia();
-		Ventana ventana = new Ventana(644, 644, controlador);
+		Ventana ventana = new Ventana(601, 601, controlador);
 		ventana.setTitle("AlgoTank");
 		
 		/* l�neas copiadas del ejemplo. */
