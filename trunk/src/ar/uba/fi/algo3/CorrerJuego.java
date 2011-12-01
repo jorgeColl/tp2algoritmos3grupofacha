@@ -10,6 +10,7 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
 import ar.uba.fi.algo3.modelo.objetosInanimados.ParedConcreto;
 import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
+import ar.uba.fi.algo3.modelo.tanques.GrizzlyBattleTank;
 import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.vista.Ventana;
@@ -18,6 +19,7 @@ import ar.uba.fi.algo3.vista.VistaDisparo;
 import ar.uba.fi.algo3.vista.VistaPared;
 import ar.uba.fi.algo3.vista.VistaBonus;
 import ar.uba.fi.algo3.vista.VistaCuartelArgentino;
+import ar.uba.fi.algo3.vista.VistaTanqueEnemigo;
 
 /**
  * @author Fede
@@ -54,11 +56,16 @@ public class CorrerJuego {
 		
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(200, 300));
 		
+		GrizzlyBattleTank tanque = new GrizzlyBattleTank(new Posicion(400,250));
+		VistaTanqueEnemigo vistaTanque = new VistaTanqueEnemigo();
+		
+		vistaTanque.setPosicionable(tanque);
 		vistaPared.setPosicionable(paredC);
 		vistaBonusVel.setPosicionable(bonusVel);
 		
 		controlador.agregarDibujable(vistaPared);
 		controlador.agregarDibujable(vistaBonusVel);
+		controlador.agregarDibujable(vistaTanque);
 		
 		controlador.setIntervaloSimulacion(50);
 		controlador.comenzarJuego();
