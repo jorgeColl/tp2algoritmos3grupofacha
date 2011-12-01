@@ -8,5 +8,7 @@ public interface Posicionable {
 	
 	public int getX();
 	public int getY();
+	public void setVivo(boolean vivo);
+	public boolean isVivo();
 
 }

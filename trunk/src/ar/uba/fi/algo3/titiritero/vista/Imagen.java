@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
+import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.Dibujable;
 import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
 import ar.uba.fi.algo3.titiritero.MouseClickObservador;
@@ -19,10 +20,14 @@ public abstract class Imagen implements Dibujable, MouseClickObservador, KeyPres
 	public Imagen(){
 		super();
 	}
-
-	public void dibujar(SuperficieDeDibujo superficeDeDibujo) {
-		Graphics grafico = (Graphics)superficeDeDibujo.getBuffer();
-		grafico.drawImage(imagen, posicionable.getX(), posicionable.getY(), null);
+	
+	public void dibujar(SuperficieDeDibujo superficeDeDibujo){
+		if(!posicionable.isVivo()){
+			ControladorJuego.getInstancia().removerDibujable(this);
+		}else{
+			Graphics grafico = (Graphics)superficeDeDibujo.getBuffer();
+			grafico.drawImage(imagen, posicionable.getX(), posicionable.getY(), null);
+		}
 	}
 	    
 	public Posicionable getPosicionable() {
