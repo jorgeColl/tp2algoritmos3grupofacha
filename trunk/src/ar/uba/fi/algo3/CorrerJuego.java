@@ -31,14 +31,14 @@ public class CorrerJuego {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		/* esto no sé que es, pero me lo pide el contructor del 
-		ControladorJuego, así que para no harcodearlo lo inicializo
-		acá: */
+		/* esto no sï¿½ que es, pero me lo pide el contructor del 
+		ControladorJuego, asï¿½ que para no harcodearlo lo inicializo
+		acï¿½: */
 		ControladorJuego controlador = ControladorJuego.getInstancia();
-		Ventana ventana = new Ventana(800, 600, controlador);
+		Ventana ventana = new Ventana(644, 644, controlador);
 		ventana.setTitle("AlgoTank");
 		
-		/* líneas copiadas del ejemplo. */
+		/* lï¿½neas copiadas del ejemplo. */
 		controlador.setSuperficieDeDibujo(ventana);
 		ventana.setVisible(true);		
 		
