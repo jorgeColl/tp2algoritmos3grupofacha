@@ -11,7 +11,7 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
- * Modela un disparo que se mueve por el escenario hasta salir de este o impactar con una instancia de ObjetoJuego, causándole un daño. 
+ * Modela un disparo que se mueve por el escenario hasta salir de este o impactar con una instancia de ObjetoJuego, causï¿½ndole un daï¿½o. 
  * @author Federico
  *
  */
@@ -22,8 +22,8 @@ public abstract class Disparo extends ObjetoMovil {
 	
 	/**
 	 * Constructor.
-	 * @param orientacion versor representante de la dirección del disparo
-	 * @param punto posición de la ocupación del disparo más cercana al tanque que lo ha disparado y centrada en la ocupación de este, sobre su eje de movimiento
+	 * @param orientacion versor representante de la direcciï¿½n del disparo
+	 * @param punto posiciï¿½n de la ocupaciï¿½n del disparo mï¿½s cercana al tanque que lo ha disparado y centrada en la ocupaciï¿½n de este, sobre su eje de movimiento
 	 * @see getPosicionPerimetralCentradaEnOrientacion(Orientacion orientacion) en la clase Ocupacion.
 	 */
 	public Disparo(Orientacion orientacion, Posicion punto) {
@@ -32,7 +32,7 @@ public abstract class Disparo extends ObjetoMovil {
 	
 	/**
 	 * @see chequearOcupacionValidaYColisiones() en la clase ObjetoMovil.
-	 * Si la ocupación no es válida, el disparo ha salido de los límites de la pantalla y por lo tanto desaparece.
+	 * Si la ocupaciï¿½n no es vï¿½lida, el disparo ha salido de los lï¿½mites de la pantalla y por lo tanto desaparece.
 	 */
 	protected void chequearOcupacionValidaYColisiones(Ocupacion ocupacionProvisoria) {
 		if ((ocupacionProvisoria.espacialmenteValida())) {
@@ -57,7 +57,7 @@ public abstract class Disparo extends ObjetoMovil {
 	}
 	
 	/**
-	 * Le indicamos al tanque que ha sido chocado por este disparo, y hacemos que este último desaparezca.
+	 * Le indicamos al tanque que ha sido chocado por este disparo, y hacemos que este ï¿½ltimo desaparezca.
 	 */
 	public void chocarCon(Tanque tanque) {
 		tanque.chocarCon(this);
