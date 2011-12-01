@@ -47,6 +47,8 @@ public class CorrerJuego {
 		/* inicializamos objetos del juego */
 		
 		AlgoTank algoTank = new AlgoTank(new Posicion(400, 300));
+		VistaAlgoTank vistaAlgoTank = new VistaAlgoTank();
+		
 		
 		ParedConcreto paredC = new ParedConcreto(new Posicion(200, 100));
 		VistaPared vistaPared = new VistaPared();
@@ -55,17 +57,29 @@ public class CorrerJuego {
 		VistaBonus vistaBonusVel = new VistaBonus();
 		
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(200, 300));
+		VistaCuartelArgentino vistaCuartel = new VistaCuartelArgentino();
 		
-	//	GrizzlyBattleTank tanque = new GrizzlyBattleTank(new Posicion(400,250));
-	//	VistaTanqueEnemigo vistaTanque = new VistaTanqueEnemigo();
 		
-	//	vistaTanque.setPosicionable(tanque);
+		GrizzlyBattleTank tanque = new GrizzlyBattleTank(new Posicion(300,250));
+		VistaTanqueEnemigo vistaTanque = new VistaTanqueEnemigo();
+		
+		
+		
+		
+		
+		
+		vistaTanque.setPosicionable(tanque);
 		vistaPared.setPosicionable(paredC);
 		vistaBonusVel.setPosicionable(bonusVel);
+		vistaCuartel.setPosicionable(cuartel);
+		vistaAlgoTank.setPosicionable(algoTank);
 		
 		controlador.agregarDibujable(vistaPared);
 		controlador.agregarDibujable(vistaBonusVel);
-	//	controlador.agregarDibujable(vistaTanque);
+		controlador.agregarDibujable(vistaTanque);
+		ControladorJuego.getInstancia().agregarDibujable(vistaCuartel);
+		ControladorJuego.getInstancia().agregarDibujable(vistaAlgoTank);	
+		ControladorJuego.getInstancia().agregarKeyPressObservador(vistaAlgoTank);
 		
 		controlador.setIntervaloSimulacion(50);
 		controlador.comenzarJuego();

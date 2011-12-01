@@ -13,7 +13,7 @@ import ar.uba.fi.algo3.vista.VistaAlgoTank;
 
 /**
  * Modela al tanque manejado por el jugador.
- * @author Tomás
+ * @author Tomï¿½s
  *
  */
 public class AlgoTank extends Tanque {
@@ -37,23 +37,19 @@ public class AlgoTank extends Tanque {
 			e.printStackTrace();
 		}
 		
-		/* creo y agrego la vista al ControladorJuego */
-		VistaAlgoTank vista = new VistaAlgoTank();
-		vista.setPosicionable(this);
-		ControladorJuego.getInstancia().agregarDibujable(vista);	
-		ControladorJuego.getInstancia().agregarKeyPressObservador(vista);
+		
 	}
 	
 	/**
-	 * Le pide a su estrategia de disparo que resuelva el qué arma disparar, siempre y cuando esto sea temporalmente posible.
+	 * Le pide a su estrategia de disparo que resuelva el quï¿½ arma disparar, siempre y cuando esto sea temporalmente posible.
 	 */
 	public void disparar() {
 		estrategiaDisparo.decidirDisparo();
 	}
 	
 	/**
-	 * Cambiamos el dueño del arma y la agregamos a las del tanque, siempre y cuando no tengan munición nula.
-	 * @param arma instancia de una subclase de ArmaMunicionLimitada que se sumará a las del tanque
+	 * Cambiamos el dueï¿½o del arma y la agregamos a las del tanque, siempre y cuando no tengan municiï¿½n nula.
+	 * @param arma instancia de una subclase de ArmaMunicionLimitada que se sumarï¿½ a las del tanque
 	 */
 	public void entregarArma(ArmaMunicionLimitada arma) {
 		arma.setDuenio(this);
@@ -71,7 +67,7 @@ public class AlgoTank extends Tanque {
 	
 	/**
 	 * 
-	 * @return pila de las armas robadas por el tanque, en órden de prioridad
+	 * @return pila de las armas robadas por el tanque, en ï¿½rden de prioridad
 	 */
 	public Stack<ArmaMunicionLimitada> getArmasPrioritarias() {
 		return armasPrioritarias;
