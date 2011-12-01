@@ -7,24 +7,25 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 
 /**
- * Provee el comportamiento y el estado común a todas las entidades del juego que pueden posicionarse en el espacio. 
- * El atributo ocupacion representa a la ocupación que tiene el objeto en el lugar en el que se desarrolla la acción del juego.
+ * Provee el comportamiento y el estado comï¿½n a todas las entidades del juego que pueden posicionarse en el espacio. 
+ * El atributo ocupacion representa a la ocupaciï¿½n que tiene el objeto en el lugar en el que se desarrolla la acciï¿½n del juego.
  * @author Jorge
  *
  */
 public abstract class ObjetoJuego implements Posicionable {
 	
 	protected Ocupacion ocupacion;
+	private boolean vivo = true;
 	
 	/**
 	 * Hacemos que el objeto sea impactado por un disparo.
-	 * @param disparo instancia de una subclase de Disparo que chocará con este objeto
+	 * @param disparo instancia de una subclase de Disparo que chocarï¿½ con este objeto
 	 */
 	public abstract void chocarCon(Disparo disparo);
 	
 	/**
 	 * Hacemos que el objeto sea impactado por un tanque.
-	 * @param tanque instancia de una subclase de Tanque que chocará con este objeto
+	 * @param tanque instancia de una subclase de Tanque que chocarï¿½ con este objeto
 	 */
 	public abstract void chocarCon(Tanque tanque);
 
@@ -33,11 +34,12 @@ public abstract class ObjetoJuego implements Posicionable {
 	 */
 	public void desaparecer() {
 		Espacio.getInstancia().desaparecerA(this);
+		this.setVivo(false);
 	}
 	
 	/**
 	 * Delega en la clase Ocupacion.
-	 * @param objeto instancia de la clase ObjetoJuego cuya ocupación compararemos con la de esta
+	 * @param objeto instancia de la clase ObjetoJuego cuya ocupaciï¿½n compararemos con la de esta
 	 * @return true si los objetos comparados coinciden ocupacionalmente y false en el caso contrario
 	 */
 	public boolean estaEnContactoCon(ObjetoJuego objeto) {
@@ -58,6 +60,14 @@ public abstract class ObjetoJuego implements Posicionable {
 	
 	public int getY(){
 		return ocupacion.getLimiteInferior();
+	}
+
+	public void setVivo(boolean vivo) {
+		this.vivo = vivo;
+	}
+
+	public boolean isVivo() {
+		return vivo;
 	}
 
 }
