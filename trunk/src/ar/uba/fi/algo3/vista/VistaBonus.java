@@ -1,7 +1,6 @@
 package ar.uba.fi.algo3.vista;
 
-import java.awt.Color;
-import ar.uba.fi.algo3.titiritero.vista.Cuadrado;
+import ar.uba.fi.algo3.titiritero.vista.ImagenEstatica;
 
 /**
  * Clase que genera la vista de Bonus.
@@ -10,11 +9,12 @@ import ar.uba.fi.algo3.titiritero.vista.Cuadrado;
  */
 
 
-public class VistaBonus extends Cuadrado {
+public class VistaBonus extends ImagenEstatica {
 	
-	public VistaBonus() {
-		super(20,20);
-		setColor(Color.black);
+	public VistaBonus(){
+		super();
+		this.setNombreArchivoImagen("img/Bonus.JPG");
 	}
 
 }
+
