@@ -20,12 +20,12 @@ public abstract class Pared extends ObjetoJuego {
 	
 	/**
 	 * Constructor.
-	 * @param impactosTolerados cantidad máxima de disparos que puede recibir la pared antes de desaparecer
-	 * @param punto instancia de la clase Posicion con la que se inicializará la ocupación de la pared
+	 * @param impactosTolerados cantidad mï¿½xima de disparos que puede recibir la pared antes de desaparecer
+	 * @param punto instancia de la clase Posicion con la que se inicializarï¿½ la ocupaciï¿½n de la pared
 	 */
 	public Pared(Posicion punto) {
 		impactosRecibidos = 0;
-		ocupacion = new OcupacionCuadrada(punto,5);
+		ocupacion = new OcupacionCuadrada(punto,43);
 		
 		/* agrego la instancia en el Espacio */
 		try {
@@ -45,7 +45,7 @@ public abstract class Pared extends ObjetoJuego {
 	}
 
 	/**
-	 * Cuando un tanque choca a la pared, se le indica a esta que se mueva unitariamente en la dirección contraria dado que lo obstaculiza.
+	 * Cuando un tanque choca a la pared, se le indica a esta que se mueva unitariamente en la direcciï¿½n contraria dado que lo obstaculiza.
 	 */
 	public void chocarCon(Tanque tanque) {
 		tanque.moverEnDireccionContraria();

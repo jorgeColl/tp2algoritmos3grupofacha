@@ -13,7 +13,7 @@ public class VistaCuartelArgentino extends ImagenEstatica {
 	
 	public VistaCuartelArgentino(){
 		super();
-		this.setNombreArchivoImagen("img/cuartelArgentino.jpg");
+		this.setNombreArchivoImagen("img/cuartelArgentino.JPG");
 	}
 
 }

@@ -11,7 +11,7 @@ public class VistaPared extends ImagenEstatica {
 	
 	public VistaPared() {
 		super();
-		this.setNombreArchivoImagen("img/ParedConcreto.jpg");
+		this.setNombreArchivoImagen("img/ParedConcreto.JPG");
 	}
 
 }
