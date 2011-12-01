@@ -39,6 +39,9 @@ public abstract class Pared extends ObjetoJuego {
 	 * Se incrementa la cantidad de disparos recibidas. Si esta pasa a ser mayor que la tolerada, la pared desaparece.
 	 */
 	public void chocarCon(Disparo disparo) {
+		
+		disparo.desaparecer();
+		
 		++impactosRecibidos;
 		if (impactosRecibidos > impactosTolerados)
 			desaparecer();
