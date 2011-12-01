@@ -31,9 +31,7 @@ public class CuartelArgentino extends ObjetoJuego {
 		}
 		
 		/* creo y agrego la vista al ControladorJuego */
-		VistaCuartelArgentino vista = new VistaCuartelArgentino();
-		vista.setPosicionable(this);
-		ControladorJuego.getInstancia().agregarDibujable(vista);	
+			
 	}
 	
 	/**
