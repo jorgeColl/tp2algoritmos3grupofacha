@@ -1,8 +1,10 @@
 package ar.uba.fi.algo3.modelo.manejoEspacial;
 
 /**
- * Implementa la inferfaz Ocupacion, modelando concretamente a una ocupación bidimensional cuadrada.
- * El atributo puntoMenorModulo representa al punto del cuadrado más cercano al origen.
+ * Implementa la inferfaz Ocupacion, modelando concretamente a una ocupación 
+ * bidimensional cuadrada.
+ * El atributo puntoMenorModulo representa al punto del cuadrado más cercano 
+ * al origen.
  * El atributo lado representa a la longitud del lado del cuadrado.
  * @author Samanta
  *
@@ -14,7 +16,8 @@ public class OcupacionCuadrada implements Ocupacion {
 		
 	/**
 	 * Constructor.
-	 * @param puntoMenorModulo objeto con el que se inicializará el atributo puntoMenorModulo
+	 * @param puntoMenorModulo objeto con el que se inicializará el atributo 
+	 * puntoMenorModulo
 	 * @param lado entero con el que se inicializará el atributo lado
 	 */
 	public OcupacionCuadrada(Posicion puntoMenorModulo, int lado) {
@@ -23,7 +26,8 @@ public class OcupacionCuadrada implements Ocupacion {
 	}
 	
 	/**
-	 * Le indicamos al parámetro que se compare con una ocupación cuadrada, y le pasamos esta instancia como parámetro.
+	 * Le indicamos al parámetro que se compare con una ocupación cuadrada, y 
+	 * le pasamos esta instancia como parámetro.
 	 */
 	public boolean coincidenciaOcupacionalCon(Ocupacion ocupacion) {
 		return (ocupacion.compararConOcupacionCuadrada(this));
@@ -108,13 +112,20 @@ public class OcupacionCuadrada implements Ocupacion {
 		return lado;
 	}
 	
-	/* Utilizamos este método (en principio) para crear instancias de disparos cuadrados centrados con respecto a su tanque, dado que esto depende del lado de los disparos y este no es accesible por el constructor tradicional.*/
+	/* Utilizamos este método (en principio) para crear instancias de disparos 
+	 * cuadrados centrados con respecto a su tanque, dado que esto depende del 
+	 * lado de los disparos y este no es accesible por el constructor tradicional.*/
 	/**
-	 * Devuelve una intancia de OcupacionCuadrada que fue construída a partir de una posicion perimetral centrada en la orientación de un objeto con respecto al cual queremos que esta ocupación esté continua y centrada.
-	 * @param posicion instancia de la clase posicion que representa la posición perimetral centrada en la orientación del disparo
+	 * Devuelve una intancia de OcupacionCuadrada que fue construída a partir 
+	 * de una posicion perimetral centrada en la orientación de un objeto con 
+	 * respecto al cual queremos que esta ocupación esté continua y centrada.
+	 * @param posicion instancia de la clase posicion que representa la posición 
+	 *  perimetral centrada en la orientación del disparo
 	 * @param lado entero representante de lado que se quiere que tenga el disparo
-	 * @param orientacion instancia de la clase Orientacion que representa la orientacion con la que viajará el disparo
-	 * @return instancia de la clase OcupacionCuadrada con las características analizadas
+	 * @param orientacion instancia de la clase Orientacion que representa la 
+	 *  orientacion con la que viajará el disparo
+	 * @return instancia de la clase OcupacionCuadrada con las características 
+	 *  analizadas
 	 */
 	public static OcupacionCuadrada crearAPartirDePosicionPerimetralCentradaEnOrientacion(Posicion posicion, int lado, Orientacion orientacion) {
 		Posicion puntoMenorModulo;
@@ -135,7 +146,8 @@ public class OcupacionCuadrada implements Ocupacion {
 	}
 	
 	public Posicion getPosicionPerimetralCentradaEnOrientacion(Orientacion orientacion) {
-		//INICIALIZACION CORRESPONDIENTE A SI EL PARÁMETRO ES Orientacion.i, SI ES OTRA SE LA CAMBIARÁ LUEGO.
+		//INICIALIZACION CORRESPONDIENTE A SI EL PARÁMETRO ES Orientacion.i, 
+		//SI ES OTRA SE LA CAMBIARÁ LUEGO.
 		//RAZÓN DE COMPILACIÓN
 		Posicion posicionAuxiliar = new Posicion(puntoMenorModulo.getX()+lado,puntoMenorModulo.getY()+(lado/2));
 		if (orientacion == Orientacion.iNegativo)
