@@ -56,16 +56,16 @@ public class CorrerJuego {
 		
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(200, 300));
 		
-		GrizzlyBattleTank tanque = new GrizzlyBattleTank(new Posicion(400,250));
-		VistaTanqueEnemigo vistaTanque = new VistaTanqueEnemigo();
+	//	GrizzlyBattleTank tanque = new GrizzlyBattleTank(new Posicion(400,250));
+	//	VistaTanqueEnemigo vistaTanque = new VistaTanqueEnemigo();
 		
-		vistaTanque.setPosicionable(tanque);
+	//	vistaTanque.setPosicionable(tanque);
 		vistaPared.setPosicionable(paredC);
 		vistaBonusVel.setPosicionable(bonusVel);
 		
 		controlador.agregarDibujable(vistaPared);
 		controlador.agregarDibujable(vistaBonusVel);
-		controlador.agregarDibujable(vistaTanque);
+	//	controlador.agregarDibujable(vistaTanque);
 		
 		controlador.setIntervaloSimulacion(50);
 		controlador.comenzarJuego();

@@ -7,8 +7,10 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 
 /**
- * Provee el comportamiento y el estado com�n a todas las entidades del juego que pueden posicionarse en el espacio. 
- * El atributo ocupacion representa a la ocupaci�n que tiene el objeto en el lugar en el que se desarrolla la acci�n del juego.
+ * Provee el comportamiento y el estado comun a todas las entidades del juego que 
+ * pueden posicionarse en el espacio. 
+ * El atributo ocupacion representa a la ocupacion que tiene el objeto en el lugar 
+ * en el que se desarrolla la accion del juego.
  * @author Jorge
  *
  */
@@ -19,13 +21,13 @@ public abstract class ObjetoJuego implements Posicionable {
 	
 	/**
 	 * Hacemos que el objeto sea impactado por un disparo.
-	 * @param disparo instancia de una subclase de Disparo que chocar� con este objeto
+	 * @param disparo instancia de una subclase de Disparo que chocara con este objeto
 	 */
 	public abstract void chocarCon(Disparo disparo);
 	
 	/**
 	 * Hacemos que el objeto sea impactado por un tanque.
-	 * @param tanque instancia de una subclase de Tanque que chocar� con este objeto
+	 * @param tanque instancia de una subclase de Tanque que chocara con este objeto
 	 */
 	public abstract void chocarCon(Tanque tanque);
 
@@ -39,8 +41,10 @@ public abstract class ObjetoJuego implements Posicionable {
 	
 	/**
 	 * Delega en la clase Ocupacion.
-	 * @param objeto instancia de la clase ObjetoJuego cuya ocupaci�n compararemos con la de esta
-	 * @return true si los objetos comparados coinciden ocupacionalmente y false en el caso contrario
+	 * @param objeto instancia de la clase ObjetoJuego cuya ocupacion compararemos 
+	 * con la de esta
+	 * @return true si los objetos comparados coinciden ocupacionalmente y false 
+	 * en el caso contrario
 	 */
 	public boolean estaEnContactoCon(ObjetoJuego objeto) {
 		return (objeto.getOcupacion().coincidenciaOcupacionalCon(ocupacion));
@@ -55,11 +59,11 @@ public abstract class ObjetoJuego implements Posicionable {
 	}
 	
 	public int getX(){
-		return ocupacion.getLimiteDerecho();		
+		return ocupacion.getLimiteIzquierdo();		
 	}
 	
 	public int getY(){
-		return ocupacion.getLimiteInferior();
+		return ocupacion.getLimiteSuperior();
 	}
 
 	public void setVivo(boolean vivo) {
