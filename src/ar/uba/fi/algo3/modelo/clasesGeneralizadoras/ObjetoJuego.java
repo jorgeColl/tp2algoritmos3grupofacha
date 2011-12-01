@@ -73,5 +73,5 @@ public abstract class ObjetoJuego implements Posicionable {
 	public boolean isVivo() {
 		return vivo;
 	}
-
+	
 }

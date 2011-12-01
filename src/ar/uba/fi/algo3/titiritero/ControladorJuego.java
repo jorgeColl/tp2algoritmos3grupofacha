@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Stack;
 
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.titiritero.audio.Reproductor;
@@ -19,6 +20,7 @@ public class ControladorJuego implements Runnable {
 	private long intervaloSimulacion;
 	private boolean estaEnEjecucion;
 	private List<Dibujable> dibujables;
+	private Stack<Dibujable> aEliminar;
 	private List<MouseClickObservador> mouseClickObservadores;
 	private List<KeyPressedObservador> keyPressedObservadores;
 	private SuperficieDeDibujo superficieDeDibujo;
@@ -30,6 +32,7 @@ public class ControladorJuego implements Runnable {
 		this.dibujables = new ArrayList<Dibujable>();
 		this.mouseClickObservadores = new ArrayList<MouseClickObservador>();
 		this.keyPressedObservadores = new ArrayList<KeyPressedObservador>();
+		this.aEliminar = new Stack<Dibujable>();
 //		this.estaReproductorActivo = activarReproductor;
 		if(this.estaReproductorActivo)
 			this.reproductor = new Reproductor();		
@@ -51,6 +54,7 @@ public class ControladorJuego implements Runnable {
 			while(estaEnEjecucion){
 				Espacio.getInstancia().correrLogica();
 				dibujar();
+				this.eliminarPendientes();
 				Thread.sleep(intervaloSimulacion);
 			}
 		}
@@ -113,7 +117,13 @@ public class ControladorJuego implements Runnable {
 	}
 	
 	public void removerDibujable(Dibujable unDibujable){
-		dibujables.remove(unDibujable);
+		aEliminar.push(unDibujable);
+	}
+	
+	private void eliminarPendientes(){
+		while(!aEliminar.empty()){
+			dibujables.remove(aEliminar.pop());
+		}
 	}
 	
 	public long getIntervaloSimulacion() {
