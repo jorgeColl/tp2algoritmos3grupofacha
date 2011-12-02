@@ -19,6 +19,7 @@ public class PuntoParaTexto implements Posicionable {
 	
 	public PuntoParaTexto(Posicion posicion){
 		this.posicion=posicion;
+		this.vivo = true;
 	}
 	@Override
 	public int getX() {
