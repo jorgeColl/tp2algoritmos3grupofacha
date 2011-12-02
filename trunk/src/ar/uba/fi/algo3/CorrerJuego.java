@@ -18,6 +18,7 @@ import ar.uba.fi.algo3.modelo.tanques.IFV;
 import ar.uba.fi.algo3.modelo.tanques.MirageTank;
 import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
+import ar.uba.fi.algo3.titiritero.vista.Cuadrado;
 import ar.uba.fi.algo3.titiritero.vista.Texto;
 import ar.uba.fi.algo3.titiritero.vista.TextoDinamico;
 import ar.uba.fi.algo3.titiritero.vista.TextoEstatico;
@@ -31,7 +32,6 @@ import ar.uba.fi.algo3.vista.VistaDeTextoDeResistenciaDeAlgoTank;
  */
 public class CorrerJuego {
 
-	private static final Color GRAY = null;
 
 	/**
 	 * @param args
@@ -52,9 +52,12 @@ public class CorrerJuego {
 		
 		
 		
+		
+		
 		/* inicializamos objetos del juego */
 		
 		AlgoTank algoTank = new AlgoTank(new Posicion(400, 300));
+		
 		ParedConcreto paredC = new ParedConcreto(new Posicion(200, 100));
 		ParedMetal paredMetal = new ParedMetal(new Posicion(200, 150));
 
@@ -62,10 +65,16 @@ public class CorrerJuego {
 		BonusVida bonusVida = new BonusVida(new Posicion(66, 66));
 		
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(200, 300));
+		//aca pongo el fondito gris
+		Cuadrado cuadrado = new Cuadrado(200,601);
+		cuadrado.setColor(Color.gray);
+		cuadrado.setPosicionable(new PuntoParaTexto(new Posicion(601,0)));
+		controlador.agregarDibujable(cuadrado);
 		
 		//GrizzlyBattleTank tanque = new GrizzlyBattleTank(new Posicion(300,240));
-		//MirageTank tanque2 = new MirageTank(new Posicion(300,550));
-		//IFV tanque3 =  new IFV(new Posicion(300,430));
+		//	MirageTank tanque2 = new MirageTank(new Posicion(300,550));
+		//	IFV tanque3 =  new IFV(new Posicion(300,430));
+		
 		/*
 		TextoEstatico texto = new TextoEstatico("fooo");
 		texto.setPosicionable(paredMetal);
@@ -73,6 +82,8 @@ public class CorrerJuego {
 		controlador.agregarDibujable(texto);
 		
 		*/
+		
+		
 		VistaDeTextoDeResistenciaDeAlgoTank vista =new VistaDeTextoDeResistenciaDeAlgoTank(algoTank);
 		TextoDinamico textodi = new TextoDinamico(vista);
 		PuntoParaTexto pptexto = new PuntoParaTexto(new Posicion(602,10));

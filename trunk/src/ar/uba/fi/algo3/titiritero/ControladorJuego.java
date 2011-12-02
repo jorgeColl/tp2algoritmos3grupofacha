@@ -11,7 +11,7 @@ import ar.uba.fi.algo3.titiritero.audio.Reproductor;
 
 /**
  * @author Nicolas
- * Esta clase es la encargada de manejar todo el gameloop. Básicamente tiene una lista
+ * Esta clase es la encargada de manejar todo el gameloop. Bï¿½sicamente tiene una lista
  * de ObjetosVivos y una Dibujables que son recorridas en cada gameloop.
  */
 public class ControladorJuego implements Runnable {
@@ -164,8 +164,8 @@ public class ControladorJuego implements Runnable {
 	
 	/**
 	 * Se encarga de derivar el manejo del evento click al objeto vista correspondiente
-	 * @param x posición horizontal del mouse
-	 * @param y posición vertial del mouse
+	 * @param x posiciï¿½n horizontal del mouse
+	 * @param y posiciï¿½n vertial del mouse
 	 */
 	public void despacharMouseClick(int x, int y){
 		MouseClickObservador mouseClickObservador;

@@ -21,6 +21,7 @@ import ar.uba.fi.algo3.titiritero.Dibujable;
 import ar.uba.fi.algo3.vista.VistaAlgoTank;
 import ar.uba.fi.algo3.vista.VistaBonus;
 import ar.uba.fi.algo3.vista.VistaCuartelArgentino;
+import ar.uba.fi.algo3.vista.VistaDeFinDeJuego;
 import ar.uba.fi.algo3.vista.VistaDisparoAmetralladora;
 import ar.uba.fi.algo3.vista.VistaDisparoCanion;
 import ar.uba.fi.algo3.vista.VistaDisparoLanzaCohetes;
@@ -66,12 +67,17 @@ public class ConstructorVista {
 	public static void construirVista(CuartelArgentino cuartel){
 		VistaParaImagen vista = new VistaParaImagen("img/cuartelArgentino.GIF");
 		auxiliar(vista,cuartel);
+		
+		VistaDeFinDeJuego.getInstancia().agregarElementoQueProvocaPerderElJuego(cuartel);
 	}
 	
 	public static void construirVista(AlgoTank tanque){
 		VistaAlgoTank vista = new VistaAlgoTank();
 		auxiliar(vista,tanque);
 		ControladorJuego.getInstancia().agregarKeyPressObservador(vista);
+		
+		VistaDeFinDeJuego.getInstancia().agregarElementoQueProvocaPerderElJuego(tanque);
+		ControladorJuego.getInstancia().agregarDibujable(VistaDeFinDeJuego.getInstancia());
 	}
 	
 	public static void construirVista(BonusVelocidad bonus){
