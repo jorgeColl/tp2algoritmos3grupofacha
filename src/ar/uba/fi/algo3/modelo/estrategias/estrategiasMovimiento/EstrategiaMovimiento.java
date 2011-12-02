@@ -5,8 +5,10 @@ import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoMovil;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 
 /**
- * Los objetos que tienen la capacidad de moverse delegan en las instancias de las subclases de esta clase el que les diga hacia dónde dirigirse en función de la estrategia que quiera adoptar.
- * @author Tomás
+ * Los objetos que tienen la capacidad de moverse delegan en las instancias 
+ * de las subclases de esta clase el que les diga hacia donde dirigirse en 
+ * funcion de la estrategia que quiera adoptar.
+ * @author Tomas
  *
  */
 public abstract class EstrategiaMovimiento {
@@ -16,8 +18,10 @@ public abstract class EstrategiaMovimiento {
 	
 	/**
 	 * Constructor.
-	 * @param duenio instancia de una subclase de ObjetoMovil que delega en esta estrategia
-	 * @param objetivo instancia de la clase ObjetoJuego a la cual el objeto móvil trata de alcanzar
+	 * @param duenio instancia de una subclase de ObjetoMovil que delega 
+	 * en esta estrategia
+	 * @param objetivo instancia de la clase ObjetoJuego a la cual el 
+	 * objeto movil trata de alcanzar
 	 */
 	public EstrategiaMovimiento(ObjetoMovil duenio, ObjetoJuego objetivo) {
 		this.duenio = duenio;
@@ -25,8 +29,9 @@ public abstract class EstrategiaMovimiento {
 	}
 	
 	/**
-	 * Le indica al objeto móvil que se acerce horizontalmente a su objetivo.
-	 * NOTA IMPORTANTE: Si los objetos tienen coincidencia ocupacional en sus proyecciones horizontales, entonces no realiza ningún movimiento. 
+	 * Le indica al objeto movil que se acerce horizontalmente a su objetivo.
+	 * NOTA IMPORTANTE: Si los objetos tienen coincidencia ocupacional en sus 
+	 * proyecciones horizontales, entonces no realiza ningun movimiento. 
 	 */
 	protected void indicarDuenioAcercarseHorizontalmenteAObjetivo() {
 		if (duenio.getOcupacion().getLimiteDerecho() < objetivo.getOcupacion().getLimiteIzquierdo())
@@ -38,8 +43,9 @@ public abstract class EstrategiaMovimiento {
 	}
 	
 	/**
-	 * Le indica al objeto móvil que se acerce verticalmente a su objetivo.
-	 * NOTA IMPORTANTE: Si los objetos tienen coincidencia ocupacional en sus proyecciones verticales, entonces no realiza ningún movimiento. 
+	 * Le indica al objeto movil que se acerce verticalmente a su objetivo.
+	 * NOTA IMPORTANTE: Si los objetos tienen coincidencia ocupacional en 
+	 * sus proyecciones verticales, entonces no realiza ningun movimiento. 
 	 */
 	protected void indicarDuenioAcercarseVerticalmenteAObjetivo() {
 		if (duenio.getOcupacion().getLimiteInferior() < objetivo.getOcupacion().getLimiteSuperior())
@@ -51,13 +57,16 @@ public abstract class EstrategiaMovimiento {
 	}
 
 	/**
-	 * Método en el que los objetos que tienen la capacidad de moverse delegan el que le indiquen hacia dónde dirigirse.
+	 * Metodo en el que los objetos que tienen la capacidad de moverse 
+	 * delegan el que le indiquen hacia donde dirigirse.
 	 */
 	public abstract void dedicirMovimiento();
 	
 	/**
-	 * Le indicamos al objeto móvil que se oriente horizontalmente hacia su objetivo.
-	 * NOTA IMPORTANTE: Si los objetos tienen coincidencia en sus proyecciones horizontales, entonces no hace nada.
+	 * Le indicamos al objeto movil que se oriente horizontalmente hacia 
+	 * su objetivo.
+	 * NOTA IMPORTANTE: Si los objetos tienen coincidencia en sus 
+	 * proyecciones horizontales, entonces no hace nada.
 	 */
 	protected void orientarDuenioHorizontalmenteHaciaObjetivo() {
 		if ((duenio.getOcupacion().getLimiteDerecho() < objetivo.getOcupacion().getLimiteIzquierdo()))
@@ -67,8 +76,10 @@ public abstract class EstrategiaMovimiento {
 	}
 	
 	/**
-	 * Le indicamos al objeto móvil que se oriente verticalmente hacia su objetivo.
-	 * NOTA IMPORTANTE: Si los objetos tienen coincidencia en sus proyecciones verticales, entonces no hace nada.
+	 * Le indicamos al objeto movil que se oriente verticalmente hacia 
+	 * su objetivo.
+	 * NOTA IMPORTANTE: Si los objetos tienen coincidencia en sus 
+	 * proyecciones verticales, entonces no hace nada.
 	 */
 	protected void orientarDuenioVerticalmenteHaciaObjetivo() {
 		if ((duenio.getOcupacion().getLimiteInferior() < objetivo.getOcupacion().getLimiteSuperior()))

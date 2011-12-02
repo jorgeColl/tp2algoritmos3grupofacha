@@ -27,7 +27,7 @@ public class PruebasCuartelArgentino extends TestCase {
 	public void testCuartelArgentinoCreacionCorrecta() {
 		assertEquals(((OcupacionCuadrada)cuartel.getOcupacion()).getPuntoMenorModulo().getX(),5);
 		assertEquals(((OcupacionCuadrada)cuartel.getOcupacion()).getPuntoMenorModulo().getY(),5);
-		assertEquals(((OcupacionCuadrada)cuartel.getOcupacion()).getLado(),5);
+		assertEquals(((OcupacionCuadrada)cuartel.getOcupacion()).getLado(),43);
 	}
 	
 	/**

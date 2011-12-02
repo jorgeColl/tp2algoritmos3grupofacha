@@ -17,7 +17,7 @@ public class MirageTank extends TanqueEnemigo {
 			indicarObjetivo(Espacio.getInstancia().getCuartelArgentino());
 		puntosPorDestruccion = 50;
 		velocidad = 2;
-		velocidadDisparo = 12;
+		velocidadDisparo = 3;
 		
 		if (Espacio.getInstancia().incluyeA(this)){
 			ConstructorVista.construirVista(this);
@@ -29,8 +29,10 @@ public class MirageTank extends TanqueEnemigo {
 	}
 
 	/**
-	 * Al comportamiento de la clase ancestro, sumamos el otorgar las armas a la instancia de AlgoTank del espacio.
-	 * Es casteo es type-safe porque el arma es siempre una instancia de Canion.
+	 * Al comportamiento de la clase ancestro, sumamos el otorgar las 
+	 * armas a la instancia de AlgoTank del espacio.
+	 * Es casteo es type-safe porque el arma es siempre una instancia 
+	 * de Canion.
 	 */
 	public void desaparecer() {
 		super.desaparecer();

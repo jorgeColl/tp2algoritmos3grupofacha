@@ -157,7 +157,7 @@ public class PruebasIntegracionMirageTank extends TestCase {
 		tanque = new MirageTank(new Posicion(10,0));
 		int municionInicial = ((LanzaCohetes)tanque.getArma()).getMunicion();
 		int contador = 0;
-		while ((otroTanque.getResistencia() > 1)&&(contador < 200)) {
+		while ((otroTanque.getResistencia() > 1)&&(contador < 300)) {
 			Espacio.getInstancia().correrLogica();
 			++contador;
 		}

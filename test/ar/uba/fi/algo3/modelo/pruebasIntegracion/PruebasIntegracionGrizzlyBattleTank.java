@@ -152,7 +152,7 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(250,250));
 		tanque = new GrizzlyBattleTank(new Posicion(0,0));
 		int contador = 0;
-		while ((otroTanque.getResistencia() > 0)&&(contador < 200)) {
+		while ((otroTanque.getResistencia() > 0)&&(contador < 300)) {
 			Espacio.getInstancia().correrLogica();
 			++contador;
 		}

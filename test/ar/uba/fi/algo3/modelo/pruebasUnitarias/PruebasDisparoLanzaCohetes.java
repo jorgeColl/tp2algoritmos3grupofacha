@@ -32,8 +32,8 @@ public class PruebasDisparoLanzaCohetes extends TestCase {
 		assertEquals(disparo.getDanioPorcentual(),50);
 		OcupacionCuadrada ocupacionAuxiliar = (OcupacionCuadrada)disparo.getOcupacion();
 		assertEquals(ocupacionAuxiliar.getPuntoMenorModulo().getX(),18);
-		assertEquals(ocupacionAuxiliar.getPuntoMenorModulo().getY(),18);
-		assertEquals(ocupacionAuxiliar.getLado(),1);
+		assertEquals(ocupacionAuxiliar.getPuntoMenorModulo().getY(),11);
+		assertEquals(ocupacionAuxiliar.getLado(),15);
 	}
 	
 	/**
@@ -44,7 +44,7 @@ public class PruebasDisparoLanzaCohetes extends TestCase {
 		disparo = new DisparoLanzaCohetes(Orientacion.i,new Posicion(250,250));
 		disparo.moverDerecha();
 		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getX(),254);
-		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getY(),250);
+		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getY(),243);
 		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getLado(),((OcupacionCuadrada)disparo.getOcupacion()).getLado());
 	}
 
@@ -55,8 +55,8 @@ public class PruebasDisparoLanzaCohetes extends TestCase {
 		Espacio.getInstancia().reiniciar();
 		disparo = new DisparoLanzaCohetes(Orientacion.j,new Posicion(250,250));
 		disparo.moverArriba();
-		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getX(),250);
-		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getY(),246);
+		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getX(),243);
+		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getY(),232);
 		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getLado(),((OcupacionCuadrada)disparo.getOcupacion()).getLado());
 	}
 	
@@ -67,8 +67,8 @@ public class PruebasDisparoLanzaCohetes extends TestCase {
 		Espacio.getInstancia().reiniciar();
 		disparo = new DisparoLanzaCohetes(Orientacion.iNegativo,new Posicion(250,250));
 		disparo.moverIzquierda();
-		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getX(),246);
-		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getY(),250);
+		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getX(),232);
+		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getY(),243);
 		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getLado(),((OcupacionCuadrada)disparo.getOcupacion()).getLado());
 	}
 	
@@ -79,7 +79,7 @@ public class PruebasDisparoLanzaCohetes extends TestCase {
 		Espacio.getInstancia().reiniciar();
 		disparo = new DisparoLanzaCohetes(Orientacion.jNegativo,new Posicion(250,250));
 		disparo.moverAbajo();
-		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getX(),250);
+		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getX(),243);
 		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getY(),254);
 		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getLado(),((OcupacionCuadrada)disparo.getOcupacion()).getLado());
 	}
@@ -91,8 +91,8 @@ public class PruebasDisparoLanzaCohetes extends TestCase {
 		Espacio.getInstancia().reiniciar();
 		disparo = new DisparoLanzaCohetes(Orientacion.j, new Posicion(250,250));
 		disparo.vivir();
-		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getX(),250);
-		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getY(),246);
+		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getX(),243);
+		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getY(),232);
 	}
 	
 	/**
@@ -102,7 +102,7 @@ public class PruebasDisparoLanzaCohetes extends TestCase {
 		Espacio.getInstancia().reiniciar();
 		disparo = new DisparoLanzaCohetes(Orientacion.jNegativo, new Posicion(250,250));
 		disparo.vivir();
-		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getX(),250);
+		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getX(),243);
 		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getY(),254);
 	}
 	
@@ -114,7 +114,7 @@ public class PruebasDisparoLanzaCohetes extends TestCase {
 		disparo = new DisparoLanzaCohetes(Orientacion.i, new Posicion(250,250));
 		disparo.vivir();
 		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getX(),254);
-		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getY(),250);
+		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getY(),243);
 	}
 
 	/**
@@ -124,8 +124,8 @@ public class PruebasDisparoLanzaCohetes extends TestCase {
 		Espacio.getInstancia().reiniciar();
 		disparo = new DisparoLanzaCohetes(Orientacion.iNegativo, new Posicion(250,250));
 		disparo.vivir();
-		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getX(),246);
-		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getY(),250);
+		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getX(),232);
+		assertEquals(((OcupacionCuadrada)disparo.getOcupacion()).getPuntoMenorModulo().getY(),243);
 	}
 	
 }

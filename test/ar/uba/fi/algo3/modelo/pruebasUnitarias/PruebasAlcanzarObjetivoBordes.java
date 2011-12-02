@@ -24,7 +24,7 @@ public class PruebasAlcanzarObjetivoBordes extends TestCase {
 		super.setUp();
 		Espacio.getInstancia().reiniciar();
 		tanque = new GrizzlyBattleTank(new Posicion(5,10));
-		objetivo = new AlgoTank(new Posicion(250,20));
+		objetivo = new AlgoTank(new Posicion(250,58));
 		estrategia = new AlcanzarObjetivoBordes(tanque,objetivo);
 	}
 	

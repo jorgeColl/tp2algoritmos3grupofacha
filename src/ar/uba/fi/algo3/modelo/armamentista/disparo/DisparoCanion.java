@@ -8,7 +8,7 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 
 /**
  * Modela al disparo efectuado por los ca�ones.
- * @author Federico
+ * @author Fede
  *
  */
 public class DisparoCanion extends Disparo {
@@ -17,7 +17,8 @@ public class DisparoCanion extends Disparo {
 		super(orientacion,punto);
 		danioNeto = 30;
 		danioPorcentual = 0;
-		ocupacion = OcupacionCuadrada.crearAPartirDePosicionPerimetralCentradaEnOrientacion(punto, 1, orientacion);
+		ocupacion = OcupacionCuadrada.
+				crearAPartirDePosicionPerimetralCentradaEnOrientacion(punto, 15, orientacion);
 		velocidad = 4;
 		Espacio.getInstancia().agregarDisparo(this);
 		if (Espacio.getInstancia().incluyeA(this)){

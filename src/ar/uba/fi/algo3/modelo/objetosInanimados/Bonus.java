@@ -15,7 +15,8 @@ public abstract class Bonus extends ObjetoJuego {
 	
 	/**
 	 * Constructor.
-	 * @param posicion instancia de la clase Posicion que servir� como referencia para inicializar la ocupaci�n del bonus
+	 * @param posicion instancia de la clase Posicion que servira 
+	 * como referencia para inicializar la ocupaciOn del bonus
 	 */
 	public Bonus(Posicion posicion){
 		ocupacion = new OcupacionCuadrada(posicion,30);
@@ -29,15 +30,15 @@ public abstract class Bonus extends ObjetoJuego {
 	}
 	
 	/**
-	 * Le efect�a los cambios correspondientes al tanque.
+	 * Le efectua los cambios correspondientes al tanque.
 	 */
 	public void chocarCon(Tanque tanque) {
 		this.efectuarCambiosDeBonus(tanque);
 		this.desaparecer();
 	}
 	/**
-	 * M�todo que ser� redefinido por las subclases.
-	 * @param tanque instancia de una subclase de Tanque que ser� mejorada
+	 * M�todo que sera redefinido por las subclases.
+	 * @param tanque instancia de una subclase de Tanque que sera mejorada
 	 */
 	protected abstract void efectuarCambiosDeBonus(Tanque tanque);
 	

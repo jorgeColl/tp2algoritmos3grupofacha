@@ -23,7 +23,7 @@ public class PruebasAlcanzarObjetivo extends TestCase {
 		super.setUp();
 		Espacio.getInstancia().reiniciar();
 		duenio = new IFV(new Posicion(230,240));
-		objetivo = new AlgoTank(new Posicion(260,260));
+		objetivo = new AlgoTank(new Posicion(298,300));
 		estrategia = new AlcanzarObjetivo(duenio,objetivo);
 	}
 	
@@ -95,20 +95,16 @@ public class PruebasAlcanzarObjetivo extends TestCase {
 	 */
 	public void testAlcanzarAlineacionDosVertical() {
 		testMovimientoUnidireccionalHorizontal();
-		objetivo.moverArriba();
-		objetivo.moverArriba();
-		objetivo.moverArriba();
-		objetivo.moverArriba();
-		objetivo.moverArriba();
-		objetivo.moverArriba();
-		objetivo.moverArriba();
-		objetivo.moverArriba();
-		objetivo.moverArriba();
-		objetivo.moverArriba();
-		objetivo.moverArriba();
-		objetivo.moverDerecha();
-		objetivo.moverDerecha();
-		objetivo.moverDerecha();
+		int contador = 0;
+		while (contador < 50) {
+			objetivo.moverArriba();
+			++contador;
+		}
+		contador = 0;
+		while (contador < 4) {
+			objetivo.moverDerecha();
+			++contador;
+		}
 		estrategia.dedicirMovimiento();
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),258);

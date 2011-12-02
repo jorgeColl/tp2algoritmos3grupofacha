@@ -12,8 +12,8 @@ public abstract class Vector {
 
 	/**
 	 * Constructor.
-	 * @param x valor con el que se inicializará la coordenada x
-	 * @param y valor con el que se inicializará la coordenada y
+	 * @param x valor con el que se inicializara la coordenada x
+	 * @param y valor con el que se inicializara la coordenada y
 	 */
 	public Vector(int x, int y) {
 		this.x = x;
@@ -38,7 +38,7 @@ public abstract class Vector {
 
 	/**
 	 * 
-	 * @return módulo del vector representado por esta instancia
+	 * @return modulo del vector representado por esta instancia
 	 */
 	public double modulo() {
 		return Math.sqrt(x*x+y*y);

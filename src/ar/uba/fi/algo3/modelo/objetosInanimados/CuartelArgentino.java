@@ -19,10 +19,11 @@ public class CuartelArgentino extends ObjetoJuego {
 
 	/**
 	 * Constructor
-	 * @param punto instancia de la clase Posicion con la que inicializaremos la ocupaci�n del cuartel
+	 * @param punto instancia de la clase Posicion con la que inicializaremos 
+	 * la ocupacion del cuartel
 	 */
 	public CuartelArgentino(Posicion punto) {
-		ocupacion = new OcupacionCuadrada(punto,30);
+		ocupacion = new OcupacionCuadrada(punto,43);
 		
 		/* agrego la instancia en el Espacio */
 		try {
@@ -39,7 +40,7 @@ public class CuartelArgentino extends ObjetoJuego {
 	}
 	
 	/**
-	 * Al chocar con un disparo autom�ticamente desaparece.
+	 * Al chocar con un disparo automaticamente desaparece.
 	 */
 	public void chocarCon(Disparo disparo) {
 		disparo.desaparecer();
@@ -47,7 +48,10 @@ public class CuartelArgentino extends ObjetoJuego {
 	}
 
 	/**
-	 * Al chocar ser chocado por un tanque, le indica que haga un movimiento unitario en la direcci�n contraria a la que trae para que no se superpongan espacialmente, dado que el cuartel bloquea su camino.
+	 * Al chocar ser chocado por un tanque, le indica que haga
+	 *  un movimiento unitario en la direccion contraria a la 
+	 *  que trae para que no se superpongan espacialmente, dado
+	 *  que el cuartel bloquea su camino.
 	 */
 	public void chocarCon(Tanque tanque) {
 		tanque.moverEnDireccionContraria();		

@@ -16,7 +16,7 @@ public class GrizzlyBattleTank extends TanqueEnemigo {
 			indicarObjetivo(Espacio.getInstancia().getTanqueJugador());
 		puntosPorDestruccion = 20;
 		velocidad = 1;
-		velocidadDisparo = 4;
+		velocidadDisparo = 1;
 		
 		if (Espacio.getInstancia().incluyeA(this)){
 			ConstructorVista.construirVista(this);
