@@ -1,5 +1,7 @@
 package ar.uba.fi.algo3.modelo.objetosInanimados;
 
+import ar.uba.fi.algo3.ConstructorVista;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 
 /**
@@ -12,6 +14,9 @@ public class ParedMetal extends Pared {
 	public ParedMetal(Posicion punto) {
 		super(punto);
 		impactosTolerados = 1;
+		if (Espacio.getInstancia().incluyeA(this)){
+			ConstructorVista.construirVista(this);
+		}
 	}
 
 }

@@ -27,6 +27,7 @@ public abstract class Disparo extends ObjetoMovil {
 	 * @see getPosicionPerimetralCentradaEnOrientacion(Orientacion orientacion) en la clase Ocupacion.
 	 */
 	public Disparo(Orientacion orientacion, Posicion punto) {
+		super();
 		this.orientacion = orientacion;
 	}
 	

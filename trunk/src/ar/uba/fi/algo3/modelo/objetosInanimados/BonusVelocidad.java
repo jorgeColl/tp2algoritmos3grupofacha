@@ -3,6 +3,7 @@
  */
 package ar.uba.fi.algo3.modelo.objetosInanimados;
 
+import ar.uba.fi.algo3.ConstructorVista;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.tanques.Tanque;
@@ -25,6 +26,9 @@ public class BonusVelocidad extends Bonus {
 			Espacio.getInstancia().agregarObjetoInanimado(this);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		if (Espacio.getInstancia().incluyeA(this)){
+			ConstructorVista.construirVista(this);
 		}
 	}
 
