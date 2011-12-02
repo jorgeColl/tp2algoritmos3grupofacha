@@ -3,16 +3,22 @@ package ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo;
 import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
- * Clase abstracta en la que los tanques enemigos delegan la desición de si disparar o no, y dependiendo del caso el qué arma disparar.
- * Para esto tienen un contador de unidades temporales el cual se incrementa cada vez que al tanque dueño de las estrategias se le invoca el método vivir.
- * Cuando se le pide a la estrategia que decida un disparo, si la cantidad de unidades temporales transcurridas es mayor que un atributo estático entero (REFERENCIA_DISPAROS) menos la velocidad de disparo del tanque dueño, entonces se efectiviza el disparo.
- * De esta manera, a mayor velocidad de disparo de un tanque, mayor es la frecuencia de disparos posibles.
- * @author Tomás
+ * Clase abstracta en la que los tanques enemigos delegan la desicion de si 
+ * disparar o no, y dependiendo del caso el que arma disparar.
+ * Para esto tienen un contador de unidades temporales el cual se incrementa 
+ * cada vez que al tanque duenio de las estrategias se le invoca el metodo vivir.
+ * Cuando se le pide a la estrategia que decida un disparo, si la cantidad 
+ * de unidades temporales transcurridas es mayor que un atributo estatico 
+ * entero (REFERENCIA_DISPAROS) menos la velocidad de disparo del tanque duenio, 
+ * entonces se efectiviza el disparo.
+ * De esta manera, a mayor velocidad de disparo de un tanque, mayor es la 
+ * frecuencia de disparos posibles.
+ * @author Tomas
  *
  */
 public abstract class EstrategiaDisparo {
 
-	protected static int REFERENCIA_DISPAROS = 20;
+	protected static int REFERENCIA_DISPAROS = 35;
 	
 	protected Tanque duenio;
 	protected int unidadesTemporalesTranscurridas;
@@ -26,16 +32,20 @@ public abstract class EstrategiaDisparo {
 	}
 	
 	/**
-	 * Método llamado por el tanque dueño de esta estrategia, que se encarga de invocarle o no alguno de sus métodos de disparo.
+	 * Metodo llamado por el tanque duenio de esta estrategia, que se encarga 
+	 * de invocarle o no alguno de sus metodos de disparo.
 	 */
 	public abstract void decidirDisparo();
 
 	/**
 	 * 
-	 * @return true si transcurrió el tiempo necesario que tiene que ocurrir entre disparos del tanque desde el último disparo, y false en el caso contrario
+	 * @return true si transcurrio el tiempo necesario que tiene que ocurrir 
+	 * entre disparos del tanque desde el ultimo disparo, y false en el caso 
+	 * contrario
 	 */
 	public boolean tiempoEntreDisparosTranscurrido() {
-		return (unidadesTemporalesTranscurridas >= (REFERENCIA_DISPAROS - (duenio.getVelocidadDisparo())));
+		return (unidadesTemporalesTranscurridas >= 
+				(REFERENCIA_DISPAROS - (duenio.getVelocidadDisparo())));
 	}
 	
 	/**

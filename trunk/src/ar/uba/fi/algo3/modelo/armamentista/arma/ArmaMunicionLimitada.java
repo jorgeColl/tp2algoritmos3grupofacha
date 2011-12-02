@@ -4,7 +4,7 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Otorga comportamiento común a las clases que representan a armas con munición limitada.
- * @author Federico
+ * @author Fede
  *
  */
 public abstract class ArmaMunicionLimitada extends Arma {

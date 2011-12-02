@@ -39,7 +39,7 @@ public class PruebasEspacio extends TestCase {
 	 */
 	public void testAgregarDisparo() {
 		Espacio.getInstancia().reiniciar();
-		DisparoAmetralladora disparo = new DisparoAmetralladora(Orientacion.i, new Posicion(5,5));
+		DisparoAmetralladora disparo = new DisparoAmetralladora(Orientacion.i, new Posicion(50,50));
 		assertTrue(Espacio.getInstancia().incluyeA(disparo));
 	}
 	

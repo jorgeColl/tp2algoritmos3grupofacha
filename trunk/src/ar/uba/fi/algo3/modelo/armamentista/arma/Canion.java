@@ -6,7 +6,7 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Modela un cañón, el cual es un arma que tiene una munición limitada.
- * @author Federico
+ * @author Fede
  *
  */
 public class Canion extends ArmaMunicionLimitada {

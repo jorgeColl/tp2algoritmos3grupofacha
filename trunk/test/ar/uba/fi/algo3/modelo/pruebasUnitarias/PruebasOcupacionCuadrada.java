@@ -2,8 +2,8 @@ package ar.uba.fi.algo3.modelo.pruebasUnitarias;
 
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 import junit.framework.TestCase;
 
 /**

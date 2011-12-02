@@ -133,7 +133,7 @@ public class OcupacionCuadrada implements Ocupacion {
 			puntoMenorModulo = new Posicion(posicion.getX(),posicion.getY()-(lado/2));
 		else {
 			if (orientacion == Orientacion.iNegativo)
-				puntoMenorModulo = new Posicion(posicion.getX()-(lado/2),posicion.getY()-(lado/2));
+				puntoMenorModulo = new Posicion(posicion.getX()-lado+1,posicion.getY()-(lado/2));
 			else {
 				if (orientacion == Orientacion.j)
 					puntoMenorModulo = new Posicion(posicion.getX()-(lado/2),posicion.getY()-lado+1);
@@ -146,8 +146,7 @@ public class OcupacionCuadrada implements Ocupacion {
 	}
 	
 	public Posicion getPosicionPerimetralCentradaEnOrientacion(Orientacion orientacion) {
-		//INICIALIZACION CORRESPONDIENTE A SI EL PARÁMETRO ES Orientacion.i, 
-		//SI ES OTRA SE LA CAMBIARÁ LUEGO.
+		//INICIALIZACION CORRESPONDIENTE A SI EL PARÁMETRO ES Orientacion.i, SI ES OTRA SE LA CAMBIARÁ LUEGO.
 		//RAZÓN DE COMPILACIÓN
 		Posicion posicionAuxiliar = new Posicion(puntoMenorModulo.getX()+lado,puntoMenorModulo.getY()+(lado/2));
 		if (orientacion == Orientacion.iNegativo)

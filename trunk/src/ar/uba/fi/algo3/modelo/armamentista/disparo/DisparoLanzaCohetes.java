@@ -8,7 +8,7 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 
 /**
  * Modela al disparo efectuado por los lanza cohetes.
- * @author Federico
+ * @author Fede
  *
  */
 public class DisparoLanzaCohetes extends Disparo {
@@ -17,7 +17,7 @@ public class DisparoLanzaCohetes extends Disparo {
 		super(orientacion,punto);
 		danioNeto = 0;
 		danioPorcentual = 50;
-		ocupacion = OcupacionCuadrada.crearAPartirDePosicionPerimetralCentradaEnOrientacion(punto, 1, orientacion);
+		ocupacion = OcupacionCuadrada.crearAPartirDePosicionPerimetralCentradaEnOrientacion(punto, 15, orientacion);
 		velocidad = 4;
 		Espacio.getInstancia().agregarDisparo(this);
 		

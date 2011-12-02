@@ -51,9 +51,11 @@ public class ConstructorVista {
 		auxiliar(vista,disparo);
 	}
 	public static void construirVista(DisparoLanzaCohetes disparo){
-		VistaImagenConOrientacion vista = new  VistaImagenConOrientacion(
-				"img/DisparoLanzaCohetes_i.JPG","img/DisparoLanzaCohetes_iNegativo.JPG",
-				"img/DisparoLanzaCohetes_j.JPG","img/DisparoLanzaCohetes_jNegativo.JPG");
+		VistaImagenConOrientacion vista = 
+				new  VistaImagenConOrientacion("img/DisparoLanzaCohetes_i.JPG",
+						"img/DisparoLanzaCohetes_iNegativo.JPG",
+						"img/DisparoLanzaCohetes_j.JPG",
+						"img/DisparoLanzaCohetes_jNegativo.JPG");
 		auxiliar(vista,disparo);
 	}
 	public static void construirVista(ParedConcreto pared){
@@ -90,33 +92,29 @@ public class ConstructorVista {
 	}
 	
 	public static void construirVista(GrizzlyBattleTank tanque){
-		VistaImagenConOrientacion vista = new VistaImagenConOrientacion(
-				"img/GrizzlyBattleTank_i.JPG","img/GrizzlyBattleTank_iNegativo.JPG",
-				"img/GrizzlyBattleTank_j.JPG", "img/GrizzlyBattleTank_jNegativo.JPG");
+		VistaImagenConOrientacion vista = 
+				new VistaImagenConOrientacion("img/GrizzlyBattleTank_i.JPG",
+						"img/GrizzlyBattleTank_iNegativo.JPG",
+						"img/GrizzlyBattleTank_j.JPG", 
+						"img/GrizzlyBattleTank_jNegativo.JPG");
 		auxiliar(vista,tanque);
 	}
 	
 	public static void construirVista(IFV tanque){
-		VistaImagenConOrientacion vista = new VistaImagenConOrientacion(
-				"img/IFV_i.JPG","img/IFV_iNegativo.JPG",
-				"img/IFV_j.JPG", "img/IFV_jNegativo.JPG");
+		VistaImagenConOrientacion vista = 
+				new VistaImagenConOrientacion("img/IFV_i.JPG",
+						"img/IFV_iNegativo.JPG",
+						"img/IFV_j.JPG", 
+						"img/IFV_jNegativo.JPG");
 		auxiliar(vista,tanque);
 	}
 	public static void construirVista(MirageTank tanque){
-		VistaImagenConOrientacion vista = new VistaImagenConOrientacion(
-				"img/MirageTank_i.JPG","img/MirageTank_iNegativo.JPG",
-				"img/MirageTank_j.JPG", "img/MirageTank_jNegativo.JPG");
+		VistaImagenConOrientacion vista = 
+				new VistaImagenConOrientacion("img/MirageTank_i.JPG",
+						"img/MirageTank_iNegativo.JPG",
+						"img/MirageTank_j.JPG", 
+						"img/MirageTank_jNegativo.JPG");
 		auxiliar(vista,tanque);
 	}
-	
-	
-	public static void construirVista(ObjetoJuego objetoJuego) {
-		// TODO Auto-generated method stub
-		System.out.print("Vista Objeto Pedida Pero No Encontrada");
 		
-	}
-	
-
-	
-
 }

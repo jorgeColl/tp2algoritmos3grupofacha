@@ -14,13 +14,14 @@ import ar.uba.fi.algo3.vista.VistaAlgoTank;
 
 /**
  * Modela al tanque manejado por el jugador.
- * @author Tom�s
+ * @author Tomas
  *
  */
 public class AlgoTank extends Tanque {
 
 	private Ametralladora ametralladora;
 	private Stack<ArmaMunicionLimitada> armasPrioritarias;
+	private int puntaje;
 	
 	public AlgoTank(Posicion punto) {
 		super(punto);
@@ -28,8 +29,9 @@ public class AlgoTank extends Tanque {
 		armasPrioritarias = new Stack<ArmaMunicionLimitada>();
 		estrategiaDisparo = new EstrategiaDisparoAlgoTank(this);
 		orientacion = Orientacion.j;
+		puntaje = 0;
 		velocidad = 2;
-		velocidadDisparo = 8;
+		velocidadDisparo = 15;
 		
 		/* agrego la instancia en el Espacio */
 		try {
@@ -45,15 +47,18 @@ public class AlgoTank extends Tanque {
 	}
 	
 	/**
-	 * Le pide a su estrategia de disparo que resuelva el qu� arma disparar, siempre y cuando esto sea temporalmente posible.
+	 * Le pide a su estrategia de disparo que resuelva el que arma 
+	 * disparar, siempre y cuando esto sea temporalmente posible.
 	 */
 	public void disparar() {
 		estrategiaDisparo.decidirDisparo();
 	}
 	
 	/**
-	 * Cambiamos el due�o del arma y la agregamos a las del tanque, siempre y cuando no tengan munici�n nula.
-	 * @param arma instancia de una subclase de ArmaMunicionLimitada que se sumar� a las del tanque
+	 * Cambiamos el duenio del arma y la agregamos a las del tanque, 
+	 * siempre y cuando no tengan municion nula.
+	 * @param arma instancia de una subclase de ArmaMunicionLimitada 
+	 * que se sumara a las del tanque
 	 */
 	public void entregarArma(ArmaMunicionLimitada arma) {
 		arma.setDuenio(this);
@@ -71,10 +76,26 @@ public class AlgoTank extends Tanque {
 	
 	/**
 	 * 
-	 * @return pila de las armas robadas por el tanque, en �rden de prioridad
+	 * @return atributo puntaje
+	 */
+	public int getPuntaje() {
+		return puntaje;
+	}
+	
+	/**
+	 * 
+	 * @return pila de las armas robadas por el tanque, en orden de prioridad
 	 */
 	public Stack<ArmaMunicionLimitada> getArmasPrioritarias() {
 		return armasPrioritarias;
+	}
+	
+	/**
+	 * 
+	 * @param incremento valor que sumaremos al puntaje del jugador
+	 */
+	public void incrementarPuntaje(int incremento) {
+		puntaje = puntaje + incremento;
 	}
 	
 	public void vivir() {

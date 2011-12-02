@@ -8,7 +8,7 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 
 /**
  * Modela al disparo efectuado por las ametralladoras.
- * @author Federico
+ * @author Fede
  *
  */
 public class DisparoAmetralladora extends Disparo {
@@ -17,7 +17,7 @@ public class DisparoAmetralladora extends Disparo {
 		super(orientacion, punto);
 		danioNeto = 20;
 		danioPorcentual = 0;
-		ocupacion = OcupacionCuadrada.crearAPartirDePosicionPerimetralCentradaEnOrientacion(punto, 1, orientacion);
+		ocupacion = OcupacionCuadrada.crearAPartirDePosicionPerimetralCentradaEnOrientacion(punto, 15, orientacion);
 		velocidad = 4;
 		
 		/* agrego la instancia en el Espacio */

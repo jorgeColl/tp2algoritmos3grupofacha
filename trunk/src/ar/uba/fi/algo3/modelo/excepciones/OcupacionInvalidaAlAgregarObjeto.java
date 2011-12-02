@@ -1,9 +1,14 @@
 package ar.uba.fi.algo3.modelo.excepciones;
 
 /**
- * La lanzan las instancias de las subclases de ObjetoJuego cuando se las trata de agregar al espacio con una ocupación que no es válida dentro del mapeo del espacio.
- * Los disparos no la lanzan porque cuando trata de agregárselos en una ocupación invalida directamente no se lo hace. Esto cubre el caso de que un tanque dispare posicionado sobre un borde, orientado hacia él.
- * @author Federico
+ * La lanzan las instancias de las subclases de ObjetoJuego cuando 
+ * se las trata de agregar al espacio con una ocupacion que no es 
+ * valida dentro del mapeo del espacio.
+ * Los disparos no la lanzan porque cuando trata de agregarselos en 
+ * una ocupacion invalida directamente no se lo hace. Esto cubre el 
+ * caso de que un tanque dispare posicionado sobre un borde, orientado 
+ * hacia el.
+ * @author Fede
  *
  */
 public class OcupacionInvalidaAlAgregarObjeto extends Exception {

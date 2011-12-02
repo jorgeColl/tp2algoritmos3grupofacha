@@ -4,9 +4,11 @@ import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoMovil;
 
 /**
- * Otorga comportamiento a los objetos móviles que buscan llegar a un objetivo sin especificaciones de dirección.
- * Para esto tiene un contador que le permite ir alternando el moverse horizontal y verticalmente.
- * @author Tomás
+ * Otorga comportamiento a los objetos moviles que buscan llegar 
+ * a un objetivo sin especificaciones de direccion.
+ * Para esto tiene un contador que le permite ir alternando el 
+ * moverse horizontal y verticalmente.
+ * @author Tomas
  *
  */
 public class AlcanzarObjetivo extends EstrategiaMovimiento {
@@ -19,20 +21,26 @@ public class AlcanzarObjetivo extends EstrategiaMovimiento {
 	}
 
 	/**
-	 * Cuando el contador es 0, prioriza el movimiento horizontal hacia el objetivo (si no tiene sentido realizar tal movimiento realiza el opuesto).
-	 * Cuando el contador es 1, prioriza el movimiento vertical hacia el objetivo (si no tiene sentido realizar tal movimiento realiza el opuesto).
+	 * Cuando el contador es 0, prioriza el movimiento horizontal 
+	 * hacia el objetivo (si no tiene sentido realizar tal movimiento 
+	 * realiza el opuesto).
+	 * Cuando el contador es 1, prioriza el movimiento vertical hacia 
+	 * el objetivo (si no tiene sentido realizar tal movimiento realiza 
+	 * el opuesto).
 	 */
 	public void dedicirMovimiento() {
 		if (contador == 2)
 			contador = 0;
 		if (contador == 0) {
-			if (!(duenio.getOcupacion().coincidenciaProyeccionHorizontalCon(objetivo.getOcupacion())))
+			if (!(duenio.getOcupacion().
+					coincidenciaProyeccionHorizontalCon(objetivo.getOcupacion())))
 				indicarDuenioAcercarseHorizontalmenteAObjetivo();
 			else
 				indicarDuenioAcercarseVerticalmenteAObjetivo();
 		}
 		if (contador == 1) {
-			if (!(duenio.getOcupacion().coincidenciaProyeccionVerticalCon(objetivo.getOcupacion())))
+			if (!(duenio.getOcupacion().
+					coincidenciaProyeccionVerticalCon(objetivo.getOcupacion())))
 				indicarDuenioAcercarseVerticalmenteAObjetivo();
 			else
 				indicarDuenioAcercarseHorizontalmenteAObjetivo();

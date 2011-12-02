@@ -4,7 +4,7 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Modela un arma, la cual tiene un tanque que es su dueño y es capaz de disparar una munición cuando se lo solicita.
- * @author Federico
+ * @author Fede
  *
  */
 public abstract class Arma {

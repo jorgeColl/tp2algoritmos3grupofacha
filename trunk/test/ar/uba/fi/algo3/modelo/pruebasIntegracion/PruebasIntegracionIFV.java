@@ -156,7 +156,7 @@ public class PruebasIntegracionIFV extends TestCase {
 		tanque = new IFV(new Posicion(10,0));
 		int municionInicial = ((Canion)tanque.getArma()).getMunicion();
 		int contador = 0;
-		while ((otroTanque.getResistencia() > 0)&&(contador < 200)) {
+		while ((otroTanque.getResistencia() > 0)&&(contador < 300)) {
 			Espacio.getInstancia().correrLogica();
 			++contador;
 		}

@@ -29,28 +29,13 @@ public class PruebasEstrategiaDisparoVelocidadDependiente extends TestCase {
 	 * @throws Exception 
 	 */
 	public void testTiempoTranscurridoHastaPrimerDisparo() throws Exception {
-		assertEquals(((LanzaCohetes)duenio.getArma()).getMunicion(),25);
-		estrategia.informarTranscursoTiempo();
-		estrategia.decidirDisparo();
-		assertEquals(((LanzaCohetes)duenio.getArma()).getMunicion(),25);
-		estrategia.informarTranscursoTiempo();
-		estrategia.decidirDisparo();
-		assertEquals(((LanzaCohetes)duenio.getArma()).getMunicion(),25);
-		estrategia.informarTranscursoTiempo();
-		estrategia.decidirDisparo();
-		assertEquals(((LanzaCohetes)duenio.getArma()).getMunicion(),25);
-		estrategia.informarTranscursoTiempo();
-		estrategia.decidirDisparo();
-		assertEquals(((LanzaCohetes)duenio.getArma()).getMunicion(),25);
-		estrategia.informarTranscursoTiempo();
-		estrategia.decidirDisparo();
-		assertEquals(((LanzaCohetes)duenio.getArma()).getMunicion(),25);
-		estrategia.informarTranscursoTiempo();
-		estrategia.decidirDisparo();
-		assertEquals(((LanzaCohetes)duenio.getArma()).getMunicion(),25);
-		estrategia.informarTranscursoTiempo();
-		estrategia.decidirDisparo();
-		assertEquals(((LanzaCohetes)duenio.getArma()).getMunicion(),25);
+		int contador = 0;
+		while (contador < 32) {
+			assertEquals(((LanzaCohetes)duenio.getArma()).getMunicion(),25);
+			estrategia.informarTranscursoTiempo();
+			estrategia.decidirDisparo();
+			++contador;
+		}
 		//A PARTIR DE AQUÍ YA PUEDE DISPARAR.
 		estrategia.informarTranscursoTiempo();
 		estrategia.decidirDisparo();

@@ -1,11 +1,13 @@
 package ar.uba.fi.algo3.modelo.clasesGeneralizadoras;
 
+import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Ocupacion;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 
 /**
- * Provee de estado y comportamiento com�n a los objetos que pueden moverse por el espacio.
+ * Provee de estado y comportamiento comun a los objetos que pueden 
+ * moverse por el espacio.
  * @author Jorge
  *
  */
@@ -16,18 +18,21 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 	
 	
 	/**
-	 * Analiza cu�l de los bordes laterales est� m�s cercano al objeto y lo mueve en dicha direcci�n.
+	 * Analiza cual de los bordes laterales esta mas cercano al objeto 
+	 * y lo mueve en dicha direccion.
 	 * Por defecto elije el derecho.
 	 */
 	public void acercarseAlBordeLateralMasCercano() {
-		if (ocupacion.getLimiteIzquierdo() < (Espacio.getInstancia().getLimiteDerecho()-ocupacion.getLimiteDerecho()))
+		if (ocupacion.getLimiteIzquierdo() < 
+				(Espacio.getInstancia().getLimiteDerecho() - ocupacion.getLimiteDerecho()))
 			moverIzquierda();
 		else
 			moverDerecha();
 	}
 	
 	/**
-	 * Dirige al objeto al centro del espacio hasta que alg�n punto de su ocupaci�n coincida con la recta que determina a este.
+	 * Dirige al objeto al centro del espacio hasta que algun punto de 
+	 * su ocupacion coincida con la recta que determina a este.
 	 */
 	public void acercarseAlCentroHorizontalDelEspacio() {
 		if (ocupacion.getLimiteIzquierdo() > (Espacio.getInstancia().getLimiteDerecho()/2))
@@ -37,14 +42,17 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 	}
 	
 	/**
-	 * M�todo que utilizar�n las subclases instanciables de esta internamente para chequear si su nueva ocupaci�n es v�lida (tomando una desici�n si no lo es dependiente de la subclase) y si han colisionado con otro.
-	 * @param ocupacionProvisoria instancia de una subclase de Ocupacion que tiene provisoriamente el tanque
+	 * Metodo que utilizaran las subclases instanciables de esta internamente 
+	 * para chequear si su nueva ocupacion es valida (tomando una desicion si 
+	 * no lo es dependiente de la subclase) y si han colisionado con otro.
+	 * @param ocupacionProvisoria instancia de una subclase de Ocupacion que 
+	 * tiene provisoriamente el tanque
 	 */
 	protected abstract void chequearOcupacionValidaYColisiones(Ocupacion ocupacionProvisoria);
 
 	/**
 	 * 
-	 * @return orientacion del objeto m�vil
+	 * @return orientacion del objeto movil
 	 */
 	public Orientacion getOrientacion() {
 		return orientacion;
@@ -52,14 +60,37 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 
 	/**
 	 * 
-	 * @return velocidad del objeto m�vil
+	 * @return velocidad del objeto movil
 	 */
 	public int getVelocidad() {
 		return velocidad;
 	}
 	
 	/**
-	 * Realizamos el movimiento y cambiamos la orientaci�n del objeto.
+	 * 
+	 * @return true si moviendose en forma recta en cualquier orientacion 
+	 * impactaran al objeto representado por el parametro en caso de que 
+	 * este no se mueva y false en el caso contrario
+	 */
+	public boolean impactaraA(ObjetoJuego objeto) {
+		int coordenadaAuxiliar = ocupacion.getLimiteSuperior()+
+				(ocupacion.getLimiteInferior()-ocupacion.getLimiteSuperior())/2;
+		if (coordenadaAuxiliar > objeto.getOcupacion().getLimiteSuperior()) {
+			if (coordenadaAuxiliar < objeto.getOcupacion().getLimiteInferior())
+				return true;
+		}
+		coordenadaAuxiliar = ocupacion.getLimiteIzquierdo()+
+				(ocupacion.getLimiteDerecho()-ocupacion.getLimiteIzquierdo())/2;
+		if (coordenadaAuxiliar > objeto.getOcupacion().getLimiteIzquierdo()) {
+			if (coordenadaAuxiliar < objeto.getOcupacion().getLimiteDerecho())
+				return true;
+		}
+		return false;
+	}
+	
+	
+	/**
+	 * Realizamos el movimiento y cambiamos la orientacion del objeto.
 	 */
 	public void moverAbajo() {
 		int contador = 0;

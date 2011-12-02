@@ -69,7 +69,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	 */
 	public void testAlgoTankChocarConGrizzlyBattleTankDesdeArriba() {
 		tanque = new AlgoTank(new Posicion(0,0));
-	//	GrizzlyBattleTank otroTanque = new GrizzlyBattleTank(new Posicion(0,((OcupacionCuadrada)tanque.getOcupacion()).getLado()));
+		GrizzlyBattleTank otroTanque = new GrizzlyBattleTank(new Posicion(0,((OcupacionCuadrada)tanque.getOcupacion()).getLado()));
 		tanque.moverAbajo();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
@@ -80,7 +80,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	 */
 	public void testAlgoTankChocarConIFVDesdeIzquierda() {
 		tanque = new AlgoTank(new Posicion(0,0));
-	//	IFV otroTanque = new IFV(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
+		IFV otroTanque = new IFV(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		tanque.moverDerecha();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
@@ -104,7 +104,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	 */
 	public void testAlgoTankChocarConParedConcretoDesdeIzquierda() {
 		tanque = new AlgoTank(new Posicion(0,0));
-	//	ParedConcreto pared = new ParedConcreto(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
+		ParedConcreto pared = new ParedConcreto(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		tanque.moverDerecha();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
@@ -128,7 +128,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	 */
 	public void testAlgoTankChocarConCuartelArgentinoDesdeIzquierda() {
 		tanque = new AlgoTank(new Posicion(0,0));
-	//	CuartelArgentino cuartel = new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));		
+		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));		
 		tanque.moverDerecha();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
@@ -173,7 +173,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		tanque.moverDerecha();
 		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
 		int contador = 0;
-		while ((otroTanque.getResistencia() > 0)&&(contador < 100)) {
+		while ((otroTanque.getResistencia() > 0)&&(contador < 200)) {
 			tanque.vivir();
 			tanque.disparar();
 			++contador;
@@ -194,7 +194,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		tanque.moverIzquierda();
 		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
 		int contador = 0;
-		while ((otroTanque.getResistencia() > 0)&&(contador < 100)) {
+		while ((otroTanque.getResistencia() > 0)&&(contador < 200)) {
 			tanque.vivir();
 			tanque.disparar();
 			++contador;
@@ -217,7 +217,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		tanque.moverArriba();
 		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
 		int contador = 0;
-		while ((otroTanque.getResistencia() > 1)&&(contador < 100)) {
+		while ((otroTanque.getResistencia() > 1)&&(contador < 200)) {
 			tanque.vivir();
 			tanque.disparar();
 			++contador;
@@ -237,7 +237,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		tanque.moverDerecha();
 		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
 		int contador = 0;
-		while ((otroTanque.getResistencia() > 0)&&(contador < 100)) {
+		while ((otroTanque.getResistencia() > 0)&&(contador < 200)) {
 			tanque.vivir();
 			tanque.disparar();
 			++contador;
@@ -258,7 +258,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		tanque.moverIzquierda();
 		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
 		int contador = 0;
-		while ((otroTanque.getResistencia() > 0)&&(contador < 100)) {
+		while ((otroTanque.getResistencia() > 0)&&(contador < 200)) {
 			tanque.vivir();
 			tanque.disparar();
 			++contador;
@@ -280,7 +280,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		tanque.moverArriba();
 		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
 		int contador = 0;
-		while ((otroTanque.getResistencia() > 1)&&(contador < 100)) {
+		while ((otroTanque.getResistencia() > 1)&&(contador < 200)) {
 			tanque.vivir();
 			tanque.disparar();
 			++contador;
@@ -300,7 +300,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		tanque.moverDerecha();
 		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
 		int contador = 0;
-		while ((otroTanque.getResistencia() > 0)&&(contador < 100)) {
+		while ((otroTanque.getResistencia() > 0)&&(contador < 200)) {
 			tanque.vivir();
 			tanque.disparar();
 			++contador;
@@ -320,7 +320,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		tanque.moverIzquierda();
 		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
 		int contador = 0;
-		while ((otroTanque.getResistencia() > 0)&&(contador < 100)) {
+		while ((otroTanque.getResistencia() > 0)&&(contador < 200)) {
 			tanque.vivir();
 			tanque.disparar();
 			++contador;
@@ -341,7 +341,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		tanque.moverArriba();
 		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
 		int contador = 0;
-		while ((otroTanque.getResistencia() > 1)&&(contador < 100)) {
+		while ((otroTanque.getResistencia() > 1)&&(contador < 200)) {
 			tanque.vivir();
 			tanque.disparar();
 			++contador;
@@ -362,18 +362,11 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		tanque = new AlgoTank(new Posicion(0,((OcupacionCuadrada)pared.getOcupacion()).getLado()));
 		tanque.moverArriba();
 		assertTrue(Espacio.getInstancia().incluyeA(pared));
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
+		int contador = 0;
+		while (contador < 27) {
+			tanque.vivir();
+			++contador;
+		}
 		tanque.disparar();
 		assertFalse(Espacio.getInstancia().incluyeA(pared));
 	}
@@ -386,32 +379,18 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		tanque = new AlgoTank(new Posicion(((OcupacionCuadrada)pared.getOcupacion()).getLado(),0));
 		tanque.moverIzquierda();
 		assertTrue(Espacio.getInstancia().incluyeA(pared));
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
+		int contador = 0;
+		while (contador < 27) {
+			tanque.vivir();
+			++contador;
+		}
 		tanque.disparar();
 		assertTrue(Espacio.getInstancia().incluyeA(pared));
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
+		contador = 0;
+		while (contador < 27) {
+			tanque.vivir();
+			++contador;
+		}
 		tanque.disparar();
 		assertFalse(Espacio.getInstancia().incluyeA(pared));
 	}
@@ -425,18 +404,11 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		tanque.moverDerecha();
 		assertTrue(Espacio.getInstancia().incluyeA(cuartel));
 		assertFalse(Espacio.getInstancia().juegoPerdido());
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
-		tanque.vivir();
+		int contador = 0;
+		while (contador < 27) {
+			tanque.vivir();
+			++contador;
+		}
 		tanque.disparar();
 		assertFalse(Espacio.getInstancia().incluyeA(cuartel));
 		assertTrue(Espacio.getInstancia().juegoPerdido());

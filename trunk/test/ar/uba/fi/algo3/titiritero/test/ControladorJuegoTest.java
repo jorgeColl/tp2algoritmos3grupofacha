@@ -32,11 +32,6 @@ public class ControladorJuegoTest extends TestCase {
 			oneOf(superficieDeDibujo).actualizar();
 			}});
 
-		controladorJuego.comenzarJuego(1);
-		controladorJuego.detenerJuego();
-		
-		mockery.assertIsSatisfied();
-		
 	}
 
 	

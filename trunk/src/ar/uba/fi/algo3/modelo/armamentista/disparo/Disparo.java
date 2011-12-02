@@ -11,8 +11,9 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
- * Modela un disparo que se mueve por el escenario hasta salir de este o impactar con una instancia de ObjetoJuego, caus�ndole un da�o. 
- * @author Federico
+ * Modela un disparo que se mueve por el escenario hasta salir de este o impactar 
+ * con una instancia de ObjetoJuego, causandole un danio. 
+ * @author Fede
  *
  */
 public abstract class Disparo extends ObjetoMovil {
@@ -23,8 +24,11 @@ public abstract class Disparo extends ObjetoMovil {
 	/**
 	 * Constructor.
 	 * @param orientacion versor representante de la direcci�n del disparo
-	 * @param punto posici�n de la ocupaci�n del disparo m�s cercana al tanque que lo ha disparado y centrada en la ocupaci�n de este, sobre su eje de movimiento
-	 * @see getPosicionPerimetralCentradaEnOrientacion(Orientacion orientacion) en la clase Ocupacion.
+	 * @param punto posici�n de la ocupaci�n del disparo m�s cercana al 
+	 * tanque que lo ha disparado y centrada en la ocupaci�n de este, sobre 
+	 * su eje de movimiento
+	 * @see getPosicionPerimetralCentradaEnOrientacion(Orientacion orientacion) en 
+	 * la clase Ocupacion.
 	 */
 	public Disparo(Orientacion orientacion, Posicion punto) {
 		super();
@@ -33,16 +37,20 @@ public abstract class Disparo extends ObjetoMovil {
 	
 	/**
 	 * @see chequearOcupacionValidaYColisiones() en la clase ObjetoMovil.
-	 * Si la ocupaci�n no es v�lida, el disparo ha salido de los l�mites de la pantalla y por lo tanto desaparece.
+	 * Si la ocupacion no es valida, el disparo ha salido de los limites de la pantalla 
+	 * y por lo tanto desaparece.
 	 */
 	protected void chequearOcupacionValidaYColisiones(Ocupacion ocupacionProvisoria) {
 		if ((ocupacionProvisoria.espacialmenteValida())) {
 			ocupacion = ocupacionProvisoria;
 			Vector<ObjetoJuego> objetos = Espacio.getInstancia().getObjetosJuegoEnContactoCon(this);
-			int contador = 0;
-			while (contador < objetos.size()) {
-				objetos.get(contador).chocarCon(this);
-				++contador;
+			if (objetos.size() > 0) {
+				this.desaparecer();
+				int contador = 0;
+				while (contador < objetos.size()) {
+					objetos.get(contador).chocarCon(this);
+					++contador;
+				}
 			}
 		}
 		else
@@ -58,7 +66,8 @@ public abstract class Disparo extends ObjetoMovil {
 	}
 	
 	/**
-	 * Le indicamos al tanque que ha sido chocado por este disparo, y hacemos que este �ltimo desaparezca.
+	 * Le indicamos al tanque que ha sido chocado por este disparo, y hacemos 
+	 * que este ultimo desaparezca.
 	 */
 	public void chocarCon(Tanque tanque) {
 		tanque.chocarCon(this);

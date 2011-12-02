@@ -1,10 +1,11 @@
 package ar.uba.fi.algo3.modelo.pruebasUnitarias;
 
-import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVida;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
-import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
+import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVida;
 import ar.uba.fi.algo3.modelo.tanques.Tanque;
+import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
 import junit.framework.TestCase;
 
 /**
@@ -18,6 +19,7 @@ public class PruebasBonusVida extends TestCase {
 	double porcentajeQueAumentaBonus;
 	
 	public void setUp (){
+		Espacio.getInstancia().reiniciar();
 		this.tanque = new AlgoTank(new Posicion(0,0));
 		this.bonusVida = new BonusVida(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		this.porcentajeQueAumentaBonus = 0.4;

@@ -23,8 +23,8 @@ public class PruebasAlcanzarObjetivoCentro extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		Espacio.getInstancia().reiniciar();
-		objetivo = new AlgoTank(new Posicion(200,250));
-		duenio = new MirageTank(new Posicion(290,264));
+		objetivo = new AlgoTank(new Posicion(350,212));
+		duenio = new MirageTank(new Posicion(252,264));
 		estrategia = new AlcanzarObjetivoCentro(duenio,objetivo);
 	}
 	
@@ -33,13 +33,13 @@ public class PruebasAlcanzarObjetivoCentro extends TestCase {
 	 */
 	public void testAlcanzarCentro() {
 		estrategia.dedicirMovimiento();
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),292);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),254);
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),264);
 		estrategia.dedicirMovimiento();
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),294);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),256);
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),264);
 		estrategia.dedicirMovimiento();
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),296);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),264);
 	}
 	
@@ -49,16 +49,16 @@ public class PruebasAlcanzarObjetivoCentro extends TestCase {
 	public void testAlcanzarVerticalmenteAObjetivo() {
 		testAlcanzarCentro();
 		estrategia.dedicirMovimiento();
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),296);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),262);
 		estrategia.dedicirMovimiento();
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),296);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),260);
 		estrategia.dedicirMovimiento();
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),296);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),258);
 		estrategia.dedicirMovimiento();
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),296);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),256);
 	}
 	
@@ -69,11 +69,11 @@ public class PruebasAlcanzarObjetivoCentro extends TestCase {
 		testAlcanzarVerticalmenteAObjetivo();
 		assertEquals(duenio.getOrientacion(),Orientacion.j);
 		estrategia.dedicirMovimiento();
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),296);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),254);
-		assertEquals(duenio.getOrientacion(),Orientacion.iNegativo);
+		assertEquals(duenio.getOrientacion(),Orientacion.i);
 		estrategia.dedicirMovimiento();
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),296);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),254);
 	}
 	
@@ -86,16 +86,16 @@ public class PruebasAlcanzarObjetivoCentro extends TestCase {
 		objetivo.moverArriba();
 		objetivo.moverArriba();
 		estrategia.dedicirMovimiento();
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),296);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),252);
 		estrategia.dedicirMovimiento();
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),296);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),250);
 		assertEquals(duenio.getOrientacion(),Orientacion.j);
 		estrategia.dedicirMovimiento();
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),296);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),248);
-		assertEquals(duenio.getOrientacion(),Orientacion.iNegativo);
+		assertEquals(duenio.getOrientacion(),Orientacion.i);
 	}
 	
 }

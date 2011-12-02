@@ -35,32 +35,19 @@ public class PruebasEstrategiaDisparoAlgoTank extends TestCase {
 		estrategia.informarTranscursoTiempo();
 		estrategia.decidirDisparo();
 		assertEquals(duenio.getArmasPrioritarias().peek().getMunicion(),2);
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
+		int contador = 0;
+		while (contador < 27) {
+			estrategia.informarTranscursoTiempo();
+			++contador;
+		}
 		//A PARTIR DE AQUÍ YA PODRÍA DISPARAR.
 		estrategia.decidirDisparo();
 		assertEquals(duenio.getArmasPrioritarias().peek().getMunicion(),1);
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
+		contador = 0;
+		while (contador < 27) {
+			estrategia.informarTranscursoTiempo();
+			++contador;
+		}
 		//A PARTIR DE AQUÍ YA PODRÍA DISPARAR.
 		estrategia.decidirDisparo();
 		assertTrue(duenio.getArmasPrioritarias().isEmpty());
@@ -76,32 +63,19 @@ public class PruebasEstrategiaDisparoAlgoTank extends TestCase {
 		estrategia.informarTranscursoTiempo();
 		estrategia.decidirDisparo();
 		assertEquals(duenio.getArmasPrioritarias().peek().getMunicion(),2);
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
+		int contador = 0;
+		while (contador < 27) {
+			estrategia.informarTranscursoTiempo();
+			++contador;
+		}
 		//A PARTIR DE AQUÍ YA PODRÍA DISPARAR.
 		estrategia.decidirDisparo();
 		assertEquals(duenio.getArmasPrioritarias().peek().getMunicion(),1);
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
-		estrategia.informarTranscursoTiempo();
+		contador = 0;
+		while (contador < 27) {
+			estrategia.informarTranscursoTiempo();
+			++contador;
+		}
 		//A PARTIR DE AQUÍ YA PODRÍA DISPARAR.
 		estrategia.decidirDisparo();
 		assertTrue(duenio.getArmasPrioritarias().isEmpty());

@@ -9,8 +9,8 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 
 /**
- * Proveé el estado y el comportamiento común de los tanques enemigos.
- * @author Tomás
+ * Provee el estado y el comportamiento común de los tanques enemigos.
+ * @author Tomas
  *
  */
 public abstract class TanqueEnemigo extends Tanque {
@@ -54,18 +54,29 @@ public abstract class TanqueEnemigo extends Tanque {
 	}
 	
 	/**
-	 * Le indicamos al tanque quién es su objetivo para alcanzar y destruir.
-	 * @param objeto instancia de la clase ObjetoJuego a la cual el tanque tratará de alcanzar y destruir
+	 * Le indicamos al tanque quien es su objetivo para alcanzar y destruir.
+	 * @param objeto instancia de la clase ObjetoJuego a la cual el tanque 
+	 * tratara de alcanzar y destruir
 	 */
 	public abstract void indicarObjetivo(ObjetoJuego objeto);
 	
 	/**
-	 * Le indica al tanque que se mueva y dispare si es necesario, delegando en las estrategias correspondientes.
+	 * Le indica al tanque que se mueva y dispare si es necesario, delegando en 
+	 * las estrategias correspondientes.
 	 */
 	public void vivir() {
 		estrategiaMovimiento.dedicirMovimiento();
 		estrategiaDisparo.decidirDisparo();
 		estrategiaDisparo.informarTranscursoTiempo();
+	}
+	
+	/**
+	 * Al comportamiento común a todos los objetos del juego, sumamos el aumentar el puntaje del jugador.
+	 */
+	public void desaparecer() {
+		super.desaparecer();
+		if (Espacio.getInstancia().getTanqueJugador() != null)
+			Espacio.getInstancia().getTanqueJugador().incrementarPuntaje(puntosPorDestruccion);
 	}
 	
 }

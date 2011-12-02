@@ -6,7 +6,7 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Modela un lanza cohetes, el cual es un arma que tiene una minución limitada.
- * @author Federico
+ * @author Fede
  *
  */
 public class LanzaCohetes extends ArmaMunicionLimitada {
