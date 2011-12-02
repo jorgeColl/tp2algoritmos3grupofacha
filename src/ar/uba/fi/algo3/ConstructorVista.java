@@ -5,6 +5,7 @@ package ar.uba.fi.algo3;
 
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoCanion;
+import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoLanzaCohetes;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
 import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
 import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVida;
@@ -12,6 +13,9 @@ import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
 import ar.uba.fi.algo3.modelo.objetosInanimados.ParedConcreto;
 import ar.uba.fi.algo3.modelo.objetosInanimados.ParedMetal;
 import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
+import ar.uba.fi.algo3.modelo.tanques.GrizzlyBattleTank;
+import ar.uba.fi.algo3.modelo.tanques.IFV;
+import ar.uba.fi.algo3.modelo.tanques.MirageTank;
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.Dibujable;
 import ar.uba.fi.algo3.vista.VistaAlgoTank;
@@ -19,14 +23,18 @@ import ar.uba.fi.algo3.vista.VistaBonus;
 import ar.uba.fi.algo3.vista.VistaCuartelArgentino;
 import ar.uba.fi.algo3.vista.VistaDisparoAmetralladora;
 import ar.uba.fi.algo3.vista.VistaDisparoCanion;
-import ar.uba.fi.algo3.vista.VistaPared;
+import ar.uba.fi.algo3.vista.VistaDisparoLanzaCohetes;
+import ar.uba.fi.algo3.vista.VistaParaImagen;
+import ar.uba.fi.algo3.vista.VistaTanqueEnemigo;
 
 /**
  * @author jc
- * esta clase va a ayudar a crear a los elementos que esten en el juego
+ * esta clase va a ayudar a crear a las vistas de los elementos que esten en el juego y 
+ * quieran ser visualizados
  */
 public class ConstructorVista {
 	
+	//solo evita dos lineas de repeticion de codigo
 	private static void auxiliar (Dibujable vista, ObjetoJuego objeto){
 		vista.setPosicionable(objeto);
 		ControladorJuego.getInstancia().agregarDibujable(vista);
@@ -39,16 +47,20 @@ public class ConstructorVista {
 		VistaDisparoCanion vista = new  VistaDisparoCanion();
 		auxiliar(vista,disparo);
 	}
+	public static void construirVista(DisparoLanzaCohetes disparo){
+		VistaDisparoLanzaCohetes vista = new  VistaDisparoLanzaCohetes();
+		auxiliar(vista,disparo);
+	}
 	public static void construirVista(ParedConcreto pared){
-		VistaPared vista = new VistaPared("img/ParedConcreto.JPG");
+		VistaParaImagen vista = new VistaParaImagen("img/ParedConcreto.JPG");
 		auxiliar(vista,pared);
 	}
 	public static void construirVista(ParedMetal pared){
-		VistaPared vista = new VistaPared("img/ParedMetal.JPG");
+		VistaParaImagen vista = new VistaParaImagen("img/ParedMetal.JPG");
 		auxiliar(vista,pared);
 	}
 	public static void construirVista(CuartelArgentino cuartel){
-		VistaCuartelArgentino vista = new VistaCuartelArgentino();
+		VistaParaImagen vista = new VistaParaImagen("img/cuartelArgentino.GIF");
 		auxiliar(vista,cuartel);
 	}
 	
@@ -66,6 +78,24 @@ public class ConstructorVista {
 		VistaBonus vista = new VistaBonus("img/BonusVida.JPG");
 		auxiliar(vista,bonus);
 	}
+	
+	public static void construirVista(GrizzlyBattleTank tanque){
+		VistaTanqueEnemigo vista = new VistaTanqueEnemigo("img/GrizzlyBattleTank_i.JPG","img/GrizzlyBattleTank_iNegativo.JPG",
+				"img/GrizzlyBattleTank_j.JPG", "img/GrizzlyBattleTank_jNegativo.JPG");
+		auxiliar(vista,tanque);
+	}
+	
+	public static void construirVista(IFV tanque){
+		VistaTanqueEnemigo vista = new VistaTanqueEnemigo("img/IFV_i.JPG","img/IFV_iNegativo.JPG",
+				"img/IFV_j.JPG", "img/IFV_jNegativo.JPG");
+		auxiliar(vista,tanque);
+	}
+	public static void construirVista(MirageTank tanque){
+		VistaTanqueEnemigo vista = new VistaTanqueEnemigo("img/MirageTank_i.JPG","img/MirageTank_iNegativo.JPG",
+				"img/MirageTank_j.JPG", "img/MirageTank_jNegativo.JPG");
+		auxiliar(vista,tanque);
+	}
+	
 	
 	public static void construirVista(ObjetoJuego objetoJuego) {
 		// TODO Auto-generated method stub

@@ -5,8 +5,6 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
-import ar.uba.fi.algo3.titiritero.ControladorJuego;
-import ar.uba.fi.algo3.vista.VistaDisparoAmetralladora;
 
 /**
  * Modela al disparo efectuado por las ametralladoras.

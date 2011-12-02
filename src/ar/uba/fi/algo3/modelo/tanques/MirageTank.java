@@ -1,5 +1,6 @@
 package ar.uba.fi.algo3.modelo.tanques;
 
+import ar.uba.fi.algo3.ConstructorVista;
 import ar.uba.fi.algo3.modelo.armamentista.arma.ArmaMunicionLimitada;
 import ar.uba.fi.algo3.modelo.armamentista.arma.LanzaCohetes;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
@@ -17,6 +18,10 @@ public class MirageTank extends TanqueEnemigo {
 		puntosPorDestruccion = 50;
 		velocidad = 2;
 		velocidadDisparo = 12;
+		
+		if (Espacio.getInstancia().incluyeA(this)){
+			ConstructorVista.construirVista(this);
+		}
 	}
 	
 	public void indicarObjetivo(ObjetoJuego objeto) {

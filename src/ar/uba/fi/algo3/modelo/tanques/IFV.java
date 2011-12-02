@@ -1,5 +1,6 @@
 package ar.uba.fi.algo3.modelo.tanques;
 
+import ar.uba.fi.algo3.ConstructorVista;
 import ar.uba.fi.algo3.modelo.armamentista.arma.ArmaMunicionLimitada;
 import ar.uba.fi.algo3.modelo.armamentista.arma.Canion;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
@@ -17,6 +18,10 @@ public class IFV extends TanqueEnemigo {
 		puntosPorDestruccion = 30;
 		velocidad = 3;
 		velocidadDisparo = 8;
+		
+		if (Espacio.getInstancia().incluyeA(this)){
+			ConstructorVista.construirVista(this);
+		}
 	}
 	
 	public void indicarObjetivo(ObjetoJuego objeto) {

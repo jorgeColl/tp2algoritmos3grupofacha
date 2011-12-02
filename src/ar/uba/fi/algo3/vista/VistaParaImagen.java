@@ -7,9 +7,9 @@ import ar.uba.fi.algo3.titiritero.vista.ImagenEstatica;
  * @author Samanta
  *
  */
-public class VistaPared extends ImagenEstatica {
+public class VistaParaImagen extends ImagenEstatica {
 	
-	public VistaPared(String direccion) {
+	public VistaParaImagen(String direccion) {
 		super();
 		this.setNombreArchivoImagen(direccion);
 	}
