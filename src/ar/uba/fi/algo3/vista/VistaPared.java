@@ -9,9 +9,10 @@ import ar.uba.fi.algo3.titiritero.vista.ImagenEstatica;
  */
 public class VistaPared extends ImagenEstatica {
 	
-	public VistaPared() {
+	public VistaPared(String direccion) {
 		super();
-		this.setNombreArchivoImagen("img/ParedConcreto.JPG");
+		this.setNombreArchivoImagen(direccion);
 	}
+	
 
 }

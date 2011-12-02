@@ -1,5 +1,6 @@
 package ar.uba.fi.algo3.modelo.clasesGeneralizadoras;
 
+import ar.uba.fi.algo3.ConstructorVista;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.Disparo;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Ocupacion;
@@ -19,6 +20,11 @@ public abstract class ObjetoJuego implements Posicionable {
 	protected Ocupacion ocupacion;
 	private boolean vivo = true;
 	
+	/* aca trato de que herede el comportamiento de crease una vista
+	protected ObjetoJuego(){
+		ConstructorVista.construirVista(this);
+	}
+	*/
 	/**
 	 * Hacemos que el objeto sea impactado por un disparo.
 	 * @param disparo instancia de una subclase de Disparo que chocara con este objeto

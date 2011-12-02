@@ -5,7 +5,7 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Ocupacion;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 
 /**
- * Provee de estado y comportamiento común a los objetos que pueden moverse por el espacio.
+ * Provee de estado y comportamiento comï¿½n a los objetos que pueden moverse por el espacio.
  * @author Jorge
  *
  */
@@ -14,8 +14,9 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 	protected Orientacion orientacion;
 	protected int velocidad;
 	
+	
 	/**
-	 * Analiza cuál de los bordes laterales está más cercano al objeto y lo mueve en dicha dirección.
+	 * Analiza cuï¿½l de los bordes laterales estï¿½ mï¿½s cercano al objeto y lo mueve en dicha direcciï¿½n.
 	 * Por defecto elije el derecho.
 	 */
 	public void acercarseAlBordeLateralMasCercano() {
@@ -26,7 +27,7 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 	}
 	
 	/**
-	 * Dirige al objeto al centro del espacio hasta que algún punto de su ocupación coincida con la recta que determina a este.
+	 * Dirige al objeto al centro del espacio hasta que algï¿½n punto de su ocupaciï¿½n coincida con la recta que determina a este.
 	 */
 	public void acercarseAlCentroHorizontalDelEspacio() {
 		if (ocupacion.getLimiteIzquierdo() > (Espacio.getInstancia().getLimiteDerecho()/2))
@@ -36,14 +37,14 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 	}
 	
 	/**
-	 * Método que utilizarán las subclases instanciables de esta internamente para chequear si su nueva ocupación es válida (tomando una desición si no lo es dependiente de la subclase) y si han colisionado con otro.
+	 * Mï¿½todo que utilizarï¿½n las subclases instanciables de esta internamente para chequear si su nueva ocupaciï¿½n es vï¿½lida (tomando una desiciï¿½n si no lo es dependiente de la subclase) y si han colisionado con otro.
 	 * @param ocupacionProvisoria instancia de una subclase de Ocupacion que tiene provisoriamente el tanque
 	 */
 	protected abstract void chequearOcupacionValidaYColisiones(Ocupacion ocupacionProvisoria);
 
 	/**
 	 * 
-	 * @return orientacion del objeto móvil
+	 * @return orientacion del objeto mï¿½vil
 	 */
 	public Orientacion getOrientacion() {
 		return orientacion;
@@ -51,14 +52,14 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 
 	/**
 	 * 
-	 * @return velocidad del objeto móvil
+	 * @return velocidad del objeto mï¿½vil
 	 */
 	public int getVelocidad() {
 		return velocidad;
 	}
 	
 	/**
-	 * Realizamos el movimiento y cambiamos la orientación del objeto.
+	 * Realizamos el movimiento y cambiamos la orientaciï¿½n del objeto.
 	 */
 	public void moverAbajo() {
 		int contador = 0;

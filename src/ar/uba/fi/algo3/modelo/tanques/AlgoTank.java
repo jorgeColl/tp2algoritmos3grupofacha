@@ -2,6 +2,7 @@ package ar.uba.fi.algo3.modelo.tanques;
 
 import java.util.Stack;
 
+import ar.uba.fi.algo3.ConstructorVista;
 import ar.uba.fi.algo3.modelo.armamentista.arma.Ametralladora;
 import ar.uba.fi.algo3.modelo.armamentista.arma.ArmaMunicionLimitada;
 import ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo.EstrategiaDisparoAlgoTank;
@@ -35,6 +36,9 @@ public class AlgoTank extends Tanque {
 			Espacio.getInstancia().agregarTanqueJugador(this);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		if (Espacio.getInstancia().incluyeA(this)){
+			ConstructorVista.construirVista(this);
 		}
 		
 		

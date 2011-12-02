@@ -11,9 +11,9 @@ import ar.uba.fi.algo3.titiritero.vista.ImagenEstatica;
 
 public class VistaBonus extends ImagenEstatica {
 	
-	public VistaBonus(){
+	public VistaBonus(String direccion){
 		super();
-		this.setNombreArchivoImagen("img/Bonus.JPG");
+		this.setNombreArchivoImagen(direccion);
 	}
 
 }
