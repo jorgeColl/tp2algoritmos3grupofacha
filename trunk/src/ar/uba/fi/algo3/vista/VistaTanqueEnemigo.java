@@ -12,13 +12,14 @@ public class VistaTanqueEnemigo extends ImagenDinamica{
 	final static int ARRIBA = 3;
 	final static int ABAJO = 4;
 	
-	public VistaTanqueEnemigo(){
+	public VistaTanqueEnemigo(String imageni,String imageniNegativo,String imagenj,String imagenjNegativo){
 		super();
 		/* carga las imagenes en la clase de ImagenDinamica */
-		this.agregarImagen(DERECHA, "img/GrizzlyBattleTank_i.JPG");
-		this.agregarImagen(IZQUIERDA, "img/GrizzlyBattleTank_iNegativo.JPG");
-		this.agregarImagen(ARRIBA, "img/GrizzlyBattleTank_j.JPG");
-		this.agregarImagen(ABAJO, "img/GrizzlyBattleTank_jNegativo.JPG");
+		this.agregarImagen(DERECHA, imageni);
+		this.agregarImagen(IZQUIERDA, imageniNegativo);
+		this.agregarImagen(ARRIBA, imagenj);
+		this.agregarImagen(ABAJO, imagenjNegativo);
+		
 		
 		/* setea por default que el tanque mire por defecto para arriba */
 		this.cambiarAImagen(ARRIBA);

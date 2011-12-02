@@ -1,5 +1,6 @@
 package ar.uba.fi.algo3.modelo.tanques;
 
+import ar.uba.fi.algo3.ConstructorVista;
 import ar.uba.fi.algo3.modelo.armamentista.arma.Ametralladora;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
 import ar.uba.fi.algo3.modelo.estrategias.estrategiasMovimiento.AlcanzarObjetivo;
@@ -16,6 +17,10 @@ public class GrizzlyBattleTank extends TanqueEnemigo {
 		puntosPorDestruccion = 20;
 		velocidad = 1;
 		velocidadDisparo = 4;
+		
+		if (Espacio.getInstancia().incluyeA(this)){
+			ConstructorVista.construirVista(this);
+		}
 	}
 
 	public void indicarObjetivo(ObjetoJuego objeto) {
