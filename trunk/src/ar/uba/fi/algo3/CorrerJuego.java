@@ -51,9 +51,9 @@ public class CorrerJuego {
 		
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(200, 300));
 		
-		//GrizzlyBattleTank tanque = new GrizzlyBattleTank(new Posicion(300,240));
-		MirageTank tanque2 = new MirageTank(new Posicion(300,290));
-		//IFV tanque3 =  new IFV(new Posicion(300,430));
+		GrizzlyBattleTank tanque = new GrizzlyBattleTank(new Posicion(300,240));
+		MirageTank tanque2 = new MirageTank(new Posicion(300,550));
+		IFV tanque3 =  new IFV(new Posicion(300,430));
 		controlador.setIntervaloSimulacion(50);
 		controlador.comenzarJuego();
 
