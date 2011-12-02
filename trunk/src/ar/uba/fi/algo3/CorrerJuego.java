@@ -4,6 +4,9 @@
 package ar.uba.fi.algo3;
 
 
+import java.awt.Color;
+import java.awt.Font;
+
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVida;
 import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
@@ -15,13 +18,20 @@ import ar.uba.fi.algo3.modelo.tanques.IFV;
 import ar.uba.fi.algo3.modelo.tanques.MirageTank;
 import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
+import ar.uba.fi.algo3.titiritero.vista.Texto;
+import ar.uba.fi.algo3.titiritero.vista.TextoDinamico;
+import ar.uba.fi.algo3.titiritero.vista.TextoEstatico;
 import ar.uba.fi.algo3.titiritero.vista.Ventana;
+import ar.uba.fi.algo3.vista.PuntoParaTexto;
+import ar.uba.fi.algo3.vista.VistaDeTextoDeResistenciaDeAlgoTank;
 
 /**
  * @author Fede
  *
  */
 public class CorrerJuego {
+
+	private static final Color GRAY = null;
 
 	/**
 	 * @param args
@@ -33,12 +43,14 @@ public class CorrerJuego {
 		ControladorJuego, as� que para no harcodearlo lo inicializo
 		ac�: */
 		ControladorJuego controlador = ControladorJuego.getInstancia();
-		Ventana ventana = new Ventana(601, 601, controlador);
+		Ventana ventana = new Ventana(801, 601, controlador);
 		ventana.setTitle("AlgoTank");
 		
 		/* l�neas copiadas del ejemplo. */
 		controlador.setSuperficieDeDibujo(ventana);
 		ventana.setVisible(true);		
+		
+		
 		
 		/* inicializamos objetos del juego */
 		
@@ -51,9 +63,24 @@ public class CorrerJuego {
 		
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(200, 300));
 		
-		GrizzlyBattleTank tanque = new GrizzlyBattleTank(new Posicion(300,240));
-		MirageTank tanque2 = new MirageTank(new Posicion(300,550));
-		IFV tanque3 =  new IFV(new Posicion(300,430));
+		//GrizzlyBattleTank tanque = new GrizzlyBattleTank(new Posicion(300,240));
+		//MirageTank tanque2 = new MirageTank(new Posicion(300,550));
+		//IFV tanque3 =  new IFV(new Posicion(300,430));
+		/*
+		TextoEstatico texto = new TextoEstatico("fooo");
+		texto.setPosicionable(paredMetal);
+		texto.setColor(Color.black);
+		controlador.agregarDibujable(texto);
+		
+		*/
+		VistaDeTextoDeResistenciaDeAlgoTank vista =new VistaDeTextoDeResistenciaDeAlgoTank(algoTank);
+		TextoDinamico textodi = new TextoDinamico(vista);
+		PuntoParaTexto pptexto = new PuntoParaTexto(new Posicion(602,10));
+		textodi.setPosicionable(pptexto);
+		textodi.setColor(Color.black);
+		controlador.agregarDibujable(textodi);
+		
+		
 		controlador.setIntervaloSimulacion(50);
 		controlador.comenzarJuego();
 
