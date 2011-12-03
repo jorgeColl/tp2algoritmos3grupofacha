@@ -31,8 +31,9 @@ public class VistaDeTextoDeAlgoTank implements ObjetoDeTexto {
 			municionesEspeciales = tanque.getArmasPrioritarias().peek().getMunicion();
 		}
 		
-		return "reistencia: "+Integer.toString(tanque.getResistencia())+"\n"+
-					"municionesEspeciales:"+ Integer.toString(municionesEspeciales);
+		return  "reistencia: "+Integer.toString(tanque.getResistencia())+"\n"+
+				"municionesEspeciales:"+ Integer.toString(municionesEspeciales)+"\n"+
+				"puntos: " + Integer.toString(tanque.getPuntaje());
 	}
 
 	

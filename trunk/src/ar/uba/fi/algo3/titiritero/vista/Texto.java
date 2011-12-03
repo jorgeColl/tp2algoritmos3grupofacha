@@ -52,8 +52,8 @@ public abstract class Texto extends Figura {
 		String[] textos = getTexto().split("\n");
 		int y = 0;
 		for(int i=0 ; i< textos.length ;i++){
-			grafico.drawString(textos[i], this.getPosicionable().getX(), this.getPosicionable().getY()+y);
-			y+=this.tamanio;
+			grafico.drawString(textos[i], this.getPosicionable().getX(), this.getPosicionable().getY() + y);
+			y += this.tamanio;
 		}
 	}
 

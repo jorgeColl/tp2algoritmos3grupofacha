@@ -3,10 +3,14 @@
  */
 package ar.uba.fi.algo3;
 
+import java.awt.Color;
+
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoCanion;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoLanzaCohetes;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
 import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVida;
 import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
@@ -18,15 +22,16 @@ import ar.uba.fi.algo3.modelo.tanques.IFV;
 import ar.uba.fi.algo3.modelo.tanques.MirageTank;
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.Dibujable;
+import ar.uba.fi.algo3.titiritero.Posicionable;
+import ar.uba.fi.algo3.titiritero.vista.TextoDinamico;
+import ar.uba.fi.algo3.vista.PuntoParaTexto;
 import ar.uba.fi.algo3.vista.VistaAlgoTank;
 import ar.uba.fi.algo3.vista.VistaBonus;
-import ar.uba.fi.algo3.vista.VistaCuartelArgentino;
-import ar.uba.fi.algo3.vista.VistaDeFinDeJuego;
 import ar.uba.fi.algo3.vista.VistaDisparoAmetralladora;
-import ar.uba.fi.algo3.vista.VistaDisparoCanion;
-import ar.uba.fi.algo3.vista.VistaDisparoLanzaCohetes;
 import ar.uba.fi.algo3.vista.VistaParaImagen;
 import ar.uba.fi.algo3.vista.VistaImagenConOrientacion;
+import ar.uba.fi.algo3.vista.VistaDeFinalizacionDeJuego;
+
 
 /**
  * @author jc
@@ -36,7 +41,7 @@ import ar.uba.fi.algo3.vista.VistaImagenConOrientacion;
 public class ConstructorVista {
 	
 	//solo evita dos lineas de repeticion de codigo
-	private static void auxiliar (Dibujable vista, ObjetoJuego objeto){
+	private static void auxiliar (Dibujable vista, Posicionable objeto){
 		vista.setPosicionable(objeto);
 		ControladorJuego.getInstancia().agregarDibujable(vista);
 	}
@@ -70,7 +75,6 @@ public class ConstructorVista {
 		VistaParaImagen vista = new VistaParaImagen("img/cuartelArgentino.GIF");
 		auxiliar(vista,cuartel);
 		
-		VistaDeFinDeJuego.getInstancia().agregarElementoQueProvocaPerderElJuego(cuartel);
 	}
 	
 	public static void construirVista(AlgoTank tanque){
@@ -78,8 +82,6 @@ public class ConstructorVista {
 		auxiliar(vista,tanque);
 		ControladorJuego.getInstancia().agregarKeyPressObservador(vista);
 		
-		VistaDeFinDeJuego.getInstancia().agregarElementoQueProvocaPerderElJuego(tanque);
-		ControladorJuego.getInstancia().agregarDibujable(VistaDeFinDeJuego.getInstancia());
 	}
 	
 	public static void construirVista(BonusVelocidad bonus){
@@ -115,6 +117,16 @@ public class ConstructorVista {
 						"img/MirageTank_j.JPG", 
 						"img/MirageTank_jNegativo.JPG");
 		auxiliar(vista,tanque);
+	}
+	public static void construirVista(Espacio espacio){
+		/*
+		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego(espacio);
+		TextoDinamico vista = new TextoDinamico(observante);
+		PuntoParaTexto pptexto = new PuntoParaTexto(new Posicion(602,20));
+		vista.setColor(Color.red);
+		auxiliar(vista,pptexto);
+		*/
+		
 	}
 		
 }
