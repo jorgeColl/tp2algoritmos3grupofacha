@@ -7,6 +7,7 @@ package ar.uba.fi.algo3;
 import java.awt.Color;
 import java.awt.Font;
 
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVida;
 import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
@@ -24,6 +25,7 @@ import ar.uba.fi.algo3.titiritero.vista.TextoDinamico;
 import ar.uba.fi.algo3.titiritero.vista.TextoEstatico;
 import ar.uba.fi.algo3.titiritero.vista.Ventana;
 import ar.uba.fi.algo3.vista.PuntoParaTexto;
+import ar.uba.fi.algo3.vista.VistaDeFinalizacionDeJuego;
 import ar.uba.fi.algo3.vista.VistaDeTextoDeAlgoTank;
 
 /**
@@ -90,6 +92,14 @@ public class CorrerJuego {
 		textodi.setPosicionable(pptexto);
 		textodi.setColor(Color.black);
 		controlador.agregarDibujable(textodi);
+		
+		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego(Espacio.getInstancia());
+		TextoDinamico vista2 = new TextoDinamico(observante);
+		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(602,100));
+		vista2.setColor(Color.red);
+		vista2.setPosicionable(pptexto2);
+		controlador.agregarDibujable(vista2);
+		
 		
 		
 		controlador.setIntervaloSimulacion(50);

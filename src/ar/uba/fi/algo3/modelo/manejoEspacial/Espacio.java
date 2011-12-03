@@ -317,7 +317,12 @@ public class Espacio {
 	 * @return true si se perdio el juego y false en el caso contrario
 	 */
 	public boolean juegoPerdido() {
-		return (cuartel == null);
+		return (cuartel == null || tanqueJugador == null);
+	}
+	/*1000 es el puntaje que necesita para ganar el nivel*/
+	public boolean juegoGanado(){
+		if (tanqueJugador == null)return false;
+		return (tanqueJugador.getPuntaje() >= 1000);
 	}
 	
 	/**
