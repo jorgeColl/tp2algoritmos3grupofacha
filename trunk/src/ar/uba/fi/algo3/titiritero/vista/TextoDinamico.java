@@ -21,5 +21,6 @@ public class TextoDinamico extends Texto {
 	protected String getTexto() {
 		return this.objetoDeTexto.getTexto();
 	}
-
+	
+	
 }

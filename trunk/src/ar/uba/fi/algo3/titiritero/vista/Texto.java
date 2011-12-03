@@ -16,10 +16,13 @@ public abstract class Texto extends Figura {
 
 	
 	private Font fuente;
+	protected int tamanio;
+	
 	
 	public Texto(){
+		this.tamanio=14;
 		setColor(Color.WHITE);
-		setFuente("Serif",14);
+		setFuente("Serif",tamanio);
 	}
 	
 	public Texto(Color color, Font fuente){
@@ -29,13 +32,29 @@ public abstract class Texto extends Figura {
 	
 	public void setFuente(String fuente, int tamanio){
 		this.fuente = new Font(fuente,Font.BOLD,tamanio);
+		this.tamanio = tamanio;
 	}
 	
+	protected int getTamanioFuente(){
+		return this.tamanio;
+	}
+	
+	protected void setTamanioFuente(int nuevoTamanio){
+		this.tamanio = nuevoTamanio;
+		this.setFuente("Serif", this.tamanio);
+	}
+	
+	/* cambie el codigo original para que ahora acepte saltos de linea*/
 	public void dibujar(SuperficieDeDibujo superfice) {
 		Graphics grafico = (Graphics)superfice.getBuffer();
 		grafico.setColor(this.getColor());
 		grafico.setFont(fuente);
-		grafico.drawString(getTexto(), this.getPosicionable().getX(), this.getPosicionable().getY());
+		String[] textos = getTexto().split("\n");
+		int y = 0;
+		for(int i=0 ; i< textos.length ;i++){
+			grafico.drawString(textos[i], this.getPosicionable().getX(), this.getPosicionable().getY()+y);
+			y+=this.tamanio;
+		}
 	}
 
 	protected abstract String getTexto();

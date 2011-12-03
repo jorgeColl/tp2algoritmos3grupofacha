@@ -24,7 +24,7 @@ public class VistaDeFinDeJuego extends TextoEstatico {
 	static VistaDeFinDeJuego instancia = null;
 	
 	private VistaDeFinDeJuego(){
-		super("JUEGO PERDIDO :(");
+		super("JUEGO\nPERDIDO :(");
 		super.setColor(Color.red);
 		super.setFuente("Serif",40);
 		super.setPosicionable(new PuntoParaTexto(new Posicion(100,100)));
