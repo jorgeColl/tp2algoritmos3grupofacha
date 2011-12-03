@@ -24,7 +24,7 @@ import ar.uba.fi.algo3.titiritero.vista.TextoDinamico;
 import ar.uba.fi.algo3.titiritero.vista.TextoEstatico;
 import ar.uba.fi.algo3.titiritero.vista.Ventana;
 import ar.uba.fi.algo3.vista.PuntoParaTexto;
-import ar.uba.fi.algo3.vista.VistaDeTextoDeResistenciaDeAlgoTank;
+import ar.uba.fi.algo3.vista.VistaDeTextoDeAlgoTank;
 
 /**
  * @author Fede
@@ -71,9 +71,9 @@ public class CorrerJuego {
 		cuadrado.setPosicionable(new PuntoParaTexto(new Posicion(601,0)));
 		controlador.agregarDibujable(cuadrado);
 		
-		//GrizzlyBattleTank tanque = new GrizzlyBattleTank(new Posicion(300,240));
-		//	MirageTank tanque2 = new MirageTank(new Posicion(300,550));
-		//	IFV tanque3 =  new IFV(new Posicion(300,430));
+		GrizzlyBattleTank tanque = new GrizzlyBattleTank(new Posicion(300,240));
+		//MirageTank tanque2 = new MirageTank(new Posicion(300,550));
+		IFV tanque3 =  new IFV(new Posicion(300,430));
 		
 		/*
 		TextoEstatico texto = new TextoEstatico("fooo");
@@ -84,7 +84,7 @@ public class CorrerJuego {
 		*/
 		
 		
-		VistaDeTextoDeResistenciaDeAlgoTank vista =new VistaDeTextoDeResistenciaDeAlgoTank(algoTank);
+		VistaDeTextoDeAlgoTank vista =new VistaDeTextoDeAlgoTank(algoTank);
 		TextoDinamico textodi = new TextoDinamico(vista);
 		PuntoParaTexto pptexto = new PuntoParaTexto(new Posicion(602,10));
 		textodi.setPosicionable(pptexto);
