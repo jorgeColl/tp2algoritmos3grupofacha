@@ -8,7 +8,7 @@ import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
 import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
 import ar.uba.fi.algo3.modelo.tanques.TanqueEnemigo;
 import java.util.Vector;
-
+import ar.uba.fi.algo3.ConstructorVista;
 /**
  * Modela al lugar fisico donde transcurre la accion del juego.
  * Utiliza el patron Singleton.
@@ -233,6 +233,7 @@ public class Espacio {
 	public static Espacio getInstancia() {
 		if (instancia == null)
 			instancia = new Espacio();
+			ConstructorVista.construirVista(instancia);
 		return instancia;
 	}
 

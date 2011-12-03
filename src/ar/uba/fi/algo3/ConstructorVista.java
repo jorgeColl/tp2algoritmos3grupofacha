@@ -27,6 +27,7 @@ import ar.uba.fi.algo3.titiritero.vista.TextoDinamico;
 import ar.uba.fi.algo3.vista.PuntoParaTexto;
 import ar.uba.fi.algo3.vista.VistaAlgoTank;
 import ar.uba.fi.algo3.vista.VistaBonus;
+import ar.uba.fi.algo3.vista.VistaDeTextoDeAlgoTank;
 import ar.uba.fi.algo3.vista.VistaDisparoAmetralladora;
 import ar.uba.fi.algo3.vista.VistaParaImagen;
 import ar.uba.fi.algo3.vista.VistaImagenConOrientacion;
@@ -78,10 +79,18 @@ public class ConstructorVista {
 	}
 	
 	public static void construirVista(AlgoTank tanque){
+		
 		VistaAlgoTank vista = new VistaAlgoTank();
 		auxiliar(vista,tanque);
+		
 		ControladorJuego.getInstancia().agregarKeyPressObservador(vista);
 		
+		//creo la segunda vista
+		VistaDeTextoDeAlgoTank observador = new VistaDeTextoDeAlgoTank(tanque);
+		TextoDinamico vista2 = new TextoDinamico(observador);
+		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(602,10));
+		vista2.setColor(Color.black);
+		auxiliar(vista2,pptexto2);
 	}
 	
 	public static void construirVista(BonusVelocidad bonus){
@@ -119,13 +128,13 @@ public class ConstructorVista {
 		auxiliar(vista,tanque);
 	}
 	public static void construirVista(Espacio espacio){
-		/*
+		
 		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego(espacio);
-		TextoDinamico vista = new TextoDinamico(observante);
-		PuntoParaTexto pptexto = new PuntoParaTexto(new Posicion(602,20));
-		vista.setColor(Color.red);
-		auxiliar(vista,pptexto);
-		*/
+		TextoDinamico vista2 = new TextoDinamico(observante);
+		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(602,100));
+		vista2.setColor(Color.red);
+		auxiliar(vista2,pptexto2);
+		
 		
 	}
 		
