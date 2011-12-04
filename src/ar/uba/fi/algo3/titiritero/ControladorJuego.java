@@ -3,9 +3,7 @@ package ar.uba.fi.algo3.titiritero;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 import java.util.Stack;
 
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
@@ -23,7 +21,7 @@ public class ControladorJuego implements Runnable {
 	private boolean estaEnEjecucion;
 	private List<Dibujable> dibujables;
 	private Stack<Dibujable> aEliminar;
-	private Queue<Dibujable> aAgregar;
+	private Stack<Dibujable> aAgregar;
 	private List<MouseClickObservador> mouseClickObservadores;
 	private List<KeyPressedObservador> keyPressedObservadores;
 	private SuperficieDeDibujo superficieDeDibujo;
@@ -36,7 +34,7 @@ public class ControladorJuego implements Runnable {
 		this.mouseClickObservadores = new ArrayList<MouseClickObservador>();
 		this.keyPressedObservadores = new ArrayList<KeyPressedObservador>();
 		this.aEliminar = new Stack<Dibujable>();
-		this.aAgregar = new LinkedList<Dibujable>();
+		this.aAgregar = new Stack<Dibujable>();
 //		this.estaReproductorActivo = activarReproductor;
 		if(this.estaReproductorActivo)
 			this.reproductor = new Reproductor();		
@@ -60,22 +58,13 @@ public class ControladorJuego implements Runnable {
 				dibujar();
 				this.eliminarPendientes();
 				this.agregarPendientes();
+				System.out.println(dibujables.size());
 				Thread.sleep(intervaloSimulacion);
 			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	private void agregarPendientes() {
-		// TODO Auto-generated method stub
-		
-		while(!this.aAgregar.isEmpty()){
-			dibujables.add(this.aAgregar.remove());
-		}
-		
-		
 	}
 
 	public void comenzarJuegoAsyn(){
@@ -117,19 +106,8 @@ public class ControladorJuego implements Runnable {
 			this.reproductor.apagar();
 	}
 	
-	
-/*
-	public void agregarObjetoVivo(ObjetoVivo objetoVivo){
-		objetosVivos.add(objetoVivo);
-	}
-	public void removerObjetoVivo(ObjetoVivo objetoVivo){
-		objetosVivos.remove(objetoVivo);
-	}
-*/
-	
 	public void agregarDibujable(Dibujable unDibujable){
-		this.aAgregar.add(unDibujable);
-		//dibujables.add(unDibujable);
+		aAgregar.push(unDibujable);
 	}
 	
 	public void removerDibujable(Dibujable unDibujable){
@@ -137,11 +115,15 @@ public class ControladorJuego implements Runnable {
 	}
 	
 	private void eliminarPendientes(){
-		
 		while(!aEliminar.empty()){
 			dibujables.remove(aEliminar.pop());
 		}
+	}
 	
+	private void agregarPendientes() {
+		while(!aAgregar.isEmpty()){
+			dibujables.add(aAgregar.pop());
+		}
 	}
 	
 	public long getIntervaloSimulacion() {
@@ -162,16 +144,6 @@ public class ControladorJuego implements Runnable {
 		this.superficieDeDibujo.actualizar();
 	}
 	
-/*
-	 * Ejecuta la simulacion recorriendo la coleccion de objetivos vivos.
-	private void simular() {
-		Iterator<ObjetoVivo> iterador = objetosVivos.iterator();
-		while(iterador.hasNext()){
-			iterador.next().vivir();
-		}
-	}
-*/
-
 	public SuperficieDeDibujo getSuperficieDeDibujo() {
 		return superficieDeDibujo;
 	}

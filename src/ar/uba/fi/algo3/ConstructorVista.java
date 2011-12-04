@@ -46,16 +46,23 @@ public class ConstructorVista {
 		vista.setPosicionable(objeto);
 		ControladorJuego.getInstancia().agregarDibujable(vista);
 	}
+	
 	public static void construirVista(DisparoAmetralladora disparo){
 		VistaDisparoAmetralladora vista = new VistaDisparoAmetralladora();
 		auxiliar(vista,disparo);
+		System.out.println("01");
 	}
+	
 	public static void construirVista(DisparoCanion disparo){
-		VistaImagenConOrientacion vista = new  VistaImagenConOrientacion(
-				"img/DisparoCanion_i.JPG","img/DisparoCanion_iNegativo.JPG",
-				"img/DisparoCanion_j.JPG","img/DisparoCanion_jNegativo.JPG");
+		VistaImagenConOrientacion vista = 
+				new VistaImagenConOrientacion("img/DisparoCanion_i.JPG",
+						"img/DisparoCanion_iNegativo.JPG",
+						"img/DisparoCanion_j.JPG",
+						"img/DisparoCanion_jNegativo.JPG");
 		auxiliar(vista,disparo);
+		System.out.println("02");
 	}
+	
 	public static void construirVista(DisparoLanzaCohetes disparo){
 		VistaImagenConOrientacion vista = 
 				new  VistaImagenConOrientacion("img/DisparoLanzaCohetes_i.JPG",
@@ -63,23 +70,29 @@ public class ConstructorVista {
 						"img/DisparoLanzaCohetes_j.JPG",
 						"img/DisparoLanzaCohetes_jNegativo.JPG");
 		auxiliar(vista,disparo);
+		System.out.println("03");
 	}
+	
 	public static void construirVista(ParedConcreto pared){
 		VistaParaImagen vista = new VistaParaImagen("img/ParedConcreto.JPG");
 		auxiliar(vista,pared);
+		System.out.println("04");
 	}
+	
 	public static void construirVista(ParedMetal pared){
 		VistaParaImagen vista = new VistaParaImagen("img/ParedMetal.JPG");
 		auxiliar(vista,pared);
+		System.out.println("05");
 	}
+	
 	public static void construirVista(CuartelArgentino cuartel){
 		VistaParaImagen vista = new VistaParaImagen("img/cuartelArgentino.GIF");
 		auxiliar(vista,cuartel);
+		System.out.println("05");
 		
 	}
 	
 	public static void construirVista(AlgoTank tanque){
-		
 		VistaAlgoTank vista = new VistaAlgoTank();
 		auxiliar(vista,tanque);
 		
@@ -91,15 +104,19 @@ public class ConstructorVista {
 		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(602,10));
 		vista2.setColor(Color.black);
 		auxiliar(vista2,pptexto2);
+		System.out.println("06");
 	}
 	
 	public static void construirVista(BonusVelocidad bonus){
 		VistaBonus vista = new VistaBonus("img/Bonus.JPG");
 		auxiliar(vista,bonus);
+		System.out.println("07");
 	}
+	
 	public static void construirVista(BonusVida bonus){
 		VistaBonus vista = new VistaBonus("img/BonusVida.JPG");
 		auxiliar(vista,bonus);
+		System.out.println("08");
 	}
 	
 	public static void construirVista(GrizzlyBattleTank tanque){
@@ -109,6 +126,7 @@ public class ConstructorVista {
 						"img/GrizzlyBattleTank_j.JPG", 
 						"img/GrizzlyBattleTank_jNegativo.JPG");
 		auxiliar(vista,tanque);
+		System.out.println("09");
 	}
 	
 	public static void construirVista(IFV tanque){
@@ -118,7 +136,9 @@ public class ConstructorVista {
 						"img/IFV_j.JPG", 
 						"img/IFV_jNegativo.JPG");
 		auxiliar(vista,tanque);
+		System.out.println("10");
 	}
+	
 	public static void construirVista(MirageTank tanque){
 		VistaImagenConOrientacion vista = 
 				new VistaImagenConOrientacion("img/MirageTank_i.JPG",
@@ -126,7 +146,9 @@ public class ConstructorVista {
 						"img/MirageTank_j.JPG", 
 						"img/MirageTank_jNegativo.JPG");
 		auxiliar(vista,tanque);
+		System.out.println("11");
 	}
+	
 	public static void construirVista(Espacio espacio){
 		
 		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego(espacio);
@@ -134,8 +156,7 @@ public class ConstructorVista {
 		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(602,100));
 		vista2.setColor(Color.red);
 		auxiliar(vista2,pptexto2);
-		
-		
+		System.out.println("12");		
 	}
 		
 }
