@@ -297,6 +297,7 @@ public class PruebasIntegracionMirageTank extends TestCase {
 	public void testMirageTankDestruirCuartelArgentinoYJuegoPerdidoDesdeIzquierda() {
 		tanque = new MirageTank(new Posicion(0,0));
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado()+tanque.getVelocidad(),0));
+		AlgoTank algoTank = new AlgoTank(new Posicion(250,250));
 		tanque.moverDerecha();
 		assertTrue(Espacio.getInstancia().incluyeA(cuartel));
 		assertFalse(Espacio.getInstancia().juegoPerdido());
