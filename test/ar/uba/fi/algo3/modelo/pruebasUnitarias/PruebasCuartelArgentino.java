@@ -4,6 +4,7 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
+import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
 import junit.framework.TestCase;
 
 /**
@@ -34,6 +35,7 @@ public class PruebasCuartelArgentino extends TestCase {
 	 * Testeo si antes de desaparecer el cuartel el juego no está perdido y si al desaparecer el juego se pierde.
 	 */
 	public void testJuegoPerdido() {
+		AlgoTank algoTank = new AlgoTank(new Posicion(250,250));
 		assertFalse(Espacio.getInstancia().juegoPerdido());
 		cuartel.desaparecer();
 		assertTrue(Espacio.getInstancia().juegoPerdido());
