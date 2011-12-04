@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nivel>
+	<pared tipo="concreto" posX="160" posY="20" />
+	<pared tipo="concreto" posX="70" posY="20" />
+	<pared tipo="concreto" posX="120" posY="20" />
+	<pared tipo="metal" posX="20" posY="70" />
+	<pared tipo="metal" posX="70" posY="70" />
+	<cuartelArgentino posX="10" posY="10" />
+	<algoTank posX="360" posY = "160" />
+	<tanqueEnemigo tipo="Grizzly" posX="10" posY="320" />
+	<tanqueEnemigo tipo="IFV" posX="250" posY="320" />
+	<tanqueEnemigo tipo="Mirage" posX="480" posY="320"/>
+</nivel>
