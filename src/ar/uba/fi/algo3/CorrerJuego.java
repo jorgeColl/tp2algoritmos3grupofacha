@@ -52,29 +52,13 @@ public class CorrerJuego {
 		controlador.setSuperficieDeDibujo(ventana);
 		ventana.setVisible(true);		
 		
-		
 		//aca pongo el fondito gris
 		Cuadrado cuadrado = new Cuadrado(200,601);
 		cuadrado.setColor(Color.gray);
 		cuadrado.setPosicionable(new PuntoParaTexto(new Posicion(601,0)));
 		controlador.agregarDibujable(cuadrado);
 		
-		/* inicializamos objetos del juego */
-		
-		AlgoTank algoTank = new AlgoTank(new Posicion(400, 300));
-
-		ParedConcreto paredC = new ParedConcreto(new Posicion(200, 100));
-		ParedMetal paredMetal = new ParedMetal(new Posicion(200, 150));
-
-		BonusVelocidad bonusVel = new BonusVelocidad(new Posicion(30, 30));
-		BonusVida bonusVida = new BonusVida(new Posicion(66, 66));
-		
-		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(200, 300));
-		
-		GrizzlyBattleTank tanque = new GrizzlyBattleTank(new Posicion(300,240));
-		//MirageTank tanque2 = new MirageTank(new Posicion(300,550));
-		IFV tanque3 =  new IFV(new Posicion(300,430));
-		
+	
 		/*
 		TextoEstatico texto = new TextoEstatico("fooo");
 		texto.setPosicionable(paredMetal);
