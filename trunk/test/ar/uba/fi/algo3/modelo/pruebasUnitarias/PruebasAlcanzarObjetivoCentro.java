@@ -68,13 +68,19 @@ public class PruebasAlcanzarObjetivoCentro extends TestCase {
 	public void testCambioOrientacionYNoContinuacionMovimiento() {
 		testAlcanzarVerticalmenteAObjetivo();
 		assertEquals(duenio.getOrientacion(),Orientacion.j);
-		estrategia.dedicirMovimiento();
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),254);
+		
+		int contador = 0;
+		while (contador < 24) {
+			estrategia.dedicirMovimiento();
+			assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
+			assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),254-contador);
+			++contador;
+			++contador;
+		}
 		assertEquals(duenio.getOrientacion(),Orientacion.i);
 		estrategia.dedicirMovimiento();
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),254);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),232);
 	}
 	
 	/**
@@ -87,14 +93,13 @@ public class PruebasAlcanzarObjetivoCentro extends TestCase {
 		objetivo.moverArriba();
 		estrategia.dedicirMovimiento();
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),252);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),230);
 		estrategia.dedicirMovimiento();
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),250);
-		assertEquals(duenio.getOrientacion(),Orientacion.j);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),228);
 		estrategia.dedicirMovimiento();
 		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getX(),258);
-		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),248);
+		assertEquals(((OcupacionCuadrada)duenio.getOcupacion()).getPuntoMenorModulo().getY(),226);
 		assertEquals(duenio.getOrientacion(),Orientacion.i);
 	}
 	

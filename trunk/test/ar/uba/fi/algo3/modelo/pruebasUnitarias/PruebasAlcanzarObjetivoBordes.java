@@ -77,13 +77,17 @@ public class PruebasAlcanzarObjetivoBordes extends TestCase {
 	public void testCambioOrientacionYNoContinuacionDeMovimiento() {
 		testAlcanzarAObjetivoVerticalmente();
 		assertEquals(tanque.getOrientacion(),Orientacion.jNegativo);
+		int contador = 16;
+		while (contador < 38) {
+			estrategia.dedicirMovimiento();
+			assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getX(),0);
+			assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getY(),contador);
+			++contador;
+		}
 		estrategia.dedicirMovimiento();
 		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getX(),0);
-		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getY(),16);
+		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getY(),37);
 		assertEquals(tanque.getOrientacion(),Orientacion.i);
-		estrategia.dedicirMovimiento();
-		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getX(),0);
-		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getY(),16);
 	}
 	
 	/**
@@ -95,17 +99,16 @@ public class PruebasAlcanzarObjetivoBordes extends TestCase {
 		objetivo.moverAbajo();
 		estrategia.dedicirMovimiento();
 		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getX(),0);
-		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getY(),17);
+		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getY(),38);
 		estrategia.dedicirMovimiento();
 		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getX(),0);
-		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getY(),18);
-		assertEquals(tanque.getOrientacion(),Orientacion.jNegativo);
+		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getY(),39);
 		estrategia.dedicirMovimiento();
 		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getX(),0);
-		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getY(),19);
+		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getY(),40);
 		estrategia.dedicirMovimiento();
 		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getX(),0);
-		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getY(),20);
+		assertEquals(((OcupacionCuadrada)(tanque.getOcupacion())).getPuntoMenorModulo().getY(),41);
 		assertEquals(tanque.getOrientacion(),Orientacion.i);
 	}
 	

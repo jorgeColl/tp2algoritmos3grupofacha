@@ -5,10 +5,8 @@ import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoMovil;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 
 /**
- * Los objetos que tienen la capacidad de moverse delegan en las instancias 
- * de las subclases de esta clase el que les diga hacia donde dirigirse en 
- * funcion de la estrategia que quiera adoptar.
- * @author Tomas
+ * Los objetos que tienen la capacidad de moverse delegan en las instancias de las subclases de esta clase el que les diga hacia dónde dirigirse en función de la estrategia que quiera adoptar.
+ * @author Tomás
  *
  */
 public abstract class EstrategiaMovimiento {
@@ -18,10 +16,8 @@ public abstract class EstrategiaMovimiento {
 	
 	/**
 	 * Constructor.
-	 * @param duenio instancia de una subclase de ObjetoMovil que delega 
-	 * en esta estrategia
-	 * @param objetivo instancia de la clase ObjetoJuego a la cual el 
-	 * objeto movil trata de alcanzar
+	 * @param duenio instancia de una subclase de ObjetoMovil que delega en esta estrategia
+	 * @param objetivo instancia de la clase ObjetoJuego a la cual el objeto móvil trata de alcanzar
 	 */
 	public EstrategiaMovimiento(ObjetoMovil duenio, ObjetoJuego objetivo) {
 		this.duenio = duenio;
@@ -29,44 +25,47 @@ public abstract class EstrategiaMovimiento {
 	}
 	
 	/**
-	 * Le indica al objeto movil que se acerce horizontalmente a su objetivo.
-	 * NOTA IMPORTANTE: Si los objetos tienen coincidencia ocupacional en sus 
-	 * proyecciones horizontales, entonces no realiza ningun movimiento. 
+	 * Le indica al objeto móvil que se acerce horizontalmente a su objetivo.
+	 * NOTA IMPORTANTE: Si el centro geométrico horizontal del objeto móvil tiene coincidencia con la proyección ortogonal horizontal del objetivo entonces el método no hace nada.  
 	 */
 	protected void indicarDuenioAcercarseHorizontalmenteAObjetivo() {
-		if (duenio.getOcupacion().getLimiteDerecho() < objetivo.getOcupacion().getLimiteIzquierdo())
+		if ((duenio.getOcupacion().getLimiteIzquierdo()+((duenio.getOcupacion().getLimiteDerecho()-duenio.getOcupacion().getLimiteIzquierdo())/2)) < objetivo.getOcupacion().getLimiteIzquierdo()) 
 			duenio.moverDerecha();
 		else {
-			if (duenio.getOcupacion().getLimiteIzquierdo() > objetivo.getOcupacion().getLimiteDerecho())
-				duenio.moverIzquierda();
+			if ((duenio.getOcupacion().getLimiteIzquierdo()+((duenio.getOcupacion().getLimiteDerecho()-duenio.getOcupacion().getLimiteIzquierdo())/2)) > objetivo.getOcupacion().getLimiteDerecho()) 
+				duenio.moverDerecha();
 		}
 	}
 	
 	/**
-	 * Le indica al objeto movil que se acerce verticalmente a su objetivo.
-	 * NOTA IMPORTANTE: Si los objetos tienen coincidencia ocupacional en 
-	 * sus proyecciones verticales, entonces no realiza ningun movimiento. 
+	 * Le indica al objeto móvil que se acerce verticalmente a su objetivo.
+	 * NOTA IMPORTANTE: Si el centro geométrico vertical del objeto móvil tiene coincidencia con la proyección ortogonal vertical del objetivo entonces el método no hace nada. 
 	 */
 	protected void indicarDuenioAcercarseVerticalmenteAObjetivo() {
-		if (duenio.getOcupacion().getLimiteInferior() < objetivo.getOcupacion().getLimiteSuperior())
+		if ((duenio.getOcupacion().getLimiteSuperior()+((duenio.getOcupacion().getLimiteInferior()-duenio.getOcupacion().getLimiteSuperior())/2)) < objetivo.getOcupacion().getLimiteSuperior()) 
 			duenio.moverAbajo();
 		else {
-			if (duenio.getOcupacion().getLimiteSuperior() > objetivo.getOcupacion().getLimiteInferior())
+			if ((duenio.getOcupacion().getLimiteSuperior()+((duenio.getOcupacion().getLimiteInferior()-duenio.getOcupacion().getLimiteSuperior())/2)) > objetivo.getOcupacion().getLimiteInferior()) 
 				duenio.moverArriba();
 		}
 	}
 
 	/**
-	 * Metodo en el que los objetos que tienen la capacidad de moverse 
-	 * delegan el que le indiquen hacia donde dirigirse.
+	 * Método en el que los objetos que tienen la capacidad de moverse delegan el que le indiquen hacia dónde dirigirse.
 	 */
 	public abstract void dedicirMovimiento();
 	
 	/**
-	 * Le indicamos al objeto movil que se oriente horizontalmente hacia 
-	 * su objetivo.
-	 * NOTA IMPORTANTE: Si los objetos tienen coincidencia en sus 
-	 * proyecciones horizontales, entonces no hace nada.
+	 * 
+	 * @return instancia de la clase ObjetoJuego que es el objetivo al que esta estrategia indica a su dueño que se acerque
+	 */
+	public ObjetoJuego getObjetivo() {
+		return objetivo;
+	}
+	
+	/**
+	 * Le indicamos al objeto móvil que se oriente horizontalmente hacia su objetivo.
+	 * NOTA IMPORTANTE: Si los objetos tienen coincidencia en sus proyecciones horizontales, entonces no hace nada.
 	 */
 	protected void orientarDuenioHorizontalmenteHaciaObjetivo() {
 		if ((duenio.getOcupacion().getLimiteDerecho() < objetivo.getOcupacion().getLimiteIzquierdo()))
@@ -76,10 +75,8 @@ public abstract class EstrategiaMovimiento {
 	}
 	
 	/**
-	 * Le indicamos al objeto movil que se oriente verticalmente hacia 
-	 * su objetivo.
-	 * NOTA IMPORTANTE: Si los objetos tienen coincidencia en sus 
-	 * proyecciones verticales, entonces no hace nada.
+	 * Le indicamos al objeto móvil que se oriente verticalmente hacia su objetivo.
+	 * NOTA IMPORTANTE: Si los objetos tienen coincidencia en sus proyecciones verticales, entonces no hace nada.
 	 */
 	protected void orientarDuenioVerticalmenteHaciaObjetivo() {
 		if ((duenio.getOcupacion().getLimiteInferior() < objetivo.getOcupacion().getLimiteSuperior()))
