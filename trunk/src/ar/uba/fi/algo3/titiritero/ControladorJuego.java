@@ -58,7 +58,6 @@ public class ControladorJuego implements Runnable {
 				dibujar();
 				this.eliminarPendientes();
 				this.agregarPendientes();
-				System.out.println(dibujables.size());
 				Thread.sleep(intervaloSimulacion);
 			}
 		}
