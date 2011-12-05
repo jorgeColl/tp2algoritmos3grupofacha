@@ -7,6 +7,8 @@ import ar.uba.fi.algo3.modelo.excepciones.OcupacionInvalidaAlAgregarObjeto;
 import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
 import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
 import ar.uba.fi.algo3.modelo.tanques.TanqueEnemigo;
+
+import java.util.Iterator;
 import java.util.Vector;
 import ar.uba.fi.algo3.ConstructorVista;
 import ar.uba.fi.algo3.Persistidor;
@@ -62,7 +64,7 @@ public class Espacio {
 	public void agregarCuartelArgentino(CuartelArgentino cuartel) throws Exception {
 		if (!(cuartel.getOcupacion().espacialmenteValida()))
 			throw new OcupacionInvalidaAlAgregarObjeto("Se trato de agregar un cuartel argentino en una posicion invalida.");
-		if ((getObjetosJuegoEnContactoCon(cuartel)).size() == 0)
+		if (getObjetosJuegoEnContactoCon(cuartel).isEmpty())
 			this.cuartel = cuartel;
 		else
 			throw new OcupacionCoincidenteConOtroObjetoJuego("Se trato de agregar un cuartel argentino en una posicion ocupada por otro objeto del juego.");
@@ -77,12 +79,10 @@ public class Espacio {
 		if (disparo.getOcupacion().espacialmenteValida())
 			disparos.add(disparo);
 		Vector<ObjetoJuego> vectorAuxiliar = getObjetosJuegoEnContactoCon(disparo);
-		if (vectorAuxiliar.size() > 0) {
-			int contador = 0;
-			while (contador < vectorAuxiliar.size()) {
-				vectorAuxiliar.get(contador).chocarCon(disparo);
-				++contador;
-			}
+		
+		Iterator<ObjetoJuego> iterador = vectorAuxiliar.iterator();
+		while(iterador.hasNext()){
+			iterador.next().chocarCon(disparo);
 		}
 	}
 	
@@ -100,7 +100,7 @@ public class Espacio {
 	public void agregarObjetoInanimado(ObjetoJuego objeto) throws Exception {
 		if (!(objeto.getOcupacion().espacialmenteValida()))
 			throw new Exception("Se trato de agregar un objeto inanimado en una posicion invalida.");
-		if ((getObjetosJuegoEnContactoCon(objeto)).size() == 0)
+		if (getObjetosJuegoEnContactoCon(objeto).isEmpty())
 			objetosInanimados.add(objeto);
 		else
 			throw new OcupacionCoincidenteConOtroObjetoJuego("Se trato de agregar un objeto inanimado en una posicion ocupada por otro objeto del juego.");
@@ -117,7 +117,7 @@ public class Espacio {
 	public void agregarTanqueEnemigo(TanqueEnemigo tanque) throws Exception {
 		if (!(tanque.getOcupacion().espacialmenteValida()))
 			throw new OcupacionInvalidaAlAgregarObjeto("Se trato de agregar un tanque enemigo en una posicion invalida.");
-		if ((getObjetosJuegoEnContactoCon(tanque)).size() == 0)
+		if (getObjetosJuegoEnContactoCon(tanque).isEmpty())
 			tanquesEnemigos.add(tanque);
 		else
 			throw new OcupacionCoincidenteConOtroObjetoJuego("Un tanque enemigo que se trato de agregar al escenario tiene una ocupacion que coincide espacialmente con la de otro objeto ya agregado.");
@@ -137,7 +137,7 @@ public class Espacio {
 	public void agregarTanqueJugador(AlgoTank tanque) throws Exception {
 		if (!(tanque.getOcupacion().espacialmenteValida()))
 			throw new OcupacionInvalidaAlAgregarObjeto("El tanque del jugador que se trato de agregar al escenario tiene una ocupacion invalida.");
-		if ((getObjetosJuegoEnContactoCon(tanque)).size() == 0)
+		if (getObjetosJuegoEnContactoCon(tanque).isEmpty())
 			tanqueJugador = tanque;
 		else
 			throw new OcupacionCoincidenteConOtroObjetoJuego("El tanque del jugador que se trato de agregar al escenario tiene una ocupacion que coincide espacialmente con la de otro.");
@@ -155,22 +155,22 @@ public class Espacio {
 			persistidor.cargarProximoNivel();
 			juegoEmpezado = true;
 		}
-		int contador = 0;
-		while (contador < disparos.size()) {
-			disparos.get(contador).vivir();
-			++contador;
-		}
-		if (!(tanqueJugador == null)) 
-			tanqueJugador.vivir();
-		contador = 0;
-		while (contador < tanquesEnemigos.size()) {
-			if ((!(cuartel == null))&&(!(tanqueJugador == null)))
-				tanquesEnemigos.get(contador).vivir();
-			else
-				break;
-			++contador;
-		}
-		
+
+        int contador = 0;
+        while (contador < disparos.size()) {
+            disparos.get(contador).vivir();
+            ++contador;
+        }
+        if (!(tanqueJugador == null)) 
+            tanqueJugador.vivir();
+        contador = 0;
+        while (contador < tanquesEnemigos.size()) {
+            if ((!(cuartel == null))&&(!(tanqueJugador == null)))
+                tanquesEnemigos.get(contador).vivir();
+            else
+                break;
+            ++contador;
+        }	
 	}
 	
 	/**
@@ -183,24 +183,10 @@ public class Espacio {
 			cuartel = null;
 		if (objeto == tanqueJugador)
 			tanqueJugador = null;
-		int contador = 0;
-		while (contador < disparos.size()) {
-			if (objeto == disparos.get(contador))
-				disparos.remove(contador);
-			++contador;
-		}
-		contador = 0;
-		while (contador < objetosInanimados.size()) {
-			if (objeto == objetosInanimados.get(contador))
-				objetosInanimados.remove(contador);
-			++contador;
-		}
-		contador = 0;
-		while (contador < tanquesEnemigos.size()) {
-			if (objeto == tanquesEnemigos.get(contador))
-				tanquesEnemigos.remove(contador);
-			++contador;
-		}
+		
+		disparos.remove(objeto);
+		objetosInanimados.remove(objeto);
+		tanquesEnemigos.remove(objeto);
 	}
 	
 	/**
@@ -215,24 +201,12 @@ public class Espacio {
 			return true;
 		if (objeto == tanqueJugador)
 			return true;
-		int contador = 0;
-		while (contador < disparos.size()) {
-			if (objeto == disparos.get(contador))
-				return true;
-			++contador;
-		}
-		contador = 0;
-		while (contador < objetosInanimados.size()) {
-			if (objeto == objetosInanimados.get(contador))
-				return true;
-			++contador;
-		}
-		contador = 0;
-		while (contador < tanquesEnemigos.size()) {
-			if (objeto == tanquesEnemigos.get(contador))
-				return true;
-			++contador;
-		}
+		if(disparos.contains(objeto))
+			return true;
+		if(objetosInanimados.contains(objeto))
+			return true;
+		if(tanquesEnemigos.contains(objeto))
+			return true;
 		return false;
 	}
 	
@@ -273,40 +247,40 @@ public class Espacio {
 	 * @return vector de instancias de la clase ObjetoJuego en 
 	 * contacto con la del parametro
 	 */
-	public Vector<ObjetoJuego> getObjetosJuegoEnContactoCon(ObjetoJuego objeto) {
-		Vector<ObjetoJuego> vectorAuxiliar = new Vector<ObjetoJuego>();
-		if (incluyeA(objeto)) {
-			if (!(cuartel == null)) {
-				if (objeto.estaEnContactoCon(cuartel))
-					vectorAuxiliar.add(cuartel);
-			}
-			if (!(tanqueJugador == null)) {
-				if (objeto.estaEnContactoCon(tanqueJugador))
-					vectorAuxiliar.add(tanqueJugador);
-			}
-			int contador = 0;
-			while (contador < disparos.size()) {
-				if (objeto.estaEnContactoCon(disparos.get(contador)))
-					vectorAuxiliar.add(disparos.get(contador));
-				++contador;
-			}
-			contador = 0;
-			while (contador < objetosInanimados.size()) {
-				if (objeto.estaEnContactoCon(objetosInanimados.get(contador)))
-					vectorAuxiliar.add(objetosInanimados.get(contador));
-				++contador;
-			}
-			contador = 0;
-			while (contador < tanquesEnemigos.size()) {
-				if (objeto.estaEnContactoCon(tanquesEnemigos.get(contador)))
-					vectorAuxiliar.add(tanquesEnemigos.get(contador));
-				++contador;
-			}
-			//COMO EL OBJETO SIEMPRE ESTa EN CONTACTO CON SI MISMO, LO SACAMOS DEL VECTOR.
-			vectorAuxiliar.remove(objeto);
-		}
-		return vectorAuxiliar;
-	}
+    public Vector<ObjetoJuego> getObjetosJuegoEnContactoCon(ObjetoJuego objeto) {
+        Vector<ObjetoJuego> vectorAuxiliar = new Vector<ObjetoJuego>();
+        if (incluyeA(objeto)) {
+                if (!(cuartel == null)) {
+                        if (objeto.estaEnContactoCon(cuartel))
+                                vectorAuxiliar.add(cuartel);
+                }
+                if (!(tanqueJugador == null)) {
+                        if (objeto.estaEnContactoCon(tanqueJugador))
+                                vectorAuxiliar.add(tanqueJugador);
+                }
+                int contador = 0;
+                while (contador < disparos.size()) {
+                        if (objeto.estaEnContactoCon(disparos.get(contador)))
+                                vectorAuxiliar.add(disparos.get(contador));
+                        ++contador;
+                }
+                contador = 0;
+                while (contador < objetosInanimados.size()) {
+                        if (objeto.estaEnContactoCon(objetosInanimados.get(contador)))
+                                vectorAuxiliar.add(objetosInanimados.get(contador));
+                        ++contador;
+                }
+                contador = 0;
+                while (contador < tanquesEnemigos.size()) {
+                        if (objeto.estaEnContactoCon(tanquesEnemigos.get(contador)))
+                                vectorAuxiliar.add(tanquesEnemigos.get(contador));
+                        ++contador;
+                }
+                //COMO EL OBJETO SIEMPRE ESTa EN CONTACTO CON SI MISMO, LO SACAMOS DEL VECTOR.
+                vectorAuxiliar.remove(objeto);
+        }
+        return vectorAuxiliar;
+}
 	
 	/**
 	 * 
