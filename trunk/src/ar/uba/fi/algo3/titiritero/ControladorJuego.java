@@ -21,7 +21,7 @@ public class ControladorJuego implements Runnable {
 	private boolean estaEnEjecucion;
 	private List<Dibujable> dibujables;
 	private Stack<Dibujable> aEliminar;
-	private Stack<Dibujable> aAgregar;
+	private List<Dibujable> aAgregar;
 	private List<MouseClickObservador> mouseClickObservadores;
 	private List<KeyPressedObservador> keyPressedObservadores;
 	private SuperficieDeDibujo superficieDeDibujo;
@@ -34,7 +34,7 @@ public class ControladorJuego implements Runnable {
 		this.mouseClickObservadores = new ArrayList<MouseClickObservador>();
 		this.keyPressedObservadores = new ArrayList<KeyPressedObservador>();
 		this.aEliminar = new Stack<Dibujable>();
-		this.aAgregar = new Stack<Dibujable>();
+		this.aAgregar = new ArrayList<Dibujable>();
 //		this.estaReproductorActivo = activarReproductor;
 		if(this.estaReproductorActivo)
 			this.reproductor = new Reproductor();		
@@ -106,7 +106,7 @@ public class ControladorJuego implements Runnable {
 	}
 	
 	public void agregarDibujable(Dibujable unDibujable){
-		aAgregar.push(unDibujable);
+		aAgregar.add(unDibujable);
 	}
 	
 	public void removerDibujable(Dibujable unDibujable){
@@ -121,7 +121,7 @@ public class ControladorJuego implements Runnable {
 	
 	private void agregarPendientes() {
 		while(!aAgregar.isEmpty()){
-			dibujables.add(aAgregar.pop());
+			dibujables.add(aAgregar.remove(0));
 		}
 	}
 	
