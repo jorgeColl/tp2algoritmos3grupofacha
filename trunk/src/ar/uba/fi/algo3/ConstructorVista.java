@@ -8,8 +8,6 @@ import java.awt.Color;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoCanion;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoLanzaCohetes;
-import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
 import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVida;
@@ -28,7 +26,6 @@ import ar.uba.fi.algo3.vista.PuntoParaTexto;
 import ar.uba.fi.algo3.vista.VistaAlgoTank;
 import ar.uba.fi.algo3.vista.VistaBonus;
 import ar.uba.fi.algo3.vista.VistaDeTextoDeAlgoTank;
-import ar.uba.fi.algo3.vista.VistaDisparoAmetralladora;
 import ar.uba.fi.algo3.vista.VistaParaImagen;
 import ar.uba.fi.algo3.vista.VistaImagenConOrientacion;
 import ar.uba.fi.algo3.vista.VistaDeFinalizacionDeJuego;
@@ -48,7 +45,7 @@ public class ConstructorVista {
 	}
 	
 	public static void construirVista(DisparoAmetralladora disparo){
-		VistaDisparoAmetralladora vista = new VistaDisparoAmetralladora();
+		VistaParaImagen vista = new VistaParaImagen("img/Disparo.JPG");
 		auxiliar(vista,disparo);
 	}
 	
@@ -136,9 +133,9 @@ public class ConstructorVista {
 		auxiliar(vista,tanque);
 	}
 	
-	public static void construirVista(Espacio espacio){
+	public static void construirVista(Nivel nivel){
 		
-		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego(espacio);
+		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego(nivel);
 		TextoDinamico vista2 = new TextoDinamico(observante);
 		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(602,100));
 		vista2.setColor(Color.red);

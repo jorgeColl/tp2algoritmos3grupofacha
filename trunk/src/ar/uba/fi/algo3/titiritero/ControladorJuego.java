@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
+import ar.uba.fi.algo3.Nivel;
 import ar.uba.fi.algo3.titiritero.audio.Reproductor;
 
 /**
@@ -54,7 +54,7 @@ public class ControladorJuego implements Runnable {
 		estaEnEjecucion = true;
 		try{
 			while(estaEnEjecucion){
-				Espacio.getInstancia().correrLogica();
+				Nivel.getInstancia().correrLogica();
 				dibujar();
 				this.eliminarPendientes();
 				this.agregarPendientes();
@@ -85,7 +85,7 @@ public class ControladorJuego implements Runnable {
 		estaEnEjecucion = true;
 		try{
 			while(contador < cantidadDeCiclos && estaEnEjecucion){
-				Espacio.getInstancia().correrLogica();
+				Nivel.getInstancia().correrLogica();
 				dibujar();
 				Thread.sleep(intervaloSimulacion);
 				contador++;

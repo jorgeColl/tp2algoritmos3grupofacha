@@ -9,8 +9,6 @@ import ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo.EstrategiaDisparoAl
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
-import ar.uba.fi.algo3.titiritero.ControladorJuego;
-import ar.uba.fi.algo3.vista.VistaAlgoTank;
 
 /**
  * Modela al tanque manejado por el jugador.
