@@ -10,8 +10,6 @@ import ar.uba.fi.algo3.modelo.tanques.TanqueEnemigo;
 
 import java.util.Iterator;
 import java.util.Vector;
-import ar.uba.fi.algo3.ConstructorVista;
-import ar.uba.fi.algo3.Persistidor;
 /**
  * Modela al lugar fisico donde transcurre la accion del juego.
  * Utiliza el patron Singleton.
@@ -30,9 +28,9 @@ public class Espacio {
 	private Vector<ObjetoJuego> objetosInanimados;
 	private Vector<TanqueEnemigo> tanquesEnemigos;
 	private AlgoTank tanqueJugador;
-	private Persistidor persistidor;
 	
-	private boolean juegoEmpezado;
+	
+	
 			
 	/**
 	 * Constructor privado.
@@ -45,8 +43,7 @@ public class Espacio {
 		tanquesEnemigos = new Vector<TanqueEnemigo>();
 		limiteDerecho = 601;
 		limiteInferior = 601;
-		juegoEmpezado = false;
-		persistidor = new Persistidor();
+		
 	}
 	
 	/**
@@ -151,12 +148,7 @@ public class Espacio {
 	 * choque con un disparo que el mismo ha disparado.
 	 */
 	public void correrLogica() {
-		if(this.juegoGanado() || !juegoEmpezado){
-			persistidor.cargarProximoNivel();
-			juegoEmpezado = true;
-		}
-
-        int contador = 0;
+		int contador = 0;
         while (contador < disparos.size()) {
             disparos.get(contador).vivir();
             ++contador;
@@ -217,7 +209,7 @@ public class Espacio {
 	public static Espacio getInstancia() {
 		if (instancia == null){
 			instancia = new Espacio();
-			ConstructorVista.construirVista(instancia);
+			
 		}
 		return instancia;
 	}
@@ -298,19 +290,7 @@ public class Espacio {
 		return tanqueJugador;
 	}
 	
-	/**
-	 * Cuando el cuartel argentino es destruido, entonces se perdio el juego.
-	 * @return true si se perdio el juego y false en el caso contrario
-	 */
-	public boolean juegoPerdido() {
-		return (cuartel == null || tanqueJugador == null);
-	}
 	
-	/*1000 es el puntaje que necesita para ganar el nivel*/
-	public boolean juegoGanado(){
-		if (tanqueJugador == null) return false;
-		return (tanqueJugador.getPuntaje() >= 1000);
-	}
 	
 	/**
 	 * Reinicia el valor de todos los atributos que son instancias 

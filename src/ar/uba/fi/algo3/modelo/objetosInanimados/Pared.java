@@ -1,6 +1,6 @@
 package ar.uba.fi.algo3.modelo.objetosInanimados;
 
-import ar.uba.fi.algo3.ConstructorVista;
+
 import ar.uba.fi.algo3.modelo.armamentista.disparo.Disparo;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;

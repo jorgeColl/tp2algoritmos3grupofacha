@@ -3,7 +3,7 @@
  */
 package ar.uba.fi.algo3.vista;
 
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
+import ar.uba.fi.algo3.Nivel;
 import ar.uba.fi.algo3.titiritero.vista.ObjetoDeTexto;
 
 /**
@@ -12,10 +12,10 @@ import ar.uba.fi.algo3.titiritero.vista.ObjetoDeTexto;
  */
 public class VistaDeFinalizacionDeJuego implements ObjetoDeTexto{
 
-	protected Espacio espacio;
+	protected Nivel nivel;
 	
-	public VistaDeFinalizacionDeJuego(Espacio espacio){
-		this.espacio= espacio;
+	public VistaDeFinalizacionDeJuego(Nivel nivel){
+		this.nivel= nivel;
 	}
 	
 	@Override
@@ -23,10 +23,10 @@ public class VistaDeFinalizacionDeJuego implements ObjetoDeTexto{
 		// TODO Auto-generated method stub
 		
 		
-		if(this.espacio.juegoGanado()){
+		if(this.nivel.juegoGanado()){
 			return "GANASTEEEEE";
 		}else{
-			if(this.espacio.juegoPerdido()){
+			if(this.nivel.juegoPerdido()){
 				return "PERDISTEEEE :(";
 			}else{
 				return "jugando";

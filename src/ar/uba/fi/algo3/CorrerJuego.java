@@ -5,28 +5,12 @@ package ar.uba.fi.algo3;
 
 
 import java.awt.Color;
-import java.awt.Font;
 
-import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
-import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVida;
-import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
-import ar.uba.fi.algo3.modelo.objetosInanimados.ParedConcreto;
-import ar.uba.fi.algo3.modelo.objetosInanimados.ParedMetal;
-import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
-import ar.uba.fi.algo3.modelo.tanques.GrizzlyBattleTank;
-import ar.uba.fi.algo3.modelo.tanques.IFV;
-import ar.uba.fi.algo3.modelo.tanques.MirageTank;
-import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.vista.Cuadrado;
-import ar.uba.fi.algo3.titiritero.vista.Texto;
-import ar.uba.fi.algo3.titiritero.vista.TextoDinamico;
-import ar.uba.fi.algo3.titiritero.vista.TextoEstatico;
 import ar.uba.fi.algo3.titiritero.vista.Ventana;
 import ar.uba.fi.algo3.vista.PuntoParaTexto;
-import ar.uba.fi.algo3.vista.VistaDeFinalizacionDeJuego;
-import ar.uba.fi.algo3.vista.VistaDeTextoDeAlgoTank;
 
 /**
  * @author Fede
