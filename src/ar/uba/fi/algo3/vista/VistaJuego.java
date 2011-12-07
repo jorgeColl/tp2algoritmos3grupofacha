@@ -16,8 +16,8 @@ import ar.uba.fi.algo3.titiritero.vista.TextoEstatico;
 public class VistaJuego extends TextoEstatico{
 	
 	public VistaJuego(){
-		super("CONTINUAR JUGANDO (pulse arriba en el teclado)\n\n" +
-			"JUEGO NUEVO	 (pulse abajo en el teclado) ");
+		super("CONTINUAR JUGANDO (pulse abajo en el teclado)\n\n" +
+			"JUEGO NUEVO	 (pulse arriba en el teclado) ");
 	}
 	
 	@Override
