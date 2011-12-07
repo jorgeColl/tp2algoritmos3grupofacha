@@ -4,6 +4,7 @@
 package ar.uba.fi.algo3.vista;
 
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import ar.uba.fi.algo3.Nivel;
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
@@ -16,8 +17,8 @@ import ar.uba.fi.algo3.titiritero.vista.TextoEstatico;
 public class VistaJuego extends TextoEstatico{
 	
 	public VistaJuego(){
-		super("CONTINUAR JUGANDO (pulse abajo en el teclado)\n\n" +
-			"JUEGO NUEVO	 (pulse arriba en el teclado) ");
+		super("JUEGO NUEVO	 (pulse arriba en el teclado)\n\n"+
+				"CONTINUAR JUGANDO (pulse abajo en el teclado)");
 	}
 	
 	@Override
@@ -28,6 +29,8 @@ public class VistaJuego extends TextoEstatico{
 			
 			case KeyEvent.VK_UP:
 				// elimino archivo .xml de juego guardado (si es que existe)
+				File fichero = new File("save/juegoGuardado.xml");
+				fichero.delete();
 				
 			case KeyEvent.VK_DOWN:
 				nivel.cargarNivel();
