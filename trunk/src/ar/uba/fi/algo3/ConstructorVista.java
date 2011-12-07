@@ -93,7 +93,7 @@ public class ConstructorVista {
 		//creo la segunda vista
 		VistaDeTextoDeAlgoTank observador = new VistaDeTextoDeAlgoTank(tanque);
 		TextoDinamico vista2 = new TextoDinamico(observador);
-		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(602,10));
+		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(602,15));
 		vista2.setColor(Color.black);
 		auxiliar(vista2,pptexto2);
 	}
