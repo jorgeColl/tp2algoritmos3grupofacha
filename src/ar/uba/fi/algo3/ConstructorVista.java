@@ -30,7 +30,7 @@ import ar.uba.fi.algo3.vista.VistaDeTextoDeAlgoTank;
 import ar.uba.fi.algo3.vista.VistaParaImagen;
 import ar.uba.fi.algo3.vista.VistaImagenConOrientacion;
 import ar.uba.fi.algo3.vista.VistaDeFinalizacionDeJuego;
-import ar.uba.fi.algo3.vista.VistaJuego;
+import ar.uba.fi.algo3.vista.VistaInicioDeJuego;
 
 
 /**
@@ -137,7 +137,7 @@ public class ConstructorVista {
 	
 	public static void construirVista(Nivel nivel){
 		
-		VistaJuego vista1 = new VistaJuego();
+		VistaInicioDeJuego vista1 = new VistaInicioDeJuego();
 		PuntoParaTexto pptexto = new PuntoParaTexto(new Posicion(150,200));
 		vista1.setColor(Color.black);
 		auxiliar(vista1,pptexto);
