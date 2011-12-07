@@ -5,6 +5,7 @@ package ar.uba.fi.algo3;
 
 import java.awt.Color;
 
+
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoCanion;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoLanzaCohetes;
@@ -29,6 +30,7 @@ import ar.uba.fi.algo3.vista.VistaDeTextoDeAlgoTank;
 import ar.uba.fi.algo3.vista.VistaParaImagen;
 import ar.uba.fi.algo3.vista.VistaImagenConOrientacion;
 import ar.uba.fi.algo3.vista.VistaDeFinalizacionDeJuego;
+import ar.uba.fi.algo3.vista.VistaJuego;
 
 
 /**
@@ -135,11 +137,20 @@ public class ConstructorVista {
 	
 	public static void construirVista(Nivel nivel){
 		
+		VistaJuego vista1 = new VistaJuego();
+		PuntoParaTexto pptexto = new PuntoParaTexto(new Posicion(150,200));
+		vista1.setColor(Color.black);
+		auxiliar(vista1,pptexto);
+		ControladorJuego.getInstancia().agregarKeyPressObservador(vista1);
+		
 		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego(nivel);
 		TextoDinamico vista2 = new TextoDinamico(observante);
 		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(602,100));
 		vista2.setColor(Color.red);
-		auxiliar(vista2,pptexto2);	
+		auxiliar(vista2,pptexto2);
+		
+		
+		
 	}
 		
 }
