@@ -28,18 +28,30 @@ public class VistaInicioDeJuego extends TextoEstatico{
 		switch (c){
 			
 			case KeyEvent.VK_UP:
-				// elimino archivo .xml de juego guardado (si es que existe)
-				File fichero = new File("save/juegoGuardado.xml");
-				fichero.delete();
+				nivel.cargarNivel();
+				this.auxiliar();
+				break;
 				
 			case KeyEvent.VK_DOWN:
-				nivel.cargarNivel();
-				ControladorJuego.getInstancia().removerDibujable(this);
-				ControladorJuego.getInstancia().removerKeyPressObservador(this);
+				Nivel.getInstancia().cargarNivelGuardado();
+				this.auxiliar();
+				
 				break;
-			
 		}
+		
+		
 	}
-
+	/**
+	 * metodo que se encarga de eliminar la vista y el key obsevator, al mismo tiempo que crea
+	 * otro
+	 */
+	private void auxiliar(){
+		ControladorJuego.getInstancia().removerDibujable(this);
+		ControladorJuego.getInstancia().removerKeyPressObservador(this);
+		//crear escuchador
+		Escuchador escuchador = new Escuchador();
+		ControladorJuego.getInstancia().agregarKeyPressObservador(escuchador);
+		
+	}
 
 }

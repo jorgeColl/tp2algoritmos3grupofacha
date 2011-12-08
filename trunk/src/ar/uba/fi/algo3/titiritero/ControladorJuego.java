@@ -23,6 +23,8 @@ public class ControladorJuego implements Runnable {
 	private Stack<Dibujable> aEliminar;
 	private List<Dibujable> aAgregar;
 	private List<MouseClickObservador> mouseClickObservadores;
+	private List<KeyPressedObservador> keyPressedObservadores_aux;
+	private List<KeyPressedObservador> keyPressedObservadores_aux2;
 	private List<KeyPressedObservador> keyPressedObservadores;
 	private SuperficieDeDibujo superficieDeDibujo;
 	private Reproductor reproductor;
@@ -33,6 +35,8 @@ public class ControladorJuego implements Runnable {
 		this.dibujables = new ArrayList<Dibujable>();
 		this.mouseClickObservadores = new ArrayList<MouseClickObservador>();
 		this.keyPressedObservadores = new ArrayList<KeyPressedObservador>();
+		this.keyPressedObservadores_aux = new ArrayList<KeyPressedObservador>();
+		this.keyPressedObservadores_aux2 = new ArrayList<KeyPressedObservador>();
 		this.aEliminar = new Stack<Dibujable>();
 		this.aAgregar = new ArrayList<Dibujable>();
 //		this.estaReproductorActivo = activarReproductor;
@@ -181,14 +185,28 @@ public class ControladorJuego implements Runnable {
 		for (KeyPressedObservador observador : this.keyPressedObservadores){
 			observador.keyPressed(event);
 		}
+		this. agregarKeyPressObservadorPendientes();
+		this.eliminarKeyPressObservadorPendientes();
 	}
 	
+	private void eliminarKeyPressObservadorPendientes() {
+		while(!this.keyPressedObservadores_aux2.isEmpty()){
+			this.keyPressedObservadores.remove(this.keyPressedObservadores_aux2.remove(0));
+		}
+	}
+
+	private void agregarKeyPressObservadorPendientes() {
+		while(!this.keyPressedObservadores_aux.isEmpty()){
+			this.keyPressedObservadores.add(this.keyPressedObservadores_aux.remove(0));
+		}
+	}
+
 	public void agregarKeyPressObservador(KeyPressedObservador unKeyPressedObservador){
-		this.keyPressedObservadores.add(unKeyPressedObservador);
+		this.keyPressedObservadores_aux.add(unKeyPressedObservador);
 	}
 	
 	public void removerKeyPressObservador(KeyPressedObservador unKeyPressedObservador){
-		this.keyPressedObservadores.remove(unKeyPressedObservador);
+		this.keyPressedObservadores_aux2.add(unKeyPressedObservador);
 	}
 	
 	public void run() {

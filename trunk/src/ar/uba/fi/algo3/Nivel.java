@@ -25,7 +25,7 @@ public class Nivel {
 		
 		if(juegoEmpezado){
 			
-			if(this.juegoGanado()){
+			if(this.nivelGanado()){
 				this.cargarNivel();
 				}else{
 					Espacio.getInstancia().correrLogica();
@@ -60,11 +60,23 @@ public class Nivel {
 		persistidor.cargarProximoNivel();
 		juegoEmpezado = true;
 	}
+	
+	public void cargarNivelGuardado(){
+		Espacio.getInstancia().reiniciar();
+		this.persistidor.cargarJuegoGuardado();
+		juegoEmpezado = true;
+	}
+	
+	public void guardarNivel(){
+		//FEDE TE PASO LA POSTAAAA :)
+		System.out.print("loco apretaste la G , sos un grosooooo!!!!\n");
+	}
+	
 	/**
 	 * 1000 es el puntaje que necesita para ganar el nivel
 	 * @return true si se gano el juego y false en el caso contrario
 	 */
-	public boolean juegoGanado(){
+	public boolean nivelGanado(){
 		if (Espacio.getInstancia().getTanqueJugador() == null) return false;
 		return (Espacio.getInstancia().getTanqueJugador().getPuntaje() >= 1000);
 	}
@@ -72,7 +84,7 @@ public class Nivel {
 	 * Cuando el cuartel argentino es destruido, entonces se perdio el juego.
 	 * @return true si se perdio el juego y false en el caso contrario
 	 */
-	public boolean juegoPerdido() {
+	public boolean nivelPerdido() {
 		return (Espacio.getInstancia().getCuartelArgentino() == null || Espacio.getInstancia().getTanqueJugador() == null);
 	}
 	

@@ -4,14 +4,17 @@
 package ar.uba.fi.algo3;
 
 import java.io.File;
+import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
@@ -36,24 +39,49 @@ public class Persistidor {
 	public Persistidor(){
 		nivelActual = 0;
 	}
-	
-	public void cargarProximoNivel(){
-		nivelActual++;
-		try {
-			Integer nivelACargar = (Integer) nivelActual;
-			File archivoXML = new File(directorioDeNiveles + nivelACargar.toString() + ".xml" );
+	/**
+	 * carga el juego que se encuentre guardado en el directorio recibido
+	 * @param directorio
+	 * @throws IOException 
+	 * @throws SAXException 
+	 * @throws ParserConfigurationException 
+	 */
+	protected void cargarNivelDesdeArchivo(String directorio) throws SAXException, IOException, ParserConfigurationException {
+		
+			File archivoXML = new File(directorio);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder parser = dbFactory.newDocumentBuilder();
 			Document documentoXML = parser.parse(archivoXML);
 			documentoXML.getDocumentElement().normalize();
-
+	
 			this.cargarParedesDeDocumento(documentoXML);
 			this.cargarAlgoTankDeDocumento(documentoXML);
 			this.cargarCuartelArgentinoDeDocumento(documentoXML);
 			this.cargarTanquesEnemigosDeDocumento(documentoXML);
+		
+	}
+	
+	
+	public void cargarJuegoGuardado(){
+		try{
+			this.cargarNivelDesdeArchivo("save/juegoGuardado.xml");
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
+				this.cargarProximoNivel();
+			}
+	}
+	
+	public void cargarProximoNivel(){
+		nivelActual++;
+		Integer nivelACargar = (Integer) nivelActual;
+		String directorio = directorioDeNiveles + nivelACargar.toString() + ".xml" ;
+		
+		try {
+			this.cargarNivelDesdeArchivo(directorio);
+		
+		} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 	}
 	
 	private void cargarParedesDeDocumento(Document documentoXML){

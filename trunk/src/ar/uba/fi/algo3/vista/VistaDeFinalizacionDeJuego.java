@@ -23,10 +23,10 @@ public class VistaDeFinalizacionDeJuego implements ObjetoDeTexto{
 		// TODO Auto-generated method stub
 		
 		
-		if(this.nivel.juegoGanado()){
+		if(this.nivel.nivelGanado()){
 			return "GANASTEEEEE";
 		}else{
-			if(this.nivel.juegoPerdido()){
+			if(this.nivel.nivelPerdido()){
 				return "PERDISTEEEE :(";
 			}else{
 				return "jugando";
