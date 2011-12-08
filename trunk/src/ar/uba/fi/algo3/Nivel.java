@@ -28,12 +28,26 @@ public class Nivel {
 		if(juegoEmpezado){
 			if(this.nivelGanado()){
 				this.cargarNivel();
+
 			}else{
-				Espacio.getInstancia().correrLogica();
-			}	
-		}		
+				if(this.nivelPerdido()){
+					this.reiniciar();
+				}else{
+					Espacio.getInstancia().correrLogica();
+				}
+			
+			}
+		}
+			
+	}
+	private void reiniciar() {
+		Espacio.getInstancia().reiniciar();
+		Nivel.instancia = null;
+		Nivel.getInstancia();
+		
 	}
 	
+
 	public void cargarNivel(){
 		//reiniciar provisorio
 		Espacio.getInstancia().reiniciar();
