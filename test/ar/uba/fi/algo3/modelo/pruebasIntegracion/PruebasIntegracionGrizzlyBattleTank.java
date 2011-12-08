@@ -1,5 +1,6 @@
 package ar.uba.fi.algo3.modelo.pruebasIntegracion;
 
+import ar.uba.fi.algo3.Nivel;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
@@ -15,8 +16,8 @@ import ar.uba.fi.algo3.modelo.tanques.MirageTank;
 import junit.framework.TestCase;
 
 /**
- * Llevo a cabo las pruebas de integración de GrizzlyBattleTank con los demás objetos del juego.
- * @author Tomás
+ * Llevo a cabo las pruebas de integraciï¿½n de GrizzlyBattleTank con los demï¿½s objetos del juego.
+ * @author Tomï¿½s
  *
  */
 public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
@@ -56,12 +57,12 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 		assertEquals(tanque.getResistencia(),(int)(resistencia+(resistencia*40/100)));
 	}
 	
-	/* A CONTINUACIÓN PRUEBO LOS CHOQUES CON TODOS LOS TANQUES.
-	 * PARA HACERLO MÁS GENERAL HAGO QUE LOS CHOQUE DESDE DISTINTAS POSICIONES RELATIVAS ASÍ DE PASO SE PRUEBAN TODAS.
+	/* A CONTINUACIï¿½N PRUEBO LOS CHOQUES CON TODOS LOS TANQUES.
+	 * PARA HACERLO Mï¿½S GENERAL HAGO QUE LOS CHOQUE DESDE DISTINTAS POSICIONES RELATIVAS ASï¿½ DE PASO SE PRUEBAN TODAS.
 	 */
 	
 	/**
-	 * Hago chocar al tanque con una instancia de AlgoTank y testeo que su ocupación no cambie porque este se interpuso en su camino.
+	 * Hago chocar al tanque con una instancia de AlgoTank y testeo que su ocupaciï¿½n no cambie porque este se interpuso en su camino.
 	 */
 	public void testGrizzlyBattleTankChocarConAlgoTankDesdeArriba() {
 		AlgoTank otroTanque = new AlgoTank(new Posicion(0,0));
@@ -73,7 +74,7 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	
 	
 	/**
-	 * Hago chocar al tanque con una instancia de GrizzlyBattleTank y testeo que su ocupación no cambie porque este se interpuso en su camino.
+	 * Hago chocar al tanque con una instancia de GrizzlyBattleTank y testeo que su ocupaciï¿½n no cambie porque este se interpuso en su camino.
 	 */
 	public void testGrizzlyBattleTankChocarConGrizzlyBattleTankDesdeArriba() {
 		tanque = new GrizzlyBattleTank(new Posicion(0,0));
@@ -84,7 +85,7 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	}
 	
 	/**
-	 * Hago chocar al tanque con una instancia de IFV y testeo que su ocupación no cambie porque este se interpuso en su camino.
+	 * Hago chocar al tanque con una instancia de IFV y testeo que su ocupaciï¿½n no cambie porque este se interpuso en su camino.
 	 */
 	public void testGrizzlyBattleTankChocarConIFVDesdeIzquierda() {
 		tanque = new GrizzlyBattleTank(new Posicion(0,0));
@@ -95,7 +96,7 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	}
 	
 	/**
-	 * Hago chocar al tanque con una instancia de MirageTank y testeo que su ocupación no cambie porque este se interpuso en su camino.
+	 * Hago chocar al tanque con una instancia de MirageTank y testeo que su ocupaciï¿½n no cambie porque este se interpuso en su camino.
 	 */
 	public void testGrizzlyBattleTankChocarConMirageTankDesdeDerecha() {
 		MirageTank otroTanque = new MirageTank(new Posicion(0,0));
@@ -108,7 +109,7 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	/* HAGO QUE CHOQUE CON TODOS LOS TIPOS DE PARED DESDE DISTINTAS POSICIONES RELATIVAS */
 	
 	/**
-	 * Hago chocar al tanque con una instancia de ParedConcreto y testeo que su ocupación no cambie porque este se interpuso en su camino.
+	 * Hago chocar al tanque con una instancia de ParedConcreto y testeo que su ocupaciï¿½n no cambie porque este se interpuso en su camino.
 	 */
 	public void testGrizzlyBattleTankChocarConParedConcretoDesdeIzquierda() {
 		tanque = new GrizzlyBattleTank(new Posicion(0,0));
@@ -119,7 +120,7 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	}
 	
 	/**
-	 * Hago chocar al tanque con una instancia de ParedMetal y testeo que su ocupación no cambie porque este se interpuso en su camino.
+	 * Hago chocar al tanque con una instancia de ParedMetal y testeo que su ocupaciï¿½n no cambie porque este se interpuso en su camino.
 	 */
 	public void testGrizzlyBattleTankChocarConParedMetalDesdeDerecha() {
 		ParedMetal pared = new ParedMetal(new Posicion(0,0));
@@ -130,7 +131,7 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	}
 	
 	/**
-	 * Sitúo a una instancia del tanque contiguamente a una del cuartel, a su izquierda. Lo hago mover a la derecha. Testeo que su posición siga siendo la inicial porque el cuartel se interpuso en su camino.
+	 * Sitï¿½o a una instancia del tanque contiguamente a una del cuartel, a su izquierda. Lo hago mover a la derecha. Testeo que su posiciï¿½n siga siendo la inicial porque el cuartel se interpuso en su camino.
 	 */
 	public void testGrizzlyBattleTankChocarConCuartelArgentinoDesdeIzquierda() {
 		tanque = new GrizzlyBattleTank(new Posicion(0,0));
@@ -143,9 +144,9 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	/* TESTEO QUE ESTE TANQUE DESTRUYA A TODOS LOS DEMAS A DISPAROS, EN DISTINTAS POSICIONES RELATIVAS */
 	
 	/**
-	 * Ubico a ambos tanques en el escenario y hago correr la lógica del juego hasta que la instancia de AlgoTank sea destruida.
-	 * Cuando esto ya haya sucedido testeo que el tanque se haya movido hacia la instancia de AlgoTank, y la prueba más importante es que la resistencia de la instancia de AlgoTank se anule.
-	 * NOTA: Pongo un contador para que si la lógica falla no se entre en un ciclo infinito, y si la resistencia de la instancia AlgoTank no es menor o igual que cero luego de la finalización del ciclo (salida esperada) fallo el test.
+	 * Ubico a ambos tanques en el escenario y hago correr la lï¿½gica del juego hasta que la instancia de AlgoTank sea destruida.
+	 * Cuando esto ya haya sucedido testeo que el tanque se haya movido hacia la instancia de AlgoTank, y la prueba mï¿½s importante es que la resistencia de la instancia de AlgoTank se anule.
+	 * NOTA: Pongo un contador para que si la lï¿½gica falla no se entre en un ciclo infinito, y si la resistencia de la instancia AlgoTank no es menor o igual que cero luego de la finalizaciï¿½n del ciclo (salida esperada) fallo el test.
 	 */
 	public void testGrizzlyBattleTankDestruirAlgoTankDisparosDesdeIzquierda() {
 		AlgoTank otroTanque = new AlgoTank(new Posicion(400,0));
@@ -166,7 +167,7 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	 * Ubico a los dos tanques contiguamente.
 	 * Oriento al del test hacia el otro.
 	 * Lo hago disparar y testeo que con cada disparo la resistencia del otro vaya disminuyendo adecuadamente, hasta que sea destruido.
-	 * Testeo que antes de desaparecer el tanque esté incluido en el espacio, y que luego no.
+	 * Testeo que antes de desaparecer el tanque estï¿½ incluido en el espacio, y que luego no.
 	 */
 	public void testGrizzlyBattleTankDestruirGrizzlyBattleTankDisparosDesdeArriba() {
 		tanque = new GrizzlyBattleTank(new Posicion(0,0));
@@ -234,10 +235,10 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	/* TESTEO QUE EL TANQUE DESTRUYA CORRECTAMENTE A LAS PAREDES CON SUS DISPAROS */
 	
 	/**
-	 * Sitúo a una instancia de la pared contiguamente al tanque.
-	 * Testeo que la pared esté incluída en el espacio.
+	 * Sitï¿½o a una instancia de la pared contiguamente al tanque.
+	 * Testeo que la pared estï¿½ incluï¿½da en el espacio.
 	 * Oriento a este hacia ella y lo hago disparar.
-	 * Testeo que la pared no esté incluída en el espacio.
+	 * Testeo que la pared no estï¿½ incluï¿½da en el espacio.
 	 */
 	public void testGrizzlyBattleTankDestruirParedConcretoDisparosDesdeIzquierda() {
 		tanque = new GrizzlyBattleTank(new Posicion(0,0));
@@ -249,12 +250,12 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	}
 	
 	/**
-	 * Sitúo a una instancia de la pared contiguamente al tanque.
-	 * Testeo que la pared esté incluída en el espacio.
+	 * Sitï¿½o a una instancia de la pared contiguamente al tanque.
+	 * Testeo que la pared estï¿½ incluï¿½da en el espacio.
 	 * Oriento a este hacia ella y lo hago disparar.
-	 * Testeo nuevamente que la pared esté incluída en el espacio.
+	 * Testeo nuevamente que la pared estï¿½ incluï¿½da en el espacio.
 	 * Hago disparar al tanque nuevamente.
-	 * Testeo que la pared no esté incluída en el espacio.
+	 * Testeo que la pared no estï¿½ incluï¿½da en el espacio.
 	 */
 	public void testGrizzlyBattleTankDestruirParedMetalDisparosDesdeDerecha() {
 		ParedMetal pared = new ParedMetal(new Posicion(0,0));
@@ -270,10 +271,10 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	/* TESTEO QUE LOS DISPAROS DEL TANQUE NO AFECTEN A LOS BONUS */
 	
 	/**
-	 * Sitúo a una instancia del bonus a una distancia prudencial del tanque para que cuando este se mueva para orientarse no lo choque.
-	 * Testeo que el bonus esté incluído en el espacio.
-	 * Oriento el tanque hacia él y lo hago disparar.
-	 * Testeo que el bonus esté incluído en el espacio.
+	 * Sitï¿½o a una instancia del bonus a una distancia prudencial del tanque para que cuando este se mueva para orientarse no lo choque.
+	 * Testeo que el bonus estï¿½ incluï¿½do en el espacio.
+	 * Oriento el tanque hacia ï¿½l y lo hago disparar.
+	 * Testeo que el bonus estï¿½ incluï¿½do en el espacio.
 	 */
 	public void testGrizzlyBattleTankNoAfectarBonusVidaDesdeIzquierda() {
 		tanque = new GrizzlyBattleTank(new Posicion(0,0));
@@ -299,13 +300,13 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	/* HAGO QUE EL TANQUE DESTRUYA A DISPAROS AL CUARTEL ARGENTINO Y TESTEO QUE EL JUEGO SE PIERDA */
 	
 	/**
-	 * Sitúo a una instancia de AlgoTank a la izquierda contígua de una instancia de CuartelArgentino.
+	 * Sitï¿½o a una instancia de AlgoTank a la izquierda contï¿½gua de una instancia de CuartelArgentino.
 	 * Oriento al tanque hacia el cuartel.
-	 * Testeo que la segunda esté incluída en el espacio.
-	 * Testeo que el juego no esté perdido.
+	 * Testeo que la segunda estï¿½ incluï¿½da en el espacio.
+	 * Testeo que el juego no estï¿½ perdido.
 	 * Hago disparar al tanque.
-	 * Testeo que el cuartel no esté incluído en el espacio.
-	 * Testeo que el juego esté perdido.
+	 * Testeo que el cuartel no estï¿½ incluï¿½do en el espacio.
+	 * Testeo que el juego estï¿½ perdido.
 	 */
 	public void testGrizzlyBattleTankDestruirCuartelArgentinoYJuegoPerdidoDesdeIzquierda() {
 		tanque = new GrizzlyBattleTank(new Posicion(0,0));
@@ -313,10 +314,10 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 		AlgoTank algoTank = new AlgoTank(new Posicion(250,250));
 		tanque.moverDerecha();
 		assertTrue(Espacio.getInstancia().incluyeA(cuartel));
-		assertFalse(Espacio.getInstancia().juegoPerdido());
+		assertFalse(Nivel.getInstancia().juegoPerdido());
 		tanque.disparar();
 		assertFalse(Espacio.getInstancia().incluyeA(cuartel));
-		assertTrue(Espacio.getInstancia().juegoPerdido());
+		assertTrue(Nivel.getInstancia().juegoPerdido());
 	}
 
 }

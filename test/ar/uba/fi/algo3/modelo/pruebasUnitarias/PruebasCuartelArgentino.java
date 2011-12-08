@@ -1,5 +1,6 @@
 package ar.uba.fi.algo3.modelo.pruebasUnitarias;
 
+import ar.uba.fi.algo3.Nivel;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
@@ -32,13 +33,13 @@ public class PruebasCuartelArgentino extends TestCase {
 	}
 	
 	/**
-	 * Testeo si antes de desaparecer el cuartel el juego no está perdido y si al desaparecer el juego se pierde.
+	 * Testeo si antes de desaparecer el cuartel el juego no estï¿½ perdido y si al desaparecer el juego se pierde.
 	 */
 	public void testJuegoPerdido() {
 		AlgoTank algoTank = new AlgoTank(new Posicion(250,250));
-		assertFalse(Espacio.getInstancia().juegoPerdido());
+		assertFalse(Nivel.getInstancia().juegoPerdido());
 		cuartel.desaparecer();
-		assertTrue(Espacio.getInstancia().juegoPerdido());
+		assertTrue(Nivel.getInstancia().juegoPerdido());
 	}
 	
 }
