@@ -1,5 +1,6 @@
 package ar.uba.fi.algo3.modelo.pruebasIntegracion;
 
+import ar.uba.fi.algo3.Nivel;
 import ar.uba.fi.algo3.modelo.armamentista.arma.Canion;
 import ar.uba.fi.algo3.modelo.armamentista.arma.LanzaCohetes;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
@@ -17,8 +18,8 @@ import ar.uba.fi.algo3.modelo.tanques.MirageTank;
 import junit.framework.TestCase;
 
 /**
- * Llevo a cabo las pruebas de integración de AlgoTank con los demás objetos del juego.
- * @author Tomás
+ * Llevo a cabo las pruebas de integraciï¿½n de AlgoTank con los demï¿½s objetos del juego.
+ * @author Tomï¿½s
  *
  */
 public class PruebasIntegracionAlgoTank extends TestCase {
@@ -58,14 +59,14 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		assertEquals(tanque.getResistencia(),(int)(resistencia+(resistencia*40/100)));
 	}
 	
-	/* A CONTINUACIÓN PRUEBO LOS CHOQUES CON TODOS LOS TANQUES.
-	 * PARA HACERLO MÁS GENERAL HAGO QUE LOS CHOQUE DESDE DISTINTAS POSICIONES RELATIVAS ASÍ DE PASO SE PRUEBAN TODAS.
+	/* A CONTINUACIï¿½N PRUEBO LOS CHOQUES CON TODOS LOS TANQUES.
+	 * PARA HACERLO Mï¿½S GENERAL HAGO QUE LOS CHOQUE DESDE DISTINTAS POSICIONES RELATIVAS ASï¿½ DE PASO SE PRUEBAN TODAS.
 	 */
 	
-	/* ALGO TANK NO PUEDE CHOCAR CON SÍ MISMO DADO QUE EL ESPACIO SÓLO TOLERA UNA INSTANCIA DE SU CLASE. */
+	/* ALGO TANK NO PUEDE CHOCAR CON Sï¿½ MISMO DADO QUE EL ESPACIO Sï¿½LO TOLERA UNA INSTANCIA DE SU CLASE. */
 	
 	/**
-	 * Hago chocar al tanque con una instancia de GrizzlyBattleTank y testeo que su ocupación no cambie porque este se interpuso en su camino.
+	 * Hago chocar al tanque con una instancia de GrizzlyBattleTank y testeo que su ocupaciï¿½n no cambie porque este se interpuso en su camino.
 	 */
 	public void testAlgoTankChocarConGrizzlyBattleTankDesdeArriba() {
 		tanque = new AlgoTank(new Posicion(0,0));
@@ -76,7 +77,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	}
 	
 	/**
-	 * Hago chocar al tanque con una instancia de IFV y testeo que su ocupación no cambie porque este se interpuso en su camino.
+	 * Hago chocar al tanque con una instancia de IFV y testeo que su ocupaciï¿½n no cambie porque este se interpuso en su camino.
 	 */
 	public void testAlgoTankChocarConIFVDesdeIzquierda() {
 		tanque = new AlgoTank(new Posicion(0,0));
@@ -87,7 +88,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	}
 	
 	/**
-	 * Hago chocar al tanque con una instancia de MirageTank y testeo que su ocupación no cambie porque este se interpuso en su camino.
+	 * Hago chocar al tanque con una instancia de MirageTank y testeo que su ocupaciï¿½n no cambie porque este se interpuso en su camino.
 	 */
 	public void testAlgoTankChocarConMirageTankDesdeDerecha() {
 		MirageTank otroTanque = new MirageTank(new Posicion(0,0));
@@ -100,7 +101,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	/* HAGO QUE CHOQUE CON TODOS LOS TIPOS DE PARED DESDE DISTINTAS POSICIONES RELATIVAS */
 	
 	/**
-	 * Hago chocar al tanque con una instancia de ParedConcreto y testeo que su ocupación no cambie porque este se interpuso en su camino.
+	 * Hago chocar al tanque con una instancia de ParedConcreto y testeo que su ocupaciï¿½n no cambie porque este se interpuso en su camino.
 	 */
 	public void testAlgoTankChocarConParedConcretoDesdeIzquierda() {
 		tanque = new AlgoTank(new Posicion(0,0));
@@ -111,7 +112,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	}
 	
 	/**
-	 * Hago chocar al tanque con una instancia de ParedMetal y testeo que su ocupación no cambie porque este se interpuso en su camino.
+	 * Hago chocar al tanque con una instancia de ParedMetal y testeo que su ocupaciï¿½n no cambie porque este se interpuso en su camino.
 	 */
 	public void testAlgoTankChocarConParedMetalDesdeDerecha() {
 		ParedMetal pared = new ParedMetal(new Posicion(0,0));
@@ -124,7 +125,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	/* HAGO QUE EL TANQUE CHOQUE CON UNA INSTANCIA DE CUARTEL ARGENTINO Y TESTEO QUE ESTA SE INTERPONGA EN SU CAMINO */
 	
 	/**
-	 * Sitúo a una instancia del tanque contiguamente a una del cuartel, a su izquierda. Lo hago mover a la derecha. Testeo que su posición siga siendo la inicial porque el cuartel se interpuso en su camino.
+	 * Sitï¿½o a una instancia del tanque contiguamente a una del cuartel, a su izquierda. Lo hago mover a la derecha. Testeo que su posiciï¿½n siga siendo la inicial porque el cuartel se interpuso en su camino.
 	 */
 	public void testAlgoTankChocarConCuartelArgentinoDesdeIzquierda() {
 		tanque = new AlgoTank(new Posicion(0,0));
@@ -137,7 +138,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	/* TESTEO SI AL SER DESTRUIDOS LOS TANQUES ENEMIGOS QUE ENTREGAN ARMAS A ALGO TANK ESTO SE HACE CORRECTAMENTE */
 	
 	/**
-	 * Chequeo que la munición inicial del cañón de una instancia de AlgoTank sea nula (no tiene armas prioritarias), y que luego de que desaparezca una instancia de IFV esta aumente.
+	 * Chequeo que la municiï¿½n inicial del caï¿½ï¿½n de una instancia de AlgoTank sea nula (no tiene armas prioritarias), y que luego de que desaparezca una instancia de IFV esta aumente.
 	 */
 	public void testAlgoTankAumentarMunicionCanionConDestruccionDeIFV() {
 		tanque = new AlgoTank(new Posicion(0,0));
@@ -149,7 +150,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	}
 
 	/**
-	 * Chequeo que la munición inicial del lanza cohetes de una instancia de AlgoTank sea nula (no tiene armas prioritarias), y que luego de que desaparezca una instancia de MirageTank esta aumente.
+	 * Chequeo que la municiï¿½n inicial del lanza cohetes de una instancia de AlgoTank sea nula (no tiene armas prioritarias), y que luego de que desaparezca una instancia de MirageTank esta aumente.
 	 */
 	public void testAlgoTankAumentarMunicionLanzaCohetesConDestruccionDeMirageTank() {
 		tanque = new AlgoTank(new Posicion(0,0));
@@ -160,10 +161,10 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		assertEquals(tanque.getArmasPrioritarias().peek().getMunicion(),municionEsperada);
 	}
 	
-	/* A CONTINUACION HAGO QUE UNA INSTANCIA DE ALGO TANK DESTRUYA O DAÑE A CADA UNO DE LOS OTROS TANQUES CON CADA UNA DE LAS ARMAS QUE PUEDE TENER Y EN DISTINTAS POSICIONES RELATIVAS */
+	/* A CONTINUACION HAGO QUE UNA INSTANCIA DE ALGO TANK DESTRUYA O DAï¿½E A CADA UNO DE LOS OTROS TANQUES CON CADA UNA DE LAS ARMAS QUE PUEDE TENER Y EN DISTINTAS POSICIONES RELATIVAS */
 	
 	/**
-	 * Sitúo un tanque continuamente a AlgoTank y hago que el dispare su ametralladora hasta que lo destrulla.
+	 * Sitï¿½o un tanque continuamente a AlgoTank y hago que el dispare su ametralladora hasta que lo destrulla.
 	 * Testeo que el tanque enemigo haya desaparecido del escenario.
 	 * NOTA: Pongo un contador para evitar que si el test falla se inicie un ciclo infinito, y si la salida del ciclo no es la esperada repruebo el test.
 	 */
@@ -185,7 +186,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	
 	/**
 	 * @see testAlgoTankDestruirGrizzlyBattleTankConAmetralladoraDesdeIzquierda()
-	 * Testeo además que la municion del cañón disminuya como se espera.
+	 * Testeo ademï¿½s que la municion del caï¿½ï¿½n disminuya como se espera.
 	 */
 	public void testAlgoTankDestruirGrizzlyBattleTankConCanionDesdeDerecha() {
 		GrizzlyBattleTank otroTanque = new GrizzlyBattleTank(new Posicion(0,0));
@@ -207,8 +208,8 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	
 	/**
 	 * @see testAlgoTankDestruirGrizzlyBattleTankConAmetralladoraDesdeIzquierda()
-	 * En este caso lo dañamos dado que el lanza cohetes no puede destruir un tanque porque siempre le quita la mitad de su resistencia actual.
-	 * Testeo además que la municion del lanza cohetes disminuya como se espera.
+	 * En este caso lo daï¿½amos dado que el lanza cohetes no puede destruir un tanque porque siempre le quita la mitad de su resistencia actual.
+	 * Testeo ademï¿½s que la municion del lanza cohetes disminuya como se espera.
 	 */
 	public void testAlgoTankDaniarGrizzlyBattleTankConLanzaCohetesDesdeAbajo() {
 		GrizzlyBattleTank otroTanque = new GrizzlyBattleTank(new Posicion(0,0));
@@ -249,7 +250,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	
 	/**
 	 * @see testAlgoTankDestruirGrizzlyBattleTankConCanionDesdeIzquierda()
-	 * Testeo además que la municion del cañón AUMENTE como se espera.
+	 * Testeo ademï¿½s que la municion del caï¿½ï¿½n AUMENTE como se espera.
 	 */
 	public void testAlgoTankDestruirIFVConCanionDesdeDerecha() {
 		IFV otroTanque = new IFV(new Posicion(0,0));
@@ -265,7 +266,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		}
 		if (otroTanque.getResistencia() > 0)
 			fail();
-		//TENER EN CUENTA QUE CUANDO ALGO TANK DESTRUYE A UNA INSTANCIA DE IFV SE APODERA DE SU ARMA Y POR ESO LA MUNICIÓN QUE TESTEAMOS AHORA ES 25
+		//TENER EN CUENTA QUE CUANDO ALGO TANK DESTRUYE A UNA INSTANCIA DE IFV SE APODERA DE SU ARMA Y POR ESO LA MUNICIï¿½N QUE TESTEAMOS AHORA ES 25
 		assertEquals(tanque.getArmasPrioritarias().peek().getMunicion(),25);
 		assertFalse(Espacio.getInstancia().incluyeA(otroTanque));
 	}
@@ -352,7 +353,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		assertTrue(Espacio.getInstancia().incluyeA(otroTanque));
 	}
 	
-	/* A CONTINUACIÓN TESTEO QUE ALGO TANK PUEDA DESTRUIR CORRECTAMENTE A LOS DISTINTOS TIPOS DE PARED Y AL CUARTEL ARGENTINO, EN DISTINTAS POSICIONES RELATIVAS */
+	/* A CONTINUACIï¿½N TESTEO QUE ALGO TANK PUEDA DESTRUIR CORRECTAMENTE A LOS DISTINTOS TIPOS DE PARED Y AL CUARTEL ARGENTINO, EN DISTINTAS POSICIONES RELATIVAS */
 	
 	/**
 	 * Agrego una instancia de la pared y del tanque en posiciones tales que los disparos del segundo vayan a impactar con la primera, y testeamos que al primer disparo desaparezca.
@@ -372,7 +373,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	}
 	
 	/**
-	 * Agrego una instancia de la pared y del tanque en posiciones tales que los disparos del segundo vayan a impactar con la primera, y testeamos que al primer disparo no desaparezca pero al segundo sí.
+	 * Agrego una instancia de la pared y del tanque en posiciones tales que los disparos del segundo vayan a impactar con la primera, y testeamos que al primer disparo no desaparezca pero al segundo sï¿½.
 	 */
 	public void testAlgoTankDestruirParedMetalConAmetralladoraDesdeDerecha() {
 		ParedMetal pared = new ParedMetal(new Posicion(0,0));
@@ -396,14 +397,14 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	}
 	
 	/**
-	 * Agrego un cuartel argentino en una posición continua a una instancia de AlgoTank tal que los disparos lo impacten, y testeamos que antes del primer disparo el cuartel no haya desaparecido y que el juego no esté perdido, y que al primer disparo el cuartel haya desaparecido y que el juego resulte perdido.
+	 * Agrego un cuartel argentino en una posiciï¿½n continua a una instancia de AlgoTank tal que los disparos lo impacten, y testeamos que antes del primer disparo el cuartel no haya desaparecido y que el juego no estï¿½ perdido, y que al primer disparo el cuartel haya desaparecido y que el juego resulte perdido.
 	 */
 	public void testAlgoTankDestruirCuartelArgentinoDesdeIzquierdaYJuegoPerdido() {
 		tanque = new AlgoTank(new Posicion(0,0));
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		tanque.moverDerecha();
 		assertTrue(Espacio.getInstancia().incluyeA(cuartel));
-		assertFalse(Espacio.getInstancia().juegoPerdido());
+		assertFalse(Nivel.getInstancia().juegoPerdido());
 		int contador = 0;
 		while (contador < 27) {
 			tanque.vivir();
@@ -411,7 +412,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		}
 		tanque.disparar();
 		assertFalse(Espacio.getInstancia().incluyeA(cuartel));
-		assertTrue(Espacio.getInstancia().juegoPerdido());
+		assertTrue(Nivel.getInstancia().juegoPerdido());
 	}
 	
 }
