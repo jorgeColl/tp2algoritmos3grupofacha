@@ -13,24 +13,11 @@ import ar.uba.fi.algo3.titiritero.vista.ImagenDinamica;
  * @author Fede
  *
  */
-public class VistaAlgoTank extends ImagenDinamica {
+public class VistaAlgoTank extends VistaImagenConOrientacion {
 	
-	/* definiciones que se usan para el manejo de imagenes. */
-	final static int DERECHA = 1;
-	final static int IZQUIERDA = 2;
-	final static int ARRIBA = 3;
-	final static int ABAJO = 4;
 	
-	public VistaAlgoTank(){
-		super();
-		/* carga las imagenes en la clase de ImagenDinamica */
-		this.agregarImagen(DERECHA, "img/AlgoTank_i.JPG");
-		this.agregarImagen(IZQUIERDA, "img/AlgoTank_iNegativo.JPG");
-		this.agregarImagen(ARRIBA, "img/AlgoTank_j.JPG");
-		this.agregarImagen(ABAJO, "img/AlgoTank_jNegativo.JPG");
-		
-		/* setea por default que el tanque mire por defecto para arriba */
-		this.cambiarAImagen(ARRIBA);
+	public VistaAlgoTank(String directorio1,String dir2,String dir3,String di4){
+		super(directorio1,dir2,dir3,di4);		
 	}
 	
 	/* definicion del comportamiento del AlgoTank como observador

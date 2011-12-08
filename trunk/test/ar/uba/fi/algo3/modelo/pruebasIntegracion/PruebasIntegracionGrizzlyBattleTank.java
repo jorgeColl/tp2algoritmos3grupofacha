@@ -314,10 +314,10 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 		AlgoTank algoTank = new AlgoTank(new Posicion(250,250));
 		tanque.moverDerecha();
 		assertTrue(Espacio.getInstancia().incluyeA(cuartel));
-		assertFalse(Nivel.getInstancia().juegoPerdido());
+		assertFalse(Nivel.getInstancia().nivelPerdido());
 		tanque.disparar();
 		assertFalse(Espacio.getInstancia().incluyeA(cuartel));
-		assertTrue(Nivel.getInstancia().juegoPerdido());
+		assertTrue(Nivel.getInstancia().nivelPerdido());
 	}
 
 }

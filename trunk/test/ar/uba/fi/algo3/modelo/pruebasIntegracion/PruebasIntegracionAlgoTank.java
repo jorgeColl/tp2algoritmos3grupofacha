@@ -404,7 +404,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		tanque.moverDerecha();
 		assertTrue(Espacio.getInstancia().incluyeA(cuartel));
-		assertFalse(Nivel.getInstancia().juegoPerdido());
+		assertFalse(Nivel.getInstancia().nivelPerdido());
 		int contador = 0;
 		while (contador < 27) {
 			tanque.vivir();
@@ -412,7 +412,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 		}
 		tanque.disparar();
 		assertFalse(Espacio.getInstancia().incluyeA(cuartel));
-		assertTrue(Nivel.getInstancia().juegoPerdido());
+		assertTrue(Nivel.getInstancia().nivelPerdido());
 	}
 	
 }

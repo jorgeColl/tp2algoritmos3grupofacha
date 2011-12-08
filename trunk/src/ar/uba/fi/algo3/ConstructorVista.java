@@ -25,13 +25,11 @@ import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.TextoDinamico;
 import ar.uba.fi.algo3.vista.PuntoParaTexto;
 import ar.uba.fi.algo3.vista.VistaAlgoTank;
-import ar.uba.fi.algo3.vista.VistaBonus;
 import ar.uba.fi.algo3.vista.VistaDeTextoDeAlgoTank;
 import ar.uba.fi.algo3.vista.VistaParaImagen;
 import ar.uba.fi.algo3.vista.VistaImagenConOrientacion;
 import ar.uba.fi.algo3.vista.VistaDeFinalizacionDeJuego;
 import ar.uba.fi.algo3.vista.VistaInicioDeJuego;
-import ar.uba.fi.algo3.vista.Escuchador;
 
 
 /**
@@ -86,7 +84,10 @@ public class ConstructorVista {
 	}
 	
 	public static void construirVista(AlgoTank tanque){
-		VistaAlgoTank vista = new VistaAlgoTank();
+		VistaAlgoTank vista = new VistaAlgoTank("img/AlgoTank_i.JPG",
+				"img/AlgoTank_iNegativo.JPG",
+				"img/AlgoTank_j.JPG",
+				"img/AlgoTank_jNegativo.JPG");
 		auxiliar(vista,tanque);
 		
 		ControladorJuego.getInstancia().agregarKeyPressObservador(vista);
@@ -100,12 +101,12 @@ public class ConstructorVista {
 	}
 	
 	public static void construirVista(BonusVelocidad bonus){
-		VistaBonus vista = new VistaBonus("img/Bonus.JPG");
+		VistaParaImagen vista = new VistaParaImagen("img/Bonus.JPG");
 		auxiliar(vista,bonus);
 	}
 	
 	public static void construirVista(BonusVida bonus){
-		VistaBonus vista = new VistaBonus("img/BonusVida.JPG");
+		VistaParaImagen vista = new VistaParaImagen("img/BonusVida.JPG");
 		auxiliar(vista,bonus);
 	}
 	
