@@ -24,7 +24,7 @@ public abstract class Imagen implements Dibujable, MouseClickObservador, KeyPres
 	public void dibujar(SuperficieDeDibujo superficeDeDibujo){
 		if(!posicionable.isVivo()){
 			ControladorJuego.getInstancia().removerDibujable(this);
-		}else{
+		} else {
 			Graphics grafico = (Graphics)superficeDeDibujo.getBuffer();
 			grafico.drawImage(imagen, posicionable.getX(), posicionable.getY(), null);
 		}
