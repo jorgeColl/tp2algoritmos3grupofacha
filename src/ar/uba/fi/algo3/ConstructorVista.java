@@ -31,6 +31,7 @@ import ar.uba.fi.algo3.vista.VistaParaImagen;
 import ar.uba.fi.algo3.vista.VistaImagenConOrientacion;
 import ar.uba.fi.algo3.vista.VistaDeFinalizacionDeJuego;
 import ar.uba.fi.algo3.vista.VistaInicioDeJuego;
+import ar.uba.fi.algo3.vista.Escuchador;
 
 
 /**
@@ -148,6 +149,10 @@ public class ConstructorVista {
 		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(602,100));
 		vista2.setColor(Color.red);
 		auxiliar(vista2,pptexto2);
+		
+		
+		
+		
 		
 		
 		
