@@ -29,7 +29,7 @@ public class CorrerJuego {
 		ControladorJuego, as� que para no harcodearlo lo inicializo
 		ac�: */
 		ControladorJuego controlador = ControladorJuego.getInstancia();
-		Ventana ventana = new Ventana(801, 601, controlador);
+		Ventana ventana = new Ventana(801, 634, controlador);
 		ventana.setTitle("AlgoTank");
 		
 		/* l�neas copiadas del ejemplo. */
@@ -37,9 +37,9 @@ public class CorrerJuego {
 		ventana.setVisible(true);		
 		
 		//aca pongo el fondito gris
-		Cuadrado cuadrado = new Cuadrado(200,601);
+		Cuadrado cuadrado = new Cuadrado(200,600);
 		cuadrado.setColor(Color.gray);
-		cuadrado.setPosicionable(new PuntoParaTexto(new Posicion(601,0)));
+		cuadrado.setPosicionable(new PuntoParaTexto(new Posicion(602,0)));
 		controlador.agregarDibujable(cuadrado);
 		
 	

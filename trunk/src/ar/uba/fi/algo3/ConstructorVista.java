@@ -35,7 +35,7 @@ import ar.uba.fi.algo3.vista.VistaInicioDeJuego;
 /**
  * @author jc
  * esta clase va a ayudar a crear a las vistas de los elementos que esten en el juego y 
- * quieran ser visualizados
+ * deban ser visualizados
  */
 public class ConstructorVista {
 	
@@ -137,22 +137,24 @@ public class ConstructorVista {
 		auxiliar(vista,tanque);
 	}
 	
+	/**
+	 * Construye las vistas de inicio y final de juego.
+	 * @param nivel
+	 */
 	public static void construirVista(Nivel nivel){
-		
 		VistaInicioDeJuego vista1 = new VistaInicioDeJuego();
-		PuntoParaTexto pptexto = new PuntoParaTexto(new Posicion(150,200));
-		vista1.setColor(Color.black);
-		auxiliar(vista1,pptexto);
+		//PuntoParaTexto pptexto = new PuntoParaTexto(new Posicion(150,200));
+		//vista1.setColor(Color.black);
+		//auxiliar(vista1,pptexto);
+		ControladorJuego.getInstancia().agregarDibujable(vista1);
 		ControladorJuego.getInstancia().agregarKeyPressObservador(vista1);
 		
+		/*
 		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego(nivel);
 		TextoDinamico vista2 = new TextoDinamico(observante);
 		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(602,100));
 		vista2.setColor(Color.red);
-		auxiliar(vista2,pptexto2);
-		
-		
-		
+		auxiliar(vista2,pptexto2);*/
 		
 		
 		

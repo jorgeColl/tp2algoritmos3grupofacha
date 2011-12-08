@@ -9,7 +9,7 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 
 /**
  * @author jc
- *
+ * Clase que modela un nivel generico del juego.
  */
 public class Nivel {
 	private Persistidor persistidor;
@@ -19,41 +19,21 @@ public class Nivel {
 	private Nivel(){
 		persistidor = new Persistidor();
 		juegoEmpezado = false;
-		
 	}
+	
+    /**
+     * Corre la logica del nivel.
+     *  */
 	public void correrLogica() {
-		
 		if(juegoEmpezado){
-			
 			if(this.nivelGanado()){
 				this.cargarNivel();
-				}else{
-					Espacio.getInstancia().correrLogica();
-					}
-			
-		}
-		
+			}else{
+				Espacio.getInstancia().correrLogica();
+			}	
+		}		
 	}
-	/*
 	
-	 * crea una panatalla de inicio permitiendole al usuario elegir si desea continuar desde el
-	 * juego guardado o empezar uno nuevo
-	 
-	private void pantallaDeIinicio() {
-		
-		ControladorJuego controlador = ControladorJuego.getInstancia();
-
-		Cuadrado cuadrado = new Cuadrado(400,300);
-		cuadrado.setColor(Color.gray);
-		cuadrado.setPosicionable(new PuntoParaTexto(new Posicion(101,0)));
-		controlador.agregarDibujable(cuadrado);
-		
-		VistaJuego vista = new VistaJuego();
-		vista.setPosicionable(new PuntoParaTexto(new Posicion(200,200)));
-		controlador.agregarDibujable(vista);
-		
-	}
-	*/
 	public void cargarNivel(){
 		//reiniciar provisorio
 		Espacio.getInstancia().reiniciar();
@@ -80,14 +60,19 @@ public class Nivel {
 		if (Espacio.getInstancia().getTanqueJugador() == null) return false;
 		return (Espacio.getInstancia().getTanqueJugador().getPuntaje() >= 1000);
 	}
+	
 	/**
 	 * Cuando el cuartel argentino es destruido, entonces se perdio el juego.
 	 * @return true si se perdio el juego y false en el caso contrario
 	 */
 	public boolean nivelPerdido() {
-		return (Espacio.getInstancia().getCuartelArgentino() == null || Espacio.getInstancia().getTanqueJugador() == null);
+		return (Espacio.getInstancia().getCuartelArgentino() == null || 
+				Espacio.getInstancia().getTanqueJugador() == null);
 	}
 	
+	/**
+	 * Utiliza el patron Singleton para que solo haya una instancia de nivel.
+	 */
 	public static Nivel getInstancia() {
 		if (instancia == null){
 			instancia = new Nivel();
@@ -95,6 +80,4 @@ public class Nivel {
 		}
 		return instancia;
 	}
-
-
 }
