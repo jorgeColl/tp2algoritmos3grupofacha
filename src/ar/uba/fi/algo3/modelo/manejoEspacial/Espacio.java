@@ -290,13 +290,24 @@ public class Espacio {
 		return tanqueJugador;
 	}
 	
-	
+	private void setDead(Vector o){
+		
+		Iterator iterator = o.iterator();
+		while(iterator.hasNext()){
+			ObjetoJuego d = (ObjetoJuego)iterator.next();
+			d.setVivo(false);
+		}
+	}
 	
 	/**
 	 * Reinicia el valor de todos los atributos que son instancias 
 	 * de la clase Vector.
 	 */
 	public void reiniciar() {
+		if(cuartel!=null)cuartel.setVivo(false);
+		if(tanqueJugador!=null)tanqueJugador.setVivo(false);
+		if(disparos!=null)this.setDead(disparos);
+		if(objetosInanimados!=null)this.setDead(objetosInanimados);
 		instancia = new Espacio();
 	}
 	
