@@ -56,6 +56,8 @@
 	<pared tipo="metal" posX="517" posY="474"  />
 	<pared tipo="concreto" posX="517" posY="193" />
 	<pared tipo="concreto" posX="517" posY="236" /> 
+	<pared tipo="concreto" posX="517" posY="322" /> 
+	<pared tipo="concreto" posX="517" posY="365" /> 
 	<pared tipo="concreto" posX="517" posY="517" /> 
 
 
