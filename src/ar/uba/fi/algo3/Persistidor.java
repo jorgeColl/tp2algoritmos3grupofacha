@@ -5,10 +5,16 @@ package ar.uba.fi.algo3;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringWriter;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -16,6 +22,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
 import ar.uba.fi.algo3.modelo.objetosInanimados.ParedConcreto;
@@ -33,8 +40,8 @@ import ar.uba.fi.algo3.modelo.tanques.MirageTank;
 public class Persistidor {
 	
 	private static int nivelActual;
-	private final static String directorioDeNiveles = "level/nivel";
-	private final static String directorioDeGuardados = "save/";
+	private final static String DIRECTORIO_DE_NIVELES = "level/nivel";
+	private final static String ARCHIVO_DE_GUARDADO = "save/saved.xml";
 	
 	public Persistidor(){
 		nivelActual = 0;
@@ -46,8 +53,7 @@ public class Persistidor {
 	 * @throws SAXException 
 	 * @throws ParserConfigurationException 
 	 */
-	protected void cargarNivelDesdeArchivo(String directorio) throws SAXException, IOException, ParserConfigurationException {
-		
+	private void cargarNivelDesdeArchivo(String directorio) throws SAXException, IOException, ParserConfigurationException {
 			File archivoXML = new File(directorio);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder parser = dbFactory.newDocumentBuilder();
@@ -58,13 +64,35 @@ public class Persistidor {
 			this.cargarAlgoTankDeDocumento(documentoXML);
 			this.cargarCuartelArgentinoDeDocumento(documentoXML);
 			this.cargarTanquesEnemigosDeDocumento(documentoXML);
+	}
+	
+	public void guardarNivel(){
+		try {
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = dbFactory.newDocumentBuilder();
+			Document documentoXML = docBuilder.newDocument();
+			
+			Element raiz = documentoXML.createElement("nivel");
+			Espacio.getInstancia().persistir(documentoXML, raiz);
+			documentoXML.appendChild(raiz);
+			
+			TransformerFactory transFac = TransformerFactory.newInstance();
+			Transformer trans = transFac.newTransformer();
+			DOMSource fuente = new DOMSource(documentoXML);
+			StreamResult resultado = new StreamResult(new File(ARCHIVO_DE_GUARDADO));
+			
+            trans.setOutputProperty(OutputKeys.INDENT, "yes");
+			trans.transform(fuente, resultado);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 	}
 	
-	
 	public void cargarJuegoGuardado(){
 		try{
-			this.cargarNivelDesdeArchivo("save/juegoGuardado.xml");
+			this.cargarNivelDesdeArchivo(ARCHIVO_DE_GUARDADO);
 		} catch (Exception e) {
 				this.cargarProximoNivel();
 			}
@@ -73,7 +101,7 @@ public class Persistidor {
 	public void cargarProximoNivel(){
 		nivelActual++;
 		Integer nivelACargar = (Integer) nivelActual;
-		String directorio = directorioDeNiveles + nivelACargar.toString() + ".xml" ;
+		String directorio = DIRECTORIO_DE_NIVELES + nivelACargar.toString() + ".xml" ;
 		
 		try {
 			this.cargarNivelDesdeArchivo(directorio);
@@ -81,7 +109,6 @@ public class Persistidor {
 		} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
 	}
 	
 	private void cargarParedesDeDocumento(Document documentoXML){

@@ -18,6 +18,7 @@ public class MirageTank extends TanqueEnemigo {
 		puntosPorDestruccion = 50;
 		velocidad = 2;
 		velocidadDisparo = 3;
+		tipo = "mirage";
 		
 		if (Espacio.getInstancia().incluyeA(this)){
 			ConstructorVista.construirVista(this);

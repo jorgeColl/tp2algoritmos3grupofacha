@@ -51,7 +51,7 @@ public class VistaInicioDeJuego extends ImagenDinamica {
 				break;
 			case KeyEvent.VK_SPACE:
 				if(seleccion == CARGAR_PARTIDA){		
-					Nivel.getInstancia().cargarNivelGuardado();
+					nivel.cargarNivelGuardado();
 				} else {
 					nivel.cargarNivel();
 				}

@@ -18,6 +18,7 @@ public class IFV extends TanqueEnemigo {
 		puntosPorDestruccion = 30;
 		velocidad = 3;
 		velocidadDisparo = 8;
+		tipo = "ifv";
 		
 		if (Espacio.getInstancia().incluyeA(this)){
 			ConstructorVista.construirVista(this);

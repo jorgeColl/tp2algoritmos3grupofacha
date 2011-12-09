@@ -47,7 +47,6 @@ public class Nivel {
 		
 	}
 	
-
 	public void cargarNivel(){
 		//reiniciar provisorio
 		Espacio.getInstancia().reiniciar();
@@ -62,8 +61,7 @@ public class Nivel {
 	}
 	
 	public void guardarNivel(){
-		//FEDE TE PASO LA POSTAAAA :)
-		System.out.print("loco apretaste la G , sos un grosooooo!!!!\n");
+		persistidor.guardarNivel();
 	}
 	
 	/**
