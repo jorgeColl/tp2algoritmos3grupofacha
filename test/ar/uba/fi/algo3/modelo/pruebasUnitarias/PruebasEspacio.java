@@ -35,7 +35,7 @@ public class PruebasEspacio extends TestCase {
 	}
 	
 	/**
-	 * Testeo si instanciando un disparo el mismo está luego incluído en el espacio.
+	 * Testeo si instanciando un disparo el mismo estï¿½ luego incluï¿½do en el espacio.
 	 */
 	public void testAgregarDisparo() {
 		Espacio.getInstancia().reiniciar();
@@ -44,7 +44,7 @@ public class PruebasEspacio extends TestCase {
 	}
 	
 	/**
-	 * Testeo instanciando un tanque de jugador el mismo está incluído en el espacio.
+	 * Testeo instanciando un tanque de jugador el mismo estï¿½ incluï¿½do en el espacio.
 	 */
 	public void testAgregarTanqueJugador() {
 		Espacio.getInstancia().reiniciar();
@@ -53,7 +53,7 @@ public class PruebasEspacio extends TestCase {
 	}
 
 	/**
-	 * Testeo instanciando un tanque enemigo el mismo está incluído en el espacio.
+	 * Testeo instanciando un tanque enemigo el mismo estï¿½ incluï¿½do en el espacio.
 	 */
 	public void testAgregarTanqueEnemigo() {
 		Espacio.getInstancia().reiniciar();
@@ -62,7 +62,7 @@ public class PruebasEspacio extends TestCase {
 	}
 	
 	/**
-	 * Testeo si instanciando un disparo y luego desapareciéndolo, el mismo no está incluído en el espacio.
+	 * Testeo si instanciando un disparo y luego desapareciï¿½ndolo, el mismo no estï¿½ incluï¿½do en el espacio.
 	 */
 	public void testDesaparecerDisparo() {
 		Espacio.getInstancia().reiniciar();
@@ -72,7 +72,7 @@ public class PruebasEspacio extends TestCase {
 	}
 	
 	/**
-	 * Testeo si instanciando un tanque de jugador y luego desapareciéndolo, el mismo no está incluído en el espacio.
+	 * Testeo si instanciando un tanque de jugador y luego desapareciï¿½ndolo, el mismo no estï¿½ incluï¿½do en el espacio.
 	 */
 	public void testDesaparecerTanqueJugador() {
 		Espacio.getInstancia().reiniciar();
@@ -82,7 +82,7 @@ public class PruebasEspacio extends TestCase {
 	}
 
 	/**
-	 * Testeo si instanciando un tanque de enemigo y luego desapareciéndolo, el mismo no está incluído en el espacio.
+	 * Testeo si instanciando un tanque de enemigo y luego desapareciï¿½ndolo, el mismo no estï¿½ incluï¿½do en el espacio.
 	 */
 	public void testDesaparecerTanqueEnemigo() {
 		Espacio.getInstancia().reiniciar();
@@ -92,17 +92,35 @@ public class PruebasEspacio extends TestCase {
 	}
 	
 	/**
-	 * Instancio varios objetos de juego, luego reinicio el espacio y testeo que no estén incluídos en este.
+	 * Instancio varios objetos de juego, luego reinicio el espacio y testeo que no estï¿½n incluï¿½dos en este.
 	 */
 	public void testReiniciar() {
 		Espacio.getInstancia().reiniciar();
 		DisparoAmetralladora disparo = new DisparoAmetralladora(Orientacion.i, new Posicion(5,5));
 		AlgoTank tanque = new AlgoTank(new Posicion(50,50));
 		GrizzlyBattleTank tanqueEnemigo = new GrizzlyBattleTank(new Posicion(150,150));
+		
 		Espacio.getInstancia().reiniciar();
 		assertFalse(Espacio.getInstancia().incluyeA(disparo));
 		assertFalse(Espacio.getInstancia().incluyeA(tanque));
 		assertFalse(Espacio.getInstancia().incluyeA(tanqueEnemigo));
+	}
+	public void testIncluyeA(){
+		Espacio.getInstancia().reiniciar();
+		
+		DisparoAmetralladora disparo = new DisparoAmetralladora(Orientacion.i, new Posicion(5,5));
+		AlgoTank tanque = new AlgoTank(new Posicion(50,50));
+		GrizzlyBattleTank tanqueEnemigo1 = new GrizzlyBattleTank(new Posicion(150,150));
+		GrizzlyBattleTank tanqueEnemigo2 = new GrizzlyBattleTank(new Posicion(150,150));
+		
+		
+		assertTrue(Espacio.getInstancia().incluyeA(disparo));
+		assertTrue(Espacio.getInstancia().incluyeA(tanque));
+		assertTrue(Espacio.getInstancia().incluyeA(tanqueEnemigo1));
+		//aca no deberia estar el tanqueEnemigo2 en el espacio ya que se encontraba en el mismo
+		//lugar que el tanqueEnemigo1
+		assertFalse(Espacio.getInstancia().incluyeA(tanqueEnemigo2));
+		
 	}
 	
 }
