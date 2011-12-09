@@ -154,9 +154,9 @@ public class ConstructorVista {
 		
 		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego(nivel);
 		TextoDinamico vista2 = new TextoDinamico(observante);
-		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(100,200));
+		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(150,200));
 		vista2.setColor(Color.red);
-		vista2.setTamanioFuente(50);
+		vista2.setTamanioFuente(100);
 		auxiliar(vista2,pptexto2);
 		
 		
