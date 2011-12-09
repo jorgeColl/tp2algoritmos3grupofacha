@@ -59,6 +59,10 @@ public class Fabricador {
 					
 				}
 				flota.add(tanque);
+				this.contador+= tanque.getPuntosPorDestruccion();
+				if(this.contador>this.limitePuntos){
+					break;
+				}
 			}
 		}
 	}
