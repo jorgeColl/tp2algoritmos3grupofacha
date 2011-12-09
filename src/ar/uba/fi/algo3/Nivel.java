@@ -21,7 +21,7 @@ public class Nivel {
 	private Nivel(){
 		persistidor = new Persistidor();
 		juegoEmpezado = false;
-		fabrica = new Fabricador (1000,1000);
+		fabrica = new Fabricador (1000,500);
 		this.contadorParaReinicio = 0;
 	}
 	
