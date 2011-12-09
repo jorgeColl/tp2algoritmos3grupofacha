@@ -15,10 +15,12 @@ public class Nivel {
 	private Persistidor persistidor;
 	private boolean juegoEmpezado;
 	static Nivel instancia;
+	private Fabricador fabrica;
 	
 	private Nivel(){
 		persistidor = new Persistidor();
 		juegoEmpezado = false;
+		fabrica = new Fabricador (1000);
 	}
 	
     /**
@@ -31,9 +33,16 @@ public class Nivel {
 
 			}else{
 				if(this.nivelPerdido()){
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					this.reiniciar();
 				}else{
 					Espacio.getInstancia().correrLogica();
+					fabrica.fabricarTanquesEnemigos();
 				}
 			
 			}
