@@ -102,7 +102,6 @@ public class Persistidor {
 		nivelActual++;
 		Integer nivelACargar = (Integer) nivelActual;
 		String directorio = DIRECTORIO_DE_NIVELES + nivelACargar.toString() + ".xml" ;
-		System.out.println(directorio);
 		
 		try {
 			this.cargarNivelDesdeArchivo(directorio);
