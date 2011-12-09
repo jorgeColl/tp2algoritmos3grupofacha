@@ -402,6 +402,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	public void testAlgoTankDestruirCuartelArgentinoDesdeIzquierdaYJuegoPerdido() {
 		tanque = new AlgoTank(new Posicion(0,0));
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
+		Nivel.getInstancia().empezarNivel();
 		tanque.moverDerecha();
 		assertTrue(Espacio.getInstancia().incluyeA(cuartel));
 		assertFalse(Nivel.getInstancia().nivelPerdido());

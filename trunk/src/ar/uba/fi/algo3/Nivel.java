@@ -59,13 +59,13 @@ public class Nivel {
 		//reiniciar provisorio
 		Espacio.getInstancia().reiniciar();
 		persistidor.cargarProximoNivel();
-		juegoEmpezado = true;
+		this.empezarNivel();
 	}
 	
 	public void cargarNivelGuardado(){
 		Espacio.getInstancia().reiniciar();
 		this.persistidor.cargarJuegoGuardado();
-		juegoEmpezado = true;
+		this.empezarNivel();
 	}
 	
 	public void guardarNivel(){
@@ -102,5 +102,8 @@ public class Nivel {
 			ConstructorVista.construirVista(instancia);
 		}
 		return instancia;
+	}
+	public void empezarNivel(){
+		this.juegoEmpezado=true;
 	}
 }

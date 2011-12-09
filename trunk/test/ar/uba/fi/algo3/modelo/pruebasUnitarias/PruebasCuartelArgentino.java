@@ -37,6 +37,7 @@ public class PruebasCuartelArgentino extends TestCase {
 	 */
 	public void testJuegoPerdido() {
 		AlgoTank algoTank = new AlgoTank(new Posicion(250,250));
+		Nivel.getInstancia().empezarNivel();
 		assertFalse(Nivel.getInstancia().nivelPerdido());
 		cuartel.desaparecer();
 		assertTrue(Nivel.getInstancia().nivelPerdido());
