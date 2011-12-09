@@ -311,6 +311,9 @@ public class PruebasIntegracionIFV extends TestCase {
 		tanque = new IFV(new Posicion(0,0));
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado()+tanque.getVelocidad(),0));
 		AlgoTank algoTank = new AlgoTank(new Posicion(250,250));
+		
+		Nivel.getInstancia().empezarNivel();
+		
 		tanque.moverDerecha();
 		assertTrue(Espacio.getInstancia().incluyeA(cuartel));
 		assertFalse(Nivel.getInstancia().nivelPerdido());
