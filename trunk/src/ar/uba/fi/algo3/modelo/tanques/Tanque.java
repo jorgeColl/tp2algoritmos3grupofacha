@@ -46,6 +46,7 @@ public abstract class Tanque extends ObjetoMovil {
 		resistencia = (resistencia - (resistencia*(disparo.getDanioPorcentual())/100));
 		if (resistencia <= 0)
 			desaparecer();
+		disparo.desaparecer();
 	}
 	
 	/**
