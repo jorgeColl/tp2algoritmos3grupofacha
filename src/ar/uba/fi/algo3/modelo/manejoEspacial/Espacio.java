@@ -314,23 +314,22 @@ public class Espacio {
 	public void persistir(Document documentoXML, Element raiz){
 		Iterator<TanqueEnemigo> iterador1 = tanquesEnemigos.iterator();
 		while(iterador1.hasNext()){
+			System.out.println("gola");
 			iterador1.next().persistir(documentoXML, raiz);
 		}
-		/*
+		
 		Iterator<ObjetoJuego> iterador2 = objetosInanimados.iterator();
 		while(iterador2.hasNext()){
 			iterador2.next().persistir(documentoXML, raiz);
 		}
-		*/
-		/* todavia no
+		
 		Iterator<Disparo> iterador3 = disparos.iterator();
 		while(iterador3.hasNext()){
-			iterador3.next().persistir(Document documentoXML);
+			iterador3.next().persistir(documentoXML, raiz);
 		}
-		*/
-		
+				
 		tanqueJugador.persistir(documentoXML, raiz);
-		//cuartel.persistir(documentoXML, raiz);
+		cuartel.persistir(documentoXML, raiz);
 	}
 	
 }

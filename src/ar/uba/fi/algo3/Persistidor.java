@@ -64,6 +64,7 @@ public class Persistidor {
 			this.cargarAlgoTankDeDocumento(documentoXML);
 			this.cargarCuartelArgentinoDeDocumento(documentoXML);
 			this.cargarTanquesEnemigosDeDocumento(documentoXML);
+			//this.cargarDisparosDeDocumento(documentoXML);
 	}
 	
 	public void guardarNivel(){

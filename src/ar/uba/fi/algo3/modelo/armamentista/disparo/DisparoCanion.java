@@ -20,6 +20,7 @@ public class DisparoCanion extends Disparo {
 		ocupacion = OcupacionCuadrada.
 				crearAPartirDePosicionPerimetralCentradaEnOrientacion(punto, 15, orientacion);
 		velocidad = 4;
+		tipo = "canion";
 		Espacio.getInstancia().agregarDisparo(this);
 		if (Espacio.getInstancia().incluyeA(this)){
 			ConstructorVista.construirVista(this);

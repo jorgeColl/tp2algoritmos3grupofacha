@@ -1,6 +1,10 @@
 package ar.uba.fi.algo3.modelo.objetosInanimados;
 
 
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import ar.uba.fi.algo3.modelo.armamentista.disparo.Disparo;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
@@ -18,6 +22,7 @@ public abstract class Pared extends ObjetoJuego {
 
 	protected int impactosRecibidos;
 	protected int impactosTolerados;
+	protected String tipo;
 	
 	/**
 	 * Constructor.
@@ -54,6 +59,28 @@ public abstract class Pared extends ObjetoJuego {
 	 */
 	public void chocarCon(Tanque tanque) {
 		tanque.moverEnDireccionContraria();
+	}
+	
+	public void persistir(Document documentoXML, Element raiz){
+		Element nodo = documentoXML.createElement("disparo");
+		
+		Attr atributoTipo = documentoXML.createAttribute("tipo");
+		atributoTipo.setValue(tipo);
+		nodo.setAttributeNode(atributoTipo);
+		
+		Attr atributoPosX = documentoXML.createAttribute("posX");
+		atributoPosX.setValue(((Integer) this.getX()).toString());
+		nodo.setAttributeNode(atributoPosX);
+
+		Attr atributoPosY = documentoXML.createAttribute("posY");
+		atributoPosY.setValue(((Integer) this.getY()).toString());
+		nodo.setAttributeNode(atributoPosY);
+		
+		Attr atributoImpactosRecibidos = documentoXML.createAttribute("impactosRecibidos");
+		atributoImpactosRecibidos.setValue(((Integer) this.impactosRecibidos).toString());
+		nodo.setAttributeNode(atributoImpactosRecibidos);
+		
+		raiz.appendChild(nodo);
 	}
 	
 }

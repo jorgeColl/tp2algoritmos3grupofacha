@@ -22,6 +22,7 @@ public class BonusVelocidad extends Bonus {
 		super(posicion);
 		porcentajeVelocidadDisparo = 30;
 		porcentajeVelocidadTanque = 20 ;
+		tipo = "velocidad";
 		try {
 			Espacio.getInstancia().agregarObjetoInanimado(this);
 		} catch (Exception e) {
