@@ -21,7 +21,7 @@ public class Nivel {
 	private Nivel(){
 		persistidor = new Persistidor();
 		juegoEmpezado = false;
-		fabrica = new Fabricador (1000);
+		fabrica = new Fabricador (1000,1000);
 		this.contadorParaReinicio = 0;
 	}
 	
@@ -42,6 +42,7 @@ public class Nivel {
 				}else{
 					Espacio.getInstancia().correrLogica();
 					fabrica.fabricarTanquesEnemigos();
+					fabrica.fabricarBonus();
 				}
 			
 			}
