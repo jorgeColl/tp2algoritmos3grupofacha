@@ -28,7 +28,7 @@ public class VistaDeFinalizacionDeJuego implements ObjetoDeTexto{
 			return "GANASTEEEEE";
 		}else{
 			if(this.nivel.nivelPerdido()){
-				return "PERDISTEEEE :(";
+				return "GAME\nOVER\n   :(";
 			}else{
 				return "";
 			}
