@@ -13,9 +13,10 @@ import ar.uba.fi.algo3.titiritero.vista.ObjetoDeTexto;
 public class VistaDeFinalizacionDeJuego implements ObjetoDeTexto{
 
 	protected Nivel nivel;
-	
+	protected int prioridad;
 	public VistaDeFinalizacionDeJuego(Nivel nivel){
 		this.nivel= nivel;
+		this.prioridad = 10;
 	}
 	
 	@Override
@@ -29,10 +30,16 @@ public class VistaDeFinalizacionDeJuego implements ObjetoDeTexto{
 			if(this.nivel.nivelPerdido()){
 				return "PERDISTEEEE :(";
 			}else{
-				return "jugando";
+				return "";
 			}
 		}
 		
+	}
+
+	@Override
+	public int getPrioridad() {
+		// TODO Auto-generated method stub
+		return this.prioridad;
 	}
 
 }

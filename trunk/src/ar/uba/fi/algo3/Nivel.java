@@ -16,11 +16,13 @@ public class Nivel {
 	private boolean juegoEmpezado;
 	static Nivel instancia;
 	private Fabricador fabrica;
+	private int contadorParaReinicio;
 	
 	private Nivel(){
 		persistidor = new Persistidor();
 		juegoEmpezado = false;
 		fabrica = new Fabricador (1000);
+		this.contadorParaReinicio = 0;
 	}
 	
     /**
@@ -33,13 +35,10 @@ public class Nivel {
 
 			}else{
 				if(this.nivelPerdido()){
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					contadorParaReinicio++;
+					if (contadorParaReinicio>100){
+						this.reiniciar();
 					}
-					this.reiniciar();
 				}else{
 					Espacio.getInstancia().correrLogica();
 					fabrica.fabricarTanquesEnemigos();
@@ -87,6 +86,9 @@ public class Nivel {
 	 * @return true si se perdio el juego y false en el caso contrario
 	 */
 	public boolean nivelPerdido() {
+		if(this.juegoEmpezado==false){
+			return false;
+		}
 		return (Espacio.getInstancia().getCuartelArgentino() == null || 
 				Espacio.getInstancia().getTanqueJugador() == null);
 	}

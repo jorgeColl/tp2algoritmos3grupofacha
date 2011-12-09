@@ -8,16 +8,19 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 
+import ar.uba.fi.algo3.titiritero.Dibujable;
+
 /**
- * Una de las extensiones hechas al Titiritero. Esta es una extensión de
+ * Una de las extensiones hechas al Titiritero. Esta es una extensiï¿½n de
  * la clase Imagen, y permite la carga de varias imagenes para representar
  * a un solo objeto. 
  * @author Fede
  */
 public class ImagenDinamica extends Imagen {
-
+	protected int prioridad;
 	public ImagenDinamica() {
 		super();
+		this.prioridad = 0;
 		imagenes = new Hashtable<Integer, BufferedImage>();
 	}
 	
@@ -42,5 +45,20 @@ public class ImagenDinamica extends Imagen {
 	}	
 	
 	private Hashtable<Integer, BufferedImage> imagenes;
+	
+	public int getPrioridad(){
+		return this.prioridad;
+	}
+	
+	public int compareTo(Dibujable o) {
+		
+		if (this.prioridad >= o.getPrioridad()){
+			return 1;
+		}
+		if (this.prioridad == o.getPrioridad()){
+			return 1;
+		}
+		return -1;
+	}
 
 }

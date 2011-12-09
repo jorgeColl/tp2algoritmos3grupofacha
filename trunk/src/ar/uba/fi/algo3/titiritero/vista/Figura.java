@@ -13,7 +13,10 @@ public abstract class Figura implements Dibujable, MouseClickObservador, KeyPres
 
 	private Color color;
 	private Posicionable posicionable;
-	
+	protected int prioridad;
+	public Figura(){
+		this.prioridad=0;
+	}
 	public abstract void dibujar(SuperficieDeDibujo superfice) ;
 
 	public void setColor(Color unColor){
@@ -41,6 +44,22 @@ public abstract class Figura implements Dibujable, MouseClickObservador, KeyPres
 		if(c != KeyEvent.CHAR_UNDEFINED){
 			System.out.println("tecla apretada:" + c);
 		}
+	}
+	public int getPrioridad(){
+		return this.prioridad;
+	}
+	public void setPrioridad(int prioridad){
+		this.prioridad = prioridad;
+	}
+	public int compareTo(Dibujable o) {
+		
+		if (this.prioridad >= o.getPrioridad()){
+			return 1;
+		}
+		if (this.prioridad == o.getPrioridad()){
+			return 1;
+		}
+		return -1;
 	}
 		
 }
