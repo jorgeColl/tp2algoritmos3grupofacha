@@ -2,6 +2,10 @@ package ar.uba.fi.algo3.modelo.tanques;
 
 import java.util.Stack;
 
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import ar.uba.fi.algo3.ConstructorVista;
 import ar.uba.fi.algo3.modelo.armamentista.arma.Ametralladora;
 import ar.uba.fi.algo3.modelo.armamentista.arma.ArmaMunicionLimitada;
@@ -40,8 +44,6 @@ public class AlgoTank extends Tanque {
 		if (Espacio.getInstancia().incluyeA(this)){
 			ConstructorVista.construirVista(this);
 		}
-		
-		
 	}
 	
 	/**
@@ -98,6 +100,28 @@ public class AlgoTank extends Tanque {
 	
 	public void vivir() {
 		estrategiaDisparo.informarTranscursoTiempo();
+	}
+
+	public void persistir(Document documentoXML, Element raiz){
+		Element nodo = documentoXML.createElement("algoTank");
+		
+		Attr atributoPosX = documentoXML.createAttribute("posX");
+		atributoPosX.setValue(((Integer) this.getX()).toString());
+		nodo.setAttributeNode(atributoPosX);
+
+		Attr atributoPosY = documentoXML.createAttribute("posY");
+		atributoPosY.setValue(((Integer) this.getY()).toString());
+		nodo.setAttributeNode(atributoPosY);
+		
+		Attr atributoResistencia = documentoXML.createAttribute("resistencia");
+		atributoResistencia.setValue(((Integer) resistencia).toString());
+		nodo.setAttributeNode(atributoResistencia);
+		
+		Attr atributoPuntaje = documentoXML.createAttribute("puntaje");
+		atributoPuntaje.setValue(((Integer) resistencia).toString());
+		nodo.setAttributeNode(atributoPuntaje);
+		
+		raiz.appendChild(nodo);
 	}
 	
 }

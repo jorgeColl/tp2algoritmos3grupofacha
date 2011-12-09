@@ -1,5 +1,9 @@
 package ar.uba.fi.algo3.modelo.tanques;
 
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import ar.uba.fi.algo3.modelo.armamentista.arma.Arma;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
 import ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo.EstrategiaDisparoVelocidadDependiente;
@@ -18,6 +22,7 @@ public abstract class TanqueEnemigo extends Tanque {
 	protected Arma arma;
 	protected EstrategiaMovimiento estrategiaMovimiento;
 	protected int puntosPorDestruccion;
+	protected String tipo;
 	
 	public TanqueEnemigo(Posicion punto) {
 		super(punto);
@@ -71,7 +76,8 @@ public abstract class TanqueEnemigo extends Tanque {
 	}
 	
 	/**
-	 * Al comportamiento común a todos los objetos del juego, sumamos el aumentar el puntaje del jugador.
+	 * Al comportamiento común a todos los objetos del juego, sumamos el aumentar 
+	 * el puntaje del jugador.
 	 */
 	public void desaparecer() {
 		super.desaparecer();
@@ -79,4 +85,29 @@ public abstract class TanqueEnemigo extends Tanque {
 			Espacio.getInstancia().getTanqueJugador().incrementarPuntaje(puntosPorDestruccion);
 	}
 	
+	/**
+	 * Persiste el estado del tanque.
+	 */
+	public void persistir(Document documentoXML, Element raiz){
+		Element nodo = documentoXML.createElement("tanque");
+		
+		Attr atributoTipo = documentoXML.createAttribute("tipo");
+		atributoTipo.setValue(tipo);
+		nodo.setAttributeNode(atributoTipo);
+		
+		Attr atributoPosX = documentoXML.createAttribute("posX");
+		atributoPosX.setValue(((Integer) this.getX()).toString());
+		nodo.setAttributeNode(atributoPosX);
+
+		Attr atributoPosY = documentoXML.createAttribute("posY");
+		atributoPosY.setValue(((Integer) this.getY()).toString());
+		nodo.setAttributeNode(atributoPosY);
+		
+		Attr atributoResistencia = documentoXML.createAttribute("resistencia");
+		atributoResistencia.setValue(((Integer) resistencia).toString());
+		nodo.setAttributeNode(atributoResistencia);
+		
+		raiz.appendChild(nodo);
+	}
+
 }

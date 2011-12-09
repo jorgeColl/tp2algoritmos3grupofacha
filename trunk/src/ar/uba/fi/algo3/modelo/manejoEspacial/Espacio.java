@@ -10,6 +10,9 @@ import ar.uba.fi.algo3.modelo.tanques.TanqueEnemigo;
 
 import java.util.Iterator;
 import java.util.Vector;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 /**
  * Modela al lugar fisico donde transcurre la accion del juego.
  * Utiliza el patron Singleton.
@@ -29,9 +32,6 @@ public class Espacio {
 	private Vector<TanqueEnemigo> tanquesEnemigos;
 	private AlgoTank tanqueJugador;
 	
-	
-	
-			
 	/**
 	 * Constructor privado.
 	 */
@@ -43,7 +43,6 @@ public class Espacio {
 		tanquesEnemigos = new Vector<TanqueEnemigo>();
 		limiteDerecho = 601;
 		limiteInferior = 601;
-		
 	}
 	
 	/**
@@ -209,7 +208,6 @@ public class Espacio {
 	public static Espacio getInstancia() {
 		if (instancia == null){
 			instancia = new Espacio();
-			
 		}
 		return instancia;
 	}
@@ -272,7 +270,7 @@ public class Espacio {
                 vectorAuxiliar.remove(objeto);
         }
         return vectorAuxiliar;
-}
+    }
 	
 	/**
 	 * 
@@ -291,7 +289,6 @@ public class Espacio {
 	}
 	
 	private void setDead(Vector o){
-		
 		Iterator iterator = o.iterator();
 		while(iterator.hasNext()){
 			ObjetoJuego d = (ObjetoJuego)iterator.next();
@@ -309,6 +306,31 @@ public class Espacio {
 		if(disparos!=null)this.setDead(disparos);
 		if(objetosInanimados!=null)this.setDead(objetosInanimados);
 		instancia = new Espacio();
+	}
+	
+	/**
+	 * Delega a los elementos para que se persistan.
+	 */
+	public void persistir(Document documentoXML, Element raiz){
+		Iterator<TanqueEnemigo> iterador1 = tanquesEnemigos.iterator();
+		while(iterador1.hasNext()){
+			iterador1.next().persistir(documentoXML, raiz);
+		}
+		/*
+		Iterator<ObjetoJuego> iterador2 = objetosInanimados.iterator();
+		while(iterador2.hasNext()){
+			iterador2.next().persistir(documentoXML, raiz);
+		}
+		*/
+		/* todavia no
+		Iterator<Disparo> iterador3 = disparos.iterator();
+		while(iterador3.hasNext()){
+			iterador3.next().persistir(Document documentoXML);
+		}
+		*/
+		
+		tanqueJugador.persistir(documentoXML, raiz);
+		//cuartel.persistir(documentoXML, raiz);
 	}
 	
 }
