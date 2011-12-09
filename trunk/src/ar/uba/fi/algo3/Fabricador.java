@@ -8,6 +8,9 @@ import java.util.Random;
 
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.objetosInanimados.Bonus;
+import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
+import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVida;
 import ar.uba.fi.algo3.modelo.tanques.GrizzlyBattleTank;
 import ar.uba.fi.algo3.modelo.tanques.IFV;
 import ar.uba.fi.algo3.modelo.tanques.MirageTank;
@@ -24,11 +27,14 @@ public class Fabricador {
 	private ArrayList<Integer>posiciones;
 	private ArrayList<TanqueEnemigo> flota;
 	private int cantidadMaximaDeEnemigosEnPantalla;
+	private int contadorBonus;
+	private int tiempoDeEsperaEntreApariciones;
 	
 	
-	Fabricador(int limitePuntos){
+	Fabricador(int limitePuntos, int tiempoDeAparicionEntreBonuses){
 		this.contador = 0;
 		this.limitePuntos = limitePuntos;
+		this.tiempoDeEsperaEntreApariciones = tiempoDeAparicionEntreBonuses;
 		
 		this.posiciones = new ArrayList<Integer>();
 		for (int i=0 ;i<600 ;i++){
@@ -83,6 +89,43 @@ public class Fabricador {
 		
 		
 	}
+	public void fabricarBonus(){
+		this.contadorBonus++;
+		if (this.contadorBonus >= this.tiempoDeEsperaEntreApariciones){
+			this.contadorBonus=0;
+			Random random = new Random();
+			int cantDeBonus = random.nextInt(2);
+			
+			for (int i=0;i<cantDeBonus;i++){
+				
+				Posicion posicion = this.generarPosicionAleatoria();
+				Bonus bonus = this.generarBonusAleatorio(posicion);
+				
+				while (Espacio.getInstancia().incluyeA(bonus) == false ){
+					
+					
+					posicion = this.generarPosicionAleatoria();
+					bonus = this.generarBonusAleatorio(posicion);
+					
+				}
+			}
+			
+		}
+	}
+	
+	
+	private Bonus generarBonusAleatorio(Posicion posicion) {
+		Random random = new Random();
+		int numero = random.nextInt(2); 
+		switch(numero){
+			case 0:
+				return new BonusVida(posicion);
+			case 1:
+				return new BonusVelocidad(posicion);
+		}
+		return null;
+	}
+
 	private Posicion generarPosicionAleatoria(){
 		Random random = new Random();
 		int numero1 = random.nextInt(600); 

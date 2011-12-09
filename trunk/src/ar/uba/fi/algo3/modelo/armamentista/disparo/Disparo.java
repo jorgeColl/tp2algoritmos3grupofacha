@@ -45,7 +45,7 @@ public abstract class Disparo extends ObjetoMovil {
 			ocupacion = ocupacionProvisoria;
 			Vector<ObjetoJuego> objetos = Espacio.getInstancia().getObjetosJuegoEnContactoCon(this);
 			if (objetos.size() > 0) {
-				this.desaparecer();
+				
 				int contador = 0;
 				while (contador < objetos.size()) {
 					objetos.get(contador).chocarCon(this);

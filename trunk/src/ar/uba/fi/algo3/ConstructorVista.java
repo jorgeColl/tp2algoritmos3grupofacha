@@ -102,11 +102,13 @@ public class ConstructorVista {
 	
 	public static void construirVista(BonusVelocidad bonus){
 		VistaParaImagen vista = new VistaParaImagen("img/Bonus.JPG");
+		vista.setPrioridad(2);
 		auxiliar(vista,bonus);
 	}
 	
 	public static void construirVista(BonusVida bonus){
 		VistaParaImagen vista = new VistaParaImagen("img/BonusVida.JPG");
+		vista.setPrioridad(2);
 		auxiliar(vista,bonus);
 	}
 	

@@ -25,9 +25,7 @@ public abstract class Bonus extends ObjetoJuego {
 	/**
 	 * No hace nada si choca con un disparo.
 	 */
-	public void chocarCon(Disparo disparo){
-		
-	}
+	public void chocarCon(Disparo disparo){}
 	
 	/**
 	 * Le efectua los cambios correspondientes al tanque.
