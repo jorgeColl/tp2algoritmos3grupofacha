@@ -39,7 +39,7 @@ public abstract class Texto extends Figura {
 		return this.tamanio;
 	}
 	
-	protected void setTamanioFuente(int nuevoTamanio){
+	public void setTamanioFuente(int nuevoTamanio){
 		this.tamanio = nuevoTamanio;
 		this.setFuente("Serif", this.tamanio);
 	}

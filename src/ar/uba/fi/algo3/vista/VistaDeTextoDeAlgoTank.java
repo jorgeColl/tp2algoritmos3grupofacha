@@ -5,6 +5,7 @@ package ar.uba.fi.algo3.vista;
 
 
 import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
+import ar.uba.fi.algo3.modelo.tanques.Tanque;
 import ar.uba.fi.algo3.titiritero.vista.ObjetoDeTexto;
 
 /**
@@ -15,9 +16,10 @@ import ar.uba.fi.algo3.titiritero.vista.ObjetoDeTexto;
  */
 public class VistaDeTextoDeAlgoTank implements ObjetoDeTexto {
 	protected AlgoTank tanque;
-	
+	protected int prioridad;
 	public  VistaDeTextoDeAlgoTank(AlgoTank algoTanque){
 		tanque = algoTanque;
+		this.prioridad=11;
 	}
 
 
@@ -25,6 +27,9 @@ public class VistaDeTextoDeAlgoTank implements ObjetoDeTexto {
 	public String getTexto() {
 		// TODO Auto-generated method stub
 		int municionesEspeciales;
+		if (tanque.isVivo()==false){
+			return "";
+		}
 		if (tanque.getArmasPrioritarias().isEmpty()){
 			municionesEspeciales = 0;
 		}else{
@@ -34,6 +39,13 @@ public class VistaDeTextoDeAlgoTank implements ObjetoDeTexto {
 		return  "reistencia: "+Integer.toString(tanque.getResistencia())+"\n"+
 				"municionesEspeciales:"+ Integer.toString(municionesEspeciales)+"\n"+
 				"puntos: " + Integer.toString(tanque.getPuntaje());
+	}
+
+
+	@Override
+	public int getPrioridad() {
+		// TODO Auto-generated method stub
+		return this.prioridad;
 	}
 
 	

@@ -149,12 +149,13 @@ public class ConstructorVista {
 		ControladorJuego.getInstancia().agregarDibujable(vista1);
 		ControladorJuego.getInstancia().agregarKeyPressObservador(vista1);
 		
-		/*
+		
 		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego(nivel);
 		TextoDinamico vista2 = new TextoDinamico(observante);
-		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(602,100));
+		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(100,200));
 		vista2.setColor(Color.red);
-		auxiliar(vista2,pptexto2);*/
+		vista2.setTamanioFuente(50);
+		auxiliar(vista2,pptexto2);
 		
 		
 		

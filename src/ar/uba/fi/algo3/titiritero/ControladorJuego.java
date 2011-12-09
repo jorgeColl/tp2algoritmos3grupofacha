@@ -1,13 +1,16 @@
 package ar.uba.fi.algo3.titiritero;
 
 import java.awt.event.KeyEvent;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 
 import ar.uba.fi.algo3.Nivel;
 import ar.uba.fi.algo3.titiritero.audio.Reproductor;
+import java.util.PriorityQueue;
 
 /**
  * @author Nicolas
@@ -139,6 +142,7 @@ public class ControladorJuego implements Runnable {
  
 	private void dibujar() {
 		this.superficieDeDibujo.limpiar();
+		Collections.sort(dibujables);
 		Iterator<Dibujable> iterador = dibujables.iterator();
 		while(iterador.hasNext()){
 			Dibujable dibujable = iterador.next();

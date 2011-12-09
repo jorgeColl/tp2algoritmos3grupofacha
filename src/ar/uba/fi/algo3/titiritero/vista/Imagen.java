@@ -16,9 +16,10 @@ import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
  * Simplemente requiere de una referencia al nombre del archivo JPG
  */
 public abstract class Imagen implements Dibujable, MouseClickObservador, KeyPressedObservador {
-	
+	protected int prioridad;
 	public Imagen(){
 		super();
+		this.prioridad = 0;
 	}
 	
 	public void dibujar(SuperficieDeDibujo superficeDeDibujo){
@@ -52,5 +53,20 @@ public abstract class Imagen implements Dibujable, MouseClickObservador, KeyPres
 	
     protected BufferedImage imagen;
     protected Posicionable posicionable;
+    
+    public int getPrioridad(){
+		return this.prioridad;
+	}
+    
+	public int compareTo(Dibujable o) {
+		
+		if (this.prioridad >= o.getPrioridad()){
+			return 1;
+		}
+		if (this.prioridad == o.getPrioridad()){
+			return 1;
+		}
+		return -1;
+	}
 
 }

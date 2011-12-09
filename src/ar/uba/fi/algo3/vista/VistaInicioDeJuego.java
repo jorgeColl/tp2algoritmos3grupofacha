@@ -25,6 +25,7 @@ public class VistaInicioDeJuego extends ImagenDinamica {
 	
 	public VistaInicioDeJuego(){
 		super();
+		this.prioridad=8;
 		this.agregarImagen(NUEVA_PARTIDA, "img/inicio_nuevap.jpg");
 		this.agregarImagen(CARGAR_PARTIDA, "img/inicio_cargarp.jpg");
 		this.cambiarAImagen(NUEVA_PARTIDA);
