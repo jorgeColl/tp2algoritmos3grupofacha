@@ -1,5 +1,8 @@
 package ar.uba.fi.algo3.modelo.objetosInanimados;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import ar.uba.fi.algo3.ConstructorVista;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.Disparo;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
@@ -53,6 +56,10 @@ public class CuartelArgentino extends ObjetoJuego {
 	 */
 	public void chocarCon(Tanque tanque) {
 		tanque.moverEnDireccionContraria();		
+	}
+	
+	public void persistir(Document documentoXML, Element raiz){
+		
 	}
 	
 }

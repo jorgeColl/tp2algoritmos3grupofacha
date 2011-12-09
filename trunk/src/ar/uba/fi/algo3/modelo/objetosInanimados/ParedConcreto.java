@@ -14,6 +14,7 @@ public class ParedConcreto extends Pared {
 	public ParedConcreto(Posicion punto) {
 		super(punto);
 		impactosTolerados = 0;
+		tipo = "concreto";
 		if (Espacio.getInstancia().incluyeA(this)){
 			ConstructorVista.construirVista(this);
 		}

@@ -19,6 +19,7 @@ public class BonusVida extends Bonus {
 	
 	public BonusVida(Posicion posicion){
 		super(posicion);
+		tipo = "vida";
 		porcentaje = 40;
 		try {
 			Espacio.getInstancia().agregarObjetoInanimado(this);

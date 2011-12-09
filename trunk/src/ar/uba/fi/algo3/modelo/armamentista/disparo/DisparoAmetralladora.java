@@ -19,6 +19,7 @@ public class DisparoAmetralladora extends Disparo {
 		danioPorcentual = 0;
 		ocupacion = OcupacionCuadrada.crearAPartirDePosicionPerimetralCentradaEnOrientacion(punto, 15, orientacion);
 		velocidad = 4;
+		tipo = "ametralladora";
 		
 		/* agrego la instancia en el Espacio */
 		Espacio.getInstancia().agregarDisparo(this);

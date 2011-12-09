@@ -14,6 +14,7 @@ public class ParedMetal extends Pared {
 	public ParedMetal(Posicion punto) {
 		super(punto);
 		impactosTolerados = 1;
+		tipo = "metal";
 		if (Espacio.getInstancia().incluyeA(this)){
 			ConstructorVista.construirVista(this);
 		}

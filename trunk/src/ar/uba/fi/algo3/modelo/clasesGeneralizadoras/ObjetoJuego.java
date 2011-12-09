@@ -1,6 +1,9 @@
 package ar.uba.fi.algo3.modelo.clasesGeneralizadoras;
 
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import ar.uba.fi.algo3.modelo.armamentista.disparo.Disparo;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Ocupacion;
@@ -79,5 +82,7 @@ public abstract class ObjetoJuego implements Posicionable {
 	public boolean isVivo() {
 		return vivo;
 	}
+	
+	public abstract void persistir(Document documentoXML, Element raiz);
 	
 }
