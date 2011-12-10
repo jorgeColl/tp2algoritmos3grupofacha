@@ -70,7 +70,7 @@ public abstract class Pared extends ObjetoJuego {
 	 * Persiste la pared en el documentoXML especificado, bajo la raiz indicada.
 	 */
 	public void persistir(Document documentoXML, Element raiz){
-		Element nodo = documentoXML.createElement("disparo");
+		Element nodo = documentoXML.createElement("pared");
 		
 		Attr atributoTipo = documentoXML.createAttribute("tipo");
 		atributoTipo.setValue(tipo);

@@ -461,7 +461,6 @@ public class Espacio {
 	public void persistir(Document documentoXML, Element raiz){
 		Iterator<TanqueEnemigo> iterador1 = tanquesEnemigos.iterator();
 		while(iterador1.hasNext()){
-			System.out.println("gola");
 			iterador1.next().persistir(documentoXML, raiz);
 		}
 		
