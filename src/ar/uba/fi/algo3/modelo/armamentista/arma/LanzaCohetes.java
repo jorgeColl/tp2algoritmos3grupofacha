@@ -17,6 +17,7 @@ public class LanzaCohetes extends ArmaMunicionLimitada {
 	 */
 	public LanzaCohetes(Tanque duenio, int municion) {
 		super(duenio,municion);
+		tipo = "lanzaCohetes";
 	}
 
 	/**

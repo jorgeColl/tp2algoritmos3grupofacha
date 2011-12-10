@@ -131,8 +131,12 @@ public class AlgoTank extends Tanque {
 		nodo.setAttributeNode(atributoResistencia);
 		
 		Attr atributoPuntaje = documentoXML.createAttribute("puntaje");
-		atributoPuntaje.setValue(((Integer) resistencia).toString());
+		atributoPuntaje.setValue(((Integer) puntaje).toString());
 		nodo.setAttributeNode(atributoPuntaje);
+		
+		EstrategiaDisparoAlgoTank estrategiaDisparoAuxiliar = (EstrategiaDisparoAlgoTank) estrategiaDisparo;
+		if(armasPrioritarias.size() != 0)
+			estrategiaDisparoAuxiliar.persistir(documentoXML, nodo);
 		
 		raiz.appendChild(nodo);
 	}

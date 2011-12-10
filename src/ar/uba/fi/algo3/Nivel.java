@@ -22,7 +22,7 @@ public class Nivel {
 	private boolean juegoEmpezado;
 	static Nivel instancia;
 	private int contadorParaReinicio;
-	private static final int PUNTOS_PARA_GANAR = 1000;
+	private static final int PUNTOS_PARA_GANAR = 50;
 	
 	private Nivel(){
 		persistidor = new Persistidor();

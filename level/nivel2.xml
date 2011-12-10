@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
- 	<nivel>
+ 	<nivel numero="2">
  		<pared tipo="metal" posX="1" posY="344" />
  		<pared tipo="metal" posX="1" posY="173" />
  		<pared tipo="metal" posX="1" posY="216" />

@@ -15,12 +15,15 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import ar.uba.fi.algo3.modelo.armamentista.arma.Canion;
+import ar.uba.fi.algo3.modelo.armamentista.arma.LanzaCohetes;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.Disparo;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoCanion;
@@ -66,7 +69,12 @@ public class Persistidor {
 			DocumentBuilder parser = dbFactory.newDocumentBuilder();
 			Document documentoXML = parser.parse(archivoXML);
 			documentoXML.getDocumentElement().normalize();
-	
+			
+			NodeList listaConUnElemento = documentoXML.getElementsByTagName("nivel");
+			Element elementoNumeroNivel = (Element) listaConUnElemento.item(0);
+			int numeroNivel = Integer.parseInt(elementoNumeroNivel.getAttribute("numero"));
+			nivelActual = numeroNivel;
+			
 			this.cargarParedesDeDocumento(documentoXML);
 			this.cargarAlgoTankDeDocumento(documentoXML);
 			this.cargarCuartelArgentinoDeDocumento(documentoXML);
@@ -85,6 +93,10 @@ public class Persistidor {
 			Document documentoXML = docBuilder.newDocument();
 			
 			Element raiz = documentoXML.createElement("nivel");
+			Attr atributoNivel = documentoXML.createAttribute("numero");
+			atributoNivel.setValue(((Integer) nivelActual).toString());
+			raiz.setAttributeNode(atributoNivel);
+			
 			Espacio.getInstancia().persistir(documentoXML, raiz);
 			documentoXML.appendChild(raiz);
 			
@@ -190,6 +202,16 @@ public class Persistidor {
 				algoTank.setPuntaje(puntaje);
 			}
 			
+			if(elementoAlgoTank.hasAttribute("tipoArmaMunicionLimitada")){
+				String tipo = elementoAlgoTank.getAttribute("tipoArmaMunicionLimitada");
+				int cantidadMunicion = Integer.parseInt(elementoAlgoTank.getAttribute("cantidadMunicion"));
+				
+				if(tipo.equalsIgnoreCase("canion"))
+					algoTank.entregarArma(new Canion(algoTank, cantidadMunicion));
+				else if(tipo.equalsIgnoreCase("lanzaCohetes"))
+					algoTank.entregarArma(new LanzaCohetes(algoTank, cantidadMunicion));
+			}
+			
 		}
 	}
 
@@ -209,7 +231,7 @@ public class Persistidor {
 			int posY = Integer.parseInt(elementoCuartelArgentino.getAttribute("posY"));
 			
 			Posicion ubicacion = new Posicion(posX, posY);
-			CuartelArgentino cuartelArgentino = new CuartelArgentino(ubicacion);
+			new CuartelArgentino(ubicacion);
 		}
 	}
 	

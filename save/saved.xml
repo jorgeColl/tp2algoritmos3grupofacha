@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<nivel>
-<tanqueEnemigo posX="559" posY="538" resistencia="10" tipo="ifv"/>
-<disparo orientacionX="0" orientacionY="1" posX="137" posY="167" tipo="ametralladora"/>
-<algoTank posX="123" posY="330" puntaje="100" resistencia="100"/>
+<nivel numero="1">
+<tanqueEnemigo posX="311" posY="92" resistencia="10" tipo="grizzly"/>
+<pared impactosRecibidos="0" posX="49" posY="49" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="49" posY="92" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="49" posY="135" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="49" posY="178" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="49" posY="417" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="49" posY="460" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="49" posY="503" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="141" posY="135" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="141" posY="178" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="141" posY="417" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="141" posY="460" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="141" posY="503" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="417" posY="92" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="417" posY="135" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="417" posY="417" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="417" posY="460" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="417" posY="503" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="509" posY="49" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="509" posY="92" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="509" posY="135" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="509" posY="178" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="509" posY="417" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="509" posY="460" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="509" posY="503" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="233" posY="135" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="325" posY="135" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="233" posY="233" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="325" posY="233" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="233" posY="411" tipo="concreto"/>
+<pared impactosRecibidos="1" posX="279" posY="346" tipo="metal"/>
+<pared impactosRecibidos="0" posX="325" posY="325" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="325" posY="368" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="325" posY="411" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="95" posY="300" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="417" posY="300" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="460" posY="300" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="236" posY="515" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="236" posY="558" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="279" posY="515" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="322" posY="515" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="322" posY="558" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="558" posY="280" tipo="concreto"/>
+<pared impactosRecibidos="0" posX="558" posY="323" tipo="metal"/>
+<bonus posX="557" posY="112" tipo="vida"/>
+<disparo orientacionX="-1" orientacionY="0" posX="250" posY="106" tipo="ametralladora"/>
+<algoTank cantidadMunicion="14" posX="188" posY="346" puntaje="100" resistencia="100" tipoArmaMunicionLimitada="canion"/>
 <cuartelArgentino posX="279" posY="558"/>
 </nivel>

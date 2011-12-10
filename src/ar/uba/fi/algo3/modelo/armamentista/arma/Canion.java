@@ -17,6 +17,7 @@ public class Canion extends ArmaMunicionLimitada {
 	 */
 	public Canion(Tanque duenio, int municion) {
 		super(duenio,municion);
+		tipo = "canion";
 	}
 
 	/**
