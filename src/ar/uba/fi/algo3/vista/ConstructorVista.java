@@ -27,7 +27,7 @@ import ar.uba.fi.algo3.vista.VistaAlgoTank;
 import ar.uba.fi.algo3.vista.VistaDeTextoDeAlgoTank;
 import ar.uba.fi.algo3.vista.VistaParaImagen;
 import ar.uba.fi.algo3.vista.VistaImagenConOrientacion;
-import ar.uba.fi.algo3.vista.VistaDeFinalizacionDeJuego;
+import ar.uba.fi.algo3.vista.VistaFinDeJuego;
 import ar.uba.fi.algo3.vista.VistaInicioDeJuego;
 
 
@@ -152,11 +152,11 @@ public class ConstructorVista {
 	 * Construye la vista de final de juego, el texto de "juego perdido".
 	 */
 	public static void construirVistaJuegoPerdido(){
-		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego();
+		VistaFinDeJuego observante = new VistaFinDeJuego();
 		TextoDinamico vista2 = new TextoDinamico(observante);
-		UbicacionParaTexto pptexto2 = new UbicacionParaTexto(new Posicion(150,200));
-		vista2.setColor(Color.blue);
-		vista2.setTamanioFuente(50);
+		UbicacionParaTexto pptexto2 = new UbicacionParaTexto(new Posicion(605,400));
+		vista2.setColor(Color.white);
+		vista2.setTamanioFuente(30);
 		auxiliar(vista2, pptexto2);
 	}
 		

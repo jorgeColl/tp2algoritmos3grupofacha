@@ -1,7 +1,5 @@
 package ar.uba.fi.algo3.titiritero;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 import java.util.ArrayList;
