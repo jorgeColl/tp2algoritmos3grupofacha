@@ -5,7 +5,6 @@ package ar.uba.fi.algo3.vista;
 
 
 import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
-import ar.uba.fi.algo3.modelo.tanques.Tanque;
 import ar.uba.fi.algo3.titiritero.vista.ObjetoDeTexto;
 
 /**

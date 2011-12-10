@@ -7,16 +7,20 @@ import ar.uba.fi.algo3.modelo.excepciones.OcupacionInvalidaAlAgregarObjeto;
 import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
 import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
 import ar.uba.fi.algo3.modelo.tanques.TanqueEnemigo;
+import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 
 import java.util.Iterator;
+import java.util.Random;
 import java.util.Vector;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
 /**
  * Modela al lugar fisico donde transcurre la accion del juego.
  * Utiliza el patron Singleton.
- * @author Samanta
+ * @author Sami
  *
  */
 public class Espacio {
@@ -247,9 +251,13 @@ public class Espacio {
     }
     
     /**
-     * Método utilizado internamente a la hora de agregar una instancia de ObjetoJuego al espacio. Nos dice si la ocupación de dicho objeto coincide con la de algún otro ya agregado.
-     * @param objeto instancia de la clase ObjetoJuego cuya ocupación queremos analizar si coincide con la de alguna otra instancia ya agregada al espacio 
-     * @return true si la ocupación de objeto coincide con la de algún otro objeto ya agregado al espacio y false en el caso contrario
+     * Método utilizado internamente a la hora de agregar una instancia de ObjetoJuego 
+     * al espacio. Nos dice si la ocupación de dicho objeto coincide con la de algún 
+     * otro ya agregado.
+     * @param objeto instancia de la clase ObjetoJuego cuya ocupación queremos analizar 
+     * si coincide con la de alguna otra instancia ya agregada al espacio 
+     * @return true si la ocupación de objeto coincide con la de algún otro objeto ya 
+     * agregado al espacio y false en el caso contrario
      */
     private Vector<ObjetoJuego> getPotencialesObjetosJuegoEnContactoCon(ObjetoJuego objeto) {
         Vector<ObjetoJuego> vectorAuxiliar = new Vector<ObjetoJuego>();
@@ -298,24 +306,153 @@ public class Espacio {
 		return tanqueJugador;
 	}
 	
-	private void setDead(Vector o){
-		Iterator iterator = o.iterator();
-		while(iterator.hasNext()){
-			ObjetoJuego d = (ObjetoJuego)iterator.next();
-			d.setVivo(false);
-		}
-	}
-	
 	/**
 	 * Reinicia el valor de todos los atributos que son instancias 
 	 * de la clase Vector.
 	 */
 	public void reiniciar() {
-		if(cuartel!=null)cuartel.setVivo(false);
-		if(tanqueJugador!=null)tanqueJugador.setVivo(false);
-		if(disparos!=null)this.setDead(disparos);
-		if(objetosInanimados!=null)this.setDead(objetosInanimados);
+		if(cuartel != null)
+			cuartel.setVivo(false);
+		if(tanqueJugador != null)
+			tanqueJugador.setVivo(false);
+		if(disparos != null){
+			Iterator<Disparo> iterator = disparos.iterator();
+			while(iterator.hasNext()){
+				ObjetoJuego d = (ObjetoJuego)iterator.next();
+				d.setVivo(false);
+			}
+		}
+		if(objetosInanimados != null){
+			Iterator<ObjetoJuego> iterator = objetosInanimados.iterator();
+			while(iterator.hasNext()){
+				ObjetoJuego d = (ObjetoJuego)iterator.next();
+				d.setVivo(false);
+			}
+		}
 		instancia = new Espacio();
+	}
+	
+	/**
+	 * Devuelve verdadero en el caso en el que haya tanques enemigos vivos.
+	 */
+	public boolean hayTanquesEnemigos(){
+		return tanquesEnemigos.size() != 0;
+	}
+	
+	/**
+	 * Encuentra al azar una ocupación cuadrada cuyo lado es pasado por parámetro 
+	 * que no tiene coincidencia ocupacional con ninguna de las ocupaciones de los 
+	 * objetos de este espacio y que se encuentra lo más arriba posible dentro del 
+	 * espacio.
+	 * @param lado entero correspondiente al lado que queremos que tenga la ocupación 
+	 * cuadrada
+	 * @return instancia de la clase OcupacionCuadrada que no tiene coincidencia 
+	 * ocupacional con ninguna de las ocupaciones de los objetos del espacio
+	 */
+	public OcupacionCuadrada getOcupacionCuadradaVaciaAlAzarEnBordeSuperior(int lado) {
+		int x;
+		OcupacionCuadrada ocupacion = new OcupacionCuadrada(new Posicion(0,0),lado);
+		Random random = new Random();
+		boolean ocupacionEncontrada = false;
+		while (!(ocupacionEncontrada)) {
+			x = random.nextInt(limiteDerecho-lado+2);
+			ocupacion = new OcupacionCuadrada(new Posicion(x,0),lado);
+			ocupacionEncontrada = true;
+			if (!(cuartel == null)) {
+				if (ocupacion.coincidenciaOcupacionalCon(cuartel.getOcupacion()))
+					ocupacionEncontrada = false;
+			}
+			if (ocupacionEncontrada) {
+				if (!(tanqueJugador == null)) {
+					if (ocupacion.coincidenciaOcupacionalCon(tanqueJugador.getOcupacion()))
+						ocupacionEncontrada = false;
+				}
+				if (ocupacionEncontrada) {
+					int contador = 0;
+					while ((contador < disparos.size())&&(ocupacionEncontrada)) {
+						if (ocupacion.coincidenciaOcupacionalCon(disparos.get(contador).getOcupacion()))
+							ocupacionEncontrada = false;
+						++contador;
+					}
+					if (ocupacionEncontrada) {
+						contador = 0;
+						while ((contador < objetosInanimados.size())&&(ocupacionEncontrada)) {
+							if (ocupacion.coincidenciaOcupacionalCon(objetosInanimados.get(contador).getOcupacion()))
+								ocupacionEncontrada = false;
+							++contador;
+						}
+						if (ocupacionEncontrada) {
+							contador = 0;
+							while ((contador < tanquesEnemigos.size())&&(ocupacionEncontrada)) {
+								if (ocupacion.coincidenciaOcupacionalCon(tanquesEnemigos.get(contador).getOcupacion()))
+									ocupacionEncontrada = false;
+								++contador;
+							}
+						}
+					}
+				}
+			}
+		}
+		return ocupacion;
+	}
+	
+	/**
+	 * Encuentra al azar una ocupacion cuadrada cuyo lado es pasado por parametro que 
+	 * no tiene coincidencia ocupacional con ninguna de las ocupaciones de los objetos 
+	 * de este espacio.
+	 * @param lado entero correspondiente al lado que queremos que tenga la ocupación 
+	 * cuadrada
+	 * @return instancia de la clase OcupacionCuadrada que no tiene coincidencia 
+	 * ocupacional con ninguna de las ocupaciones de los objetos del espacio
+	 */
+	public OcupacionCuadrada getOcupacionCuadradaVaciaAlAzar(int lado) {
+		int x;
+		int y;
+		OcupacionCuadrada ocupacion = new OcupacionCuadrada(new Posicion(0,0),lado);
+		Random random = new Random();
+		boolean ocupacionEncontrada = false;
+		while (!(ocupacionEncontrada)) {
+			x = random.nextInt(limiteDerecho-lado+2);
+			y = random.nextInt(limiteInferior-lado+2);
+			ocupacion = new OcupacionCuadrada(new Posicion(x,y),lado);
+			ocupacionEncontrada = true;
+			
+			if (!(cuartel == null)) {
+				if (ocupacion.coincidenciaOcupacionalCon(cuartel.getOcupacion()))
+					ocupacionEncontrada = false;
+			}
+			if (ocupacionEncontrada) {
+				if (!(tanqueJugador == null)) {
+					if (ocupacion.coincidenciaOcupacionalCon(tanqueJugador.getOcupacion()))
+						ocupacionEncontrada = false;
+				}
+				if (ocupacionEncontrada) {
+					int contador = 0;
+					while ((contador < disparos.size())&&(ocupacionEncontrada)) {
+						if (ocupacion.coincidenciaOcupacionalCon(disparos.get(contador).getOcupacion()))
+							ocupacionEncontrada = false;
+						++contador;
+					}
+					if (ocupacionEncontrada) {
+						contador = 0;
+						while ((contador < objetosInanimados.size())&&(ocupacionEncontrada)) {
+							if (ocupacion.coincidenciaOcupacionalCon(objetosInanimados.get(contador).getOcupacion()))
+								ocupacionEncontrada = false;
+							++contador;
+						}
+						if (ocupacionEncontrada) {
+							contador = 0;
+							while ((contador < tanquesEnemigos.size())&&(ocupacionEncontrada)) {
+								if (ocupacion.coincidenciaOcupacionalCon(tanquesEnemigos.get(contador).getOcupacion()))
+									ocupacionEncontrada = false;
+								++contador;
+							}
+						}
+					}
+				}
+			}
+		}
+		return ocupacion;
 	}
 	
 	/**

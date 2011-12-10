@@ -1,6 +1,6 @@
 package ar.uba.fi.algo3.modelo.tanques;
 
-import ar.uba.fi.algo3.ConstructorVista;
+import ar.uba.fi.algo3.vista.ConstructorVista;
 import ar.uba.fi.algo3.modelo.armamentista.arma.Ametralladora;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
 import ar.uba.fi.algo3.modelo.estrategias.estrategiasMovimiento.AlcanzarObjetivo;

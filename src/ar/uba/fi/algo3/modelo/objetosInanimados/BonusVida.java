@@ -3,7 +3,7 @@
  */
 package ar.uba.fi.algo3.modelo.objetosInanimados;
 
-import ar.uba.fi.algo3.ConstructorVista;
+import ar.uba.fi.algo3.vista.ConstructorVista;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.tanques.Tanque;

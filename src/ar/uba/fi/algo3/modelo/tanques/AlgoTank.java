@@ -6,7 +6,7 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import ar.uba.fi.algo3.ConstructorVista;
+import ar.uba.fi.algo3.vista.ConstructorVista;
 import ar.uba.fi.algo3.modelo.armamentista.arma.Ametralladora;
 import ar.uba.fi.algo3.modelo.armamentista.arma.ArmaMunicionLimitada;
 import ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo.EstrategiaDisparoAlgoTank;
@@ -111,6 +111,10 @@ public class AlgoTank extends Tanque {
 		estrategiaDisparo.informarTranscursoTiempo();
 	}
 
+	/**
+	 * Guarda en el documentoXML especificado por parametro los
+	 * atributos correspondientes al AlgoTank.
+	 */
 	public void persistir(Document documentoXML, Element raiz){
 		Element nodo = documentoXML.createElement("algoTank");
 		

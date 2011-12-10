@@ -6,7 +6,6 @@ package ar.uba.fi.algo3.vista;
 import java.awt.event.KeyEvent;
 
 import ar.uba.fi.algo3.modelo.tanques.Tanque;
-import ar.uba.fi.algo3.titiritero.vista.ImagenDinamica;
 
 /**
  * Clase que modela la vista del AlgoTank.
