@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ar.uba.fi.algo3.vista;
+package ar.uba.fi.algo3.titiritero.vista;
 
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.titiritero.Posicionable;
@@ -12,13 +12,13 @@ import ar.uba.fi.algo3.titiritero.Posicionable;
  * y que no participe en el modelo del juego para mostrar desde esa posicion 
  * lo que quiera mostrar.
  */
-public class PuntoParaTexto implements Posicionable {
+public class UbicacionParaTexto implements Posicionable {
 
 	protected boolean vivo;
 	protected Posicion posicion;
 	
-	public PuntoParaTexto(Posicion posicion){
-		this.posicion=posicion;
+	public UbicacionParaTexto(Posicion posicion){
+		this.posicion = posicion;
 		this.vivo = true;
 	}
 	@Override

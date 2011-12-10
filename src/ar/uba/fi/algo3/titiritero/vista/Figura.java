@@ -12,7 +12,7 @@ import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
 public abstract class Figura implements Dibujable, MouseClickObservador, KeyPressedObservador {
 
 	private Color color;
-	private Posicionable posicionable;
+	protected Posicionable posicionable;
 	protected int prioridad;
 	public Figura(){
 		this.prioridad=0;
@@ -48,11 +48,12 @@ public abstract class Figura implements Dibujable, MouseClickObservador, KeyPres
 	public int getPrioridad(){
 		return this.prioridad;
 	}
+	
 	public void setPrioridad(int prioridad){
 		this.prioridad = prioridad;
 	}
+	
 	public int compareTo(Dibujable o) {
-		
 		if (this.prioridad >= o.getPrioridad()){
 			return 1;
 		}

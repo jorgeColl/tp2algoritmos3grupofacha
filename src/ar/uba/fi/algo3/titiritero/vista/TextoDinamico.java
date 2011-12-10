@@ -10,7 +10,7 @@ public class TextoDinamico extends Texto {
 	public TextoDinamico(ObjetoDeTexto objetoDeTexto) {
 		super();
 		this.objetoDeTexto = objetoDeTexto;
-		this.prioridad=objetoDeTexto.getPrioridad();
+		this.prioridad = objetoDeTexto.getPrioridad();
 	}
 
 	public TextoDinamico(ObjetoDeTexto objetoDeTexto, Color color, Font fuente) {
@@ -22,6 +22,5 @@ public class TextoDinamico extends Texto {
 	protected String getTexto() {
 		return this.objetoDeTexto.getTexto();
 	}
-	
 	
 }

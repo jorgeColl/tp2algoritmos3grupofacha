@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 import ar.uba.fi.algo3.titiritero.Dibujable;
 
 /**
- * Una de las extensiones hechas al Titiritero. Esta es una extensi�n de
+ * Una de las extensiones hechas al Titiritero. Esta es una extension de
  * la clase Imagen, y permite la carga de varias imagenes para representar
  * a un solo objeto. 
  * @author Fede
@@ -51,7 +51,6 @@ public class ImagenDinamica extends Imagen {
 	}
 	
 	public int compareTo(Dibujable o) {
-		
 		if (this.prioridad >= o.getPrioridad()){
 			return 1;
 		}

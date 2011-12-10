@@ -5,8 +5,6 @@ package ar.uba.fi.algo3.vista;
 
 import java.awt.Color;
 
-
-import ar.uba.fi.algo3.Nivel;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoCanion;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoLanzaCohetes;
@@ -24,7 +22,7 @@ import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.Dibujable;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.TextoDinamico;
-import ar.uba.fi.algo3.vista.PuntoParaTexto;
+import ar.uba.fi.algo3.titiritero.vista.UbicacionParaTexto;
 import ar.uba.fi.algo3.vista.VistaAlgoTank;
 import ar.uba.fi.algo3.vista.VistaDeTextoDeAlgoTank;
 import ar.uba.fi.algo3.vista.VistaParaImagen;
@@ -90,14 +88,13 @@ public class ConstructorVista {
 				"img/AlgoTank_j.JPG",
 				"img/AlgoTank_jNegativo.JPG");
 		auxiliar(vista,tanque);
-		
 		ControladorJuego.getInstancia().agregarKeyPressObservador(vista);
 		
 		//creo la segunda vista
 		VistaDeTextoDeAlgoTank observador = new VistaDeTextoDeAlgoTank(tanque);
 		TextoDinamico vista2 = new TextoDinamico(observador);
-		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(602,15));
-		vista2.setColor(Color.black);
+		UbicacionParaTexto pptexto2 = new UbicacionParaTexto(new Posicion(605,15));
+		vista2.setColor(Color.white);
 		auxiliar(vista2,pptexto2);
 	}
 	
@@ -141,20 +138,25 @@ public class ConstructorVista {
 	}
 	
 	/**
-	 * Construye las vistas de inicio y final de juego.
-	 * @param nivel
+	 * Construye la vista de inicio de juego, para elegir si cargar un juego
+	 * o empezar uno nuevo.
 	 */
-	public static void construirVista(Nivel nivel){
+	public static void construirVistaInicioNivel(){
 		ControladorJuego.getInstancia().activarEscuchadores();
 		VistaInicioDeJuego vistaInicio = new VistaInicioDeJuego();
 		ControladorJuego.getInstancia().agregarDibujable(vistaInicio);
 		ControladorJuego.getInstancia().agregarKeyPressObservador(vistaInicio);
-		
-		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego(nivel);
+	}
+
+	/**
+	 * Construye la vista de final de juego, el texto de "juego perdido".
+	 */
+	public static void construirVistaJuegoPerdido(){
+		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego();
 		TextoDinamico vista2 = new TextoDinamico(observante);
-		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(150,200));
-		vista2.setColor(Color.red);
-		vista2.setTamanioFuente(100);
+		UbicacionParaTexto pptexto2 = new UbicacionParaTexto(new Posicion(150,200));
+		vista2.setColor(Color.blue);
+		vista2.setTamanioFuente(50);
 		auxiliar(vista2, pptexto2);
 	}
 		

@@ -40,6 +40,7 @@ public class Nivel {
 			this.cargarProximoNivel();
 		else if(this.nivelPerdido()){
 			ControladorJuego.getInstancia().desactivarEscuchadores();
+			ConstructorVista.construirVistaJuegoPerdido();
 			contadorParaReinicio++;
 			if(contadorParaReinicio>100)
 				this.reiniciar();
@@ -97,7 +98,6 @@ public class Nivel {
 		ControladorJuego.getInstancia().reiniciar();
 		Nivel.instancia = null;
 		Nivel.getInstancia();
-		
 	}
 	
 	/**
@@ -153,7 +153,7 @@ public class Nivel {
 	public static Nivel getInstancia() {
 		if (instancia == null){
 			instancia = new Nivel();
-			ConstructorVista.construirVista(instancia);
+			ConstructorVista.construirVistaInicioNivel();
 		}
 		return instancia;
 	}
