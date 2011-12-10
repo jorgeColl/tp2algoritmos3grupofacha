@@ -11,11 +11,12 @@ import ar.uba.fi.algo3.modelo.tanques.GrizzlyBattleTank;
 import ar.uba.fi.algo3.modelo.tanques.IFV;
 import ar.uba.fi.algo3.modelo.tanques.MirageTank;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
+import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.vista.ConstructorVista;
 
 /**
  * @author jc
- * Clase que modela un nivel generico del juego.
+ * Clase que modela la logica de un nivel generico del juego.
  */
 public class Nivel {
 	private Persistidor persistidor;
@@ -34,20 +35,18 @@ public class Nivel {
      * Corre la logica del nivel.
      */
 	public void correrLogica(){
-		if(juegoEmpezado){
-			if(this.nivelGanado()){
-				this.cargarProximoNivel();
-			}else{
-				if(this.nivelPerdido()){
-					contadorParaReinicio++;
-					if (contadorParaReinicio>100)
-						this.reiniciar();
-				}else{
-					Espacio.getInstancia().correrLogica();
-					decidirAgregarTanqueEnemigo();
-					decidirAgregarBonus();
-				}
-			}
+		if(!juegoEmpezado) return;
+		if(this.nivelGanado())
+			this.cargarProximoNivel();
+		else if(this.nivelPerdido()){
+			ControladorJuego.getInstancia().desactivarEscuchadores();
+			contadorParaReinicio++;
+			if(contadorParaReinicio>100)
+				this.reiniciar();
+		} else {
+			Espacio.getInstancia().correrLogica();
+			decidirAgregarTanqueEnemigo();
+			decidirAgregarBonus();
 		}
 	}
 	
@@ -56,23 +55,22 @@ public class Nivel {
 	 * Los tanques son agregados siempre lo más al norte posible del espacio. 
 	 */
 	private void decidirAgregarTanqueEnemigo() {
-		if (! Espacio.getInstancia().hayTanquesEnemigos()) {
-			int contador = 0;
-			while (contador < 4) {
-				int numero = (int)(Math.random()*3);
-				OcupacionCuadrada ocupacionAuxiliar = 
-						Espacio.getInstancia().getOcupacionCuadradaVaciaAlAzarEnBordeSuperior(43);
-				Posicion posicionAuxiliar = 
-						new Posicion(ocupacionAuxiliar.getPuntoMenorModulo().getX(),
-								     ocupacionAuxiliar.getPuntoMenorModulo().getY());
-				switch (numero) {
-					case 0: new GrizzlyBattleTank(posicionAuxiliar); break;
-					case 1: new IFV(posicionAuxiliar); break;
-					case 2: new MirageTank(posicionAuxiliar); break;
-				}
-				++contador;
-			}	
-		}
+		if (Espacio.getInstancia().hayTanquesEnemigos()) return;
+		int contador = 0;
+		while (contador < 4) {
+			int numero = (int)(Math.random()*3);
+			OcupacionCuadrada ocupacionAuxiliar = 
+					Espacio.getInstancia().getOcupacionCuadradaVaciaAlAzarEnBordeSuperior(43);
+			Posicion posicionAuxiliar = 
+					new Posicion(ocupacionAuxiliar.getPuntoMenorModulo().getX(),
+							     ocupacionAuxiliar.getPuntoMenorModulo().getY());
+			switch (numero) {
+				case 0: new GrizzlyBattleTank(posicionAuxiliar); break;
+				case 1: new IFV(posicionAuxiliar); break;
+				case 2: new MirageTank(posicionAuxiliar); break;
+			}
+			++contador;
+		}	
 	}
 	
 	/**
@@ -96,6 +94,7 @@ public class Nivel {
 	 */
 	private void reiniciar() {
 		Espacio.getInstancia().reiniciar();
+		ControladorJuego.getInstancia().reiniciar();
 		Nivel.instancia = null;
 		Nivel.getInstancia();
 		
@@ -106,6 +105,7 @@ public class Nivel {
 	 */
 	public void cargarProximoNivel(){
 		Espacio.getInstancia().reiniciar();
+		ControladorJuego.getInstancia().reiniciar();
 		persistidor.cargarProximoNivel();
 		this.empezarNivel();
 	}
@@ -115,6 +115,7 @@ public class Nivel {
 	 */
 	public void cargarNivelGuardado(){
 		Espacio.getInstancia().reiniciar();
+		ControladorJuego.getInstancia().reiniciar();
 		this.persistidor.cargarJuegoGuardado();
 		this.empezarNivel();
 	}
@@ -141,9 +142,7 @@ public class Nivel {
 	 * @return true si se perdio el juego y false en el caso contrario
 	 */
 	public boolean nivelPerdido() {
-		if(this.juegoEmpezado==false){
-			return false;
-		}
+		if(! this.juegoEmpezado) return false;
 		return (Espacio.getInstancia().getCuartelArgentino() == null || 
 				Espacio.getInstancia().getTanqueJugador() == null);
 	}
@@ -163,6 +162,6 @@ public class Nivel {
 	 * Cambia la variable de estado que indica si el nivel esta o no empezado.
 	 */
 	public void empezarNivel(){
-		this.juegoEmpezado=true;
+		this.juegoEmpezado = true;
 	}
 }

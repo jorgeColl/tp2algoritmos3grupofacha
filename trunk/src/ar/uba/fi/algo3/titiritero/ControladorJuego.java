@@ -13,7 +13,7 @@ import ar.uba.fi.algo3.titiritero.audio.Reproductor;
 
 /**
  * @author Nicolas
- * Esta clase es la encargada de manejar todo el gameloop. B�sicamente tiene una lista
+ * Esta clase es la encargada de manejar todo el gameloop. Basicamente tiene una lista
  * de ObjetosVivos y una Dibujables que son recorridas en cada gameloop.
  */
 public class ControladorJuego implements Runnable {
@@ -21,6 +21,7 @@ public class ControladorJuego implements Runnable {
 	private static ControladorJuego instancia;
 	private long intervaloSimulacion;
 	private boolean estaEnEjecucion;
+	private boolean escuchadoresActivos;
 	private List<Dibujable> dibujables;
 	private Stack<Dibujable> aEliminar;
 	private List<Dibujable> aAgregar;
@@ -34,24 +35,33 @@ public class ControladorJuego implements Runnable {
 	private boolean estaReproductorActivo;	
 	
 	private ControladorJuego(){
-		this.dibujables = new ArrayList<Dibujable>();
-		this.mouseClickObservadores = new ArrayList<MouseClickObservador>();
-		this.keyPressedObservadores = new ArrayList<KeyPressedObservador>();
-		this.keyPressedObservadores_aux = new ArrayList<KeyPressedObservador>();
-		this.keyPressedObservadores_aux2 = new ArrayList<KeyPressedObservador>();
-		this.aEliminar = new Stack<Dibujable>();
-		this.aAgregar = new ArrayList<Dibujable>();
-//		this.estaReproductorActivo = activarReproductor;
-		if(this.estaReproductorActivo)
-			this.reproductor = new Reproductor();		
+		dibujables = new ArrayList<Dibujable>();
+		mouseClickObservadores = new ArrayList<MouseClickObservador>();
+		keyPressedObservadores = new ArrayList<KeyPressedObservador>();
+		keyPressedObservadores_aux = new ArrayList<KeyPressedObservador>();
+		keyPressedObservadores_aux2 = new ArrayList<KeyPressedObservador>();
+		aEliminar = new Stack<Dibujable>();
+		aAgregar = new ArrayList<Dibujable>();
+		escuchadoresActivos = true;
+//		estaReproductorActivo = activarReproductor;
+		if(estaReproductorActivo)
+			reproductor = new Reproductor();		
 	}
 	
+	/**
+	 * Metodo de singleton.
+	 * @return
+	 */
 	public static ControladorJuego getInstancia() {
 		if (instancia == null)
 			instancia = new ControladorJuego();
 		return instancia;
 	} 
 	
+	/**
+	 * Devuelve el estado de ejecucion del controlador.
+	 * @return
+	 */
 	public boolean estaEnEjecucion(){
 		return this.estaEnEjecucion;
 	}
@@ -61,9 +71,9 @@ public class ControladorJuego implements Runnable {
 		try{
 			while(estaEnEjecucion){
 				Nivel.getInstancia().correrLogica();
-				dibujar();
 				this.eliminarPendientes();
 				this.agregarPendientes();
+				dibujar();
 				Thread.sleep(intervaloSimulacion);
 			}
 		}
@@ -84,7 +94,7 @@ public class ControladorJuego implements Runnable {
 
 	/**
 	 * Le da comienzo al juego poniendo en marcha el gameloop.
-	 * @param cantidadDeCiclos cantidad de ciclos que debe correr el gameloop..  
+	 * @param cantidadDeCiclos cantidad de ciclos que debe correr el gameloop.
 	 */
 	public void comenzarJuego(int cantidadDeCiclos){
 		int contador = 0;
@@ -119,15 +129,23 @@ public class ControladorJuego implements Runnable {
 		aEliminar.push(unDibujable);
 	}
 	
-	private void eliminarPendientes(){
-		while(!aEliminar.empty()){
-			dibujables.remove(aEliminar.pop());
-		}
-	}
-	
+	/**
+	 * Utiliza una cola de objetos pendientes para agregarlos a la 
+	 * lista para dibujar.
+	 */
 	private void agregarPendientes() {
 		while(!aAgregar.isEmpty()){
 			dibujables.add(aAgregar.remove(0));
+		}
+	}
+	
+	/**
+	 * Utiliza una cola de objetos pendientes para eliminarlos de la 
+	 * lista para dibujar.
+	 */
+	private void eliminarPendientes(){
+		while(!aEliminar.empty()){
+			dibujables.remove(aEliminar.pop());
 		}
 	}
 	
@@ -138,6 +156,27 @@ public class ControladorJuego implements Runnable {
 	public void setIntervaloSimulacion(long intervaloSimulacion) {
 		this.intervaloSimulacion = intervaloSimulacion;
 	}
+	
+	/**
+	 * Crea una nueva lista de dibujables.
+	 */
+	public void reiniciar(){
+		this.dibujables = new ArrayList<Dibujable>();
+	}
+	
+	/**
+	 * Desactiva los escuchadores de mouse y keypress.
+	 */
+	public void desactivarEscuchadores(){
+		escuchadoresActivos = false;
+	}
+
+	/**
+	 * Activa los escuchadores de mouse y keypress.
+	 */
+	public void activarEscuchadores(){
+		escuchadoresActivos = true;
+	}	
  
 	private void dibujar() {
 		this.superficieDeDibujo.limpiar();
@@ -159,11 +198,25 @@ public class ControladorJuego implements Runnable {
 	}
 	
 	/**
+	 * Se encarga de derivar el manejo del evento keyPress al objeto vista correspondiente
+	 * @param KeyEvent evento
+	 */
+	public void despacharKeyPress(KeyEvent event){
+		if(!escuchadoresActivos) return;
+		for (KeyPressedObservador observador : this.keyPressedObservadores){
+			observador.keyPressed(event);
+		}
+		this. agregarKeyPressObservadorPendientes();
+		this.eliminarKeyPressObservadorPendientes();
+	}
+	
+	/**
 	 * Se encarga de derivar el manejo del evento click al objeto vista correspondiente
-	 * @param x posici�n horizontal del mouse
-	 * @param y posici�n vertial del mouse
+	 * @param x posicion horizontal del mouse
+	 * @param y posicion vertical del mouse
 	 */
 	public void despacharMouseClick(int x, int y){
+		if(!escuchadoresActivos) return;
 		MouseClickObservador mouseClickObservador;
 		Iterator<MouseClickObservador> iterador = this.mouseClickObservadores.iterator();
 		while(iterador.hasNext()){
@@ -178,18 +231,6 @@ public class ControladorJuego implements Runnable {
 	
 	public void removerMouseClickObservador(MouseClickObservador unMouseClickObservador){
 		this.mouseClickObservadores.remove(unMouseClickObservador);
-	}
-	
-	/**
-	 * Se encarga de derivar el manejo del evento keyPress al objeto vista correspondiente
-	 * @param KeyEvent evento
-	 */
-	public void despacharKeyPress(KeyEvent event){
-		for (KeyPressedObservador observador : this.keyPressedObservadores){
-			observador.keyPressed(event);
-		}
-		this. agregarKeyPressObservadorPendientes();
-		this.eliminarKeyPressObservadorPendientes();
 	}
 	
 	private void eliminarKeyPressObservadorPendientes() {

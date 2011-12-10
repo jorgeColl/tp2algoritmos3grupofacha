@@ -145,16 +145,17 @@ public class ConstructorVista {
 	 * @param nivel
 	 */
 	public static void construirVista(Nivel nivel){
+		ControladorJuego.getInstancia().activarEscuchadores();
 		VistaInicioDeJuego vistaInicio = new VistaInicioDeJuego();
 		ControladorJuego.getInstancia().agregarDibujable(vistaInicio);
 		ControladorJuego.getInstancia().agregarKeyPressObservador(vistaInicio);
-				
+		
 		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego(nivel);
 		TextoDinamico vista2 = new TextoDinamico(observante);
 		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(150,200));
 		vista2.setColor(Color.red);
 		vista2.setTamanioFuente(100);
-		auxiliar(vista2,pptexto2);			
+		auxiliar(vista2, pptexto2);
 	}
 		
 }
