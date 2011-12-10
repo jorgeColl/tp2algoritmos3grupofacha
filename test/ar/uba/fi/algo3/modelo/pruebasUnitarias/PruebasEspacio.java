@@ -1,9 +1,12 @@
 package ar.uba.fi.algo3.modelo.pruebasUnitarias;
 
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
+import ar.uba.fi.algo3.modelo.excepciones.OcupacionCoincidenteConOtroObjetoJuego;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVida;
+import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
 import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
 import ar.uba.fi.algo3.modelo.tanques.GrizzlyBattleTank;
 import junit.framework.TestCase;
@@ -105,22 +108,25 @@ public class PruebasEspacio extends TestCase {
 		assertFalse(Espacio.getInstancia().incluyeA(tanque));
 		assertFalse(Espacio.getInstancia().incluyeA(tanqueEnemigo));
 	}
-	public void testIncluyeA(){
+	
+	/*
+	 * Corrijo la prueba planteada por Jorge.
+	 * La cuestión es que el segundo tanque enemigo no puede ser agregado, lo cual se demuestra con el lanzado de una excepción.
+	 * No se puede chequear el lanzado de la excepción porque se resuelve internamente en el constructor de los objetos. 
+	 */
+	/**
+	 * Testeo que se pueda agregar un objeto de cada tipo al espacio correctamente.
+	 */
+	public void testIncluyeA() {
 		Espacio.getInstancia().reiniciar();
-		
-		DisparoAmetralladora disparo = new DisparoAmetralladora(Orientacion.i, new Posicion(5,5));
-		AlgoTank tanque = new AlgoTank(new Posicion(50,50));
-		GrizzlyBattleTank tanqueEnemigo1 = new GrizzlyBattleTank(new Posicion(150,150));
-		GrizzlyBattleTank tanqueEnemigo2 = new GrizzlyBattleTank(new Posicion(150,150));
-		
-		
-		assertTrue(Espacio.getInstancia().incluyeA(disparo));
-		assertTrue(Espacio.getInstancia().incluyeA(tanque));
-		assertTrue(Espacio.getInstancia().incluyeA(tanqueEnemigo1));
-		//aca no deberia estar el tanqueEnemigo2 en el espacio ya que se encontraba en el mismo
-		//lugar que el tanqueEnemigo1
-		assertFalse(Espacio.getInstancia().incluyeA(tanqueEnemigo2));
-		
+		AlgoTank tanqueJugador = new AlgoTank(new Posicion(0,0));
+		GrizzlyBattleTank tanqueEnemigo = new GrizzlyBattleTank(new Posicion(50,50));
+		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(100,100));
+		BonusVida objetoInanimado = new BonusVida(new Posicion(150,150));
+		assertTrue(Espacio.getInstancia().incluyeA(tanqueJugador));
+		assertTrue(Espacio.getInstancia().incluyeA(tanqueEnemigo));
+		assertTrue(Espacio.getInstancia().incluyeA(cuartel));
+		assertTrue(Espacio.getInstancia().incluyeA(objetoInanimado));
 	}
 	
 }
