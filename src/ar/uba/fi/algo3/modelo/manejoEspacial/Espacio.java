@@ -209,9 +209,8 @@ public class Espacio {
 	 * @return unica instancia de esta clase
 	 */
 	public static Espacio getInstancia() {
-		if (instancia == null){
+		if (instancia == null)
 			instancia = new Espacio();
-		}
 		return instancia;
 	}
 

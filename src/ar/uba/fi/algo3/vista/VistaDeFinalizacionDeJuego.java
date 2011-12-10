@@ -14,6 +14,7 @@ public class VistaDeFinalizacionDeJuego implements ObjetoDeTexto{
 
 	protected Nivel nivel;
 	protected int prioridad;
+	
 	public VistaDeFinalizacionDeJuego(Nivel nivel){
 		this.nivel= nivel;
 		this.prioridad = 10;
@@ -21,9 +22,6 @@ public class VistaDeFinalizacionDeJuego implements ObjetoDeTexto{
 	
 	@Override
 	public String getTexto() {
-		// TODO Auto-generated method stub
-		
-		
 		if(this.nivel.nivelGanado()){
 			return "GANASTEEEEE";
 		}else{
@@ -38,7 +36,6 @@ public class VistaDeFinalizacionDeJuego implements ObjetoDeTexto{
 
 	@Override
 	public int getPrioridad() {
-		// TODO Auto-generated method stub
 		return this.prioridad;
 	}
 
