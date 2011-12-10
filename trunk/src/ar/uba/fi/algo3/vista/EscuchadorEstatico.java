@@ -13,9 +13,9 @@ import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
  * clase encargada de escuchar durante todo el juego a las teclas que no sean de interaccion
  * directa con los objetos del juego mostados en pantalla
  */
-public class Escuchador  implements KeyPressedObservador {
+public class EscuchadorEstatico  implements KeyPressedObservador {
 	
-	public Escuchador(){
+	public EscuchadorEstatico(){
 		super();
 	}
 	
@@ -23,12 +23,11 @@ public class Escuchador  implements KeyPressedObservador {
 		int c = keyEvent.getKeyCode();
 		
 		switch (c){
-		
-		// cuando el usuario aprete g , el nivel se guardar√°
-		case KeyEvent.VK_G:
-			Nivel nivel = Nivel.getInstancia();
-			nivel.guardarNivel();
-			break;
+			// cuando el usuario aprete g, el nivel se guardara°
+			case KeyEvent.VK_G:
+				Nivel nivel = Nivel.getInstancia();
+				nivel.guardarNivel();
+				break;
 		}
 	}
 

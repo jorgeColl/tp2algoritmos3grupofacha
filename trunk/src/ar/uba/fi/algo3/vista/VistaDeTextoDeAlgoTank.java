@@ -3,7 +3,6 @@
  */
 package ar.uba.fi.algo3.vista;
 
-
 import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
 import ar.uba.fi.algo3.titiritero.vista.ObjetoDeTexto;
 
@@ -16,37 +15,29 @@ import ar.uba.fi.algo3.titiritero.vista.ObjetoDeTexto;
 public class VistaDeTextoDeAlgoTank implements ObjetoDeTexto {
 	protected AlgoTank tanque;
 	protected int prioridad;
-	public  VistaDeTextoDeAlgoTank(AlgoTank algoTanque){
+	
+	public VistaDeTextoDeAlgoTank(AlgoTank algoTanque){
 		tanque = algoTanque;
-		this.prioridad=11;
+		this.prioridad = 11;
 	}
-
 
 	@Override
 	public String getTexto() {
-		// TODO Auto-generated method stub
 		int municionesEspeciales;
-		if (tanque.isVivo()==false){
-			return "";
-		}
+		if (! tanque.isVivo()) return "";
 		if (tanque.getArmasPrioritarias().isEmpty()){
 			municionesEspeciales = 0;
-		}else{
+		} else {
 			municionesEspeciales = tanque.getArmasPrioritarias().peek().getMunicion();
 		}
-		
-		return  "reistencia: "+Integer.toString(tanque.getResistencia())+"\n"+
-				"municionesEspeciales:"+ Integer.toString(municionesEspeciales)+"\n"+
-				"puntos: " + Integer.toString(tanque.getPuntaje());
+		return  "\nAlgoTank\n\n\n\n\n\n" +
+				"Resistencia: "+Integer.toString(tanque.getResistencia())+"\n"+"\n"+
+				"Municiones especiales: "+ Integer.toString(municionesEspeciales)+"\n"+"\n"+
+				"Puntaje: " + Integer.toString(tanque.getPuntaje());
 	}
-
 
 	@Override
 	public int getPrioridad() {
-		// TODO Auto-generated method stub
 		return this.prioridad;
 	}
-
-	
-	
 }

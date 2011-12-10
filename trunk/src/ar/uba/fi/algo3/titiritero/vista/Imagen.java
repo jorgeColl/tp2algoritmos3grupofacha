@@ -62,7 +62,6 @@ public abstract class Imagen implements Dibujable, MouseClickObservador, KeyPres
 	}
     
 	public int compareTo(Dibujable o) {
-		
 		if (this.prioridad >= o.getPrioridad()){
 			return 1;
 		}

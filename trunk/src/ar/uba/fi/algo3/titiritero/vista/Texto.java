@@ -14,8 +14,7 @@ import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
  */
 public abstract class Texto extends Figura {
 
-	
-	private Font fuente;
+	protected Font fuente;
 	protected int tamanio;
 	
 	

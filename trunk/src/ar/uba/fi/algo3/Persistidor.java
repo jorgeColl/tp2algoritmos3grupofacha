@@ -40,6 +40,7 @@ import ar.uba.fi.algo3.modelo.tanques.GrizzlyBattleTank;
 import ar.uba.fi.algo3.modelo.tanques.IFV;
 import ar.uba.fi.algo3.modelo.tanques.MirageTank;
 import ar.uba.fi.algo3.modelo.tanques.TanqueEnemigo;
+import ar.uba.fi.algo3.vista.ConstructorVista;
 
 /**
  * @author Fede

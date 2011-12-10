@@ -1,5 +1,7 @@
 package ar.uba.fi.algo3.titiritero;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 import java.util.ArrayList;
@@ -180,6 +182,7 @@ public class ControladorJuego implements Runnable {
  
 	private void dibujar() {
 		this.superficieDeDibujo.limpiar();
+		
 		Collections.sort(dibujables);
 		Iterator<Dibujable> iterador = dibujables.iterator();
 		while(iterador.hasNext()){

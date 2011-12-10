@@ -72,7 +72,7 @@ public class VistaInicioDeJuego extends ImagenDinamica {
 	private void eliminarVista(){
 		ControladorJuego.getInstancia().removerDibujable(this);
 		ControladorJuego.getInstancia().removerKeyPressObservador(this);
-		Escuchador escuchador = new Escuchador();
+		EscuchadorEstatico escuchador = new EscuchadorEstatico();
 		ControladorJuego.getInstancia().agregarKeyPressObservador(escuchador);	
 	}
 }
