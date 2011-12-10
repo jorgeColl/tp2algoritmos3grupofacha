@@ -1,11 +1,12 @@
 /**
  * 
  */
-package ar.uba.fi.algo3;
+package ar.uba.fi.algo3.vista;
 
 import java.awt.Color;
 
 
+import ar.uba.fi.algo3.Nivel;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoCanion;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoLanzaCohetes;
@@ -144,24 +145,16 @@ public class ConstructorVista {
 	 * @param nivel
 	 */
 	public static void construirVista(Nivel nivel){
-		VistaInicioDeJuego vista1 = new VistaInicioDeJuego();
-		//PuntoParaTexto pptexto = new PuntoParaTexto(new Posicion(150,200));
-		//vista1.setColor(Color.black);
-		//auxiliar(vista1,pptexto);
-		ControladorJuego.getInstancia().agregarDibujable(vista1);
-		ControladorJuego.getInstancia().agregarKeyPressObservador(vista1);
-		
-		
+		VistaInicioDeJuego vistaInicio = new VistaInicioDeJuego();
+		ControladorJuego.getInstancia().agregarDibujable(vistaInicio);
+		ControladorJuego.getInstancia().agregarKeyPressObservador(vistaInicio);
+				
 		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego(nivel);
 		TextoDinamico vista2 = new TextoDinamico(observante);
 		PuntoParaTexto pptexto2 = new PuntoParaTexto(new Posicion(150,200));
 		vista2.setColor(Color.red);
 		vista2.setTamanioFuente(100);
-		auxiliar(vista2,pptexto2);
-		
-		
-		
-		
+		auxiliar(vista2,pptexto2);			
 	}
 		
 }

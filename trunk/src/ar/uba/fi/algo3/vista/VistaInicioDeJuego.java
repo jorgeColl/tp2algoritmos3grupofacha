@@ -1,17 +1,12 @@
-/**
- * 
- */
 package ar.uba.fi.algo3.vista;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
-import java.io.File;
 
 import ar.uba.fi.algo3.Nivel;
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
 import ar.uba.fi.algo3.titiritero.vista.ImagenDinamica;
-import ar.uba.fi.algo3.titiritero.vista.TextoEstatico;
 
 /**
  * @author jc
@@ -32,11 +27,20 @@ public class VistaInicioDeJuego extends ImagenDinamica {
 		seleccion = NUEVA_PARTIDA;
 	}
 	
+	/**
+	 * Redefinicion del metodo dibujar de la clase Imagen, que permite
+	 * dibujar las imagenes a pesar de que no pertenezcan a ningun objeto
+	 * vivo.
+	 */
 	public void dibujar(SuperficieDeDibujo superficeDeDibujo){
 		Graphics grafico = (Graphics)superficeDeDibujo.getBuffer();
 		grafico.drawImage(imagen, 0, 0, null);
 	}
 	
+	/**
+	 * Metodo que escucha si el usuario presiona las teclas para seleccionar
+	 * la accion al inicio del juego.
+	 */
 	@Override
 	public void keyPressed(KeyEvent keyEvent){
 		int c = keyEvent.getKeyCode();
@@ -54,7 +58,7 @@ public class VistaInicioDeJuego extends ImagenDinamica {
 				if(seleccion == CARGAR_PARTIDA){		
 					nivel.cargarNivelGuardado();
 				} else {
-					nivel.cargarNivel();
+					nivel.cargarProximoNivel();
 				}
 				this.eliminarVista();
 				break;
@@ -68,7 +72,6 @@ public class VistaInicioDeJuego extends ImagenDinamica {
 	private void eliminarVista(){
 		ControladorJuego.getInstancia().removerDibujable(this);
 		ControladorJuego.getInstancia().removerKeyPressObservador(this);
-		//crear escuchador
 		Escuchador escuchador = new Escuchador();
 		ControladorJuego.getInstancia().agregarKeyPressObservador(escuchador);	
 	}

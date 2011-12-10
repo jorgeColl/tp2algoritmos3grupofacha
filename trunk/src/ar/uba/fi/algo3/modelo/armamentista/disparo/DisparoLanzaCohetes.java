@@ -1,6 +1,6 @@
 package ar.uba.fi.algo3.modelo.armamentista.disparo;
 
-import ar.uba.fi.algo3.ConstructorVista;
+import ar.uba.fi.algo3.vista.ConstructorVista;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;

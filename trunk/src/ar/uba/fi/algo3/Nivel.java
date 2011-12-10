@@ -3,9 +3,15 @@
  */
 package ar.uba.fi.algo3;
 
-
+import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
+import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVida;
+import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
+import ar.uba.fi.algo3.modelo.tanques.GrizzlyBattleTank;
+import ar.uba.fi.algo3.modelo.tanques.IFV;
+import ar.uba.fi.algo3.modelo.tanques.MirageTank;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
-
+import ar.uba.fi.algo3.vista.ConstructorVista;
 
 /**
  * @author jc
@@ -15,40 +21,79 @@ public class Nivel {
 	private Persistidor persistidor;
 	private boolean juegoEmpezado;
 	static Nivel instancia;
-	private Fabricador fabrica;
 	private int contadorParaReinicio;
+	private static final int PUNTOS_PARA_GANAR = 1000;
 	
 	private Nivel(){
 		persistidor = new Persistidor();
 		juegoEmpezado = false;
-		fabrica = new Fabricador (1000,500);
 		this.contadorParaReinicio = 0;
 	}
 	
     /**
      * Corre la logica del nivel.
-     *  */
-	public void correrLogica() {
+     */
+	public void correrLogica(){
 		if(juegoEmpezado){
 			if(this.nivelGanado()){
-				this.cargarNivel();
-
+				this.cargarProximoNivel();
 			}else{
 				if(this.nivelPerdido()){
 					contadorParaReinicio++;
-					if (contadorParaReinicio>100){
+					if (contadorParaReinicio>100)
 						this.reiniciar();
-					}
 				}else{
 					Espacio.getInstancia().correrLogica();
-					fabrica.fabricarTanquesEnemigos();
-					fabrica.fabricarBonus();
+					decidirAgregarTanqueEnemigo();
+					decidirAgregarBonus();
 				}
-			
 			}
 		}
-			
 	}
+	
+	/**
+	 * Método que agrega cuatro tanques enemigos cuyas clases y posiciones son elegidas al azar.
+	 * Los tanques son agregados siempre lo más al norte posible del espacio. 
+	 */
+	private void decidirAgregarTanqueEnemigo() {
+		if (! Espacio.getInstancia().hayTanquesEnemigos()) {
+			int contador = 0;
+			while (contador < 4) {
+				int numero = (int)(Math.random()*3);
+				OcupacionCuadrada ocupacionAuxiliar = 
+						Espacio.getInstancia().getOcupacionCuadradaVaciaAlAzarEnBordeSuperior(43);
+				Posicion posicionAuxiliar = 
+						new Posicion(ocupacionAuxiliar.getPuntoMenorModulo().getX(),
+								     ocupacionAuxiliar.getPuntoMenorModulo().getY());
+				switch (numero) {
+					case 0: new GrizzlyBattleTank(posicionAuxiliar); break;
+					case 1: new IFV(posicionAuxiliar); break;
+					case 2: new MirageTank(posicionAuxiliar); break;
+				}
+				++contador;
+			}	
+		}
+	}
+	
+	/**
+	 * Método que agrega al azar bonus de vida o de velocidad, en posiciones también al azar. 
+	 */
+	private void decidirAgregarBonus() {
+		int numero = (int)(Math.random()*666);
+		OcupacionCuadrada ocupacionAuxiliar = 
+				Espacio.getInstancia().getOcupacionCuadradaVaciaAlAzar(43);
+		Posicion posicionAuxiliar = 
+				new Posicion(ocupacionAuxiliar.getPuntoMenorModulo().getX(),
+						     ocupacionAuxiliar.getPuntoMenorModulo().getY());
+		switch (numero) {
+			case 222: new BonusVida(posicionAuxiliar); break;
+			case 444: new BonusVelocidad(posicionAuxiliar); break;
+		}
+	}
+	
+	/**
+	 * Reinicia el nivel, reiniciando tambien el espacio con sus objetos.
+	 */
 	private void reiniciar() {
 		Espacio.getInstancia().reiniciar();
 		Nivel.instancia = null;
@@ -56,30 +101,39 @@ public class Nivel {
 		
 	}
 	
-	public void cargarNivel(){
-		//reiniciar provisorio
+	/**
+	 * Delega al persistidor la carga del proximo nivel desde archivo.
+	 */
+	public void cargarProximoNivel(){
 		Espacio.getInstancia().reiniciar();
 		persistidor.cargarProximoNivel();
 		this.empezarNivel();
 	}
 	
+	/**
+	 * Delega al persistidor la carga de un juego guardado desde archivo.
+	 */
 	public void cargarNivelGuardado(){
 		Espacio.getInstancia().reiniciar();
 		this.persistidor.cargarJuegoGuardado();
 		this.empezarNivel();
 	}
 	
+	/**
+	 * Guarda el nivel en un archivo XML.
+	 */
 	public void guardarNivel(){
 		persistidor.guardarNivel();
 	}
 	
 	/**
-	 * 1000 es el puntaje que necesita para ganar el nivel
+	 * 
 	 * @return true si se gano el juego y false en el caso contrario
 	 */
 	public boolean nivelGanado(){
-		if (Espacio.getInstancia().getTanqueJugador() == null) return false;
-		return (Espacio.getInstancia().getTanqueJugador().getPuntaje() >= 1000);
+		if (Espacio.getInstancia().getTanqueJugador() == null) 
+			return false;
+		return (Espacio.getInstancia().getTanqueJugador().getPuntaje() >= PUNTOS_PARA_GANAR);
 	}
 	
 	/**
@@ -104,6 +158,10 @@ public class Nivel {
 		}
 		return instancia;
 	}
+	
+	/**
+	 * Cambia la variable de estado que indica si el nivel esta o no empezado.
+	 */
 	public void empezarNivel(){
 		this.juegoEmpezado=true;
 	}

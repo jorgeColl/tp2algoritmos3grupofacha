@@ -1,7 +1,6 @@
 package ar.uba.fi.algo3.modelo.pruebasUnitarias;
 
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
-import ar.uba.fi.algo3.modelo.excepciones.OcupacionCoincidenteConOtroObjetoJuego;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
