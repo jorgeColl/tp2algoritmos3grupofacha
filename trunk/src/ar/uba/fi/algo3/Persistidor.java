@@ -21,7 +21,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import ar.uba.fi.algo3.modelo.armamentista.disparo.Disparo;
+import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
+import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoCanion;
+import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoLanzaCohetes;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
 import ar.uba.fi.algo3.modelo.objetosInanimados.Pared;
@@ -66,7 +71,7 @@ public class Persistidor {
 			this.cargarAlgoTankDeDocumento(documentoXML);
 			this.cargarCuartelArgentinoDeDocumento(documentoXML);
 			this.cargarTanquesEnemigosDeDocumento(documentoXML);
-			//this.cargarDisparosDeDocumento(documentoXML);
+			this.cargarDisparosDeDocumento(documentoXML);
 	}
 	
 	/**
@@ -103,7 +108,8 @@ public class Persistidor {
 		try {
 			this.cargarNivelDesdeArchivo(ARCHIVO_DE_GUARDADO);
 		} catch (Exception e) {
-				this.cargarProximoNivel();
+			e.printStackTrace();
+			//this.cargarProximoNivel();
 		}
 	}
 	
@@ -235,10 +241,50 @@ public class Persistidor {
 					tanqueNuevo = (MirageTank) new MirageTank(ubicacion);
 								
 				if(elementoTanque.hasAttribute("resistencia")){
-					int resistencia = Integer.parseInt(elementoTanque.getAttribute("resitencia"));
+					int resistencia = Integer.parseInt(elementoTanque.getAttribute("resistencia"));
 					tanqueNuevo.setResistencia(resistencia);
 				}
 			}
+		}
+	}
+	
+	/**
+	 * Lee el archivo XML pasado por parametro para cargar los TanquesEnemigos, creandolos
+	 * con los atributos especificados.
+	 * @param documentoXML
+	 */
+	private void cargarDisparosDeDocumento(Document documentoXML){
+		NodeList listaDeDisparos = documentoXML.getElementsByTagName("disparo");
+	 
+		for(int i = 0; i < listaDeDisparos.getLength(); i++) {
+			Node disparo = listaDeDisparos.item(i);
+			
+			if(disparo.getNodeType() == Node.ELEMENT_NODE) {
+				Element elementoDisparo = (Element) disparo;
+				
+				int posX = Integer.parseInt(elementoDisparo.getAttribute("posX"));
+				int posY = Integer.parseInt(elementoDisparo.getAttribute("posY"));
+				int orientacionX = Integer.parseInt(elementoDisparo.getAttribute("orientacionX"));
+				int orientacionY = Integer.parseInt(elementoDisparo.getAttribute("orientacionY"));
+				
+				Orientacion sentido;
+				if(orientacionX == 0 && orientacionY == 1) sentido = Orientacion.j;
+				else if(orientacionX == 0 && orientacionY == -1) sentido = Orientacion.jNegativo;
+				else if(orientacionX == 1 && orientacionY == 0) sentido = Orientacion.i;
+				else sentido = Orientacion.iNegativo;
+				Posicion ubicacion = new Posicion(posX, posY);
+				
+				String tipo = elementoDisparo.getAttribute("tipo");
+				
+				Disparo disparoNuevo;
+				if(tipo.equalsIgnoreCase("canion"))
+					disparoNuevo = (DisparoCanion) new DisparoCanion(sentido, ubicacion);
+				else if(tipo.equalsIgnoreCase("lanzaCohetes"))
+					disparoNuevo = (DisparoLanzaCohetes) new DisparoLanzaCohetes(sentido, ubicacion);
+				else
+					disparoNuevo = (DisparoAmetralladora) new DisparoAmetralladora(sentido, ubicacion);
+
+				}
 		}
 	}
 }

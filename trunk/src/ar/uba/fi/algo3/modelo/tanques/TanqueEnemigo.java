@@ -89,7 +89,7 @@ public abstract class TanqueEnemigo extends Tanque {
 	 * Persiste el estado del tanque.
 	 */
 	public void persistir(Document documentoXML, Element raiz){
-		Element nodo = documentoXML.createElement("tanque");
+		Element nodo = documentoXML.createElement("tanqueEnemigo");
 		
 		Attr atributoTipo = documentoXML.createAttribute("tipo");
 		atributoTipo.setValue(tipo);

@@ -28,9 +28,9 @@ public abstract class Disparo extends ObjetoMovil {
 	
 	/**
 	 * Constructor.
-	 * @param orientacion versor representante de la direcci�n del disparo
-	 * @param punto posici�n de la ocupaci�n del disparo m�s cercana al 
-	 * tanque que lo ha disparado y centrada en la ocupaci�n de este, sobre 
+	 * @param orientacion versor representante de la direccion del disparo
+	 * @param punto posicion de la ocupacion del disparo mas cercana al 
+	 * tanque que lo ha disparado y centrada en la ocupacion de este, sobre 
 	 * su eje de movimiento
 	 * @see getPosicionPerimetralCentradaEnOrientacion(Orientacion orientacion) en 
 	 * la clase Ocupacion.
@@ -111,6 +111,9 @@ public abstract class Disparo extends ObjetoMovil {
 		}
 	}
 	
+	/**
+	 * Metodo que persiste los disparos al documentoXML pasado por parametro.
+	 */
 	public void persistir(Document documentoXML, Element raiz){
 		Element nodo = documentoXML.createElement("disparo");
 		

@@ -1,5 +1,6 @@
 package ar.uba.fi.algo3.modelo.objetosInanimados;
 
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -58,8 +59,22 @@ public class CuartelArgentino extends ObjetoJuego {
 		tanque.moverEnDireccionContraria();		
 	}
 	
+	/**
+	 * Guarda en el documentoXML especificado por parametro las
+	 * coordenadas del CuartelArgentino.
+	 */
 	public void persistir(Document documentoXML, Element raiz){
+		Element nodo = documentoXML.createElement("cuartelArgentino");
 		
+		Attr atributoPosX = documentoXML.createAttribute("posX");
+		atributoPosX.setValue(((Integer) this.getX()).toString());
+		nodo.setAttributeNode(atributoPosX);
+
+		Attr atributoPosY = documentoXML.createAttribute("posY");
+		atributoPosY.setValue(((Integer) this.getY()).toString());
+		nodo.setAttributeNode(atributoPosY);
+		
+		raiz.appendChild(nodo);
 	}
 	
 }

@@ -1,65 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <nivel>
-<tanque posX="208" posY="208" resistencia="100" tipo="ifv"/>
-<tanque posX="158" posY="246" resistencia="100" tipo="ifv"/>
-<tanque posX="1" posY="210" resistencia="100" tipo="mirage"/>
-<disparo impactosRecibidos="0" posX="259" posY="115" tipo="metal"/>
-<disparo impactosRecibidos="0" posX="44" posY="44" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="44" posY="87" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="44" posY="130" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="44" posY="173" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="44" posY="388" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="44" posY="431" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="44" posY="474" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="130" posY="44" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="130" posY="87" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="130" posY="130" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="130" posY="173" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="130" posY="388" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="130" posY="431" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="130" posY="474" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="216" posY="64" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="216" posY="107" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="216" posY="150" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="216" posY="302" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="216" posY="345" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="216" posY="388" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="302" posY="64" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="302" posY="107" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="302" posY="150" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="302" posY="226" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="302" posY="302" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="302" posY="345" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="302" posY="388" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="388" posY="44" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="388" posY="87" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="388" posY="130" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="388" posY="173" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="388" posY="388" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="388" posY="431" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="388" posY="474" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="474" posY="44" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="474" posY="87" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="474" posY="130" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="474" posY="173" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="474" posY="388" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="474" posY="431" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="474" posY="474" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="216" posY="474" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="216" posY="517" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="259" posY="474" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="302" posY="474" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="302" posY="517" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="1" posY="258" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="1" posY="301" tipo="metal"/>
-<disparo impactosRecibidos="0" posX="517" posY="258" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="517" posY="301" tipo="metal"/>
-<disparo impactosRecibidos="0" posX="72" posY="288" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="115" posY="288" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="402" posY="288" tipo="concreto"/>
-<disparo impactosRecibidos="0" posX="445" posY="288" tipo="concreto"/>
-<disparo orientacionX="0" orientacionY="1" posX="187" posY="422" tipo="ametralladora"/>
-<disparo orientacionX="-1" orientacionY="0" posX="71" posY="260" tipo="canion"/>
-<disparo orientacionX="1" orientacionY="0" posX="96" posY="224" tipo="lanzaCohetes"/>
-<algoTank posX="173" posY="513" puntaje="100" resistencia="100"/>
+<tanqueEnemigo posX="559" posY="538" resistencia="10" tipo="ifv"/>
+<disparo orientacionX="0" orientacionY="1" posX="137" posY="167" tipo="ametralladora"/>
+<algoTank posX="123" posY="330" puntaje="100" resistencia="100"/>
+<cuartelArgentino posX="279" posY="558"/>
 </nivel>
