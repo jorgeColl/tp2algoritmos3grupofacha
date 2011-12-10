@@ -2,10 +2,6 @@ package ar.uba.fi.algo3.modelo.tanques;
 
 import java.util.Vector;
 
-import org.w3c.dom.Attr;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
 import ar.uba.fi.algo3.modelo.armamentista.disparo.Disparo;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoJuego;
 import ar.uba.fi.algo3.modelo.clasesGeneralizadoras.ObjetoMovil;
@@ -155,6 +151,15 @@ public abstract class Tanque extends ObjetoMovil {
 	
 	public void vivir(){
 				
+	}
+	
+	/**
+	 * Metodo que le asigna una resistencia al tanque, utilizado por los metodos
+	 * relativos con la persistencia.
+	 * @param unaResistencia
+	 */
+	public void setResistencia(int unaResistencia){
+		resistencia = unaResistencia;
 	}
 
 }

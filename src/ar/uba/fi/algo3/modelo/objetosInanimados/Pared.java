@@ -14,8 +14,9 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Clase abstracta que modela a las paredes del escenario.
- * Llevan una cuenta de los impactos que reciben, dado que resisten una cantidad limitada de los mismos antes de desaparecer.
- * @author Jorge
+ * Llevan una cuenta de los impactos que reciben, dado que resisten 
+ * una cantidad limitada de los mismos antes de desaparecer.
+ * @author jc
  *
  */
 public abstract class Pared extends ObjetoJuego {
@@ -26,8 +27,10 @@ public abstract class Pared extends ObjetoJuego {
 	
 	/**
 	 * Constructor.
-	 * @param impactosTolerados cantidad m�xima de disparos que puede recibir la pared antes de desaparecer
-	 * @param punto instancia de la clase Posicion con la que se inicializar� la ocupaci�n de la pared
+	 * @param impactosTolerados cantidad maxima de disparos que puede recibir 
+	 * la pared antes de desaparecer
+	 * @param punto instancia de la clase Posicion con la que se inicializara 
+	 * la ocupacion de la pared
 	 */
 	public Pared(Posicion punto) {
 		impactosRecibidos = 0;
@@ -43,7 +46,8 @@ public abstract class Pared extends ObjetoJuego {
 	}
 
 	/**
-	 * Se incrementa la cantidad de disparos recibidas. Si esta pasa a ser mayor que la tolerada, la pared desaparece.
+	 * Se incrementa la cantidad de disparos recibidas. Si esta pasa a 
+	 * ser mayor que la tolerada, la pared desaparece.
 	 */
 	public void chocarCon(Disparo disparo) {
 		
@@ -55,12 +59,16 @@ public abstract class Pared extends ObjetoJuego {
 	}
 
 	/**
-	 * Cuando un tanque choca a la pared, se le indica a esta que se mueva unitariamente en la direcci�n contraria dado que lo obstaculiza.
+	 * Cuando un tanque choca a la pared, se le indica a esta que se mueva 
+	 * unitariamente en la direccion contraria dado que lo obstaculiza.
 	 */
 	public void chocarCon(Tanque tanque) {
 		tanque.moverEnDireccionContraria();
 	}
 	
+	/**
+	 * Persiste la pared en el documentoXML especificado, bajo la raiz indicada.
+	 */
 	public void persistir(Document documentoXML, Element raiz){
 		Element nodo = documentoXML.createElement("disparo");
 		
@@ -81,6 +89,15 @@ public abstract class Pared extends ObjetoJuego {
 		nodo.setAttributeNode(atributoImpactosRecibidos);
 		
 		raiz.appendChild(nodo);
+	}
+	
+	/**
+	 * Metodo que le asigna una cantidad de impactos recibidos por el tanque,
+	 * utilizado por los metodos relativos con la persistencia.
+	 * @param unaCantidad
+	 */
+	public void setImpactosRecibidos(int unaCantidad){
+		impactosRecibidos = unaCantidad;
 	}
 	
 }

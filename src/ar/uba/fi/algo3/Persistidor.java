@@ -5,7 +5,6 @@ package ar.uba.fi.algo3;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.StringWriter;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -25,16 +24,18 @@ import org.xml.sax.SAXException;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.objetosInanimados.CuartelArgentino;
+import ar.uba.fi.algo3.modelo.objetosInanimados.Pared;
 import ar.uba.fi.algo3.modelo.objetosInanimados.ParedConcreto;
 import ar.uba.fi.algo3.modelo.objetosInanimados.ParedMetal;
 import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
 import ar.uba.fi.algo3.modelo.tanques.GrizzlyBattleTank;
 import ar.uba.fi.algo3.modelo.tanques.IFV;
 import ar.uba.fi.algo3.modelo.tanques.MirageTank;
+import ar.uba.fi.algo3.modelo.tanques.TanqueEnemigo;
 
 /**
  * @author Fede
- * Clase que facilita la persistencia del juego.
+ * Clase que hace posible la persistencia del juego.
  * 
  */
 public class Persistidor {
@@ -46,8 +47,9 @@ public class Persistidor {
 	public Persistidor(){
 		nivelActual = 0;
 	}
+	
 	/**
-	 * carga el juego que se encuentre guardado en el directorio recibido
+	 * Carga el juego que se encuentre guardado en el directorio recibido.
 	 * @param directorio
 	 * @throws IOException 
 	 * @throws SAXException 
@@ -67,6 +69,10 @@ public class Persistidor {
 			//this.cargarDisparosDeDocumento(documentoXML);
 	}
 	
+	/**
+	 * Delega al Espacio la tarea de persistir a los objetos del juego, y los guarda
+	 * en el directorio especificado en ARCHIVO_DE_GUARDADO.
+	 */
 	public void guardarNivel(){
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -87,18 +93,24 @@ public class Persistidor {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+	
 	}
 	
+	/**
+	 * Carga el juego guardado en ARCHIVO_DE_GUARDADO, si existe.
+	 */
 	public void cargarJuegoGuardado(){
-		try{
+		try {
 			this.cargarNivelDesdeArchivo(ARCHIVO_DE_GUARDADO);
 		} catch (Exception e) {
 				this.cargarProximoNivel();
-			}
+		}
 	}
 	
+	/**
+	 * Aumenta el contador del nivel para cargar el nuevo, leyendo el archivo
+	 * XML correspondiente.
+	 */
 	public void cargarProximoNivel(){
 		nivelActual++;
 		Integer nivelACargar = (Integer) nivelActual;
@@ -106,12 +118,16 @@ public class Persistidor {
 		
 		try {
 			this.cargarNivelDesdeArchivo(directorio);
-		
 		} catch (Exception e) {
 				e.printStackTrace();
-			}
+		}
 	}
 	
+	/**
+	 * Lee las paredes del documento XML cargado, creando los objetos correspondientes
+	 * con los atributos especificados.
+	 * @param documentoXML
+	 */
 	private void cargarParedesDeDocumento(Document documentoXML){
 		NodeList listaDeParedes = documentoXML.getElementsByTagName("pared");
 		 
@@ -126,39 +142,76 @@ public class Persistidor {
 				Posicion ubicacion = new Posicion(posX, posY);
 				String tipo = elementoPared.getAttribute("tipo");
 				
-				if(tipo.equalsIgnoreCase("concreto")){
-					ParedConcreto paredConcreto = new ParedConcreto(ubicacion);
-				} else if (tipo.equalsIgnoreCase("metal")){
-					ParedMetal paredMetal = new ParedMetal(ubicacion);
+				Pared paredNueva;
+				if(tipo.equalsIgnoreCase("concreto"))
+					paredNueva = (ParedConcreto) new ParedConcreto(ubicacion);
+				else
+					paredNueva = (ParedMetal) new ParedMetal(ubicacion);
+								
+				if(elementoPared.hasAttribute("impactosRecibidos")){
+					int impactosRecibidos = Integer.parseInt(elementoPared.getAttribute("impactosRecibidos"));
+					paredNueva.setImpactosRecibidos(impactosRecibidos);
 				}
+				
 			}
 		}
 	}
 	
+	/**
+	 * Lee el algoTank del documento XML cargado, creándolo con los atributos especificados.
+	 * @param documentoXML
+	 */
 	private void cargarAlgoTankDeDocumento(Document documentoXML){
 		NodeList listaAlgoTank = documentoXML.getElementsByTagName("algoTank");
 		Node nodoAlgoTank = listaAlgoTank.item(0);
+		
 		if(nodoAlgoTank.getNodeType() == Node.ELEMENT_NODE) {
 			Element elementoAlgoTank = (Element) nodoAlgoTank;
+			
 			int posX = Integer.parseInt(elementoAlgoTank.getAttribute("posX"));
 			int posY = Integer.parseInt(elementoAlgoTank.getAttribute("posY"));
+			
 			Posicion ubicacion = new Posicion(posX, posY);
 			AlgoTank algoTank = new AlgoTank(ubicacion);
+			
+			if(elementoAlgoTank.hasAttribute("resistencia")){
+				int resistencia = Integer.parseInt(elementoAlgoTank.getAttribute("resistencia"));
+				algoTank.setResistencia(resistencia);
+			}
+
+			if(elementoAlgoTank.hasAttribute("puntaje")){
+				int puntaje = Integer.parseInt(elementoAlgoTank.getAttribute("puntaje"));
+				algoTank.setPuntaje(puntaje);
+			}
+			
 		}
 	}
 
+	/**
+	 * Lee la informacion correspondiente al CuartelArgentino del documento XML cargado y
+	 * pasado por parametro, creando el objeto con los atributos especificados.
+	 * @param documentoXML
+	 */
 	private void cargarCuartelArgentinoDeDocumento(Document documentoXML){
 		NodeList listaCuartelArgentino = documentoXML.getElementsByTagName("cuartelArgentino");
 		Node nodoCuartelArgentino = listaCuartelArgentino.item(0);
+		
 		if(nodoCuartelArgentino.getNodeType() == Node.ELEMENT_NODE) {
 			Element elementoCuartelArgentino = (Element) nodoCuartelArgentino;
+			
 			int posX = Integer.parseInt(elementoCuartelArgentino.getAttribute("posX"));
 			int posY = Integer.parseInt(elementoCuartelArgentino.getAttribute("posY"));
+			
 			Posicion ubicacion = new Posicion(posX, posY);
 			CuartelArgentino cuartelArgentino = new CuartelArgentino(ubicacion);
 		}
 	}
 	
+	/**
+	 * Lee el archivo XML pasado por parametro para cargar los TanquesEnemigos, creandolos
+	 * con los atributos especificados.
+	 * @param documentoXML
+	 */
 	private void cargarTanquesEnemigosDeDocumento(Document documentoXML){
 		NodeList listaDeTanquesEnemigos = documentoXML.getElementsByTagName("tanqueEnemigo");
 	 
@@ -173,12 +226,17 @@ public class Persistidor {
 				Posicion ubicacion = new Posicion(posX, posY);
 				String tipo = elementoTanque.getAttribute("tipo");
 				
-				if(tipo.equalsIgnoreCase("Grizzly")){
-					GrizzlyBattleTank grizzly = new GrizzlyBattleTank(ubicacion);
-				} else if (tipo.equalsIgnoreCase("IFV")){
-					IFV ifv = new IFV(ubicacion);
-				} else if (tipo.equalsIgnoreCase("Mirage")){
-					MirageTank mirage = new MirageTank(ubicacion);
+				TanqueEnemigo tanqueNuevo;
+				if(tipo.equalsIgnoreCase("Grizzly"))
+					tanqueNuevo = (GrizzlyBattleTank) new GrizzlyBattleTank(ubicacion);
+				else if(tipo.equalsIgnoreCase("IFV"))
+					tanqueNuevo = (IFV) new IFV(ubicacion);
+				else
+					tanqueNuevo = (MirageTank) new MirageTank(ubicacion);
+								
+				if(elementoTanque.hasAttribute("resistencia")){
+					int resistencia = Integer.parseInt(elementoTanque.getAttribute("resitencia"));
+					tanqueNuevo.setResistencia(resistencia);
 				}
 			}
 		}

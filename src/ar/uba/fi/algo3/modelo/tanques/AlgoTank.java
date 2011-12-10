@@ -75,6 +75,15 @@ public class AlgoTank extends Tanque {
 	}
 	
 	/**
+	 * Establece el puntaje del AlgoTank, usado por el persistidor al cargar
+	 * una partida.
+	 * @param unPuntaje
+	 */
+	public void setPuntaje(int unPuntaje){
+		puntaje = unPuntaje;
+	}
+	
+	/**
 	 * 
 	 * @return atributo puntaje
 	 */
