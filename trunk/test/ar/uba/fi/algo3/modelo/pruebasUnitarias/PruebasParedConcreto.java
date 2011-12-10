@@ -28,7 +28,7 @@ public class PruebasParedConcreto extends TestCase {
 	 */
 	public void testDesaparecerConImpacto() {
 		assertTrue(Espacio.getInstancia().incluyeA(pared));
-		DisparoAmetralladora disparo = new DisparoAmetralladora(Orientacion.i, new Posicion(250,250));
+		new DisparoAmetralladora(Orientacion.i, new Posicion(250,250));
 		assertFalse(Espacio.getInstancia().incluyeA(pared));
 	}
 
