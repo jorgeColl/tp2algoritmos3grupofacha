@@ -36,7 +36,7 @@ public class PruebasCuartelArgentino extends TestCase {
 	 * Testeo si antes de desaparecer el cuartel el juego no est� perdido y si al desaparecer el juego se pierde.
 	 */
 	public void testJuegoPerdido() {
-		AlgoTank algoTank = new AlgoTank(new Posicion(250,250));
+		new AlgoTank(new Posicion(250,250));
 		Nivel.getInstancia().empezarNivel();
 		assertFalse(Nivel.getInstancia().nivelPerdido());
 		cuartel.desaparecer();

@@ -78,7 +78,7 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	 */
 	public void testGrizzlyBattleTankChocarConGrizzlyBattleTankDesdeArriba() {
 		tanque = new GrizzlyBattleTank(new Posicion(0,0));
-		GrizzlyBattleTank otroTanque = new GrizzlyBattleTank(new Posicion(0,((OcupacionCuadrada)tanque.getOcupacion()).getLado()));
+		new GrizzlyBattleTank(new Posicion(0,((OcupacionCuadrada)tanque.getOcupacion()).getLado()));
 		tanque.moverAbajo();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
@@ -89,7 +89,7 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	 */
 	public void testGrizzlyBattleTankChocarConIFVDesdeIzquierda() {
 		tanque = new GrizzlyBattleTank(new Posicion(0,0));
-		IFV otroTanque = new IFV(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
+		new IFV(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		tanque.moverDerecha();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
@@ -113,7 +113,7 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	 */
 	public void testGrizzlyBattleTankChocarConParedConcretoDesdeIzquierda() {
 		tanque = new GrizzlyBattleTank(new Posicion(0,0));
-		ParedConcreto pared = new ParedConcreto(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
+		new ParedConcreto(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		tanque.moverDerecha();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
@@ -135,7 +135,7 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	 */
 	public void testGrizzlyBattleTankChocarConCuartelArgentinoDesdeIzquierda() {
 		tanque = new GrizzlyBattleTank(new Posicion(0,0));
-		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));		
+		new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));		
 		tanque.moverDerecha();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
@@ -150,7 +150,7 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	 */
 	public void testGrizzlyBattleTankDestruirAlgoTankDisparosDesdeIzquierda() {
 		AlgoTank otroTanque = new AlgoTank(new Posicion(400,0));
-		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(250,250));
+		new CuartelArgentino(new Posicion(250,250));
 		tanque = new GrizzlyBattleTank(new Posicion(0,0));
 		int contador = 0;
 		while ((otroTanque.getResistencia() > 0)&&(contador < 300)) {
@@ -311,7 +311,7 @@ public class PruebasIntegracionGrizzlyBattleTank extends TestCase {
 	public void testGrizzlyBattleTankDestruirCuartelArgentinoYJuegoPerdidoDesdeIzquierda() {
 		tanque = new GrizzlyBattleTank(new Posicion(0,0));
 		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado()+tanque.getVelocidad(),0));
-		AlgoTank algoTank = new AlgoTank(new Posicion(250,250));
+		new AlgoTank(new Posicion(250,250));
 		
 		Nivel.getInstancia().empezarNivel();
 		

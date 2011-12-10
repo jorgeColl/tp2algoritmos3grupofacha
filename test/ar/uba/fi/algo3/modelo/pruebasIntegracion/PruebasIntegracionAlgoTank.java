@@ -70,7 +70,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	 */
 	public void testAlgoTankChocarConGrizzlyBattleTankDesdeArriba() {
 		tanque = new AlgoTank(new Posicion(0,0));
-		GrizzlyBattleTank otroTanque = new GrizzlyBattleTank(new Posicion(0,((OcupacionCuadrada)tanque.getOcupacion()).getLado()));
+		new GrizzlyBattleTank(new Posicion(0,((OcupacionCuadrada)tanque.getOcupacion()).getLado()));
 		tanque.moverAbajo();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
@@ -81,7 +81,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	 */
 	public void testAlgoTankChocarConIFVDesdeIzquierda() {
 		tanque = new AlgoTank(new Posicion(0,0));
-		IFV otroTanque = new IFV(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
+		new IFV(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		tanque.moverDerecha();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
@@ -105,7 +105,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	 */
 	public void testAlgoTankChocarConParedConcretoDesdeIzquierda() {
 		tanque = new AlgoTank(new Posicion(0,0));
-		ParedConcreto pared = new ParedConcreto(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
+		new ParedConcreto(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		tanque.moverDerecha();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
@@ -129,7 +129,7 @@ public class PruebasIntegracionAlgoTank extends TestCase {
 	 */
 	public void testAlgoTankChocarConCuartelArgentinoDesdeIzquierda() {
 		tanque = new AlgoTank(new Posicion(0,0));
-		CuartelArgentino cuartel = new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));		
+		new CuartelArgentino(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));		
 		tanque.moverDerecha();
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getX(),0);
 		assertEquals(((OcupacionCuadrada)tanque.getOcupacion()).getPuntoMenorModulo().getY(),0);
