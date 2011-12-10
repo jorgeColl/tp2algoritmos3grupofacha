@@ -9,17 +9,17 @@ import ar.uba.fi.algo3.titiritero.vista.ObjetoDeTexto;
  * @author jc
  *
  */
-public class VistaDeFinalizacionDeJuego implements ObjetoDeTexto {
+public class VistaFinDeJuego implements ObjetoDeTexto {
 
 	protected int prioridad;
 	
-	public VistaDeFinalizacionDeJuego(){
+	public VistaFinDeJuego(){
 		this.prioridad = 10;
 	}
 	
 	@Override
 	public String getTexto() {
-		return "GAME\nOVER\n   :(";
+		return "Juego \nterminado";
 	}
 
 	@Override

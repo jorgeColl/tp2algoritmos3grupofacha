@@ -24,7 +24,6 @@ import org.xml.sax.SAXException;
 
 import ar.uba.fi.algo3.modelo.armamentista.arma.Canion;
 import ar.uba.fi.algo3.modelo.armamentista.arma.LanzaCohetes;
-import ar.uba.fi.algo3.modelo.armamentista.disparo.Disparo;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoCanion;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoLanzaCohetes;
@@ -40,7 +39,6 @@ import ar.uba.fi.algo3.modelo.tanques.GrizzlyBattleTank;
 import ar.uba.fi.algo3.modelo.tanques.IFV;
 import ar.uba.fi.algo3.modelo.tanques.MirageTank;
 import ar.uba.fi.algo3.modelo.tanques.TanqueEnemigo;
-import ar.uba.fi.algo3.vista.ConstructorVista;
 
 /**
  * @author Fede
@@ -299,15 +297,13 @@ public class Persistidor {
 				
 				String tipo = elementoDisparo.getAttribute("tipo");
 				
-				Disparo disparoNuevo;
 				if(tipo.equalsIgnoreCase("canion"))
-					disparoNuevo = (DisparoCanion) new DisparoCanion(sentido, ubicacion);
+					new DisparoCanion(sentido, ubicacion);
 				else if(tipo.equalsIgnoreCase("lanzaCohetes"))
-					disparoNuevo = (DisparoLanzaCohetes) new DisparoLanzaCohetes(sentido, ubicacion);
+					new DisparoLanzaCohetes(sentido, ubicacion);
 				else
-					disparoNuevo = (DisparoAmetralladora) new DisparoAmetralladora(sentido, ubicacion);
-
-				}
+					new DisparoAmetralladora(sentido, ubicacion);
+			}
 		}
 	}
 }
