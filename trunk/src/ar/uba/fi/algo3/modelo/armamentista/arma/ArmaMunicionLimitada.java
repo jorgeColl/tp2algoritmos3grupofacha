@@ -1,5 +1,9 @@
 package ar.uba.fi.algo3.modelo.armamentista.arma;
 
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
@@ -10,6 +14,7 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
 public abstract class ArmaMunicionLimitada extends Arma {
 
 	protected int municion;
+	protected String tipo;
 	
 	/**
 	 * 
@@ -29,6 +34,14 @@ public abstract class ArmaMunicionLimitada extends Arma {
 	}
 	
 	/**
+	 * Establece una municion al arma. Usado por los metodos relacionados
+	 * con la persistencia.
+	 */
+	public void setMunicion(int unaMunicion){
+		municion = unaMunicion;
+	}
+	
+	/**
 	 * 
 	 * @param incremento entero que sumaremos a la munición del arma
 	 */
@@ -36,4 +49,16 @@ public abstract class ArmaMunicionLimitada extends Arma {
 		municion = municion + incremento;
 	}
 
+	/**
+	 * Persiste el arma del AlgoTank.
+	 */
+	public void persistir(Document documentoXML, Element raiz){
+		Attr atributoTipo = documentoXML.createAttribute("tipoArmaMunicionLimitada");
+		atributoTipo.setValue(tipo);
+		raiz.setAttributeNode(atributoTipo);
+
+		Attr atributoMunicion = documentoXML.createAttribute("cantidadMunicion");
+		atributoMunicion.setValue(((Integer) municion).toString());
+		raiz.setAttributeNode(atributoMunicion);
+	}
 }

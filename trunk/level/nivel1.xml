@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<nivel>
+<nivel numero="1">
 	<pared tipo="concreto" posX="49" posY="49" />
 	<pared tipo="concreto" posX="49" posY="92" />
 	<pared tipo="concreto" posX="49" posY="135" />

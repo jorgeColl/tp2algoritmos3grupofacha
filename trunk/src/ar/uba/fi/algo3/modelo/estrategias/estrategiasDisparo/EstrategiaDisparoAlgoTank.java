@@ -1,5 +1,8 @@
 package ar.uba.fi.algo3.modelo.estrategias.estrategiasDisparo;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import ar.uba.fi.algo3.modelo.armamentista.arma.ArmaMunicionLimitada;
 import ar.uba.fi.algo3.modelo.tanques.AlgoTank;
 
@@ -36,7 +39,7 @@ public class EstrategiaDisparoAlgoTank extends EstrategiaDisparo {
 	 * unidadesTemporalesTranscurridas.
 	 */
 	public void decidirDisparo() {
-		AlgoTank duenioAuxiliar = (AlgoTank)duenio;
+		AlgoTank duenioAuxiliar = (AlgoTank) duenio;
 		if (tiempoEntreDisparosTranscurrido()) { 
 			if (!(duenioAuxiliar.getArmasPrioritarias().isEmpty())) {
 				ArmaMunicionLimitada armaAuxiliar = duenioAuxiliar.getArmasPrioritarias().peek();
@@ -49,5 +52,15 @@ public class EstrategiaDisparoAlgoTank extends EstrategiaDisparo {
 			unidadesTemporalesTranscurridas = 0;
 		}
 	}
-
+	
+	/**
+	 * Delega la persistencia al arma prioritaria en uso.
+	 */
+	public void persistir(Document documentoXML, Element raiz){
+		AlgoTank duenioAuxiliar = (AlgoTank) duenio;
+		ArmaMunicionLimitada armaAuxiliar = duenioAuxiliar.getArmasPrioritarias().peek();
+		if(armaAuxiliar.getMunicion() == 0) return;
+		armaAuxiliar.persistir(documentoXML, raiz);
+	}
+	
 }
