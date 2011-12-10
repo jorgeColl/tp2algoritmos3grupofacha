@@ -1,6 +1,7 @@
 package ar.uba.fi.algo3.modelo.pruebasUnitarias;
 
 import junit.framework.TestCase;
+import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
 import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
@@ -19,6 +20,7 @@ public class PruebasBonusVelocidad extends TestCase{
 	double porcentajeVelocidadDeDisparoQueAumentaBonus;
 	
 	public void setUp (){
+		Espacio.getInstancia().reiniciar();
 		this.tanque = new AlgoTank(new Posicion(0,0));
 		this.bonusVelocidad = new BonusVelocidad(new Posicion(((OcupacionCuadrada)tanque.getOcupacion()).getLado(),0));
 		this.porcentajeVelocidadQueAumentaBonus = 0.2;
