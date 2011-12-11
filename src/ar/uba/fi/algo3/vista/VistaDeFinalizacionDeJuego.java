@@ -25,7 +25,7 @@ public class VistaDeFinalizacionDeJuego implements ObjetoDeTexto{
 		
 		
 		if(this.nivel.nivelGanado()){
-			return "GAME\nWIN\n   :)";
+			return "GAME\n WIN\n   :)";
 		}else{
 			if(this.nivel.nivelPerdido()){
 				return "GAME\nOVER\n   :(";
