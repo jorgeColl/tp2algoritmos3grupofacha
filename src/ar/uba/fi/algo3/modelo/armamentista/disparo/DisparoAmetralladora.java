@@ -17,7 +17,8 @@ public class DisparoAmetralladora extends Disparo {
 		super(orientacion, punto);
 		danioNeto = 20;
 		danioPorcentual = 0;
-		ocupacion = OcupacionCuadrada.crearAPartirDePosicionPerimetralCentradaEnOrientacion(punto, 15, orientacion);
+		ocupacion = OcupacionCuadrada.
+			crearAPartirDePosicionPerimetralCentradaEnOrientacion(punto, 15, orientacion);
 		velocidad = 4;
 		tipo = "ametralladora";
 		

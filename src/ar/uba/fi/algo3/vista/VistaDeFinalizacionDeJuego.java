@@ -3,12 +3,13 @@
  */
 package ar.uba.fi.algo3.vista;
 
-import ar.uba.fi.algo3.Nivel;
+import ar.uba.fi.algo3.controlador.Nivel;
 import ar.uba.fi.algo3.titiritero.vista.ObjetoDeTexto;
 
 /**
  * @author jc
- *
+ * clase que modela la vista de finalizacion de juego, el texto de 
+ * Juego terminado o Nivel ganado que se muestra al terminar un nivel.
  */
 public class VistaDeFinalizacionDeJuego implements ObjetoDeTexto{
 
@@ -19,26 +20,21 @@ public class VistaDeFinalizacionDeJuego implements ObjetoDeTexto{
 		this.prioridad = 10;
 	}
 	
+	/**
+	 * devuelve el texto correspondiente al estado del nivel.
+	 */
 	@Override
 	public String getTexto() {
-		// TODO Auto-generated method stub
-		
-		
-		if(this.nivel.nivelGanado()){
-			return "GAME\n WIN\n   :)";
-		}else{
-			if(this.nivel.nivelPerdido()){
-				return "GAME\nOVER\n   :(";
-			}else{
-				return "";
-			}
-		}
-		
+		if(this.nivel.nivelGanado())
+			return "Nivel \ncompletado";
+		if(this.nivel.nivelPerdido())
+			return "Juego \nterminado";
+		else
+			return "";
 	}
 
 	@Override
 	public int getPrioridad() {
-		// TODO Auto-generated method stub
 		return this.prioridad;
 	}
 

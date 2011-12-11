@@ -1,6 +1,6 @@
 package ar.uba.fi.algo3.modelo.pruebasIntegracion;
 
-import ar.uba.fi.algo3.Nivel;
+import ar.uba.fi.algo3.controlador.Nivel;
 import ar.uba.fi.algo3.modelo.armamentista.arma.LanzaCohetes;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;

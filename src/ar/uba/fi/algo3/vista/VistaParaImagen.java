@@ -4,7 +4,7 @@ import ar.uba.fi.algo3.titiritero.vista.ImagenEstatica;
 
 /**
  * Clase que genera la vista de Pared
- * @author Samanta
+ * @author Sami
  *
  */
 public class VistaParaImagen extends ImagenEstatica {

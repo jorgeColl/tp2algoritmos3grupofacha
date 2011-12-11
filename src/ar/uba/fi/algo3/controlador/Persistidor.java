@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ar.uba.fi.algo3;
+package ar.uba.fi.algo3.controlador;
 
 import java.io.File;
 import java.io.IOException;
@@ -62,7 +62,8 @@ public class Persistidor {
 	 * @throws SAXException 
 	 * @throws ParserConfigurationException 
 	 */
-	private void cargarNivelDesdeArchivo(String directorio) throws SAXException, IOException, ParserConfigurationException {
+	private void cargarNivelDesdeArchivo(String directorio) 
+		throws SAXException, IOException, ParserConfigurationException {
 			File archivoXML = new File(directorio);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder parser = dbFactory.newDocumentBuilder();
@@ -120,7 +121,6 @@ public class Persistidor {
 			this.cargarNivelDesdeArchivo(ARCHIVO_DE_GUARDADO);
 		} catch (Exception e) {
 			e.printStackTrace();
-			//this.cargarProximoNivel();
 		}
 	}
 	
@@ -132,7 +132,6 @@ public class Persistidor {
 		nivelActual++;
 		Integer nivelACargar = (Integer) nivelActual;
 		String directorio = DIRECTORIO_DE_NIVELES + nivelACargar.toString() + ".xml" ;
-		
 		try {
 			this.cargarNivelDesdeArchivo(directorio);
 		} catch (Exception e) {
@@ -166,7 +165,8 @@ public class Persistidor {
 					paredNueva = (ParedMetal) new ParedMetal(ubicacion);
 								
 				if(elementoPared.hasAttribute("impactosRecibidos")){
-					int impactosRecibidos = Integer.parseInt(elementoPared.getAttribute("impactosRecibidos"));
+					int impactosRecibidos = 
+							Integer.parseInt(elementoPared.getAttribute("impactosRecibidos"));
 					paredNueva.setImpactosRecibidos(impactosRecibidos);
 				}
 				
@@ -192,18 +192,21 @@ public class Persistidor {
 			AlgoTank algoTank = new AlgoTank(ubicacion);
 			
 			if(elementoAlgoTank.hasAttribute("resistencia")){
-				int resistencia = Integer.parseInt(elementoAlgoTank.getAttribute("resistencia"));
+				int resistencia = 
+						Integer.parseInt(elementoAlgoTank.getAttribute("resistencia"));
 				algoTank.setResistencia(resistencia);
 			}
 
 			if(elementoAlgoTank.hasAttribute("puntaje")){
-				int puntaje = Integer.parseInt(elementoAlgoTank.getAttribute("puntaje"));
+				int puntaje = 
+						Integer.parseInt(elementoAlgoTank.getAttribute("puntaje"));
 				algoTank.setPuntaje(puntaje);
 			}
 			
 			if(elementoAlgoTank.hasAttribute("tipoArmaMunicionLimitada")){
 				String tipo = elementoAlgoTank.getAttribute("tipoArmaMunicionLimitada");
-				int cantidadMunicion = Integer.parseInt(elementoAlgoTank.getAttribute("cantidadMunicion"));
+				int cantidadMunicion = 
+						Integer.parseInt(elementoAlgoTank.getAttribute("cantidadMunicion"));
 				
 				if(tipo.equalsIgnoreCase("canion"))
 					algoTank.entregarArma(new Canion(algoTank, cantidadMunicion));
@@ -220,7 +223,8 @@ public class Persistidor {
 	 * @param documentoXML
 	 */
 	private void cargarCuartelArgentinoDeDocumento(Document documentoXML){
-		NodeList listaCuartelArgentino = documentoXML.getElementsByTagName("cuartelArgentino");
+		NodeList listaCuartelArgentino = 
+				documentoXML.getElementsByTagName("cuartelArgentino");
 		Node nodoCuartelArgentino = listaCuartelArgentino.item(0);
 		
 		if(nodoCuartelArgentino.getNodeType() == Node.ELEMENT_NODE) {
@@ -240,7 +244,8 @@ public class Persistidor {
 	 * @param documentoXML
 	 */
 	private void cargarTanquesEnemigosDeDocumento(Document documentoXML){
-		NodeList listaDeTanquesEnemigos = documentoXML.getElementsByTagName("tanqueEnemigo");
+		NodeList listaDeTanquesEnemigos = 
+				documentoXML.getElementsByTagName("tanqueEnemigo");
 	 
 		for(int i = 0; i < listaDeTanquesEnemigos.getLength(); i++) {
 			Node tanque = listaDeTanquesEnemigos.item(i);
@@ -262,7 +267,8 @@ public class Persistidor {
 					tanqueNuevo = (MirageTank) new MirageTank(ubicacion);
 								
 				if(elementoTanque.hasAttribute("resistencia")){
-					int resistencia = Integer.parseInt(elementoTanque.getAttribute("resistencia"));
+					int resistencia = 
+							Integer.parseInt(elementoTanque.getAttribute("resistencia"));
 					tanqueNuevo.setResistencia(resistencia);
 				}
 			}

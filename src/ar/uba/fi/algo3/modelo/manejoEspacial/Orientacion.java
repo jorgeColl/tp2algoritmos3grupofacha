@@ -6,7 +6,7 @@ package ar.uba.fi.algo3.modelo.manejoEspacial;
  * solo desde su estado y no desde su comportamiento, para ahorrar recursos 
  * del sistema garantizamos la existencia de solo cuatro instancias mediante 
  * atributos de clase proveemos acceso global a estas.
- * @author Samanta
+ * @author Sami
  *
  */
 public class Orientacion extends Vector {

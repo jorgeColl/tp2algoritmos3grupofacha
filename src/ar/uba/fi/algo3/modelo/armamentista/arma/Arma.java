@@ -3,7 +3,8 @@ package ar.uba.fi.algo3.modelo.armamentista.arma;
 import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
- * Modela un arma, la cual tiene un tanque que es su dueño y es capaz de disparar una munición cuando se lo solicita.
+ * Clase abstracta para modelar a un arma. Esta tiene como atributo a un tanque que 
+ * es su dueño y es capaz de disparar una munición cuando se lo solicita.
  * @author Fede
  *
  */
@@ -13,15 +14,16 @@ public abstract class Arma {
 	
 	/**
 	 * Constructor.
-	 * @param duenio instancia de una sublcase de Tanque con la cual inicializaremos al atributo duenio
+	 * @param duenio instancia de una sublcase de Tanque con la cual 
+	 * inicializaremos al atributo duenio
 	 */
 	public Arma(Tanque duenio) {
 		this.duenio = duenio;
 	}
 	
 	/**
-	 * 
-	 * @return instancia de una subclase de la clase Tanque que representa al duenio del arma
+	 * @return instancia de una subclase de la clase Tanque que representa 
+	 * al duenio del arma
 	 */
 	public Tanque getDuenio() {
 		return duenio;
@@ -29,14 +31,14 @@ public abstract class Arma {
 	
 	/**
 	 * Instancia un disparo propio del arma.
-	 * La ocupación que tendrá este es la inmediatamente posterior al dueño en su orientación, centrado con respecto a este.
-	 * Para obtener esa ocupación, delega en la clase Ocupacion.
+	 * La ocupacion que tendrá este es la inmediatamente posterior al dueño 
+	 * en su orientacion, centrado con respecto a este.
+	 * Para obtener esa ocupacion, delega en la clase Ocupacion.
 	 */
 	public abstract void disparar();
 	
 	/**
-	 * 
-	 * @param duenio nueva instancia de la clase Tanque que representa al dueño del arma
+	 * @param duenio nueva instancia de la clase Tanque que representa al dueño del arma.
 	 */
 	public void setDuenio(Tanque duenio) {
 		this.duenio = duenio;

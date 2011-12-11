@@ -11,11 +11,11 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 
 /**
- * Provee el comportamiento y el estado comun a todas las entidades del juego que 
+ * provee el comportamiento y el estado comun a todas las entidades del juego que 
  * pueden posicionarse en el espacio. 
- * El atributo ocupacion representa a la ocupacion que tiene el objeto en el lugar 
+ * el atributo ocupacion representa a la ocupacion que tiene el objeto en el lugar 
  * en el que se desarrolla la accion del juego.
- * @author Jorge
+ * @author jc
  *
  */
 public abstract class ObjetoJuego implements Posicionable {
@@ -23,25 +23,20 @@ public abstract class ObjetoJuego implements Posicionable {
 	protected Ocupacion ocupacion;
 	private boolean vivo = true;
 	
-	/* aca trato de que herede el comportamiento de crease una vista
-	protected ObjetoJuego(){
-		ConstructorVista.construirVista(this);
-	}
-	*/
 	/**
-	 * Hacemos que el objeto sea impactado por un disparo.
+	 * hacemos que el objeto sea impactado por un disparo.
 	 * @param disparo instancia de una subclase de Disparo que chocara con este objeto
 	 */
 	public abstract void chocarCon(Disparo disparo);
 	
 	/**
-	 * Hacemos que el objeto sea impactado por un tanque.
+	 * hacemos que el objeto sea impactado por un tanque.
 	 * @param tanque instancia de una subclase de Tanque que chocara con este objeto
 	 */
 	public abstract void chocarCon(Tanque tanque);
 
 	/**
-	 * Hacemos que el objeto desaparezca del espacio, delegando en la clase Espacio.
+	 * hacemos que el objeto desaparezca del espacio, delegando en la clase Espacio.
 	 */
 	public void desaparecer() {
 		Espacio.getInstancia().desaparecerA(this);
@@ -49,7 +44,7 @@ public abstract class ObjetoJuego implements Posicionable {
 	}
 	
 	/**
-	 * Delega en la clase Ocupacion.
+	 * delega en la clase Ocupacion.
 	 * @param objeto instancia de la clase ObjetoJuego cuya ocupacion compararemos 
 	 * con la de esta
 	 * @return true si los objetos comparados coinciden ocupacionalmente y false 
@@ -84,5 +79,4 @@ public abstract class ObjetoJuego implements Posicionable {
 	}
 	
 	public abstract void persistir(Document documentoXML, Element raiz);
-	
 }

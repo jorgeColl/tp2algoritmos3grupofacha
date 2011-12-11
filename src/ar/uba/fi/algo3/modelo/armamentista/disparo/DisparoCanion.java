@@ -7,7 +7,7 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 
 /**
- * Modela al disparo efectuado por los ca�ones.
+ * Modela al disparo efectuado por los caniones.
  * @author Fede
  *
  */
@@ -18,9 +18,10 @@ public class DisparoCanion extends Disparo {
 		danioNeto = 30;
 		danioPorcentual = 0;
 		ocupacion = OcupacionCuadrada.
-				crearAPartirDePosicionPerimetralCentradaEnOrientacion(punto, 15, orientacion);
+			crearAPartirDePosicionPerimetralCentradaEnOrientacion(punto, 15, orientacion);
 		velocidad = 4;
 		tipo = "canion";
+		
 		Espacio.getInstancia().agregarDisparo(this);
 		if (Espacio.getInstancia().incluyeA(this)){
 			ConstructorVista.construirVista(this);

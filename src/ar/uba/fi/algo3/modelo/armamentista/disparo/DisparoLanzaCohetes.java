@@ -17,12 +17,12 @@ public class DisparoLanzaCohetes extends Disparo {
 		super(orientacion,punto);
 		danioNeto = 0;
 		danioPorcentual = 50;
-		ocupacion = OcupacionCuadrada.crearAPartirDePosicionPerimetralCentradaEnOrientacion(punto, 15, orientacion);
+		ocupacion = OcupacionCuadrada.
+			crearAPartirDePosicionPerimetralCentradaEnOrientacion(punto, 15, orientacion);
 		velocidad = 4;
 		tipo = "lanzaCohetes";
 		
 		Espacio.getInstancia().agregarDisparo(this);
-		
 		if (Espacio.getInstancia().incluyeA(this)){
 			ConstructorVista.construirVista(this);
 		}

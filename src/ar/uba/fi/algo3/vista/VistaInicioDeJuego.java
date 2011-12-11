@@ -3,7 +3,7 @@ package ar.uba.fi.algo3.vista;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
-import ar.uba.fi.algo3.Nivel;
+import ar.uba.fi.algo3.controlador.Nivel;
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
 import ar.uba.fi.algo3.titiritero.vista.ImagenDinamica;

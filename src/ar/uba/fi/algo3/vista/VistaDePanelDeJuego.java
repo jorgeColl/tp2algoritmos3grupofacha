@@ -12,11 +12,11 @@ import ar.uba.fi.algo3.titiritero.vista.ObjetoDeTexto;
  * ir mostrando el estado de la resistencia del algotank durante el juego y tambien
  * de las municiones que tiene
  */
-public class VistaDeTextoDeAlgoTank implements ObjetoDeTexto {
+public class VistaDePanelDeJuego implements ObjetoDeTexto {
 	protected AlgoTank tanque;
 	protected int prioridad;
 	
-	public VistaDeTextoDeAlgoTank(AlgoTank algoTanque){
+	public VistaDePanelDeJuego(AlgoTank algoTanque){
 		tanque = algoTanque;
 		this.prioridad = 11;
 	}

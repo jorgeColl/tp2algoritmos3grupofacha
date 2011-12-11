@@ -5,7 +5,7 @@ package ar.uba.fi.algo3.vista;
 
 import java.awt.event.KeyEvent;
 
-import ar.uba.fi.algo3.Nivel;
+import ar.uba.fi.algo3.controlador.Nivel;
 import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
 
 /**
@@ -19,9 +19,11 @@ public class EscuchadorEstatico  implements KeyPressedObservador {
 		super();
 	}
 	
+	/**
+	 * resuelve el evento de presionar una tecla despachado por el titiritero.
+	 */
 	public void keyPressed(KeyEvent keyEvent){
 		int c = keyEvent.getKeyCode();
-		
 		switch (c){
 			// cuando el usuario aprete g, el nivel se guardara¡
 			case KeyEvent.VK_G:

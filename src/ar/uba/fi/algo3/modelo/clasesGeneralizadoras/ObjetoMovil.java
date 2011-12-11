@@ -6,9 +6,9 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Ocupacion;
 import ar.uba.fi.algo3.modelo.manejoEspacial.Orientacion;
 
 /**
- * Provee de estado y comportamiento comun a los objetos que pueden 
+ * provee de estado y comportamiento comun a los objetos que pueden 
  * moverse por el espacio.
- * @author Jorge
+ * @author jc
  *
  */
 public abstract class ObjetoMovil extends ObjetoJuego {
@@ -16,11 +16,10 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 	protected Orientacion orientacion;
 	protected int velocidad;
 	
-	
 	/**
-	 * Analiza cual de los bordes laterales esta mas cercano al objeto 
+	 * analiza cual de los bordes laterales esta mas cercano al objeto 
 	 * y lo mueve en dicha direccion.
-	 * Por defecto elije el derecho.
+	 * por defecto elije el derecho.
 	 */
 	public void acercarseAlBordeLateralMasCercano() {
 		if (ocupacion.getLimiteIzquierdo() < 
@@ -31,7 +30,7 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 	}
 	
 	/**
-	 * Dirige al objeto al centro del espacio hasta que algun punto de 
+	 * dirige al objeto al centro del espacio hasta que algun punto de 
 	 * su ocupacion coincida con la recta que determina a este.
 	 */
 	public void acercarseAlCentroHorizontalDelEspacio() {
@@ -42,7 +41,7 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 	}
 	
 	/**
-	 * Metodo que utilizaran las subclases instanciables de esta internamente 
+	 * metodo que utilizaran las subclases instanciables de esta internamente 
 	 * para chequear si su nueva ocupacion es valida (tomando una desicion si 
 	 * no lo es dependiente de la subclase) y si han colisionado con otro.
 	 * @param ocupacionProvisoria instancia de una subclase de Ocupacion que 
@@ -90,7 +89,7 @@ public abstract class ObjetoMovil extends ObjetoJuego {
 	
 	
 	/**
-	 * Realizamos el movimiento y cambiamos la orientacion del objeto.
+	 * realizamos el movimiento y cambiamos la orientacion del objeto.
 	 */
 	public void moverAbajo() {
 		int contador = 0;

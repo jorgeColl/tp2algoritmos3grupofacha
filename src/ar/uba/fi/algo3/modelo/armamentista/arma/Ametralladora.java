@@ -5,7 +5,7 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
- * Modela una ametralladora, la cual es un arma que tiene munición ilimitada.
+ * Modela una ametralladora, un arma que tiene munición ilimitada.
  * @author Fede
  *
  */

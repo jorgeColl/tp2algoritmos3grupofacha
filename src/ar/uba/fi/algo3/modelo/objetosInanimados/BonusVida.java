@@ -10,7 +10,7 @@ import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
  * Al entrar en contacto con un tanque, mejora su resistencia.
- * @author Jorge
+ * @author jc
  *
  */
 public class BonusVida extends Bonus {

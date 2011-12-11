@@ -13,14 +13,14 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
- * Modela al cuartel del jugador, el cual al ser destruido hace que este pierda.
- * @author Jorge
+ * modela al cuartel del jugador, el cual al ser destruido hace que este pierda.
+ * @author jc
  *
  */
 public class CuartelArgentino extends ObjetoJuego {
 
 	/**
-	 * Constructor
+	 * constructor
 	 * @param punto instancia de la clase Posicion con la que inicializaremos 
 	 * la ocupacion del cuartel
 	 */
@@ -37,12 +37,11 @@ public class CuartelArgentino extends ObjetoJuego {
 		if (Espacio.getInstancia().incluyeA(this)){
 			ConstructorVista.construirVista(this);
 		}
-		/* creo y agrego la vista al ControladorJuego */
 			
 	}
 	
 	/**
-	 * Al chocar con un disparo automaticamente desaparece.
+	 * al chocar con un disparo automaticamente desaparece.
 	 */
 	public void chocarCon(Disparo disparo) {
 		disparo.desaparecer();
@@ -50,7 +49,7 @@ public class CuartelArgentino extends ObjetoJuego {
 	}
 
 	/**
-	 * Al chocar ser chocado por un tanque, le indica que haga
+	 * al chocar ser chocado por un tanque, le indica que haga
 	 *  un movimiento unitario en la direccion contraria a la 
 	 *  que trae para que no se superpongan espacialmente, dado
 	 *  que el cuartel bloquea su camino.

@@ -7,9 +7,9 @@ import org.w3c.dom.Element;
 import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
- * Otorga comportamiento común a las clases que representan a armas con munición limitada.
+ * Clase abstracta para otorgar comportamiento comun a las clases 
+ * que representan a armas con municion limitada.
  * @author Fede
- *
  */
 public abstract class ArmaMunicionLimitada extends Arma {
 
@@ -17,8 +17,7 @@ public abstract class ArmaMunicionLimitada extends Arma {
 	protected String tipo;
 	
 	/**
-	 * 
-	 * @param municion entero correspondiente a la munición inicial del arma
+	 * @param municion entero correspondiente a la municion inicial del arma
 	 */
 	public ArmaMunicionLimitada(Tanque duenio, int municion) {
 		super(duenio);
@@ -26,8 +25,7 @@ public abstract class ArmaMunicionLimitada extends Arma {
 	}
 	
 	/**
-	 * 
-	 * @return entero correspondiente a la munición del arma
+	 * @return entero correspondiente a la municion del arma
 	 */
 	public int getMunicion() {
 		return municion;
@@ -43,14 +41,14 @@ public abstract class ArmaMunicionLimitada extends Arma {
 	
 	/**
 	 * 
-	 * @param incremento entero que sumaremos a la munición del arma
+	 * @param incremento entero que sumaremos a la municion del arma
 	 */
 	public void incrementarMunicion(int incremento) {
 		municion = municion + incremento;
 	}
 
 	/**
-	 * Persiste el arma del AlgoTank.
+	 * Persiste el arma principal del AlgoTank.
 	 */
 	public void persistir(Document documentoXML, Element raiz){
 		Attr atributoTipo = documentoXML.createAttribute("tipoArmaMunicionLimitada");
