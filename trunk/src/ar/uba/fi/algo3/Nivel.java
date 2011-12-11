@@ -38,14 +38,21 @@ public class Nivel {
      */
 	public void correrLogica(){
 		if(!juegoEmpezado) return;
-		if(this.nivelGanado())
-			this.cargarProximoNivel();
-		else if(this.nivelPerdido()){
-			ControladorJuego.getInstancia().desactivarEscuchadores();
-			ConstructorVista.construirVistaJuegoPerdido();
+		if(this.nivelGanado()){
+			ConstructorVista.construirVistaJuegoTerminado(this);
 			contadorParaReinicio++;
-			if(contadorParaReinicio>100)
+			if(contadorParaReinicio>50){
+				contadorParaReinicio=0;
+				this.cargarProximoNivel();
+			}
+			
+		}else if(this.nivelPerdido()){
+			ConstructorVista.construirVistaJuegoTerminado(this);
+			ControladorJuego.getInstancia().desactivarEscuchadores();
+			contadorParaReinicio++;
+			if(contadorParaReinicio>100){
 				this.reiniciar();
+			}
 		} else {
 			Espacio.getInstancia().correrLogica();
 			this.fabricador.decidirAgregarTanqueEnemigo();
@@ -116,7 +123,7 @@ public class Nivel {
 	 */
 	public static Nivel getInstancia() {
 		if (instancia == null){
-			instancia = new Nivel();
+			instancia = new Nivel();;
 			ConstructorVista.construirVistaInicioNivel();
 		}
 		return instancia;

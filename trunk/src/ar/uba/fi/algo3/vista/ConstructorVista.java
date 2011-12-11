@@ -5,6 +5,7 @@ package ar.uba.fi.algo3.vista;
 
 import java.awt.Color;
 
+import ar.uba.fi.algo3.Nivel;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoCanion;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoLanzaCohetes;
@@ -151,13 +152,15 @@ public class ConstructorVista {
 	/**
 	 * Construye la vista de final de juego, el texto de "juego perdido".
 	 */
-	public static void construirVistaJuegoPerdido(){
-		VistaFinDeJuego observante = new VistaFinDeJuego();
+	public static void construirVistaJuegoTerminado(Nivel nivel){
+		VistaDeFinalizacionDeJuego observante = new VistaDeFinalizacionDeJuego(nivel);
 		TextoDinamico vista2 = new TextoDinamico(observante);
-		UbicacionParaTexto pptexto2 = new UbicacionParaTexto(new Posicion(605,400));
+		UbicacionParaTexto pptexto2 = new UbicacionParaTexto(new Posicion(220,220));
 		vista2.setColor(Color.white);
-		vista2.setTamanioFuente(30);
-		auxiliar(vista2, pptexto2);
+		vista2.setTamanioFuente(50);
+		auxiliar(vista2,pptexto2);
 	}
+		
+
 		
 }
