@@ -11,8 +11,9 @@ import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
 import ar.uba.fi.algo3.modelo.tanques.Tanque;
 
 /**
- * Clase que otorga el comportamiento com�n a los bonus que mejoran las habilidades del tanque cuando entra en contacto con ellos.
- * @author Jorge
+ * clase que otorga el comportamiento comun a los bonus que mejoran las 
+ * habilidades del tanque cuando entra en contacto con ellos.
+ * @author jc
  *
  */
 public abstract class Bonus extends ObjetoJuego {
@@ -20,7 +21,7 @@ public abstract class Bonus extends ObjetoJuego {
 	protected String tipo;
 	
 	/**
-	 * Constructor.
+	 * constructor.
 	 * @param posicion instancia de la clase Posicion que servira 
 	 * como referencia para inicializar la ocupaciOn del bonus
 	 */
@@ -29,23 +30,27 @@ public abstract class Bonus extends ObjetoJuego {
 	}
 	
 	/**
-	 * No hace nada si choca con un disparo.
+	 * no hace nada si choca con un disparo.
 	 */
 	public void chocarCon(Disparo disparo){}
 	
 	/**
-	 * Le efectua los cambios correspondientes al tanque.
+	 * le efectua los cambios correspondientes al tanque.
 	 */
 	public void chocarCon(Tanque tanque) {
 		this.efectuarCambiosDeBonus(tanque);
 		this.desaparecer();
 	}
 	/**
-	 * M�todo que sera redefinido por las subclases.
+	 * metodo que sera redefinido por las subclases.
 	 * @param tanque instancia de una subclase de Tanque que sera mejorada
 	 */
 	protected abstract void efectuarCambiosDeBonus(Tanque tanque);
 	
+	/**
+	 * Guarda en el documento especificado los bonuses que se encuentren 
+	 * en juego.
+	 */
 	public void persistir(Document documentoXML, Element raiz){
 		Element nodo = documentoXML.createElement("bonus");
 				

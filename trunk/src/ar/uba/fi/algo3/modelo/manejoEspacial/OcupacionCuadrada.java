@@ -6,7 +6,7 @@ package ar.uba.fi.algo3.modelo.manejoEspacial;
  * El atributo puntoMenorModulo representa al punto del cuadrado más cercano 
  * al origen.
  * El atributo lado representa a la longitud del lado del cuadrado.
- * @author Samanta
+ * @author Sami
  *
  */
 public class OcupacionCuadrada implements Ocupacion {
@@ -16,9 +16,9 @@ public class OcupacionCuadrada implements Ocupacion {
 		
 	/**
 	 * Constructor.
-	 * @param puntoMenorModulo objeto con el que se inicializará el atributo 
+	 * @param puntoMenorModulo objeto con el que se inicializara el atributo 
 	 * puntoMenorModulo
-	 * @param lado entero con el que se inicializará el atributo lado
+	 * @param lado entero con el que se inicializara el atributo lado
 	 */
 	public OcupacionCuadrada(Posicion puntoMenorModulo, int lado) {
 		this.puntoMenorModulo = puntoMenorModulo;
@@ -26,8 +26,8 @@ public class OcupacionCuadrada implements Ocupacion {
 	}
 	
 	/**
-	 * Le indicamos al parámetro que se compare con una ocupación cuadrada, y 
-	 * le pasamos esta instancia como parámetro.
+	 * Le indicamos al parametro que se compare con una ocupacion cuadrada, y 
+	 * le pasamos esta instancia como parametro.
 	 */
 	public boolean coincidenciaOcupacionalCon(Ocupacion ocupacion) {
 		return (ocupacion.compararConOcupacionCuadrada(this));
@@ -50,7 +50,7 @@ public class OcupacionCuadrada implements Ocupacion {
 	}
 
 	/**
-	 * Delegamos en dos métodos que simplifican test booleanos.
+	 * Delegamos en dos metodos que simplifican test booleanos.
 	 */
 	public boolean compararConOcupacionCuadrada(OcupacionCuadrada ocupacion) {
 		if (coincidenciaProyeccionHorizontalCon(ocupacion)) {
@@ -73,7 +73,7 @@ public class OcupacionCuadrada implements Ocupacion {
 	}
 	
 	/**
-	 * Delego en dos métodos propios.
+	 * Delego en dos metodos propios.
 	 */
 	public boolean estaEnBorde() {
 		return ((estaEnBordeHorizontal())||(estaEnBordeVertical()));
@@ -112,7 +112,7 @@ public class OcupacionCuadrada implements Ocupacion {
 		return lado;
 	}
 	
-	/* Utilizamos este método (en principio) para crear instancias de disparos 
+	/* Utilizamos este metodo (en principio) para crear instancias de disparos 
 	 * cuadrados centrados con respecto a su tanque, dado que esto depende del 
 	 * lado de los disparos y este no es accesible por el constructor tradicional.*/
 	/**
@@ -146,8 +146,8 @@ public class OcupacionCuadrada implements Ocupacion {
 	}
 	
 	public Posicion getPosicionPerimetralCentradaEnOrientacion(Orientacion orientacion) {
-		//INICIALIZACION CORRESPONDIENTE A SI EL PARÁMETRO ES Orientacion.i, SI ES OTRA SE LA CAMBIARÁ LUEGO.
-		//RAZÓN DE COMPILACIÓN
+		//INICIALIZACION CORRESPONDIENTE A SI EL PARAMETRO ES Orientacion.i, SI ES OTRA SE LA CAMBIARA LUEGO.
+		//RAZON DE COMPILACION
 		Posicion posicionAuxiliar = new Posicion(puntoMenorModulo.getX()+lado,puntoMenorModulo.getY()+(lado/2));
 		if (orientacion == Orientacion.iNegativo)
 			posicionAuxiliar = new Posicion(puntoMenorModulo.getX()-1,puntoMenorModulo.getY()+(lado/2));

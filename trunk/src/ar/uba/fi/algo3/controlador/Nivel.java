@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ar.uba.fi.algo3;
+package ar.uba.fi.algo3.controlador;
 
 
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
@@ -11,20 +11,22 @@ import ar.uba.fi.algo3.vista.ConstructorVista;
 /**
  * @author jc
  * Clase que modela la logica de un nivel generico del juego.
+ * Utiliza el patron de disenio Singleton.
  */
 public class Nivel {
+	
 	private Persistidor persistidor;
-	private boolean juegoEmpezado;
-	static Nivel instancia;
-	private int contadorParaReinicio;
-	private static final int PUNTOS_PARA_GANAR = 50;
 	protected Fabricador fabricador;
+	static Nivel instancia;
+	private boolean juegoEmpezado;
+	private int contadorParaReinicio;
+	private static final int PUNTOS_PARA_GANAR = 1000;
 	
 	private Nivel(){
 		persistidor = new Persistidor();
+		fabricador = new Fabricador();
 		juegoEmpezado = false;
-		this.contadorParaReinicio = 0;
-		this.fabricador = new Fabricador();
+		contadorParaReinicio = 0;
 	}
 	
     /**
@@ -40,24 +42,23 @@ public class Nivel {
 				contadorParaReinicio=0;
 				this.cargarProximoNivel();
 			}
-			
-		}else if(this.nivelPerdido()){
+		} else if(this.nivelPerdido()){
 			ConstructorVista.construirVistaJuegoTerminado(this);
 			ControladorJuego.getInstancia().desactivarEscuchadores();
 			contadorParaReinicio++;
-			if(contadorParaReinicio>100){
+			if(contadorParaReinicio>100)
 				this.reiniciar();
-			}
 		} else {
 			Espacio.getInstancia().correrLogica();
-			this.fabricador.decidirAgregarTanqueEnemigo();
-			this.fabricador.decidirAgregarBonus();
+			fabricador.decidirAgregarTanqueEnemigo();
+			fabricador.decidirAgregarBonus();
 		}
 	}
 	
 	
 	/**
-	 * Reinicia el nivel, reiniciando tambien el espacio con sus objetos.
+	 * Reinicia el nivel, reiniciando el espacio con sus objetos
+	 * y el controlador con sus dibujables.
 	 */
 	private void reiniciar() {
 		Espacio.getInstancia().reiniciar();
@@ -94,8 +95,7 @@ public class Nivel {
 	}
 	
 	/**
-	 * 
-	 * @return true si se gano el juego y false en el caso contrario
+	 * @return true si se gano el juego y false en el caso contrario.
 	 */
 	public boolean nivelGanado(){
 		if (Espacio.getInstancia().getTanqueJugador() == null) 
@@ -104,7 +104,8 @@ public class Nivel {
 	}
 	
 	/**
-	 * Cuando el cuartel argentino es destruido, entonces se perdio el juego.
+	 * Se pierde el juego solo cuando se elimina el tanque del jugador o
+	 * cuando se elimina el cuartel argentino.
 	 * @return true si se perdio el juego y false en el caso contrario
 	 */
 	public boolean nivelPerdido() {
@@ -125,7 +126,7 @@ public class Nivel {
 	}
 	
 	/**
-	 * Cambia la variable de estado que indica si el nivel esta o no empezado.
+	 * Alterna la variable de estado que indica si el nivel esta o no empezado.
 	 */
 	public void empezarNivel(){
 		this.juegoEmpezado = true;

@@ -63,11 +63,13 @@ public class Espacio {
 	 */
 	public void agregarCuartelArgentino(CuartelArgentino cuartel) throws Exception {
 		if (!(cuartel.getOcupacion().espacialmenteValida()))
-			throw new OcupacionInvalidaAlAgregarObjeto("Se trato de agregar un cuartel argentino en una posicion invalida.");
+			throw new OcupacionInvalidaAlAgregarObjeto
+			("Se trato de agregar un cuartel argentino en una posicion invalida.");
 		if (getPotencialesObjetosJuegoEnContactoCon(cuartel).isEmpty())
 			this.cuartel = cuartel;
 		else
-			throw new OcupacionCoincidenteConOtroObjetoJuego("Se trato de agregar un cuartel argentino en una posicion ocupada por otro objeto del juego.");
+			throw new OcupacionCoincidenteConOtroObjetoJuego
+			("Se trato de agregar un cuartel argentino en una posicion ocupada por otro objeto del juego.");
 	}
 
 	/**
@@ -98,11 +100,13 @@ public class Espacio {
 	 */
 	public void agregarObjetoInanimado(ObjetoJuego objeto) throws Exception {
 		if (!(objeto.getOcupacion().espacialmenteValida()))
-			throw new Exception("Se trato de agregar un objeto inanimado en una posicion invalida.");
+			throw new Exception
+			("Se trato de agregar un objeto inanimado en una posicion invalida.");
 		if (getPotencialesObjetosJuegoEnContactoCon(objeto).isEmpty())
 			objetosInanimados.add(objeto);
 		else
-			throw new OcupacionCoincidenteConOtroObjetoJuego("Se trato de agregar un objeto inanimado en una posicion ocupada por otro objeto del juego.");
+			throw new OcupacionCoincidenteConOtroObjetoJuego
+			("Se trato de agregar un objeto inanimado en una posicion ocupada por otro objeto del juego.");
 	}
 	
 	/**
@@ -115,11 +119,13 @@ public class Espacio {
 	 */
 	public void agregarTanqueEnemigo(TanqueEnemigo tanque) throws Exception {
 		if (!(tanque.getOcupacion().espacialmenteValida()))
-			throw new OcupacionInvalidaAlAgregarObjeto("Se trato de agregar un tanque enemigo en una posicion invalida.");
+			throw new OcupacionInvalidaAlAgregarObjeto
+			("Se trato de agregar un tanque enemigo en una posicion invalida.");
 		if (getPotencialesObjetosJuegoEnContactoCon(tanque).isEmpty())
 			tanquesEnemigos.add(tanque);
 		else
-			throw new OcupacionCoincidenteConOtroObjetoJuego("Un tanque enemigo que se trato de agregar al escenario tiene una ocupacion que coincide espacialmente con la de otro objeto ya agregado.");
+			throw new OcupacionCoincidenteConOtroObjetoJuego
+			("Un tanque enemigo que se trato de agregar al escenario tiene una ocupacion que coincide espacialmente con la de otro objeto ya agregado.");
 	}
 		
 	/**
@@ -135,11 +141,13 @@ public class Espacio {
 	 */
 	public void agregarTanqueJugador(AlgoTank tanque) throws Exception {
 		if (!(tanque.getOcupacion().espacialmenteValida()))
-			throw new OcupacionInvalidaAlAgregarObjeto("El tanque del jugador que se trato de agregar al escenario tiene una ocupacion invalida.");
+			throw new OcupacionInvalidaAlAgregarObjeto
+			("El tanque del jugador que se trato de agregar al escenario tiene una ocupacion invalida.");
 		if (getPotencialesObjetosJuegoEnContactoCon(tanque).isEmpty())
 			tanqueJugador = tanque;
 		else
-			throw new OcupacionCoincidenteConOtroObjetoJuego("El tanque del jugador que se trato de agregar al escenario tiene una ocupacion que coincide espacialmente con la de otro.");
+			throw new OcupacionCoincidenteConOtroObjetoJuego
+			("El tanque del jugador que se trato de agregar al escenario tiene una ocupacion que coincide espacialmente con la de otro.");
 	}
 
 	/**
@@ -243,19 +251,19 @@ public class Espacio {
         Vector<ObjetoJuego> vectorAuxiliar = new Vector<ObjetoJuego>();
         if (incluyeA(objeto)) {
         	vectorAuxiliar = this.getPotencialesObjetosJuegoEnContactoCon(objeto);
-        	//COMO EL OBJETO SIEMPRE ESTa EN CONTACTO CON SI MISMO, LO SACAMOS DEL VECTOR.
+        	//COMO EL OBJETO SIEMPRE ESTA EN CONTACTO CON SI MISMO, LO SACAMOS DEL VECTOR.
         	vectorAuxiliar.remove(objeto);
         }
         return vectorAuxiliar;
     }
     
     /**
-     * Método utilizado internamente a la hora de agregar una instancia de ObjetoJuego 
+     * Metodo utilizado internamente a la hora de agregar una instancia de ObjetoJuego 
      * al espacio. Nos dice si la ocupación de dicho objeto coincide con la de algún 
      * otro ya agregado.
-     * @param objeto instancia de la clase ObjetoJuego cuya ocupación queremos analizar 
+     * @param objeto instancia de la clase ObjetoJuego cuya ocupacion queremos analizar 
      * si coincide con la de alguna otra instancia ya agregada al espacio 
-     * @return true si la ocupación de objeto coincide con la de algún otro objeto ya 
+     * @return true si la ocupacion de objeto coincide con la de algun otro objeto ya 
      * agregado al espacio y false en el caso contrario
      */
     private Vector<ObjetoJuego> getPotencialesObjetosJuegoEnContactoCon(ObjetoJuego objeto) {
@@ -339,7 +347,7 @@ public class Espacio {
 	}
 	
 	/**
-	 * Encuentra al azar una ocupación cuadrada cuyo lado es pasado por parámetro 
+	 * Encuentra al azar una ocupacion cuadrada cuyo lado es pasado por parametro 
 	 * que no tiene coincidencia ocupacional con ninguna de las ocupaciones de los 
 	 * objetos de este espacio y que se encuentra lo más arriba posible dentro del 
 	 * espacio.
@@ -399,7 +407,7 @@ public class Espacio {
 	 * Encuentra al azar una ocupacion cuadrada cuyo lado es pasado por parametro que 
 	 * no tiene coincidencia ocupacional con ninguna de las ocupaciones de los objetos 
 	 * de este espacio.
-	 * @param lado entero correspondiente al lado que queremos que tenga la ocupación 
+	 * @param lado entero correspondiente al lado que queremos que tenga la ocupacion 
 	 * cuadrada
 	 * @return instancia de la clase OcupacionCuadrada que no tiene coincidencia 
 	 * ocupacional con ninguna de las ocupaciones de los objetos del espacio

@@ -23,25 +23,21 @@ public class UbicacionParaTexto implements Posicionable {
 	}
 	@Override
 	public int getX() {
-		// TODO Auto-generated method stub
 		return this.posicion.getX();
 	}
 
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
 		return this.posicion.getY();
 	}
 
 	@Override
 	public boolean isVivo() {
-		// TODO Auto-generated method stub
 		return vivo;
 	}
 
 	@Override
 	public void setVivo(boolean vivo) {
-		// TODO Auto-generated method stub
 		this.vivo=vivo;
 		
 	}

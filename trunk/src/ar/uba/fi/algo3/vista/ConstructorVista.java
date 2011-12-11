@@ -5,7 +5,7 @@ package ar.uba.fi.algo3.vista;
 
 import java.awt.Color;
 
-import ar.uba.fi.algo3.Nivel;
+import ar.uba.fi.algo3.controlador.Nivel;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoAmetralladora;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoCanion;
 import ar.uba.fi.algo3.modelo.armamentista.disparo.DisparoLanzaCohetes;
@@ -25,7 +25,7 @@ import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.TextoDinamico;
 import ar.uba.fi.algo3.titiritero.vista.UbicacionParaTexto;
 import ar.uba.fi.algo3.vista.VistaAlgoTank;
-import ar.uba.fi.algo3.vista.VistaDeTextoDeAlgoTank;
+import ar.uba.fi.algo3.vista.VistaDePanelDeJuego;
 import ar.uba.fi.algo3.vista.VistaParaImagen;
 import ar.uba.fi.algo3.vista.VistaImagenConOrientacion;
 import ar.uba.fi.algo3.vista.VistaInicioDeJuego;
@@ -34,7 +34,10 @@ import ar.uba.fi.algo3.vista.VistaInicioDeJuego;
 /**
  * @author jc
  * esta clase va a ayudar a crear a las vistas de los elementos que esten en el juego y 
- * deban ser visualizados
+ * deban ser visualizados.
+ * cada metodo crea una instancia de la vista para cada posicionable instanciado, 
+ * para luego asignarsela y agregarla al controlador de juego.
+ * 
  */
 public class ConstructorVista {
 	
@@ -90,8 +93,8 @@ public class ConstructorVista {
 		auxiliar(vista,tanque);
 		ControladorJuego.getInstancia().agregarKeyPressObservador(vista);
 		
-		//creo la segunda vista
-		VistaDeTextoDeAlgoTank observador = new VistaDeTextoDeAlgoTank(tanque);
+		//Crea el panel de la derecha
+		VistaDePanelDeJuego observador = new VistaDePanelDeJuego(tanque);
 		TextoDinamico vista2 = new TextoDinamico(observador);
 		UbicacionParaTexto pptexto2 = new UbicacionParaTexto(new Posicion(605,15));
 		vista2.setColor(Color.white);
@@ -99,13 +102,13 @@ public class ConstructorVista {
 	}
 	
 	public static void construirVista(BonusVelocidad bonus){
-		VistaParaImagen vista = new VistaParaImagen("img/Bonus.JPG");
+		VistaParaImagen vista = new VistaParaImagen("img/bonus.jpg");
 		vista.setPrioridad(2);
 		auxiliar(vista,bonus);
 	}
 	
 	public static void construirVista(BonusVida bonus){
-		VistaParaImagen vista = new VistaParaImagen("img/BonusVida.JPG");
+		VistaParaImagen vista = new VistaParaImagen("img/bonusvida.jpg");
 		vista.setPrioridad(2);
 		auxiliar(vista,bonus);
 	}
@@ -159,7 +162,5 @@ public class ConstructorVista {
 		vista2.setTamanioFuente(50);
 		auxiliar(vista2,pptexto2);
 	}
-		
-
 		
 }

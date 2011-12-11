@@ -2,7 +2,7 @@ package ar.uba.fi.algo3.modelo.manejoEspacial;
 
 /**
  * Modela al espacio que esta ocupando un objeto.
- * @author Samanta
+ * @author Sami
  *
  */
 public interface Ocupacion {
