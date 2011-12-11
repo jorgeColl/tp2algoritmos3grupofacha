@@ -1,75 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nivel numero="3">
-	<pared tipo="metal" posX="1" posY="517"  />
-	<pared tipo="concreto" posX="1" posY="87" />
-	<pared tipo="concreto" posX="1" posY="345" />
-	<pared tipo="concreto" posX="1" posY="431" />
-	<pared tipo="concreto" posX="1" posY="474" />
-
-	<pared tipo="concreto" posX="44" posY="302" />
-	<pared tipo="concreto" posX="44" posY="345" />
-	<pared tipo="concreto" posX="44" posY="474" />
-	<pared tipo="concreto" posX="44" posY="517" />
-
-	<pared tipo="concreto" posX="87" posY="130" />
-	<pared tipo="concreto" posX="87" posY="216" />
-	<pared tipo="concreto" posX="87" posY="517" />
-
-	<pared tipo="concreto" posX="130" posY="345" />
-	<pared tipo="metal" posX="130" posY="431"  />
-
-	<pared tipo="concreto" posX="173" posY="1" />
-	<pared tipo="concreto" posX="173" posY="44" />
-	<pared tipo="concreto" posX="173" posY="173" />
-	<pared tipo="concreto" posX="173" posY="345" />
-
-	<pared tipo="concreto" posX="216" posY="173" />
-
-
-	<pared tipo="metal" posX="259" posY="259"  />
-	<pared tipo="concreto" posX="259" posY="173" />
-	<pared tipo="concreto" posX="259" posY="216" />
-	<pared tipo="concreto" posX="259" posY="345" />
-
-	<pared tipo="concreto" posX="302" posY="130" />
-	<pared tipo="concreto" posX="302" posY="173" />
-	<pared tipo="metal" posX="302" posY="259"  />
-
-
-	<pared tipo="metal" posX="345" posY="259"  />
-	<pared tipo="concreto" posX="345" posY="345" />
-
-	<pared tipo="concreto" posX="388" posY="130" />
-	<pared tipo="concreto" posX="388" posY="388" />
-	<pared tipo="concreto" posX="388" posY="517" />
-
-	<pared tipo="metal" posX="431" posY="87"  />
-	<pared tipo="concreto" posX="431" posY="150" />
-
-
-	<pared tipo="metal" posX="474" posY="87"  />
-
-
-	<pared tipo="metal" posX="517" posY="87"  />
-	<pared tipo="metal" posX="517" posY="474"  />
-	<pared tipo="concreto" posX="517" posY="193" />
-	<pared tipo="concreto" posX="517" posY="236" /> 
-	<pared tipo="concreto" posX="517" posY="322" /> 
-	<pared tipo="concreto" posX="517" posY="365" /> 
-	<pared tipo="concreto" posX="517" posY="517" /> 
-
-
-
-
-	<pared tipo="concreto" posX="216" posY="474" />
-	<pared tipo="concreto" posX="216" posY="517" />
-	<pared tipo="concreto" posX="259" posY="474" />
-	<pared tipo="concreto" posX="302" posY="474" />
-	<pared tipo="concreto" posX="302" posY="517" />
-
-
-
-	<algoTank posX="173" posY="517" />
-	<cuartelArgentino posX="259" posY="517" /> 
+	<pared tipo="concreto" posX="187" posY="0" />
+	<pared tipo="concreto" posX="187" posY="43" />
+	
+	<pared tipo="concreto" posX="0" posY="95" />
+	
+	<pared tipo="concreto" posX="95" posY="141" />
+	<pared tipo="concreto" posX="95" posY="184" />
+	<pared tipo="concreto" posX="95" posY="227" />
+	
+	<pared tipo="concreto" posX="325" posY="141" />
+	<pared tipo="concreto" posX="325" posY="184" />
+	<pared tipo="concreto" posX="239" posY="184" />
+	<pared tipo="concreto" posX="196" posY="184" />
+	<pared tipo="concreto" posX="282" posY="227" />
+	<pared tipo="concreto" posX="282" posY="270" />
+	
+	<pared tipo="concreto" posX="0" posY="325" />
+	<pared tipo="concreto" posX="0" posY="368" />
+	<pared tipo="concreto" posX="43" posY="368" />
+	
+	<pared tipo="concreto" posX="0" posY="472" />
+	<pared tipo="concreto" posX="0" posY="515" />
+	<pared tipo="metal" posX="0" posY="558" />
+	<pared tipo="concreto" posX="43" posY="515" />
+	<pared tipo="concreto" posX="43" posY="558" />
+	<pared tipo="concreto" posX="86" posY="558" />
+	
+	<pared tipo="concreto" posX="141" posY="417" />
+	<pared tipo="concreto" posX="184" posY="417" />
+	
+	<pared tipo="concreto" posX="558" posY="558" />
+	<pared tipo="concreto" posX="515" posY="558" />
+	
+	<pared tipo="concreto" posX="417" posY="558" />
+	
+	<pared tipo="concreto" posX="558" posY="95" />
+	<pared tipo="concreto" posX="515" posY="95" />
+	<pared tipo="concreto" posX="472" posY="95" />
+	<pared tipo="concreto" posX="429" posY="138" />
+	<pared tipo="concreto" posX="429" posY="181" />
+	
+	<pared tipo="concreto" posX="558" posY="233" />
+	<pared tipo="concreto" posX="558" posY="276" />
+	<pared tipo="concreto" posX="558" posY="319" />
+	
+	<pared tipo="concreto" posX="472" posY="276" />
+	
+	<pared tipo="concreto" posX="371" posY="319" />
+	<pared tipo="concreto" posX="371" posY="362" />
+	<pared tipo="concreto" posX="414" posY="405" />
+		
+	<pared tipo="concreto" posX="236" posY="515" />
+	<pared tipo="concreto" posX="236" posY="558" />
+	<pared tipo="concreto" posX="279" posY="515" />
+	<pared tipo="concreto" posX="322" posY="515" />
+	<pared tipo="concreto" posX="322" posY="558" />
+	
+	<algoTank posX="187" posY="558" />
+	<cuartelArgentino posX="279" posY="558" />
 	
 </nivel>
