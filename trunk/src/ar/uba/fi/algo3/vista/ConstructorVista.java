@@ -28,7 +28,6 @@ import ar.uba.fi.algo3.vista.VistaAlgoTank;
 import ar.uba.fi.algo3.vista.VistaDeTextoDeAlgoTank;
 import ar.uba.fi.algo3.vista.VistaParaImagen;
 import ar.uba.fi.algo3.vista.VistaImagenConOrientacion;
-import ar.uba.fi.algo3.vista.VistaFinDeJuego;
 import ar.uba.fi.algo3.vista.VistaInicioDeJuego;
 
 
