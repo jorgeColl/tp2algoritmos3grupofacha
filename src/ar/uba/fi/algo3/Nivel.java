@@ -3,13 +3,7 @@
  */
 package ar.uba.fi.algo3;
 
-import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVelocidad;
-import ar.uba.fi.algo3.modelo.objetosInanimados.BonusVida;
-import ar.uba.fi.algo3.modelo.manejoEspacial.OcupacionCuadrada;
-import ar.uba.fi.algo3.modelo.manejoEspacial.Posicion;
-import ar.uba.fi.algo3.modelo.tanques.GrizzlyBattleTank;
-import ar.uba.fi.algo3.modelo.tanques.IFV;
-import ar.uba.fi.algo3.modelo.tanques.MirageTank;
+
 import ar.uba.fi.algo3.modelo.manejoEspacial.Espacio;
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.vista.ConstructorVista;
