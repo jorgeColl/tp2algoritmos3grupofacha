@@ -34,6 +34,7 @@ public class Nivel {
 		if(!juegoEmpezado) return;
 		if(this.nivelGanado()){
 			ConstructorVista.construirVistaJuegoTerminado(this);
+			ControladorJuego.getInstancia().desactivarEscuchadores();
 			contadorParaReinicio++;
 			if(contadorParaReinicio>50){
 				contadorParaReinicio=0;
