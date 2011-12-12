@@ -20,7 +20,7 @@ public class Nivel {
 	static Nivel instancia;
 	private boolean juegoEmpezado;
 	private int contadorParaReinicio;
-	private static final int PUNTOS_PARA_GANAR = 1000;
+	private static final int PUNTOS_PARA_GANAR = 10;
 	
 	private Nivel(){
 		persistidor = new Persistidor();
@@ -72,8 +72,10 @@ public class Nivel {
 	 */
 	public void cargarProximoNivel(){
 		Espacio.getInstancia().reiniciar();
-		ControladorJuego.getInstancia().reiniciar();
+		//ControladorJuego.getInstancia().reiniciar();
 		persistidor.cargarProximoNivel();
+
+		ControladorJuego.getInstancia().activarEscuchadores();
 		this.empezarNivel();
 	}
 	
@@ -82,7 +84,7 @@ public class Nivel {
 	 */
 	public void cargarNivelGuardado(){
 		Espacio.getInstancia().reiniciar();
-		ControladorJuego.getInstancia().reiniciar();
+		//ControladorJuego.getInstancia().reiniciar();
 		this.persistidor.cargarJuegoGuardado();
 		this.empezarNivel();
 	}
