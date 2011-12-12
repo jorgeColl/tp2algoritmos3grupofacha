@@ -259,7 +259,7 @@ public class Espacio {
     
     /**
      * Metodo utilizado internamente a la hora de agregar una instancia de ObjetoJuego 
-     * al espacio. Nos dice si la ocupación de dicho objeto coincide con la de algún 
+     * al espacio. Nos dice si la ocupaciï¿½n de dicho objeto coincide con la de algï¿½n 
      * otro ya agregado.
      * @param objeto instancia de la clase ObjetoJuego cuya ocupacion queremos analizar 
      * si coincide con la de alguna otra instancia ya agregada al espacio 
@@ -336,6 +336,13 @@ public class Espacio {
 				d.setVivo(false);
 			}
 		}
+		if (this.tanquesEnemigos !=null){
+			Iterator<TanqueEnemigo> iterator = this.tanquesEnemigos.iterator();
+			while(iterator.hasNext()){
+				ObjetoJuego d = (ObjetoJuego)iterator.next();
+				d.setVivo(false);
+			}
+		}
 		instancia = new Espacio();
 	}
 	
@@ -349,9 +356,9 @@ public class Espacio {
 	/**
 	 * Encuentra al azar una ocupacion cuadrada cuyo lado es pasado por parametro 
 	 * que no tiene coincidencia ocupacional con ninguna de las ocupaciones de los 
-	 * objetos de este espacio y que se encuentra lo más arriba posible dentro del 
+	 * objetos de este espacio y que se encuentra lo mï¿½s arriba posible dentro del 
 	 * espacio.
-	 * @param lado entero correspondiente al lado que queremos que tenga la ocupación 
+	 * @param lado entero correspondiente al lado que queremos que tenga la ocupaciï¿½n 
 	 * cuadrada
 	 * @return instancia de la clase OcupacionCuadrada que no tiene coincidencia 
 	 * ocupacional con ninguna de las ocupaciones de los objetos del espacio
